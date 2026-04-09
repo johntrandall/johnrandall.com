@@ -1,0 +1,23 @@
+baseURL = 'https://johnrandall.com/'
+languageCode = 'en-us'
+title = 'John Randall'
+theme = 'PaperMod'
+
+[params]
+  defaultTheme = "auto"
+  showReadingTime = true
+  showShareButtons = false
+  showPostNavLinks = true
+
+[menu]
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 10
+  [[menu.main]]
+    name = "Archive"
+    url = "/archives/"
+    weight = 20
+
+[outputs]
+  home = ["HTML", "RSS"]
