@@ -5,19 +5,21 @@ theme = 'PaperMod'
 
 [params]
   defaultTheme = "auto"
-  showReadingTime = true
-  showShareButtons = false
-  showPostNavLinks = true
+  disableSpecial1stPost = true
 
-[menu]
-  [[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 10
-  [[menu.main]]
-    name = "Archive"
-    url = "/archives/"
-    weight = 20
+  [params.profileMode]
+    enabled = true
+    title = "John Randall"
+    subtitle = "Software engineer in Montclair, NJ."
 
-[outputs]
-  home = ["HTML", "RSS"]
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/johntrandall"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/johntrandall/"
+
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:john@johnrandall.com"
