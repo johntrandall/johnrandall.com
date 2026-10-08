@@ -12,6 +12,16 @@ theme = 'PaperMod'
     title = "John Randall"
     subtitle = "Software engineer in Montclair, NJ."
 
+    [[params.profileMode.buttons]]
+      name = "CV"
+      url = "/cv/full/"
+    [[params.profileMode.buttons]]
+      name = "CV as PDF"
+      url = "/cv/john-randall-cv-full.pdf"
+    [[params.profileMode.buttons]]
+      name = "CV as JSON Resume"
+      url = "/cv/john-randall-cv-full.json"
+
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/johntrandall"
@@ -27,3 +37,8 @@ theme = 'PaperMod'
   [[params.socialIcons]]
     name = "cv"
     url = "/cv/full/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true   # the CV page's icon download links are inline HTML (tools/publish-cv)
