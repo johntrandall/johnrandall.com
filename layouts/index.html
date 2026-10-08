@@ -20,7 +20,7 @@
     {{- $d := partial "doc-data.html" .page }}
     <li class="doc">
       <a class="doc-title" href="{{ .page.RelPermalink }}">{{ .name }}</a>
-      <span class="doc-meta">{{ with $d.pages }}{{ . }} pages{{ end }}{{ with $d.revised }}{{ if $d.pages }} · {{ end }}revised {{ .Format "Jan 2, 2006" }}{{ end }}</span>
+      <span class="doc-meta">{{ with $d.pages }}{{ . }} pages{{ end }}{{ with $d.words }} ({{ lang.FormatNumberCustom 0 . }} words){{ end }}{{ with $d.revised }}{{ if $d.pages }} · {{ end }}revised {{ .Format "Jan 2, 2006" }}{{ end }}</span>
       <span class="formats">
         <a class="fmt" href="{{ .page.RelPermalink }}"><svg class="icon" aria-hidden="true"><use href="#i-page"/></svg>Read</a>
         {{- with $d.pdf }}

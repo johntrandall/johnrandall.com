@@ -15,6 +15,7 @@
 {{- $json := .Params.json -}}
 {{- with findRESubmatch `href="([^"]+\.json)"` $dl 1 }}{{ $json = $json | default (index (index . 0) 1) }}{{ end -}}
 {{- $pages := .Params.pdf_pages -}}
+{{- $words := .Params.words -}}
 {{- with findRESubmatch `(\d+) pages` $dl 1 }}{{ $pages = $pages | default (index (index . 0) 1) }}{{ end -}}
 
 {{- /* Revision date: front-matter lastmod, else the generator's "Revised YYYY-MM-DD". */ -}}
@@ -49,4 +50,4 @@
 {{- $body = replaceRE `(</h3>\s*)<p><em>([^<]*)</em></p>` `$1<p class="desc">$2</p>` $body -}}
 {{- $body = replaceRE `<p><strong>([^<]*)</strong></p>` `<p class="sub">$1</p>` $body -}}
 
-{{- return dict "revised" $revised "pdf" $pdf "json" $json "pages" $pages "contact" $contact "body" $body -}}
+{{- return dict "revised" $revised "pdf" $pdf "json" $json "pages" $pages "words" $words "contact" $contact "body" $body -}}

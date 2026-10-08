@@ -31,7 +31,7 @@
     {{- end }}
     <div class="doc-formats">
       {{- with $d.pdf }}
-      <a class="fmt" href="{{ . }}" title="PDF, US Letter"><svg class="icon" aria-hidden="true"><use href="#i-pdf"/></svg>PDF{{ with $d.pages }} <small>{{ . }} pages</small>{{ end }}</a>
+      <a class="fmt" href="{{ . }}" title="PDF, US Letter"><svg class="icon" aria-hidden="true"><use href="#i-pdf"/></svg>PDF{{ with $d.pages }} <small>{{ . }} pages{{ with $d.words }} ({{ lang.FormatNumberCustom 0 . }} words){{ end }}</small>{{ end }}</a>
       {{- end }}
       {{- with $d.json }}
       <a class="fmt" href="{{ . }}" title="JSON Resume (jsonresume.org)"><svg class="icon" aria-hidden="true"><use href="#i-json"/></svg>JSON Resume</a>
