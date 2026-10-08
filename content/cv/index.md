@@ -1,0 +1,235 @@
+---
+# Generated file: do not edit by hand. It is regenerated from the CV source.
+title: "Curriculum Vitae"
+description: "Curriculum vitae of John Randall."
+url: "/cv/"
+pdf: "/cv/john-randall-cv.pdf"
+pdf_pages: 5
+json: "/cv/john-randall-cv.json"
+lastmod: "2026-10-08"
+draft: false
+hidemeta: true
+ShowReadingTime: false
+ShowWordCount: false
+ShowBreadCrumbs: false
+ShowPostNavLinks: false
+ShowShareButtons: false
+disableShare: true
+comments: false
+---
+
+<p class="cv-downloads">
+<span class="cv-revised">Revised 2026-10-08</span>
+<a href="/cv/john-randall-cv.pdf" title="PDF, 5 pages"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> PDF <small>(5 pages)</small></a>
+<a href="/cv/john-randall-cv.json" title="JSON Resume"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> JSON Resume</a>
+</p>
+See also: [Full CV](/cv/full/)
+
+Montclair, NJ · john@johnrandall.com · johnrandall.com
+[linkedin.com/in/johntrandall](https://linkedin.com/in/johntrandall) · [github.com/johntrandall](https://github.com/johntrandall)
+
+Senior full-stack, product-focused software engineer with proven experience providing technical and process leadership in highly collaborative environments. Eight years on small Ruby on Rails teams (BackerKit, OpsLevel), leading team process and planning, and training other engineers. Agentic engineer: builds AI-driven systems with coding agents under human-owned specs, review, and tests, with a human operator approving anything consequential. Mission-focused polymath with a background in software engineering, law and technology policy, and audio and media production.
+
+## Engineering skills
+
+**AI and agentic engineering:** AI coding agents, multi-agent orchestration, agent safety guardrails, MCP server development, LLM integration, human-in-the-loop workflows, scheduled autonomous agents
+
+**Software engineering:** Ruby, Ruby on Rails, JavaScript, TypeScript, Python, PostgreSQL, MySQL, Redis, Elasticsearch, GraphQL, REST APIs, RSpec, pytest, background job processing, Heroku, AWS, Docker, GitLab CI, third-party API integration, private and undocumented APIs, web scraping
+
+**People and process:** tech leadership, mentoring and training engineers, pair programming, code review, agile development, retrospectives, requirements writing, ticket sequencing and dependency planning, ticket and MR sizing, spike and proof-of-concept work, cross-team collaboration, architecture decision records
+
+---
+
+## Software engineering
+
+### Independent Software Engineer · Oct 2025 – Present
+*Agentic engineering: self-directed products, infrastructure, and open source · Montclair, NJ*
+
+**Agent harness: letting AI agents work safely on real systems**
+- **JRVIS**, AI-assisted information-flow system running administration across family finance and health, rental bookkeeping and property operations, household logistics, home automation, nonprofit IT, and self-hosted infrastructure. Underneath: a guarded multi-agent harness (324 skills, 35 roles, 47 pre-action policy hooks), with secrets released only through a credential manifest the human operator approves once.
+  - **Intake and document sorting:** captures email, texts, scanned mail, and meeting notes; every item is triaged and filed by domain, scans going through OCR and LLM classification into a reviewed document store (Info Sorter) scored against a labeled corpus; agents do the follow-up, a human operator approving anything consequential.
+  - **Scheduled agents:** 34 run hourly to weekly across infrastructure monitoring and bookkeeping, behind run locks, entry gates, and smoke tests.
+  - **Knowledge base and memory:** a personal knowledge-management system the agents read before they act: PARA-organized storage, a DEVONthink document store, and Obsidian vaults; a layered knowledge model (research → decisions → procedures → agents) of 137 architecture decision records, 78 procedures, and 30 inventories; 324 reusable agent skills; and a self-hosted memory server read at the start of every session.
+
+**Business automation products**
+- **Portal Gopher** signs into 19 vendors' websites and email accounts to collect bills and statements, drawing credentials from programmatically provisioned password-manager environments and handling password and SMS two-factor logins.
+- **Cratchit** does the bookkeeping: extracts data with LLMs under cost-control and routing rules, proposes QuickBooks entries for a human operator to approve, reconciles automatically, and escalates the rest to the human operator.
+
+**Self-hosted infrastructure**
+- **Infrastructure as code:** 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer over a Tailscale network, serving 69 MCP servers to the agents; 137 architecture decision records.
+- **macOS VM test lab:** ephemeral macOS virtual machines (Tart) for testing Mac software and agents, with a wrapper that lets agents clone, boot, test, and tear down VMs safely.
+
+**Reverse engineering and agent tools**
+- **OmniPlan and OmniGraffle file formats:** reverse-engineered commercial Mac apps' undocumented file formats, so agents can generate and edit files; published the OmniPlan format spec, Python tooling, and MCP server.
+- **Visualization and diagrams as code:** C4 architecture models in Structurizr DSL (patched c4hero fork, upstream feature PR); Mermaid, D2, PlantUML, and Graphviz rendered to SVG on save; Grafana dashboards over InfluxDB.
+
+**Open source**
+- 28 merged pull requests into 10 third-party projects, including Intuit's official QuickBooks Online MCP server (four, including schema validation, sub-account creation, and account re-parenting) and a macOS Messages MCP server (eleven, including tested fixes for AppleScript-injection vulnerabilities and race conditions).
+
+### Career Break · Family gap year · Feb – Aug 2025
+Backpacked nine countries and five continents. Taught three sons programming, math, and science on the road, with history and culture learned on site, from Inca ruins to Rome.
+
+### JKRE · Co-Owner & Operator · 2016 – Present
+*Real estate rental business · Montclair, NJ*
+
+- Acquired four properties and built a rental business: long-term residences and a short-term vacation rental.
+- Self-managed general contractor on renovations: hired and coordinated trades, and self-performed much of the work: roofs, kitchens, bathrooms, basements, electrical, smart-home installations, drainage, and flood remediation.
+- From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows, working from the business's playbook, procedures, and property and vendor knowledge, that route issues to the on-call property manager and vendors through owner-approved emails, with automated tenant updates as issues resolve. Hands-off ownership on a monthly playbook: two hours a week.
+
+### OpsLevel · Senior Software Developer · Jun 2022 – Sep 2023
+*Internal developer portal / service catalog · Series A startup · Rails, MySQL, Redis, Elasticsearch · Toronto (remote)*
+
+Joined three months after the $15M Series A.
+
+- Tech lead for Service Detection (launched Jan 2023): scanned customers' git repositories and fed detected services into the catalog, replacing hand-authored service definitions (in [OpsLevel's launch case study](https://www.opslevel.com/resources/build-your-catalog-with-service-detection), Duolingo imported 315 services, 97% of its architecture, in nine minutes).
+- Set the team's tone: made asking for help easy, moved discussion onto voice calls, drew out the quieter engineers, and made pair programming a habit, until team organization and technical planning were a group effort; set the bar for ticket writing so more work ran in parallel with less thrash.
+- Led epic and sprint planning: introduced ticket sequencing that drove straight into the unknowns to de-risk each sprint up front, and built the epic and ticket-dependency diagramming tool (a GitLab CI extension) that made the sequencing visible and became part of the team's process; the documentation-check epic, planned weeks after joining, became the company's model for epic planning.
+- Tech lead for migrating search from one sprawling SQL query to Elasticsearch (Nov 2022), rolled out behind per-account feature flags with fallback to legacy search: ended timeouts on large catalogs and added relevance ranking and highlighting.
+- Tech lead for AWS integrations (Infrastructure Catalog, spring 2023), a 12-week project bringing customers' AWS resources (EC2, ECS, EKS, RDS, Lambda, S3) into the catalog; designed its core architecture, an intermediate layer of integration source objects mapped into catalog entities, which the team reused for its relationships GraphQL API.
+- Built OpsLevel Runner's priority scheduling, throttling, and failure handling (Redis-based locking); the Runner ran containerized analysis jobs against customers' repositories. Led the team's capacity GameDay for it.
+- Wrote proposals on unhappy-path error handling and dependency upgrades, which shaped the team's patterns; cleared the overdue dependency-upgrade backlog.
+
+### BackerKit · Senior Full-Stack Developer · Jun 2015 – Nov 2021
+*Crowdfunding pledge management · Y Combinator seed, then self-funded · Rails, PostgreSQL, Redis, Heroku · San Francisco, CA (remote)*
+
+- On an eight-developer team, transformed a fledgling Rails and JavaScript project into the leading crowdfunding pledge-management ecosystem:
+  - **BackerKit Pledge Manager**: invented the post-crowdfunding-platform pledge-management industry; served 10,400 projects raising $340 million from 16.5 million backers, growing from 1,000 projects (Aug 2015) to 10,000 (Jul 2021).
+  - **BackerKit Launch** and **BackerKit Marketing**: direct-marketing tools that drove $3 million in conversions for over 150 creators and $32 million for 1,100 creators, the latter grown from a manual process into a SaaS platform.
+- Anchored the engineering team through growth from two to eight developers and six to 50 employees, as the second developer: onboarded, mentored, and trained the new engineers; refined the team's workflows as headcount grew; and wrote the technical and dev-culture blog posts used in developer recruiting.
+- Extended and hardened the Kickstarter and Indiegogo sync that imported projects, rewards, and backers into the Pledge Manager. Neither platform offered creators a public API, so the sync relied on web scraping and creator-authorized OAuth, with retries and error monitoring for when the platforms changed.
+- BackerKit's developer on Kickstarter's partner GraphQL API (beta): shipped its first production phase (public project import, Mar 2019) and mapped the backer data model for the authenticated phase.
+- Built and maintained API integrations with PayPal, Stripe, inventory and fulfillment systems, postage services, email delivery systems, Salesforce, and Facebook.
+- Found and fixed the root causes of email-deliverability issues and built a system gathering deliverability statistics by client, time, and recipient domain.
+- Led the Rails 5.2 → 6.0 upgrade (2019) and did the Ruby 2.6 → 3.0 upgrades (2020 – 2021); moved CI to Semaphore 2.0, running the suite as nine parallel jobs.
+- On a unified dev/DevOps team, configured testing, CI, and deployment pipelines behind daily Heroku deploys.
+- 3,399 commits, second-most in the codebase's history. Wrote 342 of the 1,176 spec files and 146 of the 613 migrations added 2015 – 2021.
+
+### RelPro (formerly Relationship Capital Partners) · Web and QA Developer · Nov 2014 – Apr 2015
+*New York, NY*
+
+Brought agile and version-control practices to the team and backfilled its unit and functional test suites from scratch (Intern, Selenium Grid, Leadfoot); built the company website (Bootstrap on WordPress).
+
+---
+
+## Law and technology policy
+
+### Roosevelt Institute · Program Manager, Telecommunications Equality Project · Feb 2013 – Jan 2014
+*New York, NY*
+- Managed a policy agenda on network neutrality and equal access to high-speed internet infrastructure.
+- United loose coalitions of advocacy groups against state telecommunications deregulation and anti-municipal-network bills driven by the American Legislative Exchange Council (ALEC).
+- Coordinated a distributed team of telecommunications industry analysts, legal researchers, and advocates in public messaging and appeals to NY and NJ state utility commissions, resulting in the investigations sought into Verizon NY's illegal cross-subsidizations.
+- As trusted deputy to Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy), delivered same-day research memos for television, radio, and podcast appearances; major conference keynotes; law review articles; and bi-weekly columns for Wired, Bloomberg View, and the New York Times.
+- Fielded press requests for political comment and technical consultation. Ghostwrote articles and opinion columns for major national publications.
+- Wrote an opinion column that pressured Comcast to double internet access speeds for low-income families.
+### Brooklyn Law Incubator and Policy (BLIP) Clinic · Senior Clinician and Post-Graduate Fellow · 2010 – 2013
+*Brooklyn, NY*
+- Lead organizer and technical director of the inaugural NYC Legal Hack-A-Thon, bringing lawyers and developers together on legal and policy problems.
+- Co-drafted amicus brief to the U.S. Supreme Court (*Schwarzenegger v. EMA*, a First Amendment challenge to video game regulation).
+- Enlisted the United Nations media department as a client and led a team advising it on the risks and benefits of releasing its media archive under Creative Commons licenses.
+- Drafted early Terms of Service, End User License Agreement, and Privacy Policy for Diaspora, a federated social networking service, and the same documents, plus trademark applications and trademark and domain-name conflict demand letters, for startups and crowdfunding projects.
+- Founded the PriView Project, a scalable, crowd-sourced architecture for rating website privacy policies to lower the cost of understanding them. Founded and led CREATE (Creative Rights Empowerment Achieved Through Education), an interactive copyright curriculum for arts-focused high schools; won grant funding.
+### Legal Hackers · Co-Founder; Co-Organizer, NYC Legal Hackers meetup · 2012 – 2015
+*New York, NY*
+Monthly meetup of lawyers and technologists focused on technology-enabled, crowd-sourced solutions to legal-industry problems and tech- and cyber-law policy. Became the world's largest legal meetup group in its second year.
+
+### American Civil Liberties Union (ACLU) · Project on Speech, Privacy & Technology · Legal Intern · Jan – Jun 2012
+*New York, NY*
+
+- Contributed to amicus briefs to the U.S. Supreme Court (*United States v. Alvarez*, challenging the Stolen Valor Act on First Amendment grounds) and the Fourth Circuit (*In re Application of the United States of America for an Order Pursuant to 18 U.S.C. § 2703(d)*, on unsealing court orders for Twitter records of WikiLeaks-linked accounts).
+- Identified and analyzed First and Fourth Amendment challenges to internet IP enforcement bills (SOPA, PIPA) for the national agenda.
+- Wrote a memorandum on legal challenges to federal-employee speech pre-clearance requirements.
+
+### Brooklyn Law School · Research Assistant, Teaching Assistant · Summer 2011 – Spring 2012
+*Brooklyn, NY*
+
+- Research assistant to Professors Jane Yakowitz (privacy; wrote "A Technical Primer to Web-Surfing for Privacy Wonks" while researching "The New Intrusion"), Derek Bambauer (Internet Law teaching assistant; updated the curriculum), and Jason Mazzone (copyright enforcement and DMCA notice-and-takedown abuse).
+
+### MasurLaw · Summer Associate · Jun – Sep 2011
+*New York, NY*
+
+Wrote memoranda on the legal risks of web-scraping business plans and on DMCA anti-circumvention and Computer Fraud and Abuse Act case law; drafted demand letters in a multi-party patent dispute, and licensing contracts.
+
+### Harvard University: Berkman Center for Internet and Society · Project Associate · May – Sep 2008
+*Cambridge, MA*
+
+Created a middle-school curriculum on copyright, fair use, and new-media literacy, with web tools for using Creative Commons licenses, the public domain, and fair use in students' own work; coordinated academics, designers, and interns.
+
+---
+
+## Audio, music, and media production
+
+### BrainPOP · Web Production Consultant, Sound Designer, Audio Engineer · Jun 2005 – May 2011
+*New York, NY*
+
+- Directed audio production for an award-winning educational website with over 12 million visits per month, used by 20% of U.S. school districts.
+- Directed technical workflows for the New York and international production offices.
+- Designed sound to meet multiple accessibility needs for English-language learners, hearing-impaired students, and emergent readers. Contributed to educational content on civics, government, and legal issues.
+- Honors: Webby Awards Official Honoree (Education, 2006); Adobe Showcase Site of the Day (2007); Flash Forward Film Festival Winner and Animation Award (2007); Interactive Media Awards Best in Class (2007); Technology & Learning Magazine Award of Excellence (2007).
+
+### Freelance · Web & New Media Producer, Audio Producer, Music Producer, Sound Designer, Musician · 1995 – 2009
+*Brooklyn, NY*
+
+- Directed web development and media, audio, and music production for award-winning web, game, film, television, radio, podcast, and commercial music projects, mostly in education and civil- and human-rights advocacy. Clients included the ACLU, American Friends Service Committee (AFSC), Amnesty International, The Ella Baker Center for Human Rights, Columbia Law School's Human Rights Institute, Witness, and Human Rights Watch. Pro bono projects included TearItDown (Amnesty International), *I Can End Deportation*, and the pro bono films below.
+- Recorded live shows by Freestyle Love Supreme, the improvisational hip-hop troupe co-founded by Lin-Manuel Miranda that later ran on Broadway (2019), and built them into the interactive and linear sound design of its promotional website (2006).
+- **Film credits** (mix, sound design, music): [*Brooklyn Lobster*](https://www.imdb.com/title/tt0401591/fullcredits/) (2005, presented by Martin Scorsese; Official Selection, Toronto and Hamptons International Film Festivals), *Peace of Mind* (1999; [Hamptons and Canyonlands awards](https://www.imdb.com/title/tt0263849/awards/)), [*The Glorious Mustache Challenge*](https://www.imdb.com/title/tt0805538/fullcredits/) (2006; music composition and production), and ten other documentary and short films, 1999 – 2007.
+- **The Jettsonz (Jettsonz Inc.), Newark, NJ (2004 – 2005):** music production, recording, and mix assistant on Nina Sky's "Move Ya Body" (feat. Jabba; Universal Records, 2004): [Billboard Hot 100 #4](https://www.billboard.com/artist/nina-sky/chart-history/hsi/), Hot Dance Airplay #1; [certified Gold in the US (RIAA)](https://www.riaa.com/gold-platinum/?tab_active=default-award&se=nina+sky) and UK (BPI), Platinum in New Zealand. Coordinated a recording-studio build, advising on $80,000 of equipment and construction purchases, and trained the production team to use it; remixes of Ray Charles and Carlos Santana.
+- **WarpWhistle Music LLC, co-founder and managing partner (Mar 2005 – May 2006):** directed musicians, composers, audio engineers, producers, and sales representatives producing music for national radio and television advertising; negotiated intellectual property contracts; managed agency and post-production relationships.
+- **RedRover, founder, manager, composer, and touring musician (1995 – 2004):** founded the band in high school; touring from 1999, booked and managed media campaigns and two national tours; negotiated recording contracts and music licensing; performed original material in more than 450 appearances as indie/punk/emo vocalist and guitarist; produced recordings.
+
+### Grey Worldwide (WPP Group) · Lead Audio Engineer · Mar 2000 – Jun 2006
+*New York, NY*
+
+- Technical lead and senior audio engineer for the in-house audio department; hired, trained, and supervised interns and junior audio engineers. The department's revenue grew 350% over three years.
+- Directed audio post-production for thousands of national TV and radio spots, including Panasonic "Life is: Plasma" (Adweek Best Spots of the Month, June 2005) and Pringles "Hearts" (Ad Age Spot of the Week, Feb 12, 2006).
+- Built the department's multi-user FileMaker Pro job-tracking system (19 staff) and advised Grey Global Group's Digital Asset Management committee on a system planned for over 10,000 users.
+
+---
+
+## Education
+
+### General Assembly · Web Development Immersive, 12 weeks · 2014
+
+### Brooklyn Law School · J.D., cum laude · 2012
+- Top 10% of class; Certificate in Intellectual Property, Media & Information Law; CALI Excellence for the Future Awards (highest grade in class): Internet Law; Intellectual Property Colloquium; Carswell Scholarship, Centennial Grant, Dean's Merit Scholarship; Webmaster, then Technology Secretary, Brooklyn Law School ACLU.
+- Bar admission: New York and New Jersey (inactive).
+
+### New York University · B.S. in Digital Communications & Media, magna cum laude · 2009
+- Concentrations in Web Production and Video Game Design; Alpha Sigma Lambda Dean's Award for Excellence, University Honors Scholar, Dean's List; President, Students for Free Culture at NYU.
+
+---
+
+## Open source and published software
+
+- [github.com/johntrandall](https://github.com/johntrandall)
+- [**mcp-omniplan-jtr**](https://pypi.org/project/mcp-omniplan-jtr/) (PyPI, 2026): MCP server letting AI agents drive OmniPlan.
+- [**oplx-format**](https://github.com/johntrandall/oplx-format) (specification, 2026) and [**oplx-tools**](https://pypi.org/project/oplx-tools/) (PyPI, 2026): community specification of OmniPlan's `.oplx` file format, with Python tools to generate, lint, and parse it.
+- [**lash-installer**](https://pypi.org/project/lash-installer/) (PyPI, 2026), [**iterm-tmux-helpers**](https://github.com/johntrandall/iterm-tmux-helpers) (personal Homebrew tap, 2026), [**half-sheet-label**](https://github.com/johntrandall/half-sheet-label), [**ptouch-label**](https://github.com/johntrandall/ptouch-label), [**hither**](https://github.com/johntrandall/hither), [**claude-browser-pool**](https://github.com/johntrandall/claude-browser-pool), and other macOS and agent-tooling utilities.
+- Ruby gems [amazon_order](https://github.com/kyamaguchi/amazon_order/pulls?q=is%3Apr+author%3Ajohntrandall+is%3Amerged) (multi-shipment orders, service orders, CSV export) and [rubyfocus](https://github.com/jyruzicka/rubyfocus/pull/5), 2018 – 2019.
+
+---
+
+## Publications and writing
+
+- ["Comcast Profits from the Poor with Internet Essentials Deal"](https://www.salon.com/2013/07/10/comcasts_new_partner/), Next New Deal blog (Roosevelt Institute), distributed via Salon.com and others; named a Best Weekly Read by The Century Foundation (July 15, 2013).
+- "Strategic Advice for a Presidential Contender Running in 2012: Exploring the Mechanisms and Effects of Social Networking and User-Generated Media on the 2008 Election", [BoingBoing.net](https://boingboing.net/2008/12/14/uncertainties-in-ama.html) (December 14, 2008), selected by Clay Shirky for publication.
+- "A Technical Primer to Web-Surfing for Privacy Wonks" (2011).
+- [Brief of Amici Curiae Entertainment Consumers Association et al.](https://web.archive.org/web/20120930131028/http://www.americanbar.org/content/dam/aba/publishing/preview/publiced_preview_briefs_pdfs_09_10_08_1448_RespondentAmCu6OrgsforConsumersRights.authcheckdam.pdf), [*Brown v. Entertainment Merchants Association*](https://www.supremecourt.gov/docketfiles/08-1448.htm) (filed as *Schwarzenegger v. EMA*), 564 U.S. 786 (2011), Supreme Court of the United States (co-drafted, BLIP clinic with Hughes Hubbard & Reed, 2010).
+- Supporting research and editing for Susan Crawford (*Federal Communications Law Journal*; [*Bringing Municipal High-Speed Internet Access to Leverett, Massachusetts*](https://cyber.harvard.edu/publications/2013/internet_to_leverett), with Robyn Mohr), Jane Yakowitz ([*Notre Dame Law Review*](https://scholarship.law.nd.edu/ndlr/vol88/iss1/5/)), Gabriella Coleman (*Coding Freedom*, [Princeton University Press](https://press.princeton.edu/books/paperback/9780691144610/coding-freedom)), and Palfrey, Gasser, Simun & Barnes ([*International Journal of Learning and Media*](https://dash.harvard.edu/handle/1/3128762)).
+
+## Lectures, talks, and events
+
+- Guest lectures, Issues in Telecommunications Law (Tom Agoston), New York University: "What Digital Media Students Need to Know About Copyright Law and the CopyLeft Movement" (February 16, 2012) and "DRM and Copyright: The Erosion of Creative Rights" (December 13, 2007).
+- "Is SOPA Constitutional?", panelist and debater, Brooklyn Law School (April 10, 2012).
+
+## Conferences and events organized
+
+- [NYC Legal Hack-A-Thon](https://legalhackers.org/our-story/), Brooklyn Law School (April 15, 2012): primary organizer, technical director, and moderator; presented CREATE (copyright education), the PriView Project, and LegalMobNYC (crowdsourcing legal resources for nonprofits).
+- [Open Video Conference](https://cyber.harvard.edu/events/2009/06/openvideo) (inaugural), Open Video Alliance, NYU School of Law (June 19 – 20, 2009): technical stage director, producing the stage program.
+- Organized the *Steal This Film!* screening and discussion with co-director Alan Toner, and co-organized Lawrence Lessig's *Remix* talk (Computers & Society speaker series), New York University (2008).
+
+---
+
+## Community and nonprofit work
+
+- **Montclair Ultimate Frisbee** (501(c)(3) youth sports organization), technical advisor (volunteer), Aug 2023 – Present: brought the club onto Google Workspace free of charge through Google for Nonprofits, and built agent-run Workspace administration (accounts, groups, mail routing, a scheduled membership audit, inbox triage onto a task board), with a human operator approving.
+- **Montclair Community Pre-K**, vice chair, Technology Committee (volunteer), 2014 – 2017: rolled out Google Apps for Education and migrated the school's file server to Google Drive; advised on the network overhaul and on classroom and administrative technology; helped select a student information system.
