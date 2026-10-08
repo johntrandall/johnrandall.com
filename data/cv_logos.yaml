@@ -14,6 +14,10 @@
 - { prefix: "New York University", file: nyu.png }
 - { prefix: "General Assembly", file: general-assembly.png }
 - { prefix: "Roosevelt Institute", file: roosevelt.png }
+- { prefix: "Brooklyn Law Incubator", file: blip-clinic.png }
+- { prefix: "Legal Hackers", file: legal-hackers.png }
+- { prefix: "Montclair Ultimate Frisbee", file: montclair-ultimate-frisbee.png }
+- { prefix: "Montclair Community Pre-K", file: montclair-community-prek.png }
 - { prefix: "American Civil Liberties Union", file: aclu.png }
 - { prefix: "Harvard University", file: harvard.png }
 - { prefix: "BrainPOP", file: brainpop.png }
@@ -24,4 +28,4 @@
 - { prefix: "Freelance", file: freelance.png }
 - { prefix: "RedRover", file: redrover.svg }
 - { prefix: "Wayne Board of Education", file: wayne-boe.svg }
-- { prefix: "Jetsonz Music", file: jetsonz.svg }
+- { prefix: "The Jettsonz", file: jetsonz.svg }

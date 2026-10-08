@@ -55,7 +55,7 @@ The same marks as the PDF CV. PNGs are downscaled to 96 px.
 
 | File | Source | Licence |
 |---|---|---|
-| `backerkit.png`, `opslevel.png`, `relpro.png`, `brooklyn-law.png`, `nyu.png`, `general-assembly.png`, `roosevelt.png`, `aclu.png`, `harvard.png`, `brainpop.png`, `grey.png`, `masurlaw.png` | The organisations' own logos | Trademarks of their owners, used only to identify John's employers and schools |
+| `backerkit.png`, `opslevel.png`, `relpro.png`, `brooklyn-law.png`, `nyu.png`, `general-assembly.png`, `roosevelt.png`, `aclu.png`, `harvard.png`, `brainpop.png`, `grey.png`, `masurlaw.png`, `blip-clinic.png`, `legal-hackers.png`, `montclair-ultimate-frisbee.png`, `montclair-community-prek.png` | The organisations' own logos (Legal Hackers: the "LH" diamond from its logo; Montclair Community Pre-K: its logo without the subtitle line) | Trademarks of their owners, used only to identify John's employers and schools |
 | `jkre.png`, `warpwhistle.png`, `freelance.png`, `redrover.svg` | John's own businesses and band | John Randall's own marks |
 | `terminal.svg` | Lucide `terminal` | ISC |
 | `wayne-boe.svg` | Lucide `school` | ISC |
