@@ -5,7 +5,7 @@ description: "Curriculum vitae of John Randall."
 url: "/cv/"
 pdf: "/cv/john-randall-cv.pdf"
 pdf_pages: 5
-words: 3222
+words: 3227
 json: "/cv/john-randall-cv.json"
 lastmod: "2026-10-08"
 draft: false
@@ -119,7 +119,7 @@ Brought agile and version-control practices to the team and backfilled its unit 
 - Managed a policy agenda on network neutrality and equal access to high-speed internet infrastructure.
 - United loose coalitions of advocacy groups against state telecommunications deregulation and anti-municipal-network bills driven by the American Legislative Exchange Council (ALEC).
 - Coordinated a distributed team of telecommunications industry analysts, legal researchers, and advocates in public messaging and appeals to NY and NJ state utility commissions, resulting in the investigations sought into Verizon NY's illegal cross-subsidizations.
-- As trusted deputy to Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy), delivered same-day research memos for television, radio, and podcast appearances; major conference keynotes; law review articles; and bi-weekly columns for Wired, Bloomberg View, and the New York Times.
+- As trusted deputy to Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy), prepared her for television, radio, and podcast appearances with same-day research memos, and researched her major conference keynotes, law review articles, and bi-weekly columns for Wired, Bloomberg View, and the New York Times.
 - Fielded press requests for political comment and technical consultation. Ghostwrote articles and opinion columns for major national publications.
 - Wrote an opinion column that pressured Comcast to double internet access speeds for low-income families.
 ### Brooklyn Law Incubator and Policy (BLIP) Clinic · Senior Clinician and Post-Graduate Fellow · 2010 – 2013

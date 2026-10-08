@@ -5,7 +5,7 @@ description: "Curriculum vitae of John Randall."
 url: "/cv/full/"
 pdf: "/cv/john-randall-cv-full.pdf"
 pdf_pages: 7
-words: 4321
+words: 4327
 json: "/cv/john-randall-cv-full.json"
 lastmod: "2026-10-08"
 draft: false
@@ -135,7 +135,8 @@ Developed methods for using early voice-recognition software to help special-edu
 - Managed a policy agenda on network neutrality and equal access to high-speed internet infrastructure.
 - United loose coalitions of advocacy groups against state telecommunications deregulation and anti-municipal-network bills driven by the American Legislative Exchange Council (ALEC).
 - Coordinated a distributed team of telecommunications industry analysts, legal researchers, and advocates in public messaging and appeals to NY and NJ state utility commissions, resulting in the investigations sought into Verizon NY's illegal cross-subsidizations.
-- As trusted deputy to Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy), delivered same-day research memos for television, radio, and podcast appearances; major conference keynotes; law review articles; and bi-weekly columns for Wired, Bloomberg View, and the New York Times.
+- Prepared Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy) for television, radio, and podcast appearances with same-day research memos, as her trusted deputy.
+- Delivered same-day research for her major conference keynotes, law review articles, and bi-weekly columns for Wired, Bloomberg View, and the New York Times.
 - Fielded press requests for political comment and technical consultation. Ghostwrote articles and opinion columns for major national publications.
 - Wrote an opinion column that pressured Comcast to double internet access speeds for low-income families.
 
