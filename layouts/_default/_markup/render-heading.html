@@ -1,0 +1,22 @@
+{{- /* On document pages, an entry heading "Org · Role · Dates" becomes the PDF's entry row:
+     logo (data/cv_logos.yaml), bold organisation, italic role, dates on the right. */ -}}
+{{- if and (eq .Level 3) (eq .Page.Layout "cv") -}}
+  {{- $parts := split .Text " · " -}}
+  {{- $n := len $parts -}}
+  {{- $dates := "" -}}
+  {{- if and (gt $n 1) (findRE `\d{4}|Present` (index $parts (sub $n 1))) -}}
+    {{- $dates = index $parts (sub $n 1) -}}
+    {{- $parts = first (sub $n 1) $parts -}}
+  {{- end -}}
+  {{- $org := index $parts 0 -}}
+  {{- $role := delimit (after 1 $parts) " · " -}}
+  {{- $logo := "" -}}
+  {{- range site.Data.cv_logos }}{{ if and (not $logo) (hasPrefix $org .prefix) }}{{ $logo = .file }}{{ end }}{{ end -}}
+<h3 class="entry-head" id="{{ .Anchor }}">
+  {{- with $logo }}<img class="logo" src="{{ printf "logos/%s" . | relURL }}" alt="" width="34" height="34">{{ end -}}
+  <span class="entry-name"><span class="org">{{ $org | safeHTML }}</span>{{ with $role }} · <span class="role">{{ . | safeHTML }}</span>{{ end }}</span>
+  {{- with $dates }}<span class="dates">{{ . | safeHTML }}</span>{{ end -}}
+</h3>
+{{- else -}}
+<h{{ .Level }} id="{{ .Anchor }}">{{ .Text | safeHTML }}</h{{ .Level }}>
+{{- end -}}

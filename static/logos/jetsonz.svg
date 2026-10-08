@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- Jetsonz Music margin logo: an original retro robot wearing headphones, NOT Rosie
+       (Rosie is Warner Bros./Hanna-Barbera artwork). Head: Material Design Icons
+       "robot-happy" (Apache 2.0); headphones drawn here. Paths only: nothing reaches
+       the PDF text layer. -->
+  <circle cx="12" cy="12" r="12" fill="#4C51BF"/>
+  <g transform="translate(6.6 8.6) scale(0.45)"><path fill="#ffffff" d="M22 14h-1c0-3.87-3.13-7-7-7h-1V5.73A2 2 0 1 0 10 4c0 .74.4 1.39 1 1.73V7h-1c-3.87 0-7 3.13-7 7H2c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1M9.79 16.5C9.4 15.62 8.53 15 7.5 15s-1.9.62-2.29 1.5c-.13-.31-.21-.64-.21-1a2.5 2.5 0 0 1 5 0c0 .36-.08.69-.21 1m9 0c-.39-.88-1.29-1.5-2.29-1.5s-1.9.62-2.29 1.5c-.13-.31-.21-.64-.21-1a2.5 2.5 0 0 1 5 0c0 .36-.08.69-.21 1"/></g>
+  <path d="M5.2 14.2 V12.6 A6.8 6.8 0 0 1 18.8 12.6 V14.2" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round"/>
+  <rect x="3.9" y="12.8" width="2.6" height="5.4" rx="1.1" fill="#ffffff"/>
+  <rect x="17.5" y="12.8" width="2.6" height="5.4" rx="1.1" fill="#ffffff"/>
+</svg>

@@ -1,0 +1,27 @@
+# Employer logos on the CV pages: an entry heading ("### Org · Role · Dates")
+# whose organisation starts with `prefix` gets static/logos/<file>.
+# Mirrors the logo table of the PDF template, so the web page and the PDF
+# show the same marks. When the PDF gains or changes a logo, copy the file
+# into static/logos/ (PNGs downscaled to 96 px) and update this list.
+# Licences: README.md.
+- { prefix: "Independent Software Engineer", file: terminal.svg }
+- { prefix: "Career Break", file: career-break.svg }
+- { prefix: "JKRE", file: jkre.png }
+- { prefix: "OpsLevel", file: opslevel.png }
+- { prefix: "BackerKit", file: backerkit.png }
+- { prefix: "RelPro", file: relpro.png }
+- { prefix: "Brooklyn Law School", file: brooklyn-law.png }
+- { prefix: "New York University", file: nyu.png }
+- { prefix: "General Assembly", file: general-assembly.png }
+- { prefix: "Roosevelt Institute", file: roosevelt.png }
+- { prefix: "American Civil Liberties Union", file: aclu.png }
+- { prefix: "Harvard University", file: harvard.png }
+- { prefix: "BrainPOP", file: brainpop.png }
+- { prefix: "Grey Worldwide", file: grey.png }
+- { prefix: "MasurLaw", file: masurlaw.png }
+- { prefix: "WarpWhistle Music", file: warpwhistle.png }
+- { prefix: "Mad Squirrel Music", file: mad-squirrel.svg }
+- { prefix: "Freelance", file: freelance.png }
+- { prefix: "RedRover", file: redrover.svg }
+- { prefix: "Wayne Board of Education", file: wayne-boe.svg }
+- { prefix: "Jetsonz Music", file: jetsonz.svg }

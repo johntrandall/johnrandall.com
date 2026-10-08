@@ -1,0 +1,137 @@
+/* johnrandall.com: the landing page and the document pages (CV, résumé).
+   Typeset to match the PDF: Carlito (metric-compatible with the PDF's Calibri),
+   small-caps section headings over a rule, bold organisation, italic role, dates
+   on the right, logos hanging in the left margin. Light and dark follow the
+   reader's system setting. */
+
+@font-face { font-family: "Carlito"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/carlito-regular.woff2") format("woff2"); }
+@font-face { font-family: "Carlito"; font-style: italic; font-weight: 400; font-display: swap; src: url("../fonts/carlito-italic.woff2") format("woff2"); }
+@font-face { font-family: "Carlito"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/carlito-bold.woff2") format("woff2"); }
+@font-face { font-family: "Carlito"; font-style: italic; font-weight: 700; font-display: swap; src: url("../fonts/carlito-bolditalic.woff2") format("woff2"); }
+
+:root {
+  --face: "Carlito", "Calibri", "Segoe UI", system-ui, sans-serif;
+  --bg: #fdfdfb;
+  --text: #1b1b1b;
+  --muted: #666660;
+  --rule: #222222;          /* the PDF's rule colour */
+  --hairline: #e3e2dd;
+  --tile-bg: #ffffff;
+  --tile-border: #e3e2dd;
+  --link-underline: #b9b8b2;
+  --measure: 46rem;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141413;
+    --text: #e8e6e1;
+    --muted: #9b9992;
+    --rule: #8a8882;
+    --hairline: #2e2d2b;
+    --tile-bg: #f4f3ef;      /* logos keep a light tile so navy and black marks stay visible */
+    --tile-border: #f4f3ef;
+    --link-underline: #5c5b57;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: var(--face); font-size: 18px; line-height: 1.45;
+  font-variant-ligatures: none;          /* as in the PDF */
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: break-word;
+}
+a { color: inherit; text-decoration: underline; text-decoration-color: var(--link-underline);
+    text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-color: currentColor; }
+.icon { width: 0.95em; height: 0.95em; vertical-align: -0.12em; fill: currentColor; flex: none; }
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 16px; }
+
+/* ---------- landing ---------- */
+.home { padding-top: 18vh; padding-bottom: 12vh; max-width: 36rem; }
+.home h1 { font-size: 2.6rem; line-height: 1.1; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
+.home .tagline { color: var(--muted); margin: 0 0 1.1rem; }
+.profiles { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin: 0 0 3rem; padding: 0; list-style: none; }
+.profiles a { display: inline-flex; align-items: center; gap: 0.4em; text-decoration: none; color: var(--muted); }
+.profiles a:hover { color: var(--text); }
+.docs { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.doc { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 1.5rem; align-items: baseline;
+       padding: 0.85rem 0; border-bottom: 1px solid var(--hairline); }
+.doc-title { font-weight: 700; font-size: 1.15rem; text-decoration: none; }
+.doc-title:hover { text-decoration: underline; }
+.doc-meta { grid-column: 1; color: var(--muted); font-size: 0.85rem; }
+.formats { grid-column: 2; grid-row: 1 / span 2; display: flex; gap: 0.35rem; align-self: center; }
+.fmt { display: inline-flex; align-items: center; gap: 0.35em; padding: 0.3rem 0.65rem; min-height: 2.2rem;
+       border: 1px solid var(--hairline); border-radius: 6px; font-size: 0.9rem; text-decoration: none; white-space: nowrap; }
+.fmt:hover { border-color: var(--text); }
+.fmt small { color: var(--muted); font-size: 0.8rem; }
+
+/* ---------- document pages ---------- */
+.bar { border-bottom: 1px solid var(--hairline); }
+.bar .wrap { display: flex; justify-content: space-between; align-items: center; min-height: 3rem; gap: 1rem; }
+.bar .home-link { font-weight: 700; text-decoration: none; }
+.switch { display: flex; gap: 1.1rem; list-style: none; margin: 0; padding: 0; font-size: 0.95rem; }
+.switch a { text-decoration: none; color: var(--muted); }
+.switch a[aria-current] { color: var(--text); font-weight: 700; box-shadow: inset 0 -2px 0 var(--text); }
+
+.letterhead { text-align: center; padding: 2.4rem 0 0.4rem; }
+.letterhead h1 { font-size: 2.1rem; line-height: 1.1; margin: 0 0 0.35rem; }
+.contact { margin: 0; font-size: 0.95rem; line-height: 1.6; }
+.contact span { white-space: nowrap; }
+.contact .sep { color: var(--muted); margin: 0 0.35em; }
+.doc-formats { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.4rem; margin: 1.1rem 0 0.2rem; }
+.updated { text-align: center; color: var(--muted); font-size: 0.8rem; margin: 0.4rem 0 1.4rem; }
+
+.cv h2 { font-size: 1.25rem; line-height: 1.2; margin: 2.1rem 0 0.7rem; padding-bottom: 0.15rem;
+         border-bottom: 1.5px solid var(--rule); font-variant-caps: all-small-caps; letter-spacing: 0.06em; }
+.cv h4 { font-size: 1rem; margin: 1rem 0 0.2rem; }
+.cv p { margin: 0.45rem 0; }
+.cv ul { margin: 0.35rem 0 0.5rem; padding-left: 1.15rem; }
+.cv li { margin: 0.18rem 0; padding-left: 0.15rem; }
+.cv li::marker { color: var(--muted); }
+.cv ul ul { list-style: "‣  "; }
+.cv hr { display: none; }                 /* the PDF skips Markdown rules too */
+.cv .sub { font-weight: 700; margin: 0.8rem 0 0.2rem; }
+.cv .desc { font-style: italic; color: var(--muted); font-size: 0.95rem; margin: 0.05rem 0 0.25rem; }
+
+.cv h3 { font-size: 1em; line-height: 1.45; margin: 1.3rem 0 0.1rem; font-weight: 400; }
+.entry-head { position: relative; display: flex; align-items: baseline; gap: 0.6rem; }
+.entry-name { flex: 1; }
+.org { font-weight: 700; }
+.role { font-style: italic; }
+.dates { color: var(--muted); white-space: nowrap; font-size: 0.95rem; }
+.logo { position: absolute; left: -3.1rem; top: 0.05rem; width: 2.1rem; height: 2.1rem; border-radius: 6px;
+        background: var(--tile-bg); border: 1px solid var(--tile-border); object-fit: contain; padding: 1px; }
+
+footer { color: var(--muted); font-size: 0.8rem; padding: 3rem 0 2.5rem; }
+
+/* narrower than the column plus its logo margin: logos come in from the margin,
+   dates drop under the name */
+@media (max-width: 52rem) {
+  body { font-size: 17px; }
+  .entry-head { display: grid; grid-template-columns: 1fr; align-items: start; }
+  .entry-head:has(.logo) { grid-template-columns: 1.75rem 1fr; column-gap: 0.6rem; }
+  .logo { position: static; grid-row: span 2; width: 1.75rem; height: 1.75rem; margin-top: 0.15rem; }
+  .dates { font-size: 0.85rem; }
+}
+@media (max-width: 30rem) {
+  .home { padding-top: 10vh; }
+  .home h1 { font-size: 2.2rem; }
+  .doc { grid-template-columns: 1fr; }
+  .formats { grid-column: 1; grid-row: auto; margin-top: 0.5rem; }
+  .fmt { flex: 1; justify-content: center; min-height: 2.75rem; }
+  .doc-formats .fmt { flex: 1 1 30%; }
+  .switch { gap: 0.8rem; font-size: 0.9rem; }
+  .letterhead h1 { font-size: 1.85rem; }
+  .contact .sep { display: none; }
+  .contact span { display: inline-block; margin: 0 0.45em; }
+}
+
+@media print {
+  .bar, .doc-formats, .updated, footer { display: none !important; }
+  body { font-size: 10.5pt; background: #fff; color: #000; }
+  .logo { background: #fff; }
+}

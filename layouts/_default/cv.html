@@ -1,0 +1,48 @@
+{{- $d := partial "doc-data.html" . -}}
+{{- $docs := partial "documents.html" . -}}
+{{- $name := .Title -}}
+{{- range $docs }}{{ if eq .page.RelPermalink $.RelPermalink }}{{ $name = .name }}{{ end }}{{ end -}}
+{{- .Scratch.Set "docName" $name -}}
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode | default "en" }}">
+<head>
+{{ partial "site-head.html" . }}
+</head>
+<body>
+{{ partial "icons.html" . }}
+<nav class="bar">
+  <div class="wrap">
+    <a class="home-link" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+    {{- if gt (len $docs) 1 }}
+    <ul class="switch">
+      {{- range $docs }}
+      <li><a href="{{ .page.RelPermalink }}"{{ if eq .page.RelPermalink $.RelPermalink }} aria-current="page"{{ end }}>{{ .name }}</a></li>
+      {{- end }}
+    </ul>
+    {{- end }}
+  </div>
+</nav>
+
+<main class="wrap cv">
+  <header class="letterhead">
+    <h1>{{ site.Title }}</h1>
+    {{- with $d.contact }}
+    <p class="contact">{{ . | safeHTML }}</p>
+    {{- end }}
+    <div class="doc-formats">
+      {{- with $d.pdf }}
+      <a class="fmt" href="{{ . }}" title="PDF, US Letter"><svg class="icon" aria-hidden="true"><use href="#i-pdf"/></svg>PDF{{ with $d.pages }} <small>{{ . }} pages</small>{{ end }}</a>
+      {{- end }}
+      {{- with $d.json }}
+      <a class="fmt" href="{{ . }}" title="JSON Resume (jsonresume.org)"><svg class="icon" aria-hidden="true"><use href="#i-json"/></svg>JSON Resume</a>
+      {{- end }}
+    </div>
+    <p class="updated">{{ $name }}{{ if not .Lastmod.IsZero }} · updated {{ .Lastmod.Format "January 2, 2006" }}{{ end }}</p>
+  </header>
+
+  {{ $d.body | safeHTML }}
+
+  <footer>© {{ now.Year }} {{ site.Title }}</footer>
+</main>
+</body>
+</html>

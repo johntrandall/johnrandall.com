@@ -1,0 +1,10 @@
+{{- /* The published documents, in site.Params.documents order (shortest first):
+     a list of dicts {name, page}. A document with no page yet is left out. */ -}}
+{{- $out := slice -}}
+{{- range site.Params.documents -}}
+  {{- $name := .name -}}
+  {{- range first 1 (where site.RegularPages "RelPermalink" (.url | relURL)) -}}
+    {{- $out = $out | append (dict "name" $name "page" .) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

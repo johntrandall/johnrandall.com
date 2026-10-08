@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode | default "en" }}">
+<head>
+{{ partial "site-head.html" . }}
+</head>
+<body>
+{{ partial "icons.html" . }}
+<main class="wrap home">
+  <h1>{{ site.Title }}</h1>
+  <p class="tagline">{{ site.Params.tagline }}</p>
+  <ul class="profiles">
+    {{- range site.Params.profiles }}
+    <li><a href="{{ .url }}"><svg class="icon" aria-hidden="true"><use href="#i-{{ .icon }}"/></svg>{{ .name }}</a></li>
+    {{- end }}
+  </ul>
+
+  {{- with partial "documents.html" . }}
+  <ul class="docs">
+    {{- range . }}
+    {{- $d := partial "doc-data.html" .page }}
+    <li class="doc">
+      <a class="doc-title" href="{{ .page.RelPermalink }}">{{ .name }}</a>
+      <span class="doc-meta">{{ with $d.pages }}{{ . }} pages{{ end }}{{ if not .page.Lastmod.IsZero }}{{ if $d.pages }} · {{ end }}updated {{ .page.Lastmod.Format "Jan 2, 2006" }}{{ end }}</span>
+      <span class="formats">
+        <a class="fmt" href="{{ .page.RelPermalink }}"><svg class="icon" aria-hidden="true"><use href="#i-page"/></svg>Read</a>
+        {{- with $d.pdf }}
+        <a class="fmt" href="{{ . }}" title="PDF{{ with $d.pages }}, {{ . }} pages{{ end }}"><svg class="icon" aria-hidden="true"><use href="#i-pdf"/></svg>PDF</a>
+        {{- end }}
+        {{- with $d.json }}
+        <a class="fmt" href="{{ . }}" title="JSON Resume (jsonresume.org)"><svg class="icon" aria-hidden="true"><use href="#i-json"/></svg>JSON</a>
+        {{- end }}
+      </span>
+    </li>
+    {{- end }}
+  </ul>
+  {{- end }}
+</main>
+</body>
+</html>

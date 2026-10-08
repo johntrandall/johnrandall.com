@@ -1,44 +1,49 @@
 baseURL = 'https://johnrandall.com/'
 languageCode = 'en-us'
 title = 'John Randall'
+# PaperMod stays installed for any future blog, but the landing page and the
+# document pages use this site's own templates (layouts/index.html,
+# layouts/_default/cv.html) and stylesheet (assets/css/site.css).
 theme = 'PaperMod'
 
 [params]
-  defaultTheme = "auto"
-  disableSpecial1stPost = true
+  tagline = "Software engineer in Montclair, NJ."
+  description = "John Randall, software engineer in Montclair, NJ."
 
-  [params.profileMode]
-    enabled = true
-    title = "John Randall"
-    subtitle = "Software engineer in Montclair, NJ."
-
-    [[params.profileMode.buttons]]
-      name = "CV"
-      url = "/cv/full/"
-    [[params.profileMode.buttons]]
-      name = "CV as PDF"
-      url = "/cv/john-randall-cv-full.pdf"
-    [[params.profileMode.buttons]]
-      name = "CV as JSON Resume"
-      url = "/cv/john-randall-cv-full.json"
-
-  [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/johntrandall"
-
-  [[params.socialIcons]]
-    name = "linkedin"
+  [[params.profiles]]
+    name = "LinkedIn"
     url = "https://www.linkedin.com/in/johntrandall/"
-
-  [[params.socialIcons]]
-    name = "email"
+    icon = "linkedin"
+  [[params.profiles]]
+    name = "GitHub"
+    url = "https://github.com/johntrandall"
+    icon = "github"
+  [[params.profiles]]
+    name = "john@johnrandall.com"
     url = "mailto:john@johnrandall.com"
+    icon = "mail"
 
-  [[params.socialIcons]]
-    name = "cv"
+  # The documents, shortest first. Each appears on the landing page and in the
+  # document switcher only once a page exists at its URL. Every document has
+  # three formats: the page itself, its PDF and its JSON Resume.
+  [[params.documents]]
+    url = "/resume/"
+    name = "Résumé"
+  [[params.documents]]
+    url = "/cv/"
+    name = "CV"
+  [[params.documents]]
     url = "/cv/full/"
+    name = "Full CV"
+
+# Every document page uses layouts/_default/cv.html. These are content paths
+# (content/cv-full/index.md is /cv-full), not URLs.
+[[cascade]]
+  layout = "cv"
+  [cascade.target]
+    path = "{/cv,/cv/**,/cv-full,/cv-full/**,/resume,/resume/**}"
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true   # the CV page's icon download links are inline HTML (tools/publish-cv)
+      unsafe = true   # the CV page's download paragraph is inline HTML (generated)

@@ -1,0 +1,47 @@
+{{- /* What a document page's template needs, from the page that tools/publish-cv generates:
+     pdf, pages, json, contact (letterhead lines, HTML) and body (the rest of the content, HTML).
+
+     Front-matter fields win when present (pdf, pdf_pages, json). Until the generator writes
+     them, they are read from its download paragraph (<p class="cv-downloads">), which is then
+     dropped, because the template draws its own format buttons. The first paragraph after it
+     is the contact block, and moves into the letterhead. */ -}}
+{{- $raw := string .Content -}}
+{{- $dl := "" -}}
+{{- with findRE `(?s)<p class="cv-downloads">.*?</p>` $raw 1 }}{{ $dl = index . 0 }}{{ end -}}
+{{- $body := replaceRE `(?s)<p class="cv-downloads">.*?</p>\s*` "" $raw 1 -}}
+
+{{- $pdf := .Params.pdf -}}
+{{- with findRESubmatch `href="([^"]+\.pdf)"` $dl 1 }}{{ $pdf = $pdf | default (index (index . 0) 1) }}{{ end -}}
+{{- $json := .Params.json -}}
+{{- with findRESubmatch `href="([^"]+\.json)"` $dl 1 }}{{ $json = $json | default (index (index . 0) 1) }}{{ end -}}
+{{- $pages := .Params.pdf_pages -}}
+{{- with findRESubmatch `(\d+) pages` $dl 1 }}{{ $pages = $pages | default (index (index . 0) 1) }}{{ end -}}
+
+{{- /* Contact block: the first paragraph, when it carries the email address. */ -}}
+{{- $contact := "" -}}
+{{- with findRESubmatch `(?s)^\s*<p>(.*?)</p>` $body 1 -}}
+  {{- $p := index (index . 0) 1 -}}
+  {{- if in $p "@" -}}
+    {{- $lines := slice -}}
+    {{- range split (replaceRE `<br\s*/?>` "\n" $p) "\n" -}}
+      {{- $items := slice -}}
+      {{- range split (trim . " ") " · " -}}
+        {{- $item := trim . " " -}}
+        {{- if eq $item "johnrandall.com" }}{{ $item = printf `<a href="%s">johnrandall.com</a>` ("/" | relURL) }}{{ end -}}
+        {{- if in $item "linkedin.com" }}{{ $item = printf `<svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> %s` $item }}{{ end -}}
+        {{- if in $item "github.com" }}{{ $item = printf `<svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> %s` $item }}{{ end -}}
+        {{- with $item }}{{ $items = $items | append (printf "<span>%s</span>" .) }}{{ end -}}
+      {{- end -}}
+      {{- with $items }}{{ $lines = $lines | append (delimit . `<span class="sep">·</span>`) }}{{ end -}}
+    {{- end -}}
+    {{- $contact = delimit $lines "<br>" -}}
+    {{- $body = replaceRE `(?s)^\s*<p>.*?</p>\s*` "" $body 1 -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* The PDF's paragraph styles: an italic line straight after an entry heading is the
+     entry's description; a paragraph that is wholly bold is a sub-heading. */ -}}
+{{- $body = replaceRE `(</h3>\s*)<p><em>([^<]*)</em></p>` `$1<p class="desc">$2</p>` $body -}}
+{{- $body = replaceRE `<p><strong>([^<]*)</strong></p>` `<p class="sub">$1</p>` $body -}}
+
+{{- return dict "pdf" $pdf "json" $json "pages" $pages "contact" $contact "body" $body -}}

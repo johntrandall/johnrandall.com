@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- RedRover margin logo: two capital R's back to back inside a circle, with a crosshair, simplified from the band's crosshair mark (RedRover-crosshair-logo-whi.gif). Red #C40E2B from the REDROVER wordmark. Paths and shapes only, no text, so nothing reaches the PDF text layer. The black vertical crosshair line runs between the two R stems. Generated 2026-10-07. -->
+  <rect x="0" y="48" width="100" height="4" fill="#000000"/>
+  <g transform="translate(50 50) scale(0.93) translate(-50 -50)">
+  <!-- right R: stem, bowl, leg -->
+  <g fill="#C40E2B">
+    <rect x="52" y="19" width="7.5" height="62"/>
+    <path d="M52 23H62A13.5 13.5 0 0 1 62 50H52" fill="none" stroke="#C40E2B" stroke-width="8"/>
+    <path d="M61 50L79.58 79.73" stroke="#C40E2B" stroke-width="9"/>
+  </g>
+  <!-- left R: the same shapes mirrored about x=50, back to back -->
+  <g fill="#C40E2B" transform="translate(100 0) scale(-1 1)">
+    <rect x="52" y="19" width="7.5" height="62"/>
+    <path d="M52 23H62A13.5 13.5 0 0 1 62 50H52" fill="none" stroke="#C40E2B" stroke-width="8"/>
+    <path d="M61 50L79.58 79.73" stroke="#C40E2B" stroke-width="9"/>
+  </g>
+  </g>
+  <rect x="48" y="0" width="4" height="100" fill="#000000"/>
+  <circle cx="50" cy="50" r="39" fill="none" stroke="#000000" stroke-width="6"/>
+</svg>
