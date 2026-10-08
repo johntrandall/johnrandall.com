@@ -1,5 +1,5 @@
 {{- /* What a document page's template needs, from the page that tools/publish-cv generates:
-     pdf, pages, json, contact (letterhead lines, HTML) and body (the rest of the content, HTML).
+     pdf, pages, json, revised (a time, or empty), contact (letterhead lines, HTML) and body (the rest of the content, HTML).
 
      Front-matter fields win when present (pdf, pdf_pages, json). Until the generator writes
      them, they are read from its download paragraph (<p class="cv-downloads">), which is then
@@ -16,6 +16,11 @@
 {{- with findRESubmatch `href="([^"]+\.json)"` $dl 1 }}{{ $json = $json | default (index (index . 0) 1) }}{{ end -}}
 {{- $pages := .Params.pdf_pages -}}
 {{- with findRESubmatch `(\d+) pages` $dl 1 }}{{ $pages = $pages | default (index (index . 0) 1) }}{{ end -}}
+
+{{- /* Revision date: front-matter lastmod, else the generator's "Revised YYYY-MM-DD". */ -}}
+{{- $revised := "" -}}
+{{- if not .Lastmod.IsZero }}{{ $revised = .Lastmod }}{{ end -}}
+{{- if not $revised }}{{ with findRESubmatch `Revised (\d{4}-\d{2}-\d{2})` $dl 1 }}{{ $revised = time.AsTime (index (index . 0) 1) }}{{ end }}{{ end -}}
 
 {{- /* Contact block: the first paragraph, when it carries the email address. */ -}}
 {{- $contact := "" -}}
@@ -44,4 +49,4 @@
 {{- $body = replaceRE `(</h3>\s*)<p><em>([^<]*)</em></p>` `$1<p class="desc">$2</p>` $body -}}
 {{- $body = replaceRE `<p><strong>([^<]*)</strong></p>` `<p class="sub">$1</p>` $body -}}
 
-{{- return dict "pdf" $pdf "json" $json "pages" $pages "contact" $contact "body" $body -}}
+{{- return dict "revised" $revised "pdf" $pdf "json" $json "pages" $pages "contact" $contact "body" $body -}}

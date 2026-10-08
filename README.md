@@ -21,9 +21,10 @@ records the licence of every font, icon and logo it serves.
   CV `/cv/`, Full CV `/cv/full/`, shortest first). A document appears on the
   landing page, and in the switcher at the top of each document page, only once a
   page exists at its URL. The switcher stays hidden while there is only one.
-- **"Updated" dates** come from each page's `lastmod` front matter, set by the
-  publishing script; with none, no date is shown. (Git dates are deliberately not
-  used: the publishing script's safety check builds a copy of the site without `.git`.)
+- **"Revised" dates** come from each page's `lastmod` front matter, or else from
+  the "Revised YYYY-MM-DD" line the publishing script writes; with neither, no date
+  is shown. (Git dates are deliberately not used: the publishing script's safety
+  check builds a copy of the site without `.git`.)
 - **Generated, not hand-edited:** `content/cv*/index.md` and `static/cv/*` are
   written by the CV publishing script. Change the templates, not those files.
 - **Style:** `assets/css/site.css`, a single stylesheet. Light and dark follow

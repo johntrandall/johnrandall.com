@@ -37,7 +37,7 @@
       <a class="fmt" href="{{ . }}" title="JSON Resume (jsonresume.org)"><svg class="icon" aria-hidden="true"><use href="#i-json"/></svg>JSON Resume</a>
       {{- end }}
     </div>
-    <p class="updated">{{ $name }}{{ if not .Lastmod.IsZero }} · updated {{ .Lastmod.Format "January 2, 2006" }}{{ end }}</p>
+    <p class="updated">{{ $name }}{{ with $d.revised }} · revised {{ .Format "January 2, 2006" }}{{ end }}</p>
   </header>
 
   {{ $d.body | safeHTML }}
