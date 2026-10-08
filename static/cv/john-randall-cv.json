@@ -41,7 +41,7 @@
         "Infrastructure as code: 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer over a Tailscale network, serving 69 MCP servers to the agents; governed by 137 architecture decision records.",
         "macOS VM test lab: ephemeral macOS virtual machines (Tart) for testing Mac software and agents, with a wrapper that lets agents clone, boot, test, and tear down VMs safely.",
         "Reverse engineering and agent tools",
-        "OmniPlan and OmniGraffle file formats: reverse-engineered commercial Mac apps' undocumented file formats, so agents can generate and edit files; published the OmniPlan format spec, Python tooling, and MCP server.",
+        "OmniPlan and OmniGraffle file formats: enabled agents to work with GUI applications by reverse-engineering closed-source application file formats; published the OmniPlan format spec, Python tooling, and MCP server.",
         "Visualization and diagrams as code: C4 architecture models in Structurizr DSL (patched fork of the c4hero visual C4 editor, upstream feature PR); Mermaid, D2, PlantUML, and Graphviz rendered to SVG on save; Grafana dashboards over InfluxDB.",
         "Open source",
         "28 merged pull requests into 10 third-party projects, including Intuit's official QuickBooks Online MCP server (four, including schema validation, sub-account creation, and account re-parenting) and a macOS Messages MCP server (eleven, including tested fixes for AppleScript-injection vulnerabilities and race conditions)."
@@ -53,7 +53,7 @@
       "startDate": "2025-02",
       "endDate": "2025-08",
       "x-dates": "Feb – Aug 2025",
-      "summary": "Backpacked nine countries and five continents, multi-day hut-to-hut trekking. Taught three sons programming, math, and science on the road, with history and culture learned on site, from Inca ruins to Rome."
+      "summary": "Backpacked nine countries and five continents, multi-day hut-to-hut trekking. Taught three sons programming, math, and science on the road and on the trail, with history and culture learned on site, from Inca ruins to Rome."
     },
     {
       "name": "JKRE",
@@ -63,7 +63,7 @@
       "startDate": "2016",
       "x-dates": "2016 – Present",
       "highlights": [
-        "Acquired four properties and built a rental business: long-term residences and a short-term vacation rental.",
+        "Acquired four properties and built a rental business of long-term residences and a short-term vacation rental: the first two in 2010 and 2016, then formalized and expanded the business from 2023 to 2025, forming its LLCs and acquiring two more, including the short-term vacation rental.",
         "Self-managed general contractor on renovations: hired and coordinated trades, and self-performed much of the work: roofs, kitchens, bathrooms, basements, electrical, smart-home installations, drainage, and flood remediation.",
         "From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows, working from the business's playbook, procedures, and property and vendor knowledge, that route issues to the on-call property manager and vendors through agent-drafted, owner-approved emails, with automated tenant updates as issues resolve. Hands-off ownership on a monthly playbook: two hours a week."
       ]

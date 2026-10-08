@@ -5,7 +5,7 @@ description: "Curriculum vitae of John Randall."
 url: "/cv/full/"
 pdf: "/cv/john-randall-cv-full.pdf"
 pdf_pages: 7
-words: 4327
+words: 4360
 json: "/cv/john-randall-cv-full.json"
 lastmod: "2026-10-08"
 draft: false
@@ -63,7 +63,7 @@ Senior full-stack, product-focused software engineer with proven experience prov
 - **macOS VM test lab:** ephemeral macOS virtual machines (Tart) for testing Mac software and agents, with a five-layer image architecture on a Mac host and a wrapper that lets agents clone, boot, test, and tear down VMs safely (per-clone macOS identities, destroy-protected VMs, lineage tracking for every clone). Hosted the OmniPlan and OmniGraffle reverse-engineering round-trips.
 
 **Reverse engineering and agent tools**
-- **OmniPlan and OmniGraffle file formats:** reverse-engineered commercial Mac apps' undocumented file formats, enabling agents to generate and edit files; published the OmniPlan format spec, Python tooling, and MCP server.
+- **OmniPlan and OmniGraffle file formats:** enabled agents to work with GUI applications by reverse-engineering closed-source application file formats; published the OmniPlan format spec, Python tooling, and MCP server.
 - **Visualization and diagrams as code:** C4 architecture models in Structurizr DSL, edited in c4hero, a visual C4 model editor (patched fork, upstream feature PR); Mermaid, D2, PlantUML, and Graphviz rendered to SVG on save; diagram-advisor agent with 29 diagram and visual-design skills and tools; Grafana dashboards over InfluxDB telemetry.
 
 **Open source**
@@ -77,12 +77,12 @@ Senior full-stack, product-focused software engineer with proven experience prov
 - Printer-fleet monitoring that notifies agent sessions, and agent-safe label printing.
 
 ### Career Break · Family gap year · Feb – Aug 2025
-Backpacked nine countries and five continents, trekking New Zealand's Tongariro Alpine Crossing, Abel Tasman Coast Track, and Kepler Track; Cradle Mountain in Tasmania; the Torres del Paine W trek in Patagonia; the Salkantay trek to Machu Picchu; Menorca's Camí de Cavalls; hut to hut through the Italian Dolomites; and Scotland's West Highland Way, Skye, and Cairngorms. Taught three sons programming, math, and science on the road, with history and culture learned on site, from Inca ruins to Rome.
+Backpacked nine countries and five continents, trekking New Zealand's Tongariro Alpine Crossing, Abel Tasman Coast Track, and Kepler Track; Cradle Mountain in Tasmania; the Torres del Paine W trek in Patagonia; the Salkantay trek to Machu Picchu; Menorca's Camí de Cavalls; hut to hut through the Italian Dolomites; and Scotland's West Highland Way, Skye, and Cairngorms. Taught three sons programming, math, and science on the road and on the trail, with history and culture learned on site, from Inca ruins to Rome.
 
 ### JKRE · Co-Owner & Operator · 2016 – Present
 *Real estate rental business · Montclair, NJ*
 
-- Acquired four properties and built them into a rental business: long-term residences and a short-term vacation rental.
+- Acquired four properties and built them into a rental business of long-term residences and a short-term vacation rental: the first two in 2010 and 2016, then formalized and expanded the business from 2023 to 2025, forming its LLCs and acquiring two more, including the short-term vacation rental.
 - Self-managed general contractor on renovations: hired and coordinated trades, and self-performed much of the work. Projects included roof replacements; kitchens, bathrooms, and basements; rewiring and electrical; smart-home installations; and landscaping, drainage, and flood remediation.
 - From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (see Independent Software Engineer, above) for bills and bookkeeping, plus agent workflows, working from the business's playbook, procedures, and property and vendor knowledge, that route issues to the on-call property manager and vendors through agent-drafted, owner-approved emails and task assignments, with automated tenant updates as issues resolve. Hands-off ownership on a monthly playbook: two hours a week.
 
