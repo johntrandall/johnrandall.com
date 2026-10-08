@@ -5,6 +5,7 @@ description: "Curriculum vitae of John Randall."
 url: "/cv/"
 pdf: "/cv/john-randall-cv.pdf"
 pdf_pages: 5
+words: 3222
 json: "/cv/john-randall-cv.json"
 lastmod: "2026-10-08"
 draft: false
@@ -52,29 +53,29 @@ Senior full-stack, product-focused software engineer with proven experience prov
   - **Knowledge base and memory:** a personal knowledge-management system the agents read before they act: PARA-organized storage, a DEVONthink document store, and Obsidian vaults; a layered knowledge model (research → decisions → procedures → agents) of 137 architecture decision records, 78 procedures, and 30 inventories; 324 reusable agent skills; and a self-hosted memory server read at the start of every session.
 
 **Business automation products**
-- **Portal Gopher** signs into 19 vendors' websites and email accounts to collect bills and statements, drawing credentials from programmatically provisioned password-manager environments and handling password and SMS two-factor logins.
+- **Portal Gopher** signs into 19 vendors' secure websites and email accounts to collect bills and statements, drawing credentials from programmatically provisioned password-manager environments and handling password and SMS two-factor logins.
 - **Cratchit** does the bookkeeping: extracts data with LLMs under cost-control and routing rules, proposes QuickBooks entries for a human operator to approve, reconciles automatically, and escalates the rest to the human operator.
 
 **Self-hosted infrastructure**
-- **Infrastructure as code:** 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer over a Tailscale network, serving 69 MCP servers to the agents; 137 architecture decision records.
+- **Infrastructure as code:** 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer over a Tailscale network, serving 69 MCP servers to the agents; governed by 137 architecture decision records.
 - **macOS VM test lab:** ephemeral macOS virtual machines (Tart) for testing Mac software and agents, with a wrapper that lets agents clone, boot, test, and tear down VMs safely.
 
 **Reverse engineering and agent tools**
 - **OmniPlan and OmniGraffle file formats:** reverse-engineered commercial Mac apps' undocumented file formats, so agents can generate and edit files; published the OmniPlan format spec, Python tooling, and MCP server.
-- **Visualization and diagrams as code:** C4 architecture models in Structurizr DSL (patched c4hero fork, upstream feature PR); Mermaid, D2, PlantUML, and Graphviz rendered to SVG on save; Grafana dashboards over InfluxDB.
+- **Visualization and diagrams as code:** C4 architecture models in Structurizr DSL (patched fork of the c4hero visual C4 editor, upstream feature PR); Mermaid, D2, PlantUML, and Graphviz rendered to SVG on save; Grafana dashboards over InfluxDB.
 
 **Open source**
 - 28 merged pull requests into 10 third-party projects, including Intuit's official QuickBooks Online MCP server (four, including schema validation, sub-account creation, and account re-parenting) and a macOS Messages MCP server (eleven, including tested fixes for AppleScript-injection vulnerabilities and race conditions).
 
 ### Career Break · Family gap year · Feb – Aug 2025
-Backpacked nine countries and five continents. Taught three sons programming, math, and science on the road, with history and culture learned on site, from Inca ruins to Rome.
+Backpacked nine countries and five continents, multi-day hut-to-hut trekking. Taught three sons programming, math, and science on the road, with history and culture learned on site, from Inca ruins to Rome.
 
 ### JKRE · Co-Owner & Operator · 2016 – Present
 *Real estate rental business · Montclair, NJ*
 
 - Acquired four properties and built a rental business: long-term residences and a short-term vacation rental.
 - Self-managed general contractor on renovations: hired and coordinated trades, and self-performed much of the work: roofs, kitchens, bathrooms, basements, electrical, smart-home installations, drainage, and flood remediation.
-- From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows, working from the business's playbook, procedures, and property and vendor knowledge, that route issues to the on-call property manager and vendors through owner-approved emails, with automated tenant updates as issues resolve. Hands-off ownership on a monthly playbook: two hours a week.
+- From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows, working from the business's playbook, procedures, and property and vendor knowledge, that route issues to the on-call property manager and vendors through agent-drafted, owner-approved emails, with automated tenant updates as issues resolve. Hands-off ownership on a monthly playbook: two hours a week.
 
 ### OpsLevel · Senior Software Developer · Jun 2022 – Sep 2023
 *Internal developer portal / service catalog · Series A startup · Rails, MySQL, Redis, Elasticsearch · Toronto (remote)*
@@ -124,7 +125,7 @@ Brought agile and version-control practices to the team and backfilled its unit 
 ### Brooklyn Law Incubator and Policy (BLIP) Clinic · Senior Clinician and Post-Graduate Fellow · 2010 – 2013
 *Brooklyn, NY*
 - Lead organizer and technical director of the inaugural NYC Legal Hack-A-Thon, bringing lawyers and developers together on legal and policy problems.
-- Co-drafted amicus brief to the U.S. Supreme Court (*Schwarzenegger v. EMA*, a First Amendment challenge to video game regulation).
+- Co-wrote a Supreme Court amicus brief (*Schwarzenegger v. EMA*, First Amendment challenge to a video-game law).
 - Enlisted the United Nations media department as a client and led a team advising it on the risks and benefits of releasing its media archive under Creative Commons licenses.
 - Drafted early Terms of Service, End User License Agreement, and Privacy Policy for Diaspora, a federated social networking service, and the same documents, plus trademark applications and trademark and domain-name conflict demand letters, for startups and crowdfunding projects.
 - Founded the PriView Project, a scalable, crowd-sourced architecture for rating website privacy policies to lower the cost of understanding them. Founded and led CREATE (Creative Rights Empowerment Achieved Through Education), an interactive copyright curriculum for arts-focused high schools; won grant funding.
@@ -136,18 +137,18 @@ Monthly meetup of lawyers and technologists focused on technology-enabled, crowd
 *New York, NY*
 
 - Contributed to amicus briefs to the U.S. Supreme Court (*United States v. Alvarez*, challenging the Stolen Valor Act on First Amendment grounds) and the Fourth Circuit (*In re Application of the United States of America for an Order Pursuant to 18 U.S.C. § 2703(d)*, on unsealing court orders for Twitter records of WikiLeaks-linked accounts).
-- Identified and analyzed First and Fourth Amendment challenges to internet IP enforcement bills (SOPA, PIPA) for the national agenda.
+- Analyzed First and Fourth Amendment challenges to the SOPA and PIPA internet IP enforcement bills for the national agenda.
 - Wrote a memorandum on legal challenges to federal-employee speech pre-clearance requirements.
 
 ### Brooklyn Law School · Research Assistant, Teaching Assistant · Summer 2011 – Spring 2012
 *Brooklyn, NY*
 
-- Research assistant to Professors Jane Yakowitz (privacy; wrote "A Technical Primer to Web-Surfing for Privacy Wonks" while researching "The New Intrusion"), Derek Bambauer (Internet Law teaching assistant; updated the curriculum), and Jason Mazzone (copyright enforcement and DMCA notice-and-takedown abuse).
+- Research and teaching assistant to Professors Jane Yakowitz (privacy; wrote "A Technical Primer to Web-Surfing for Privacy Wonks" while researching "The New Intrusion"), Derek Bambauer (Internet Law teaching assistant; updated the curriculum), and Jason Mazzone (copyright enforcement and DMCA notice-and-takedown abuse).
 
 ### MasurLaw · Summer Associate · Jun – Sep 2011
 *New York, NY*
 
-Wrote memoranda on the legal risks of web-scraping business plans and on DMCA anti-circumvention and Computer Fraud and Abuse Act case law; drafted demand letters in a multi-party patent dispute, and licensing contracts.
+Wrote memoranda on the legal risks of web-scraping business plans and on DMCA anti-circumvention and Computer Fraud and Abuse Act case law; drafted demand letters in a multi-party patent dispute, and licensing and sponsorship contracts.
 
 ### Harvard University: Berkman Center for Internet and Society · Project Associate · May – Sep 2008
 *Cambridge, MA*
@@ -167,7 +168,7 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 - Honors: Webby Awards Official Honoree (Education, 2006); Adobe Showcase Site of the Day (2007); Flash Forward Film Festival Winner and Animation Award (2007); Interactive Media Awards Best in Class (2007); Technology & Learning Magazine Award of Excellence (2007).
 
 ### Freelance · Web & New Media Producer, Audio Producer, Music Producer, Sound Designer, Musician · 1995 – 2009
-*Brooklyn, NY*
+*Brooklyn, NY, and Northern New Jersey*
 
 - Directed web development and media, audio, and music production for award-winning web, game, film, television, radio, podcast, and commercial music projects, mostly in education and civil- and human-rights advocacy. Clients included the ACLU, American Friends Service Committee (AFSC), Amnesty International, The Ella Baker Center for Human Rights, Columbia Law School's Human Rights Institute, Witness, and Human Rights Watch. Pro bono projects included TearItDown (Amnesty International), *I Can End Deportation*, and the pro bono films below.
 - Recorded live shows by Freestyle Love Supreme, the improvisational hip-hop troupe co-founded by Lin-Manuel Miranda that later ran on Broadway (2019), and built them into the interactive and linear sound design of its promotional website (2006).
@@ -181,7 +182,7 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 
 - Technical lead and senior audio engineer for the in-house audio department; hired, trained, and supervised interns and junior audio engineers. The department's revenue grew 350% over three years.
 - Directed audio post-production for thousands of national TV and radio spots, including Panasonic "Life is: Plasma" (Adweek Best Spots of the Month, June 2005) and Pringles "Hearts" (Ad Age Spot of the Week, Feb 12, 2006).
-- Built the department's multi-user FileMaker Pro job-tracking system (19 staff) and advised Grey Global Group's Digital Asset Management committee on a system planned for over 10,000 users.
+- Built the department's multi-user digital job-tracking system (19 staff) and served on Grey Global Group's Digital Asset Management committee (a system planned for over 10,000 users).
 
 ---
 
@@ -211,12 +212,12 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 ## Publications and writing
 
 - ["Comcast Profits from the Poor with Internet Essentials Deal"](https://www.salon.com/2013/07/10/comcasts_new_partner/), Next New Deal blog (Roosevelt Institute), distributed via Salon.com and others; named a Best Weekly Read by The Century Foundation (July 15, 2013).
-- "Strategic Advice for a Presidential Contender Running in 2012: Exploring the Mechanisms and Effects of Social Networking and User-Generated Media on the 2008 Election", [BoingBoing.net](https://boingboing.net/2008/12/14/uncertainties-in-ama.html) (December 14, 2008), selected by Clay Shirky for publication.
+- "Strategic Advice for a Presidential Contender Running in 2012: Exploring the Mechanisms and Effects of Social Networking and User-Generated Media on the 2008 Election", selected by Clay Shirky for publication on [BoingBoing.net](https://boingboing.net/2008/12/14/uncertainties-in-ama.html) (December 14, 2008).
 - "A Technical Primer to Web-Surfing for Privacy Wonks" (2011).
 - [Brief of Amici Curiae Entertainment Consumers Association et al.](https://web.archive.org/web/20120930131028/http://www.americanbar.org/content/dam/aba/publishing/preview/publiced_preview_briefs_pdfs_09_10_08_1448_RespondentAmCu6OrgsforConsumersRights.authcheckdam.pdf), [*Brown v. Entertainment Merchants Association*](https://www.supremecourt.gov/docketfiles/08-1448.htm) (filed as *Schwarzenegger v. EMA*), 564 U.S. 786 (2011), Supreme Court of the United States (co-drafted, BLIP clinic with Hughes Hubbard & Reed, 2010).
 - Supporting research and editing for Susan Crawford (*Federal Communications Law Journal*; [*Bringing Municipal High-Speed Internet Access to Leverett, Massachusetts*](https://cyber.harvard.edu/publications/2013/internet_to_leverett), with Robyn Mohr), Jane Yakowitz ([*Notre Dame Law Review*](https://scholarship.law.nd.edu/ndlr/vol88/iss1/5/)), Gabriella Coleman (*Coding Freedom*, [Princeton University Press](https://press.princeton.edu/books/paperback/9780691144610/coding-freedom)), and Palfrey, Gasser, Simun & Barnes ([*International Journal of Learning and Media*](https://dash.harvard.edu/handle/1/3128762)).
 
-## Lectures, talks, and events
+## Lectures, talks, and panels
 
 - Guest lectures, Issues in Telecommunications Law (Tom Agoston), New York University: "What Digital Media Students Need to Know About Copyright Law and the CopyLeft Movement" (February 16, 2012) and "DRM and Copyright: The Erosion of Creative Rights" (December 13, 2007).
 - "Is SOPA Constitutional?", panelist and debater, Brooklyn Law School (April 10, 2012).

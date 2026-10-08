@@ -35,14 +35,14 @@
         "Agent harness: letting AI agents work safely on real systems",
         "JRVIS, AI-assisted information-flow system running administration across family finance and health, rental bookkeeping and property operations, household logistics, home automation, nonprofit IT, and self-hosted infrastructure. Underneath: a guarded multi-agent harness (324 skills, 35 roles, 47 pre-action policy hooks), with secrets released only through a credential manifest the human operator approves once. Intake and document sorting: captures email, texts, scanned mail, and meeting notes; every item is triaged and filed by domain, scans going through OCR and LLM classification into a reviewed document store (Info Sorter) scored against a labeled corpus; agents do the follow-up, a human operator approving anything consequential. Scheduled agents: 34 run hourly to weekly across infrastructure monitoring and bookkeeping, behind run locks, entry gates, and smoke tests. Knowledge base and memory: a personal knowledge-management system the agents read before they act: PARA-organized storage, a DEVONthink document store, and Obsidian vaults; a layered knowledge model (research → decisions → procedures → agents) of 137 architecture decision records, 78 procedures, and 30 inventories; 324 reusable agent skills; and a self-hosted memory server read at the start of every session.",
         "Business automation products",
-        "Portal Gopher signs into 19 vendors' websites and email accounts to collect bills and statements, drawing credentials from programmatically provisioned password-manager environments and handling password and SMS two-factor logins.",
+        "Portal Gopher signs into 19 vendors' secure websites and email accounts to collect bills and statements, drawing credentials from programmatically provisioned password-manager environments and handling password and SMS two-factor logins.",
         "Cratchit does the bookkeeping: extracts data with LLMs under cost-control and routing rules, proposes QuickBooks entries for a human operator to approve, reconciles automatically, and escalates the rest to the human operator.",
         "Self-hosted infrastructure",
-        "Infrastructure as code: 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer over a Tailscale network, serving 69 MCP servers to the agents; 137 architecture decision records.",
+        "Infrastructure as code: 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer over a Tailscale network, serving 69 MCP servers to the agents; governed by 137 architecture decision records.",
         "macOS VM test lab: ephemeral macOS virtual machines (Tart) for testing Mac software and agents, with a wrapper that lets agents clone, boot, test, and tear down VMs safely.",
         "Reverse engineering and agent tools",
         "OmniPlan and OmniGraffle file formats: reverse-engineered commercial Mac apps' undocumented file formats, so agents can generate and edit files; published the OmniPlan format spec, Python tooling, and MCP server.",
-        "Visualization and diagrams as code: C4 architecture models in Structurizr DSL (patched c4hero fork, upstream feature PR); Mermaid, D2, PlantUML, and Graphviz rendered to SVG on save; Grafana dashboards over InfluxDB.",
+        "Visualization and diagrams as code: C4 architecture models in Structurizr DSL (patched fork of the c4hero visual C4 editor, upstream feature PR); Mermaid, D2, PlantUML, and Graphviz rendered to SVG on save; Grafana dashboards over InfluxDB.",
         "Open source",
         "28 merged pull requests into 10 third-party projects, including Intuit's official QuickBooks Online MCP server (four, including schema validation, sub-account creation, and account re-parenting) and a macOS Messages MCP server (eleven, including tested fixes for AppleScript-injection vulnerabilities and race conditions)."
       ]
@@ -53,7 +53,7 @@
       "startDate": "2025-02",
       "endDate": "2025-08",
       "x-dates": "Feb – Aug 2025",
-      "summary": "Backpacked nine countries and five continents. Taught three sons programming, math, and science on the road, with history and culture learned on site, from Inca ruins to Rome."
+      "summary": "Backpacked nine countries and five continents, multi-day hut-to-hut trekking. Taught three sons programming, math, and science on the road, with history and culture learned on site, from Inca ruins to Rome."
     },
     {
       "name": "JKRE",
@@ -65,7 +65,7 @@
       "highlights": [
         "Acquired four properties and built a rental business: long-term residences and a short-term vacation rental.",
         "Self-managed general contractor on renovations: hired and coordinated trades, and self-performed much of the work: roofs, kitchens, bathrooms, basements, electrical, smart-home installations, drainage, and flood remediation.",
-        "From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows, working from the business's playbook, procedures, and property and vendor knowledge, that route issues to the on-call property manager and vendors through owner-approved emails, with automated tenant updates as issues resolve. Hands-off ownership on a monthly playbook: two hours a week."
+        "From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows, working from the business's playbook, procedures, and property and vendor knowledge, that route issues to the on-call property manager and vendors through agent-drafted, owner-approved emails, with automated tenant updates as issues resolve. Hands-off ownership on a monthly playbook: two hours a week."
       ]
     },
     {
@@ -147,7 +147,7 @@
       "x-dates": "2010 – 2013",
       "highlights": [
         "Lead organizer and technical director of the inaugural NYC Legal Hack-A-Thon, bringing lawyers and developers together on legal and policy problems.",
-        "Co-drafted amicus brief to the U.S. Supreme Court (Schwarzenegger v. EMA, a First Amendment challenge to video game regulation).",
+        "Co-wrote a Supreme Court amicus brief (Schwarzenegger v. EMA, First Amendment challenge to a video-game law).",
         "Enlisted the United Nations media department as a client and led a team advising it on the risks and benefits of releasing its media archive under Creative Commons licenses.",
         "Drafted early Terms of Service, End User License Agreement, and Privacy Policy for Diaspora, a federated social networking service, and the same documents, plus trademark applications and trademark and domain-name conflict demand letters, for startups and crowdfunding projects.",
         "Founded the PriView Project, a scalable, crowd-sourced architecture for rating website privacy policies to lower the cost of understanding them. Founded and led CREATE (Creative Rights Empowerment Achieved Through Education), an interactive copyright curriculum for arts-focused high schools; won grant funding."
@@ -171,7 +171,7 @@
       "x-dates": "Jan – Jun 2012",
       "highlights": [
         "Contributed to amicus briefs to the U.S. Supreme Court (United States v. Alvarez, challenging the Stolen Valor Act on First Amendment grounds) and the Fourth Circuit (In re Application of the United States of America for an Order Pursuant to 18 U.S.C. § 2703(d), on unsealing court orders for Twitter records of WikiLeaks-linked accounts).",
-        "Identified and analyzed First and Fourth Amendment challenges to internet IP enforcement bills (SOPA, PIPA) for the national agenda.",
+        "Analyzed First and Fourth Amendment challenges to the SOPA and PIPA internet IP enforcement bills for the national agenda.",
         "Wrote a memorandum on legal challenges to federal-employee speech pre-clearance requirements."
       ]
     },
@@ -183,7 +183,7 @@
       "endDate": "2012",
       "x-dates": "Summer 2011 – Spring 2012",
       "highlights": [
-        "Research assistant to Professors Jane Yakowitz (privacy; wrote \"A Technical Primer to Web-Surfing for Privacy Wonks\" while researching \"The New Intrusion\"), Derek Bambauer (Internet Law teaching assistant; updated the curriculum), and Jason Mazzone (copyright enforcement and DMCA notice-and-takedown abuse)."
+        "Research and teaching assistant to Professors Jane Yakowitz (privacy; wrote \"A Technical Primer to Web-Surfing for Privacy Wonks\" while researching \"The New Intrusion\"), Derek Bambauer (Internet Law teaching assistant; updated the curriculum), and Jason Mazzone (copyright enforcement and DMCA notice-and-takedown abuse)."
       ]
     },
     {
@@ -193,7 +193,7 @@
       "startDate": "2011-06",
       "endDate": "2011-09",
       "x-dates": "Jun – Sep 2011",
-      "summary": "Wrote memoranda on the legal risks of web-scraping business plans and on DMCA anti-circumvention and Computer Fraud and Abuse Act case law; drafted demand letters in a multi-party patent dispute, and licensing contracts."
+      "summary": "Wrote memoranda on the legal risks of web-scraping business plans and on DMCA anti-circumvention and Computer Fraud and Abuse Act case law; drafted demand letters in a multi-party patent dispute, and licensing and sponsorship contracts."
     },
     {
       "name": "Harvard University: Berkman Center for Internet and Society",
@@ -221,7 +221,7 @@
     {
       "name": "Freelance",
       "position": "Web & New Media Producer, Audio Producer, Music Producer, Sound Designer, Musician",
-      "location": "Brooklyn, NY",
+      "location": "Brooklyn, NY, and Northern New Jersey",
       "startDate": "1995",
       "endDate": "2009",
       "x-dates": "1995 – 2009",
@@ -266,7 +266,7 @@
       "highlights": [
         "Technical lead and senior audio engineer for the in-house audio department; hired, trained, and supervised interns and junior audio engineers. The department's revenue grew 350% over three years.",
         "Directed audio post-production for thousands of national TV and radio spots, including Panasonic \"Life is: Plasma\" (Adweek Best Spots of the Month, June 2005) and Pringles \"Hearts\" (Ad Age Spot of the Week, Feb 12, 2006).",
-        "Built the department's multi-user FileMaker Pro job-tracking system (19 staff) and advised Grey Global Group's Digital Asset Management committee on a system planned for over 10,000 users."
+        "Built the department's multi-user digital job-tracking system (19 staff) and served on Grey Global Group's Digital Asset Management committee (a system planned for over 10,000 users)."
       ]
     }
   ],
@@ -328,7 +328,7 @@
       ]
     },
     {
-      "name": "\"Strategic Advice for a Presidential Contender Running in 2012: Exploring the Mechanisms and Effects of Social Networking and User-Generated Media on the 2008 Election\", BoingBoing.net (December 14, 2008), selected by Clay Shirky for publication.",
+      "name": "\"Strategic Advice for a Presidential Contender Running in 2012: Exploring the Mechanisms and Effects of Social Networking and User-Generated Media on the 2008 Election\", selected by Clay Shirky for publication on BoingBoing.net (December 14, 2008).",
       "url": "https://boingboing.net/2008/12/14/uncertainties-in-ama.html",
       "x-links": [
         {
@@ -521,11 +521,11 @@
   ],
   "x-presentations": [
     {
-      "type": "lectures, talks, and events",
+      "type": "lectures, talks, and panels",
       "description": "Guest lectures, Issues in Telecommunications Law (Tom Agoston), New York University: \"What Digital Media Students Need to Know About Copyright Law and the CopyLeft Movement\" (February 16, 2012) and \"DRM and Copyright: The Erosion of Creative Rights\" (December 13, 2007)."
     },
     {
-      "type": "lectures, talks, and events",
+      "type": "lectures, talks, and panels",
       "description": "\"Is SOPA Constitutional?\", panelist and debater, Brooklyn Law School (April 10, 2012)."
     },
     {
