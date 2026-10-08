@@ -23,3 +23,7 @@ theme = 'PaperMod'
   [[params.socialIcons]]
     name = "email"
     url = "mailto:john@johnrandall.com"
+
+  [[params.socialIcons]]
+    name = "cv"
+    url = "/cv/full/"
