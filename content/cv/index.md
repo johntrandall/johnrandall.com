@@ -5,7 +5,7 @@ description: "Curriculum vitae of John Randall."
 url: "/cv/"
 pdf: "/cv/john-randall-cv.pdf"
 pdf_pages: 5
-words: 3287
+words: 3283
 json: "/cv/john-randall-cv.json"
 lastmod: "2026-10-08"
 draft: false
@@ -237,4 +237,4 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 
 ---
 
-*Full CV including publications and awards at [johnrandall.com](https://johnrandall.com/)*
+*Full CV at [johnrandall.com](https://johnrandall.com/)*

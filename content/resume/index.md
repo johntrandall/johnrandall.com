@@ -5,7 +5,7 @@ description: "Curriculum vitae of John Randall."
 url: "/resume/"
 pdf: "/cv/john-randall-resume.pdf"
 pdf_pages: 2
-words: 1430
+words: 1426
 json: "/cv/john-randall-resume.json"
 lastmod: "2026-10-08"
 draft: false
@@ -115,4 +115,4 @@ Family worldschooling: backpacked nine countries and five continents, teaching t
 
 ---
 
-*Full CV including publications and awards at [johnrandall.com](https://johnrandall.com/)*
+*Full CV at [johnrandall.com](https://johnrandall.com/)*
