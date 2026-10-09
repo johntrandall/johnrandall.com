@@ -1,0 +1,318 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "John Randall",
+    "email": "john@johnrandall.com",
+    "url": "https://johnrandall.com",
+    "location": {
+      "city": "Montclair",
+      "region": "NJ",
+      "countryCode": "US"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "johntrandall",
+        "url": "https://linkedin.com/in/johntrandall"
+      },
+      {
+        "network": "GitHub",
+        "username": "johntrandall",
+        "url": "https://github.com/johntrandall"
+      }
+    ],
+    "summary": "Senior full-stack, product-focused software engineer. Eight years on small Ruby on Rails teams (BackerKit, OpsLevel), leading team process and planning, and training other engineers. Agentic engineer: builds AI-driven systems with coding agents under human-owned specs, review, and tests, with a human operator approving anything consequential. Mission-focused polymath: software engineering, law and technology policy, and audio and media production."
+  },
+  "work": [
+    {
+      "name": "Independent Software Engineer",
+      "position": "Independent Software Engineer",
+      "description": "Agentic engineering: self-directed products, infrastructure, and open source",
+      "location": "Montclair, NJ",
+      "startDate": "2025-10",
+      "x-dates": "Oct 2025 – Present",
+      "highlights": [
+        "Merged 28 pull requests into 10 third-party projects, including four into Intuit's official QuickBooks Online MCP server and eleven into a macOS Messages MCP server, among them tested fixes for AppleScript-injection vulnerabilities. Published mcp-omniplan-jtr (PyPI); earlier, merged fixes and features into the Ruby gems amazon_order and rubyfocus (2018 – 2019).",
+        "Designed and built two bookkeeping-automation products: Portal Gopher signs into 19 vendors' websites and email accounts to collect bills and statements; Cratchit extracts the data with LLMs under cost-control rules, proposes QuickBooks entries for a human operator to approve, and reconciles automatically.",
+        "Built the guardrails that let AI agents work safely on real systems, from rental bookkeeping to self-hosted infrastructure (96 Docker stacks, 69 MCP servers) and, as volunteer technical advisor, a youth-sports nonprofit's Google Workspace: 47 pre-action policy hooks and a credential manifest the human operator approves once.",
+        "Enabled agents to work with GUI applications by reverse-engineering the closed-source file formats of OmniPlan and OmniGraffle; published the OmniPlan spec and Python tooling."
+      ],
+      "x-links": [
+        {
+          "text": "mcp-omniplan-jtr",
+          "url": "https://pypi.org/project/mcp-omniplan-jtr/"
+        },
+        {
+          "text": "amazon_order",
+          "url": "https://github.com/kyamaguchi/amazon_order/pulls?q=is%3Apr+author%3Ajohntrandall+is%3Amerged"
+        },
+        {
+          "text": "rubyfocus",
+          "url": "https://github.com/jyruzicka/rubyfocus/pull/5"
+        }
+      ]
+    },
+    {
+      "name": "Career Break",
+      "position": "Travel",
+      "startDate": "2025-02",
+      "endDate": "2025-08",
+      "x-dates": "Feb – Aug 2025",
+      "summary": "Family worldschooling: backpacked nine countries and five continents, teaching the children programming, math, and science on the road and on the trail."
+    },
+    {
+      "name": "JKRE",
+      "position": "Co-Owner & Operator",
+      "location": "Real estate rental business: four properties, long- and short-term rentals",
+      "startDate": "2016",
+      "x-dates": "2016 – Present",
+      "highlights": [
+        "Acquired properties in 2010 and 2016; formalized and expanded the business from 2023 to 2025, acquiring two more properties, including the short-term vacation rental.",
+        "From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows, that route issues to the on-call property manager and vendors through agent-drafted, owner-approved emails, with automated tenant updates as issues resolve."
+      ]
+    },
+    {
+      "name": "OpsLevel",
+      "position": "Senior Software Developer",
+      "description": "Internal developer portal / service catalog · Series A startup · Rails, MySQL, Redis, Elasticsearch",
+      "location": "Toronto (remote)",
+      "startDate": "2022-06",
+      "endDate": "2023-09",
+      "x-dates": "Jun 2022 – Sep 2023",
+      "highlights": [
+        "Tech lead for Service Detection (launched Jan 2023): scanned customers' git repositories and fed detected services into the catalog, replacing hand-authored service definitions (in OpsLevel's launch case study, Duolingo imported 315 services, 97% of its architecture, in nine minutes).",
+        "Set the team's tone: made asking for help easy, drew out the quieter engineers, and made pair programming a habit; set the bar for ticket writing so more work ran in parallel with less thrash.",
+        "Led epic and sprint planning: introduced ticket sequencing that drove straight into the unknowns to de-risk each sprint, and built the ticket-dependency diagramming tool (a GitLab CI extension) that became part of the team's process; the documentation-check epic became the company's model for epic planning.",
+        "Tech lead for migrating search from one sprawling SQL query to Elasticsearch, rolled out behind per-account feature flags with legacy fallback: ended timeouts on large catalogs and added relevance ranking and highlighting.",
+        "Tech lead for AWS integrations (Infrastructure Catalog, spring 2023), a 12-week project bringing customers' AWS resources (EC2, ECS, EKS, RDS, Lambda, S3) into the catalog; designed its core architecture, an intermediate layer of integration source objects mapped into catalog entities, which the team reused for its relationships GraphQL API.",
+        "Built the priority scheduling, throttling, and failure handling (Redis-based locking) of OpsLevel Runner, which ran containerized analysis jobs against customers' repositories, and led its capacity GameDay."
+      ],
+      "x-links": [
+        {
+          "text": "OpsLevel's launch case study",
+          "url": "https://www.opslevel.com/resources/build-your-catalog-with-service-detection"
+        }
+      ]
+    },
+    {
+      "name": "BackerKit",
+      "position": "Senior Full-Stack Developer",
+      "description": "Crowdfunding pledge management · Y Combinator seed, then self-funded · Rails, PostgreSQL, Redis, Heroku",
+      "location": "San Francisco (remote)",
+      "startDate": "2015-06",
+      "endDate": "2021-11",
+      "x-dates": "Jun 2015 – Nov 2021",
+      "highlights": [
+        "Transformed a fledgling Rails and JavaScript project into the leading crowdfunding pledge-management ecosystem: BackerKit Pledge Manager: invented the post-crowdfunding-platform pledge-management industry; served 10,400 projects raising $340 million from 16.5 million backers. BackerKit Launch and BackerKit Marketing: direct-marketing tools that drove $3 million in conversions for over 150 creators and $32 million for 1,100 creators, the latter grown from a manual process into a SaaS platform.",
+        "3,399 commits, second-most in the codebase's history. Wrote 342 of the 1,176 spec files and 146 of the 613 migrations added 2015 – 2021.",
+        "Anchored the engineering team through growth from two to eight developers and six to 50 employees, as the second developer: onboarded, mentored, and trained the new engineers; refined the team's workflows as headcount grew; and wrote the technical and dev-culture blog posts used in developer recruiting.",
+        "Extended and hardened the Kickstarter and Indiegogo sync that imported projects, rewards, and backers into the Pledge Manager; neither platform offered creators a public API, so it relied on web scraping and creator-authorized OAuth. As BackerKit's developer on Kickstarter's partner GraphQL API, shipped its first production phase (Mar 2019).",
+        "Built and maintained API integrations with PayPal, Stripe, inventory, fulfillment, and postage services, email delivery systems, Salesforce, and Facebook; found and fixed the root causes of email-deliverability issues and built a system gathering deliverability statistics by client, time, and recipient domain.",
+        "Led the Rails 5.2 → 6.0 upgrade (2019) and did the Ruby 2.6 → 3.0 upgrades (2020 – 2021); moved CI to Semaphore 2.0 and configured the testing, CI, and deployment pipelines behind daily Heroku deploys."
+      ]
+    },
+    {
+      "name": "Roosevelt Institute",
+      "position": "Program Manager, Telecommunications Equality Project",
+      "startDate": "2013-02",
+      "endDate": "2014-01",
+      "x-dates": "Feb 2013 – Jan 2014",
+      "summary": "deputy to Susan Crawford on network neutrality and municipal broadband: research memos for her media appearances, and supporting research for Bringing Municipal High-Speed Internet Access to Leverett, Massachusetts; united advocacy coalitions against ALEC-driven anti-municipal-network bills.",
+      "url": "https://cyber.harvard.edu/publications/2013/internet_to_leverett",
+      "x-links": [
+        {
+          "text": "Bringing Municipal High-Speed Internet Access to Leverett, Massachusetts",
+          "url": "https://cyber.harvard.edu/publications/2013/internet_to_leverett"
+        }
+      ],
+      "x-group": "Technology law and policy"
+    },
+    {
+      "name": "Brooklyn Law Incubator and Policy (BLIP) Clinic",
+      "position": "Senior Clinician and Post-Graduate Fellow",
+      "startDate": "2010",
+      "endDate": "2013",
+      "x-dates": "2010 – 2013",
+      "summary": "co-drafted a Supreme Court amicus brief in Brown v. EMA (filed as Schwarzenegger v. EMA); primary organizer and technical director of the NYC Legal Hack-A-Thon (2012); led a clinic team advising the United Nations media department on releasing its media archive under Creative Commons licenses; drafted early Terms of Service and Privacy Policy for Diaspora.",
+      "url": "https://www.supremecourt.gov/docketfiles/08-1448.htm",
+      "x-links": [
+        {
+          "text": "Brown v. EMA",
+          "url": "https://www.supremecourt.gov/docketfiles/08-1448.htm"
+        },
+        {
+          "text": "NYC Legal Hack-A-Thon",
+          "url": "https://legalhackers.org/our-story/"
+        }
+      ],
+      "x-group": "Technology law and policy"
+    },
+    {
+      "name": "Legal Hackers",
+      "position": "co-founder and NYC meetup co-organizer",
+      "startDate": "2012",
+      "endDate": "2015",
+      "x-dates": "2012 – 2015",
+      "summary": "a monthly meetup of lawyers and technologists on legal-industry problems and tech-law policy; world's largest legal meetup group in its second year.",
+      "x-group": "Technology law and policy"
+    },
+    {
+      "name": "Earlier roles",
+      "summary": "legal intern, ACLU Project on Speech, Privacy & Technology (Jan – Jun 2012; contributed to amicus briefs, including United States v. Alvarez); project associate, Harvard University's Berkman Center for Internet and Society (May – Sep 2008), creating a middle-school copyright and new-media literacy curriculum.",
+      "x-group": "Technology law and policy"
+    },
+    {
+      "summary": "Notable publications include \"Comcast Profits from the Poor with Internet Essentials Deal\" (Next New Deal / Salon, 2013), an impactful column that pressured Comcast to double internet access speeds for low-income families, named a Best Weekly Read by The Century Foundation; and an election-media memo selected by Clay Shirky for publication on BoingBoing (2008).",
+      "url": "https://www.salon.com/2013/07/10/comcasts_new_partner/",
+      "x-links": [
+        {
+          "text": "\"Comcast Profits from the Poor with Internet Essentials Deal\"",
+          "url": "https://www.salon.com/2013/07/10/comcasts_new_partner/"
+        },
+        {
+          "text": "BoingBoing",
+          "url": "https://boingboing.net/2008/12/14/uncertainties-in-ama.html"
+        }
+      ],
+      "x-group": "Technology law and policy"
+    },
+    {
+      "name": "BrainPOP",
+      "position": "Web Production Consultant, Sound Designer, and Audio Engineer",
+      "startDate": "2005-06",
+      "endDate": "2011-05",
+      "x-dates": "Jun 2005 – May 2011",
+      "summary": "directed audio production for an award-winning educational website used by 20% of U.S. school districts, designing sound for English-language learners and hearing-impaired students.",
+      "x-group": "Audio, music, and media production"
+    },
+    {
+      "name": "Freelance",
+      "position": "web, audio, and music producer",
+      "startDate": "1999",
+      "endDate": "2009",
+      "x-dates": "1999 – 2009",
+      "summary": "award-winning projects, mostly in education and civil- and human-rights advocacy, for clients including the ACLU, Amnesty International, and Human Rights Watch.",
+      "x-group": "Audio, music, and media production"
+    },
+    {
+      "name": "Grey Worldwide (WPP Group)",
+      "position": "Lead Audio Engineer",
+      "startDate": "2000-03",
+      "endDate": "2006-06",
+      "x-dates": "Mar 2000 – Jun 2006",
+      "summary": "technical lead of the in-house audio department, whose revenue grew 350% over three years; built its multi-user digital job-tracking system.",
+      "x-group": "Audio, music, and media production"
+    },
+    {
+      "name": "WarpWhistle Music LLC",
+      "position": "co-founder and managing partner",
+      "startDate": "2005-03",
+      "endDate": "2006-05",
+      "x-dates": "Mar 2005 – May 2006",
+      "summary": "directed musicians, composers, engineers, and sales representatives producing music for national radio and TV advertising.",
+      "x-group": "Audio, music, and media production"
+    },
+    {
+      "summary": "Notable work includes mix and sound design for Brooklyn Lobster (presented by Martin Scorsese; Official Selection, Toronto and Hamptons); live recordings of Freestyle Love Supreme, Lin-Manuel Miranda's hip-hop troupe; and production and recording on Nina Sky's \"Move Ya Body\" (Billboard Hot 100 #4; certified Gold).",
+      "url": "https://www.imdb.com/title/tt0401591/fullcredits/",
+      "x-links": [
+        {
+          "text": "Brooklyn Lobster",
+          "url": "https://www.imdb.com/title/tt0401591/fullcredits/"
+        }
+      ],
+      "x-group": "Audio, music, and media production"
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "General Assembly",
+      "studyType": "Web Development Immersive, 12 weeks",
+      "endDate": "2014",
+      "x-dates": "2014"
+    },
+    {
+      "institution": "Brooklyn Law School",
+      "studyType": "J.D., cum laude; bar admission NY and NJ (inactive)",
+      "endDate": "2012",
+      "x-dates": "2012"
+    },
+    {
+      "institution": "New York University",
+      "studyType": "B.S. in Digital Communications & Media, magna cum laude",
+      "endDate": "2009",
+      "x-dates": "2009"
+    }
+  ],
+  "awards": [],
+  "publications": [],
+  "skills": [
+    {
+      "name": "AI and agentic engineering",
+      "keywords": [
+        "AI coding agents",
+        "multi-agent orchestration",
+        "agent safety guardrails",
+        "MCP server development",
+        "LLM integration",
+        "human-in-the-loop workflows",
+        "scheduled autonomous agents"
+      ]
+    },
+    {
+      "name": "Software engineering",
+      "keywords": [
+        "Ruby",
+        "Ruby on Rails",
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "PostgreSQL",
+        "MySQL",
+        "Redis",
+        "Elasticsearch",
+        "GraphQL",
+        "REST APIs",
+        "RSpec",
+        "pytest",
+        "background job processing",
+        "Heroku",
+        "AWS",
+        "Docker",
+        "GitLab CI",
+        "third-party API integration",
+        "private and undocumented APIs",
+        "web scraping"
+      ]
+    },
+    {
+      "name": "People and process",
+      "keywords": [
+        "tech leadership",
+        "mentoring and training engineers",
+        "pair programming",
+        "code review",
+        "agile development",
+        "requirements writing",
+        "ticket sequencing and dependency planning",
+        "spike and proof-of-concept work"
+      ]
+    }
+  ],
+  "projects": [],
+  "x-presentations": [],
+  "meta": {
+    "canonical": "https://johnrandall.com/cv"
+  },
+  "x-closing": {
+    "text": "Full CV including publications and awards at johnrandall.com",
+    "url": "https://johnrandall.com/",
+    "x-links": [
+      {
+        "text": "johnrandall.com",
+        "url": "https://johnrandall.com/"
+      }
+    ]
+  }
+}
