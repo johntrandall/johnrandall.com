@@ -5,7 +5,7 @@ description: "Curriculum vitae of John Randall."
 url: "/cv/"
 pdf: "/cv/john-randall-cv.pdf"
 pdf_pages: 5
-words: 3260
+words: 3287
 json: "/cv/john-randall-cv.json"
 lastmod: "2026-10-08"
 draft: false
@@ -65,10 +65,10 @@ Senior full-stack, product-focused software engineer with proven experience prov
 - **Visualization and diagrams as code:** C4 architecture models in Structurizr DSL (patched fork of the c4hero visual C4 editor, upstream feature PR); Mermaid, D2, PlantUML, and Graphviz rendered to SVG on save; Grafana dashboards over InfluxDB.
 
 **Open source**
-- 28 merged pull requests into 10 third-party projects, including Intuit's official QuickBooks Online MCP server (four, including schema validation, sub-account creation, and account re-parenting) and a macOS Messages MCP server (eleven, including tested fixes for AppleScript-injection vulnerabilities and race conditions).
+- Merged 28 pull requests into 10 third-party projects, including Intuit's official QuickBooks Online MCP server (four, including schema validation, sub-account creation, and account re-parenting) and a macOS Messages MCP server (eleven, including tested fixes for AppleScript-injection vulnerabilities and race conditions).
 
-### Career Break · Family gap year · Feb – Aug 2025
-Backpacked nine countries and five continents, multi-day hut-to-hut trekking. Taught three sons programming, math, and science on the road and on the trail, with history and culture learned on site, from Inca ruins to Rome.
+### Career Break · Travel · Feb – Aug 2025
+Family worldschooling: backpacked nine countries and five continents, multi-day hut-to-hut trekking. Taught three children programming, math, and science on the road and on the trail, with history and culture learned on site, from Inca ruins to Rome.
 
 ### JKRE · Co-Owner & Operator · 2016 – Present
 *Real estate rental business · Montclair, NJ*
@@ -85,9 +85,9 @@ Joined three months after the $15M Series A.
 - Tech lead for Service Detection (launched Jan 2023): scanned customers' git repositories and fed detected services into the catalog, replacing hand-authored service definitions (in [OpsLevel's launch case study](https://www.opslevel.com/resources/build-your-catalog-with-service-detection), Duolingo imported 315 services, 97% of its architecture, in nine minutes).
 - Set the team's tone: made asking for help easy, moved discussion onto voice calls, drew out the quieter engineers, and made pair programming a habit, until team organization and technical planning were a group effort; set the bar for ticket writing so more work ran in parallel with less thrash.
 - Led epic and sprint planning: introduced ticket sequencing that drove straight into the unknowns to de-risk each sprint up front, and built the epic and ticket-dependency diagramming tool (a GitLab CI extension) that made the sequencing visible and became part of the team's process; the documentation-check epic, planned weeks after joining, became the company's model for epic planning.
-- Tech lead for migrating search from one sprawling SQL query to Elasticsearch (Nov 2022), rolled out behind per-account feature flags with fallback to legacy search: ended timeouts on large catalogs and added relevance ranking and highlighting.
+- Tech lead for migrating search from one sprawling SQL query to Elasticsearch (Nov 2022), rolled out behind per-account feature flags with legacy fallback: ended timeouts on large catalogs and added relevance ranking and highlighting.
 - Tech lead for AWS integrations (Infrastructure Catalog, spring 2023), a 12-week project bringing customers' AWS resources (EC2, ECS, EKS, RDS, Lambda, S3) into the catalog; designed its core architecture, an intermediate layer of integration source objects mapped into catalog entities, which the team reused for its relationships GraphQL API.
-- Built OpsLevel Runner's priority scheduling, throttling, and failure handling (Redis-based locking); the Runner ran containerized analysis jobs against customers' repositories. Led the team's capacity GameDay for it.
+- Built the priority scheduling, throttling, and failure handling (Redis-based locking) of OpsLevel Runner, which ran containerized analysis jobs against customers' repositories, and led its capacity GameDay.
 - Wrote proposals on unhappy-path error handling and dependency upgrades, which shaped the team's patterns; cleared the overdue dependency-upgrade backlog.
 
 ### BackerKit · Senior Full-Stack Developer · Jun 2015 – Nov 2021
@@ -98,7 +98,7 @@ Joined three months after the $15M Series A.
   - **BackerKit Launch** and **BackerKit Marketing**: direct-marketing tools that drove $3 million in conversions for over 150 creators and $32 million for 1,100 creators, the latter grown from a manual process into a SaaS platform.
 - Anchored the engineering team through growth from two to eight developers and six to 50 employees, as the second developer: onboarded, mentored, and trained the new engineers; refined the team's workflows as headcount grew; and wrote the technical and dev-culture blog posts used in developer recruiting.
 - Extended and hardened the Kickstarter and Indiegogo sync that imported projects, rewards, and backers into the Pledge Manager. Neither platform offered creators a public API, so the sync relied on web scraping and creator-authorized OAuth, with retries and error monitoring for when the platforms changed.
-- BackerKit's developer on Kickstarter's partner GraphQL API (beta): shipped its first production phase (public project import, Mar 2019) and mapped the backer data model for the authenticated phase.
+- As BackerKit's developer on Kickstarter's partner GraphQL API (beta), shipped its first production phase (public project import, Mar 2019) and mapped the backer data model for the authenticated phase.
 - Built and maintained API integrations with PayPal, Stripe, inventory and fulfillment systems, postage services, email delivery systems, Salesforce, and Facebook.
 - Found and fixed the root causes of email-deliverability issues and built a system gathering deliverability statistics by client, time, and recipient domain.
 - Led the Rails 5.2 → 6.0 upgrade (2019) and did the Ruby 2.6 → 3.0 upgrades (2020 – 2021); moved CI to Semaphore 2.0, running the suite as nine parallel jobs.
@@ -121,11 +121,11 @@ Brought agile and version-control practices to the team and backfilled its unit 
 - Coordinated a distributed team of telecommunications industry analysts, legal researchers, and advocates in public messaging and appeals to NY and NJ state utility commissions, resulting in the investigations sought into Verizon NY's illegal cross-subsidizations.
 - As trusted deputy to Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy), prepared her for television, radio, and podcast appearances with same-day research memos, and researched her major conference keynotes, law review articles, and bi-weekly columns for Wired, Bloomberg View, and the New York Times.
 - Fielded press requests for political comment and technical consultation. Ghostwrote articles and opinion columns for major national publications.
-- Wrote an opinion column that pressured Comcast to double internet access speeds for low-income families.
+- Wrote ["Comcast Profits from the Poor with Internet Essentials Deal"](https://www.salon.com/2013/07/10/comcasts_new_partner/), an opinion column that pressured Comcast to double internet access speeds for low-income families.
 ### Brooklyn Law Incubator and Policy (BLIP) Clinic · Senior Clinician and Post-Graduate Fellow · 2010 – 2013
 *Brooklyn, NY*
 - Lead organizer and technical director of the inaugural NYC Legal Hack-A-Thon, bringing lawyers and developers together on legal and policy problems.
-- Co-wrote a Supreme Court amicus brief (*Schwarzenegger v. EMA*, First Amendment challenge to a video-game law).
+- Co-drafted a Supreme Court amicus brief in *Brown v. EMA* (filed as *Schwarzenegger v. EMA*), a First Amendment challenge to a video-game law.
 - Enlisted the United Nations media department as a client and led a team advising it on the risks and benefits of releasing its media archive under Creative Commons licenses.
 - Drafted early Terms of Service, End User License Agreement, and Privacy Policy for Diaspora, a federated social networking service, and the same documents, plus trademark applications and trademark and domain-name conflict demand letters, for startups and crowdfunding projects.
 - Founded the PriView Project, a scalable, crowd-sourced architecture for rating website privacy policies to lower the cost of understanding them. Founded and led CREATE (Creative Rights Empowerment Achieved Through Education), an interactive copyright curriculum for arts-focused high schools; won grant funding.
@@ -180,7 +180,7 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 ### Grey Worldwide (WPP Group) · Lead Audio Engineer · Mar 2000 – Jun 2006
 *New York, NY*
 
-- Technical lead and senior audio engineer for the in-house audio department; hired, trained, and supervised interns and junior audio engineers. The department's revenue grew 350% over three years.
+- Technical lead and senior audio engineer for the in-house audio department, whose revenue grew 350% over three years; hired, trained, and supervised interns and junior audio engineers.
 - Directed audio post-production for thousands of national TV and radio spots, including Panasonic "Life is: Plasma" (Adweek Best Spots of the Month, June 2005) and Pringles "Hearts" (Ad Age Spot of the Week, Feb 12, 2006).
 - Built the department's multi-user digital job-tracking system (19 staff) and served on Grey Global Group's Digital Asset Management committee (a system planned for over 10,000 users).
 
@@ -205,7 +205,7 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 - [**mcp-omniplan-jtr**](https://pypi.org/project/mcp-omniplan-jtr/) (PyPI, 2026): MCP server letting AI agents drive OmniPlan.
 - [**oplx-format**](https://github.com/johntrandall/oplx-format) (specification, 2026) and [**oplx-tools**](https://pypi.org/project/oplx-tools/) (PyPI, 2026): community specification of OmniPlan's `.oplx` file format, with Python tools to generate, lint, and parse it.
 - [**lash-installer**](https://pypi.org/project/lash-installer/) (PyPI, 2026), [**iterm-tmux-helpers**](https://github.com/johntrandall/iterm-tmux-helpers) (personal Homebrew tap, 2026), [**half-sheet-label**](https://github.com/johntrandall/half-sheet-label), [**ptouch-label**](https://github.com/johntrandall/ptouch-label), [**hither**](https://github.com/johntrandall/hither), [**claude-browser-pool**](https://github.com/johntrandall/claude-browser-pool), and other macOS and agent-tooling utilities.
-- Ruby gems [amazon_order](https://github.com/kyamaguchi/amazon_order/pulls?q=is%3Apr+author%3Ajohntrandall+is%3Amerged) (multi-shipment orders, service orders, CSV export) and [rubyfocus](https://github.com/jyruzicka/rubyfocus/pull/5), 2018 – 2019.
+- Merged fixes and features into the Ruby gems [amazon_order](https://github.com/kyamaguchi/amazon_order/pulls?q=is%3Apr+author%3Ajohntrandall+is%3Amerged) (multi-shipment orders, service orders, CSV export) and [rubyfocus](https://github.com/jyruzicka/rubyfocus/pull/5) (2018 – 2019).
 
 ---
 
@@ -234,3 +234,7 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 
 - **Montclair Ultimate Frisbee** (501(c)(3) youth sports organization), technical advisor (volunteer), Aug 2023 – Present: brought the club onto Google Workspace free of charge through Google for Nonprofits, and built agent-run Workspace administration (accounts, groups, mail routing, a scheduled membership audit, inbox triage onto a task board), with a human operator approving.
 - **Montclair Community Pre-K**, vice chair, Technology Committee (volunteer), 2014 – 2017: rolled out Google Apps for Education and migrated the school's file server to Google Drive; advised on the network overhaul and on classroom and administrative technology; helped select a student information system.
+
+---
+
+*Full CV including publications and awards at [johnrandall.com](https://johnrandall.com/)*

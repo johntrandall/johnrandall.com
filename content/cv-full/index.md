@@ -5,7 +5,7 @@ description: "Curriculum vitae of John Randall."
 url: "/cv/full/"
 pdf: "/cv/john-randall-cv-full.pdf"
 pdf_pages: 7
-words: 4360
+words: 4373
 json: "/cv/john-randall-cv-full.json"
 lastmod: "2026-10-08"
 draft: false
@@ -67,7 +67,7 @@ Senior full-stack, product-focused software engineer with proven experience prov
 - **Visualization and diagrams as code:** C4 architecture models in Structurizr DSL, edited in c4hero, a visual C4 model editor (patched fork, upstream feature PR); Mermaid, D2, PlantUML, and Graphviz rendered to SVG on save; diagram-advisor agent with 29 diagram and visual-design skills and tools; Grafana dashboards over InfluxDB telemetry.
 
 **Open source**
-- 28 merged pull requests into 10 third-party projects:
+- Merged 28 pull requests into 10 third-party projects:
   - Four into Intuit's official QuickBooks Online MCP server (schema validation, sub-account creation, account re-parenting, preserving line-level data on bill updates).
   - Eleven into a macOS Messages MCP server, including tested fixes for AppleScript-injection vulnerabilities and race conditions.
 
@@ -76,8 +76,8 @@ Senior full-stack, product-focused software engineer with proven experience prov
 - Photo awareness: recent photos with descriptions and OCR.
 - Printer-fleet monitoring that notifies agent sessions, and agent-safe label printing.
 
-### Career Break · Family gap year · Feb – Aug 2025
-Backpacked nine countries and five continents, trekking New Zealand's Tongariro Alpine Crossing, Abel Tasman Coast Track, and Kepler Track; Cradle Mountain in Tasmania; the Torres del Paine W trek in Patagonia; the Salkantay trek to Machu Picchu; Menorca's Camí de Cavalls; hut to hut through the Italian Dolomites; and Scotland's West Highland Way, Skye, and Cairngorms. Taught three sons programming, math, and science on the road and on the trail, with history and culture learned on site, from Inca ruins to Rome.
+### Career Break · Travel · Feb – Aug 2025
+Family worldschooling: backpacked nine countries and five continents, trekking New Zealand's Tongariro Alpine Crossing, Abel Tasman Coast Track, and Kepler Track; Cradle Mountain in Tasmania; the Torres del Paine W trek in Patagonia; the Salkantay trek to Machu Picchu; Menorca's Camí de Cavalls; hut to hut through the Italian Dolomites; and Scotland's West Highland Way, Skye, and Cairngorms. Taught three children programming, math, and science on the road and on the trail, with history and culture learned on site, from Inca ruins to Rome.
 
 ### JKRE · Co-Owner & Operator · 2016 – Present
 *Real estate rental business · Montclair, NJ*
@@ -94,7 +94,7 @@ Joined three months after the $15M Series A; during the tenure the company shipp
 - Tech lead for Service Detection (launched Jan 2023): scanned customers' git repositories and fed detected services into the catalog, replacing hand-authored service definitions (in [OpsLevel's launch case study](https://www.opslevel.com/resources/build-your-catalog-with-service-detection), Duolingo imported 315 services, 97% of its architecture, in nine minutes).
 - Set the team's tone on a siloed team with low-energy meetings and one engineer carrying the planning: made asking for help easy and embarrassment-free, moved discussion onto voice calls, drew out the quieter engineers, and made pair programming a habit where the team had been reluctant to pair, until team organization and technical planning were a group effort. Set the bar for ticket writing (clarity, completeness, and edge cases), so more work ran in parallel with less thrash.
 - Led epic and sprint planning and execution for many sprints: introduced ticket sequencing that drove straight into the unknowns to de-risk each sprint up front; built the epic and ticket-dependency diagramming tool (a GitLab CI extension) that made the sequencing visible and became part of the team's process. Weeks after joining, planned the documentation-check epic (user stories and acceptance criteria covering success and failure modes, data-integrity rules, and a proof-of-concept spike), which became the company's model for epic planning.
-- Tech lead for migrating search from one sprawling SQL query to Elasticsearch (Nov 2022): built the search layer with elasticsearch-rails, bulk indexing, and near real-time sync; rolled it out behind per-account feature flags with fallback to legacy search: ended timeouts on large catalogs and added relevance ranking and highlighting.
+- Tech lead for migrating search from one sprawling SQL query to Elasticsearch (Nov 2022): built the search layer with elasticsearch-rails, bulk indexing, and near real-time sync; rolled it out behind per-account feature flags with legacy fallback: ended timeouts on large catalogs and added relevance ranking and highlighting.
 - Tech lead for AWS integrations (Infrastructure Catalog, spring 2023), a 12-week project bringing customers' AWS resources (EC2, ECS, EKS, RDS, Lambda, S3, and more) into the catalog. Designed its core architecture: an intermediate layer of integration source objects mapped into catalog entities, which the team reused for its relationships GraphQL API and which colleagues called the missing piece of the original proposal. Took the deep dives on tag-based ownership conflict resolution and the infrastructure-destroy system.
 - Built OpsLevel Runner's priority scheduling, throttling, and failure handling (Redis-based locking); the Runner ran containerized analysis jobs against customers' repositories. Led the team's capacity GameDay for it: prepared the exercise, coordinated the war room, and set the approach later GameDays followed.
 - Took on company-wide problems from an IC seat: wrote the proposals on dependency upgrades (well received by the staff engineers) and on unhappy-path error handling, which both shaped the team's patterns (and, for error handling, its work with Customer Success); cleared the overdue dependency-upgrade backlog with a colleague; shipped developer quality-of-life fixes (strong_migrations, test-runner, FrozenRecord validation).
@@ -108,7 +108,7 @@ Joined three months after the $15M Series A; during the tenure the company shipp
   - **BackerKit Marketing**, grown from a manual process to a full SaaS platform promoting projects from 1,100 creators and driving $32 million in conversions.
 - Anchored the engineering team through growth from two to eight developers and six to 50 employees, as the second developer alongside the co-founding engineer: onboarded, mentored, and trained the new junior and mid-level engineers; refined the team's workflows as headcount grew while keeping its scrappy, iterative approach; contributed to quarterly goal-setting, feature shaping, sprint planning, and acceptance; and wrote the technical and dev-culture blog posts used in developer recruiting.
 - Extended and hardened the Kickstarter and Indiegogo sync that imported projects, rewards, and backers into the Pledge Manager. Neither platform offered creators a public API, so the sync relied on web scraping, Kickstarter's mobile-app API (with creator-authorized OAuth and two-factor login), and internal GraphQL endpoints, with retries and error monitoring for when the platforms changed; campaign-discovery spiders fed Salesforce.
-- BackerKit's developer on Kickstarter's partner GraphQL API (beta): shipped its first production phase (public project import, Mar 2019), mapped the backer data model for the authenticated phase, and gave Kickstarter's API team design feedback.
+- As BackerKit's developer on Kickstarter's partner GraphQL API (beta), shipped its first production phase (public project import, Mar 2019), mapped the backer data model for the authenticated phase, and gave Kickstarter's API team design feedback.
 - Built and maintained API integrations with PayPal, Stripe, inventory and fulfillment systems, postage services, email delivery systems, Salesforce, and Facebook.
 - Found and fixed the root causes of email-deliverability issues and built a system gathering deliverability statistics by client, time, and recipient domain, enabling previously impossible analysis of crowdfunding's unconventional email-sending patterns.
 - Led the Rails 5.2 → 6.0 upgrade (2019); did the Ruby 2.6 → 2.7 (2020) and 2.7 → 3.0 (2021) upgrades. Moved CI to Semaphore 2.0, running the suite as nine parallel jobs.
@@ -138,7 +138,7 @@ Developed methods for using early voice-recognition software to help special-edu
 - Prepared Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy) for television, radio, and podcast appearances with same-day research memos, as her trusted deputy.
 - Delivered same-day research for her major conference keynotes, law review articles, and bi-weekly columns for Wired, Bloomberg View, and the New York Times.
 - Fielded press requests for political comment and technical consultation. Ghostwrote articles and opinion columns for major national publications.
-- Wrote an opinion column that pressured Comcast to double internet access speeds for low-income families.
+- Wrote ["Comcast Profits from the Poor with Internet Essentials Deal"](https://www.salon.com/2013/07/10/comcasts_new_partner/), an opinion column that pressured Comcast to double internet access speeds for low-income families.
 
 ### Brooklyn Law Incubator and Policy (BLIP) Clinic · Senior Clinician and Post-Graduate Fellow · 2010 – 2013
 *Brooklyn, NY*
@@ -206,7 +206,7 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 ### Grey Worldwide (WPP Group) · Lead Audio Engineer · Mar 2000 – Jun 2006
 *New York, NY*
 
-- Technical lead and senior audio engineer for the in-house audio department; hired, trained, and supervised interns and junior audio engineers. The department's revenue grew 350% over three years.
+- Technical lead and senior audio engineer for the in-house audio department, whose revenue grew 350% over three years; hired, trained, and supervised interns and junior audio engineers.
 - Directed audio post-production for thousands of national television and radio spots, including Panasonic "Life is: Plasma" (Adweek Best Spots of the Month, June 2005) and Pringles "Hearts" (Ad Age Spot of the Week, Feb 12, 2006).
 - Built a multi-user digital job-tracking system used by 19 staff for scheduling, estimates, invoicing, archive management, and version control.
 - Served on Grey Global Group's Digital Asset Management committee and advised on deploying a digital production asset management system planned for over 10,000 users.
@@ -264,7 +264,7 @@ Baruch College, CUNY (music technology, 2002); Drexel University (digital media,
 - [**mcp-omniplan-jtr**](https://pypi.org/project/mcp-omniplan-jtr/) (PyPI, 2026): MCP server letting AI agents drive OmniPlan.
 - [**oplx-format**](https://github.com/johntrandall/oplx-format) (specification, 2026) and [**oplx-tools**](https://pypi.org/project/oplx-tools/) (PyPI, 2026): community specification of OmniPlan's `.oplx` file format, with Python tools to generate, lint, and parse it.
 - [**lash-installer**](https://pypi.org/project/lash-installer/) (PyPI, 2026), [**iterm-tmux-helpers**](https://github.com/johntrandall/iterm-tmux-helpers) (personal Homebrew tap, 2026), [**half-sheet-label**](https://github.com/johntrandall/half-sheet-label), [**ptouch-label**](https://github.com/johntrandall/ptouch-label), [**hither**](https://github.com/johntrandall/hither), [**claude-browser-pool**](https://github.com/johntrandall/claude-browser-pool), and other macOS and agent-tooling utilities.
-- Ruby gems [amazon_order](https://github.com/kyamaguchi/amazon_order/pulls?q=is%3Apr+author%3Ajohntrandall+is%3Amerged) (multi-shipment orders, service orders, CSV export) and [rubyfocus](https://github.com/jyruzicka/rubyfocus/pull/5), 2018 – 2019.
+- Merged fixes and features into the Ruby gems [amazon_order](https://github.com/kyamaguchi/amazon_order/pulls?q=is%3Apr+author%3Ajohntrandall+is%3Amerged) (multi-shipment orders, service orders, CSV export) and [rubyfocus](https://github.com/jyruzicka/rubyfocus/pull/5) (2018 – 2019).
 
 ---
 
