@@ -32,7 +32,7 @@
       "startDate": "2025-10",
       "x-dates": "Oct 2025 – Present",
       "highlights": [
-        "Merged 28 pull requests into 10 third-party projects, including four into Intuit's official QuickBooks Online MCP server and eleven into a macOS Messages MCP server, among them tested fixes for AppleScript-injection vulnerabilities. Published mcp-omniplan-jtr (PyPI); earlier, merged fixes and features into the Ruby gems amazon_order and rubyfocus (2018 – 2019).",
+        "Merged 28 pull requests into 10 third-party projects, including four into Intuit's official QuickBooks Online MCP server and eleven into a macOS Messages MCP server, among them tested fixes for AppleScript-injection vulnerabilities. Published mcp-omniplan-jtr (PyPI).",
         "Designed and built two bookkeeping-automation products: Portal Gopher signs into 19 vendors' websites and email accounts to collect bills and statements; Cratchit extracts the data with LLMs under cost-control rules, proposes QuickBooks entries for a human operator to approve, and reconciles automatically.",
         "Built the guardrails that let AI agents work safely on real systems, from rental bookkeeping to self-hosted infrastructure (96 Docker stacks, 69 MCP servers) and, as volunteer technical advisor, a youth-sports nonprofit's Google Workspace: 47 pre-action policy hooks and a credential manifest the human operator approves once.",
         "Enabled agents to work with GUI applications by reverse-engineering the closed-source file formats of OmniPlan and OmniGraffle; published the OmniPlan spec and Python tooling."
@@ -41,14 +41,6 @@
         {
           "text": "mcp-omniplan-jtr",
           "url": "https://pypi.org/project/mcp-omniplan-jtr/"
-        },
-        {
-          "text": "amazon_order",
-          "url": "https://github.com/kyamaguchi/amazon_order/pulls?q=is%3Apr+author%3Ajohntrandall+is%3Amerged"
-        },
-        {
-          "text": "rubyfocus",
-          "url": "https://github.com/jyruzicka/rubyfocus/pull/5"
         }
       ]
     },
@@ -68,7 +60,7 @@
       "x-dates": "2016 – Present",
       "highlights": [
         "Acquired properties in 2010 and 2016; formalized and expanded the business from 2023 to 2025, acquiring two more properties, including the short-term vacation rental.",
-        "From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows, that route issues to the on-call property manager and vendors through agent-drafted, owner-approved emails, with automated tenant updates as issues resolve."
+        "From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows that route issues to the on-call property manager and vendors, with automated tenant updates as issues resolve."
       ]
     },
     {
@@ -105,8 +97,8 @@
       "highlights": [
         "Transformed a fledgling Rails and JavaScript project into the leading crowdfunding pledge-management ecosystem: BackerKit Pledge Manager: invented the post-crowdfunding-platform pledge-management industry; served 10,400 projects raising $340 million from 16.5 million backers. BackerKit Launch and BackerKit Marketing: direct-marketing tools that drove $3 million in conversions for over 150 creators and $32 million for 1,100 creators, the latter grown from a manual process into a SaaS platform.",
         "3,399 commits, second-most in the codebase's history. Wrote 342 of the 1,176 spec files and 146 of the 613 migrations added 2015 – 2021.",
-        "Anchored the engineering team through growth from two to eight developers and six to 50 employees, as the second developer: onboarded, mentored, and trained the new engineers; refined the team's workflows as headcount grew; and wrote the technical and dev-culture blog posts used in developer recruiting.",
-        "Extended and hardened the Kickstarter and Indiegogo sync that imported projects, rewards, and backers into the Pledge Manager; neither platform offered creators a public API, so it relied on web scraping and creator-authorized OAuth. As BackerKit's developer on Kickstarter's partner GraphQL API, shipped its first production phase (Mar 2019).",
+        "As the second developer, contributed to exponential growth (1,000 projects in Aug 2015 to 10,000 in Jul 2021; two to eight developers; six to 50 employees): onboarded, mentored, and trained the new engineers; refined the team's workflows as headcount grew while preserving the startup's passionate, empathetic culture; and wrote the technical and dev-culture blog posts used in developer recruiting.",
+        "Extended and hardened the Kickstarter and Indiegogo sync that imported projects, rewards, and backers into the Pledge Manager; neither platform offered creators a public API, so it relied on web scraping and creator-authorized OAuth. As BackerKit's developer on Kickstarter's partner GraphQL API, shipped its first production phase (2019).",
         "Built and maintained API integrations with PayPal, Stripe, inventory, fulfillment, and postage services, email delivery systems, Salesforce, and Facebook; found and fixed the root causes of email-deliverability issues and built a system gathering deliverability statistics by client, time, and recipient domain.",
         "Led the Rails 5.2 → 6.0 upgrade (2019) and did the Ruby 2.6 → 3.0 upgrades (2020 – 2021); moved CI to Semaphore 2.0 and configured the testing, CI, and deployment pipelines behind daily Heroku deploys."
       ]
@@ -283,7 +275,8 @@
         "GitLab CI",
         "third-party API integration",
         "private and undocumented APIs",
-        "web scraping"
+        "web scraping",
+        "test-driven development"
       ]
     },
     {
@@ -296,7 +289,15 @@
         "agile development",
         "requirements writing",
         "ticket sequencing and dependency planning",
-        "spike and proof-of-concept work"
+        "early-stage startups"
+      ]
+    },
+    {
+      "name": "Law and policy",
+      "keywords": [
+        "intellectual property",
+        "copyright law",
+        "privacy law"
       ]
     }
   ],
@@ -306,7 +307,7 @@
     "canonical": "https://johnrandall.com/cv"
   },
   "x-closing": {
-    "text": "Full CV at johnrandall.com",
+    "text": "Full curriculum vitae at johnrandall.com",
     "url": "https://johnrandall.com/",
     "x-links": [
       {

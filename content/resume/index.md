@@ -5,9 +5,9 @@ description: "Curriculum vitae of John Randall."
 url: "/resume/"
 pdf: "/cv/john-randall-resume.pdf"
 pdf_pages: 2
-words: 1426
+words: 1430
 json: "/cv/john-randall-resume.json"
-lastmod: "2026-10-08"
+lastmod: "2026-10-09"
 draft: false
 hidemeta: true
 ShowReadingTime: false
@@ -20,7 +20,7 @@ comments: false
 ---
 
 <p class="cv-downloads">
-<span class="cv-revised">Revised 2026-10-08</span>
+<span class="cv-revised">Revised 2026-10-09</span>
 <a href="/cv/john-randall-resume.pdf" title="PDF, 2 pages"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> PDF <small>(2 pages)</small></a>
 <a href="/cv/john-randall-resume.json" title="JSON Resume"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> JSON Resume</a>
 </p>
@@ -35,9 +35,11 @@ Senior full-stack, product-focused software engineer. Eight years on small Ruby 
 
 **AI and agentic engineering:** AI coding agents, multi-agent orchestration, agent safety guardrails, MCP server development, LLM integration, human-in-the-loop workflows, scheduled autonomous agents
 
-**Software engineering:** Ruby, Ruby on Rails, JavaScript, TypeScript, Python, PostgreSQL, MySQL, Redis, Elasticsearch, GraphQL, REST APIs, RSpec, pytest, background job processing, Heroku, AWS, Docker, GitLab CI, third-party API integration, private and undocumented APIs, web scraping
+**Software engineering:** Ruby, Ruby on Rails, JavaScript, TypeScript, Python, PostgreSQL, MySQL, Redis, Elasticsearch, GraphQL, REST APIs, RSpec, pytest, background job processing, Heroku, AWS, Docker, GitLab CI, third-party API integration, private and undocumented APIs, web scraping, test-driven development
 
-**People and process:** tech leadership, mentoring and training engineers, pair programming, code review, agile development, requirements writing, ticket sequencing and dependency planning, spike and proof-of-concept work
+**People and process:** tech leadership, mentoring and training engineers, pair programming, code review, agile development, requirements writing, ticket sequencing and dependency planning, early-stage startups
+
+**Law and policy:** intellectual property, copyright law, privacy law
 
 ---
 
@@ -46,7 +48,7 @@ Senior full-stack, product-focused software engineer. Eight years on small Ruby 
 ### Independent Software Engineer · Oct 2025 – Present
 *Agentic engineering: self-directed products, infrastructure, and open source · Montclair, NJ*
 
-- Merged 28 pull requests into 10 third-party projects, including four into Intuit's official QuickBooks Online MCP server and eleven into a macOS Messages MCP server, among them tested fixes for AppleScript-injection vulnerabilities. Published [mcp-omniplan-jtr](https://pypi.org/project/mcp-omniplan-jtr/) (PyPI); earlier, merged fixes and features into the Ruby gems [amazon_order](https://github.com/kyamaguchi/amazon_order/pulls?q=is%3Apr+author%3Ajohntrandall+is%3Amerged) and [rubyfocus](https://github.com/jyruzicka/rubyfocus/pull/5) (2018 – 2019).
+- Merged 28 pull requests into 10 third-party projects, including four into Intuit's official QuickBooks Online MCP server and eleven into a macOS Messages MCP server, among them tested fixes for AppleScript-injection vulnerabilities. Published [mcp-omniplan-jtr](https://pypi.org/project/mcp-omniplan-jtr/) (PyPI).
 - Designed and built two bookkeeping-automation products: **Portal Gopher** signs into 19 vendors' websites and email accounts to collect bills and statements; **Cratchit** extracts the data with LLMs under cost-control rules, proposes QuickBooks entries for a human operator to approve, and reconciles automatically.
 - Built the guardrails that let AI agents work safely on real systems, from rental bookkeeping to self-hosted infrastructure (96 Docker stacks, 69 MCP servers) and, as volunteer technical advisor, a youth-sports nonprofit's Google Workspace: 47 pre-action policy hooks and a credential manifest the human operator approves once.
 - Enabled agents to work with GUI applications by reverse-engineering the closed-source file formats of OmniPlan and OmniGraffle; published the OmniPlan spec and Python tooling.
@@ -58,7 +60,7 @@ Family worldschooling: backpacked nine countries and five continents, teaching t
 *Real estate rental business: four properties, long- and short-term rentals*
 
 - Acquired properties in 2010 and 2016; formalized and expanded the business from 2023 to 2025, acquiring two more properties, including the short-term vacation rental.
-- From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows, that route issues to the on-call property manager and vendors through agent-drafted, owner-approved emails, with automated tenant updates as issues resolve.
+- From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows that route issues to the on-call property manager and vendors, with automated tenant updates as issues resolve.
 
 ### OpsLevel · Senior Software Developer · Jun 2022 – Sep 2023
 *Internal developer portal / service catalog · Series A startup · Rails, MySQL, Redis, Elasticsearch · Toronto (remote)*
@@ -77,8 +79,8 @@ Family worldschooling: backpacked nine countries and five continents, teaching t
   - **BackerKit Pledge Manager**: invented the post-crowdfunding-platform pledge-management industry; served 10,400 projects raising $340 million from 16.5 million backers.
   - **BackerKit Launch** and **BackerKit Marketing**: direct-marketing tools that drove $3 million in conversions for over 150 creators and $32 million for 1,100 creators, the latter grown from a manual process into a SaaS platform.
 - 3,399 commits, second-most in the codebase's history. Wrote 342 of the 1,176 spec files and 146 of the 613 migrations added 2015 – 2021.
-- Anchored the engineering team through growth from two to eight developers and six to 50 employees, as the second developer: onboarded, mentored, and trained the new engineers; refined the team's workflows as headcount grew; and wrote the technical and dev-culture blog posts used in developer recruiting.
-- Extended and hardened the Kickstarter and Indiegogo sync that imported projects, rewards, and backers into the Pledge Manager; neither platform offered creators a public API, so it relied on web scraping and creator-authorized OAuth. As BackerKit's developer on Kickstarter's partner GraphQL API, shipped its first production phase (Mar 2019).
+- As the second developer, contributed to exponential growth (1,000 projects in Aug 2015 to 10,000 in Jul 2021; two to eight developers; six to 50 employees): onboarded, mentored, and trained the new engineers; refined the team's workflows as headcount grew while preserving the startup's passionate, empathetic culture; and wrote the technical and dev-culture blog posts used in developer recruiting.
+- Extended and hardened the Kickstarter and Indiegogo sync that imported projects, rewards, and backers into the Pledge Manager; neither platform offered creators a public API, so it relied on web scraping and creator-authorized OAuth. As BackerKit's developer on Kickstarter's partner GraphQL API, shipped its first production phase (2019).
 - Built and maintained API integrations with PayPal, Stripe, inventory, fulfillment, and postage services, email delivery systems, Salesforce, and Facebook; found and fixed the root causes of email-deliverability issues and built a system gathering deliverability statistics by client, time, and recipient domain.
 - Led the Rails 5.2 → 6.0 upgrade (2019) and did the Ruby 2.6 → 3.0 upgrades (2020 – 2021); moved CI to Semaphore 2.0 and configured the testing, CI, and deployment pipelines behind daily Heroku deploys.
 
@@ -115,4 +117,4 @@ Family worldschooling: backpacked nine countries and five continents, teaching t
 
 ---
 
-*Full CV at [johnrandall.com](https://johnrandall.com/)*
+*Full curriculum vitae at [johnrandall.com](https://johnrandall.com/)*

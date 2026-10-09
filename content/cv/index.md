@@ -5,9 +5,9 @@ description: "Curriculum vitae of John Randall."
 url: "/cv/"
 pdf: "/cv/john-randall-cv.pdf"
 pdf_pages: 5
-words: 3283
+words: 3267
 json: "/cv/john-randall-cv.json"
-lastmod: "2026-10-08"
+lastmod: "2026-10-09"
 draft: false
 hidemeta: true
 ShowReadingTime: false
@@ -20,7 +20,7 @@ comments: false
 ---
 
 <p class="cv-downloads">
-<span class="cv-revised">Revised 2026-10-08</span>
+<span class="cv-revised">Revised 2026-10-09</span>
 <a href="/cv/john-randall-cv.pdf" title="PDF, 5 pages"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> PDF <small>(5 pages)</small></a>
 <a href="/cv/john-randall-cv.json" title="JSON Resume"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> JSON Resume</a>
 </p>
@@ -29,15 +29,17 @@ See also: [Full CV](/cv/full/)
 Montclair, NJ · john@johnrandall.com · johnrandall.com
 [linkedin.com/in/johntrandall](https://linkedin.com/in/johntrandall) · [github.com/johntrandall](https://github.com/johntrandall)
 
-Senior full-stack, product-focused software engineer with proven experience providing technical and process leadership in highly collaborative environments. Eight years on small Ruby on Rails teams (BackerKit, OpsLevel), leading team process and planning, and training other engineers. Agentic engineer: builds AI-driven systems with coding agents under human-owned specs, review, and tests, with a human operator approving anything consequential. Mission-focused polymath with a background in software engineering, law and technology policy, and audio and media production.
+Senior full-stack, product-focused software engineer with proven experience providing technical and process leadership in highly collaborative environments. Eight years on small Ruby on Rails teams (BackerKit, OpsLevel), contributing to the platform's growth from 1,000 to 10,000 projects, leading team process and planning, and training other engineers. Agentic engineer: builds AI-driven systems with coding agents under human-owned specs, review, and tests, with a human operator approving anything consequential. Mission-focused polymath with a background in software engineering, law and technology policy, and audio and media production.
 
 ## Engineering skills
 
 **AI and agentic engineering:** AI coding agents, multi-agent orchestration, agent safety guardrails, MCP server development, LLM integration, human-in-the-loop workflows, scheduled autonomous agents
 
-**Software engineering:** Ruby, Ruby on Rails, JavaScript, TypeScript, Python, PostgreSQL, MySQL, Redis, Elasticsearch, GraphQL, REST APIs, RSpec, pytest, background job processing, Heroku, AWS, Docker, GitLab CI, third-party API integration, private and undocumented APIs, web scraping
+**Software engineering:** Ruby, Ruby on Rails, JavaScript, TypeScript, Python, PostgreSQL, MySQL, Redis, Elasticsearch, GraphQL, REST APIs, RSpec, pytest, background job processing, Heroku, AWS, Docker, GitLab CI, third-party API integration, private and undocumented APIs, web scraping, Sinatra, test-driven development
 
-**People and process:** tech leadership, mentoring and training engineers, pair programming, code review, agile development, retrospectives, requirements writing, ticket sequencing and dependency planning, ticket and MR sizing, spike and proof-of-concept work, cross-team collaboration, architecture decision records
+**People and process:** tech leadership, mentoring and training engineers, pair programming, code review, agile development, retrospectives, requirements writing, ticket sequencing and dependency planning, ticket and MR sizing, spike and proof-of-concept work, cross-team collaboration, architecture decision records, early-stage startups
+
+**Law and policy:** intellectual property, copyright law, cyberlaw, privacy law, First Amendment, telecommunications policy, public policy
 
 ---
 
@@ -50,7 +52,7 @@ Senior full-stack, product-focused software engineer with proven experience prov
 - **JRVIS**, AI-assisted information-flow system running administration across family finance and health, rental bookkeeping and property operations, household logistics, home automation, nonprofit IT, and self-hosted infrastructure. Underneath: a guarded multi-agent harness (324 skills, 35 roles, 47 pre-action policy hooks), with secrets released only through a credential manifest the human operator approves once.
   - **Intake and document sorting:** captures email, texts, scanned mail, and meeting notes; every item is triaged and filed by domain, scans going through OCR and LLM classification into a reviewed document store (Info Sorter) scored against a labeled corpus; agents do the follow-up, a human operator approving anything consequential.
   - **Scheduled agents:** 34 run hourly to weekly across infrastructure monitoring and bookkeeping, behind run locks, entry gates, and smoke tests.
-  - **Knowledge base and memory:** a personal knowledge-management system the agents read before they act: PARA-organized storage, a DEVONthink document store, and Obsidian vaults; a layered knowledge model (research → decisions → procedures → agents) of 137 architecture decision records, 78 procedures, and 30 inventories; 324 reusable agent skills; and a self-hosted memory server read at the start of every session.
+  - **Knowledge base and memory:** a personal knowledge-management system the agents read before they act: PARA-organized storage, a DEVONthink document store, and Obsidian vaults; a layered knowledge model (research → decisions → procedures → agents) of 137 architecture decision records, 78 procedures, and 30 inventories; and a self-hosted memory server read at the start of every session.
 
 **Business automation products**
 - **Portal Gopher** signs into 19 vendors' secure websites and email accounts to collect bills and statements, drawing credentials from programmatically provisioned password-manager environments and handling password and SMS two-factor logins.
@@ -58,11 +60,11 @@ Senior full-stack, product-focused software engineer with proven experience prov
 
 **Self-hosted infrastructure**
 - **Infrastructure as code:** 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer over a Tailscale network, serving 69 MCP servers to the agents; governed by 137 architecture decision records.
-- **macOS VM test lab:** ephemeral macOS virtual machines (Tart) for testing Mac software and agents, with a wrapper that lets agents clone, boot, test, and tear down VMs safely.
+- **macOS VM test lab:** ephemeral macOS virtual machines (Tart) for testing Mac software and agents.
 
 **Reverse engineering and agent tools**
 - **OmniPlan and OmniGraffle file formats:** enabled agents to work with GUI applications by reverse-engineering closed-source application file formats; published the OmniPlan format spec, Python tooling, and MCP server.
-- **Visualization and diagrams as code:** C4 architecture models in Structurizr DSL (patched fork of the c4hero visual C4 editor, upstream feature PR); Mermaid, D2, PlantUML, and Graphviz rendered to SVG on save; Grafana dashboards over InfluxDB.
+- **Visualization and diagrams as code:** C4 architecture models in Structurizr DSL; Mermaid, D2, PlantUML, and Graphviz rendered to SVG on save.
 
 **Open source**
 - Merged 28 pull requests into 10 third-party projects, including Intuit's official QuickBooks Online MCP server (four, including schema validation, sub-account creation, and account re-parenting) and a macOS Messages MCP server (eleven, including tested fixes for AppleScript-injection vulnerabilities and race conditions).
@@ -74,13 +76,11 @@ Family worldschooling: backpacked nine countries and five continents, multi-day 
 *Real estate rental business · Montclair, NJ*
 
 - Acquired four properties and built a rental business of long-term residences and a short-term vacation rental: the first two in 2010 and 2016, then formalized and expanded the business from 2023 to 2025, forming its LLCs and acquiring two more, including the short-term vacation rental.
-- Self-managed general contractor on renovations: hired and coordinated trades, and self-performed much of the work: roofs, kitchens, bathrooms, basements, electrical, smart-home installations, drainage, and flood remediation.
+- Self-managed general contractor on renovations: hired and coordinated trades, and self-performed much of the work.
 - From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows, working from the business's playbook, procedures, and property and vendor knowledge, that route issues to the on-call property manager and vendors through agent-drafted, owner-approved emails, with automated tenant updates as issues resolve. Hands-off ownership on a monthly playbook: two hours a week.
 
 ### OpsLevel · Senior Software Developer · Jun 2022 – Sep 2023
 *Internal developer portal / service catalog · Series A startup · Rails, MySQL, Redis, Elasticsearch · Toronto (remote)*
-
-Joined three months after the $15M Series A.
 
 - Tech lead for Service Detection (launched Jan 2023): scanned customers' git repositories and fed detected services into the catalog, replacing hand-authored service definitions (in [OpsLevel's launch case study](https://www.opslevel.com/resources/build-your-catalog-with-service-detection), Duolingo imported 315 services, 97% of its architecture, in nine minutes).
 - Set the team's tone: made asking for help easy, moved discussion onto voice calls, drew out the quieter engineers, and made pair programming a habit, until team organization and technical planning were a group effort; set the bar for ticket writing so more work ran in parallel with less thrash.
@@ -96,7 +96,7 @@ Joined three months after the $15M Series A.
 - On an eight-developer team, transformed a fledgling Rails and JavaScript project into the leading crowdfunding pledge-management ecosystem:
   - **BackerKit Pledge Manager**: invented the post-crowdfunding-platform pledge-management industry; served 10,400 projects raising $340 million from 16.5 million backers, growing from 1,000 projects (Aug 2015) to 10,000 (Jul 2021).
   - **BackerKit Launch** and **BackerKit Marketing**: direct-marketing tools that drove $3 million in conversions for over 150 creators and $32 million for 1,100 creators, the latter grown from a manual process into a SaaS platform.
-- Anchored the engineering team through growth from two to eight developers and six to 50 employees, as the second developer: onboarded, mentored, and trained the new engineers; refined the team's workflows as headcount grew; and wrote the technical and dev-culture blog posts used in developer recruiting.
+- As the second developer, contributed to the platform's exponential growth, from two to eight developers and six to 50 employees: onboarded, mentored, and trained the new engineers; refined the team's workflows as headcount grew while preserving its passionate, empathetic startup culture; and wrote the technical and dev-culture blog posts used in developer recruiting.
 - Extended and hardened the Kickstarter and Indiegogo sync that imported projects, rewards, and backers into the Pledge Manager. Neither platform offered creators a public API, so the sync relied on web scraping and creator-authorized OAuth, with retries and error monitoring for when the platforms changed.
 - As BackerKit's developer on Kickstarter's partner GraphQL API (beta), shipped its first production phase (public project import, Mar 2019) and mapped the backer data model for the authenticated phase.
 - Built and maintained API integrations with PayPal, Stripe, inventory and fulfillment systems, postage services, email delivery systems, Salesforce, and Facebook.
@@ -116,7 +116,7 @@ Brought agile and version-control practices to the team and backfilled its unit 
 
 ### Roosevelt Institute · Program Manager, Telecommunications Equality Project · Feb 2013 – Jan 2014
 *New York, NY*
-- Managed a policy agenda on network neutrality and equal access to high-speed internet infrastructure.
+- Leveraged a deep understanding of telecommunications technology and policy issues to manage a policy agenda on network neutrality and equal access to high-speed internet infrastructure.
 - United loose coalitions of advocacy groups against state telecommunications deregulation and anti-municipal-network bills driven by the American Legislative Exchange Council (ALEC).
 - Coordinated a distributed team of telecommunications industry analysts, legal researchers, and advocates in public messaging and appeals to NY and NJ state utility commissions, resulting in the investigations sought into Verizon NY's illegal cross-subsidizations.
 - As trusted deputy to Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy), prepared her for television, radio, and podcast appearances with same-day research memos, and researched her major conference keynotes, law review articles, and bi-weekly columns for Wired, Bloomberg View, and the New York Times.
@@ -173,8 +173,8 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 - Directed web development and media, audio, and music production for award-winning web, game, film, television, radio, podcast, and commercial music projects, mostly in education and civil- and human-rights advocacy. Clients included the ACLU, American Friends Service Committee (AFSC), Amnesty International, The Ella Baker Center for Human Rights, Columbia Law School's Human Rights Institute, Witness, and Human Rights Watch. Pro bono projects included TearItDown (Amnesty International), *I Can End Deportation*, and the pro bono films below.
 - Recorded live shows by Freestyle Love Supreme, the improvisational hip-hop troupe co-founded by Lin-Manuel Miranda that later ran on Broadway (2019), and built them into the interactive and linear sound design of its promotional website (2006).
 - **Film credits** (mix, sound design, music): [*Brooklyn Lobster*](https://www.imdb.com/title/tt0401591/fullcredits/) (2005, presented by Martin Scorsese; Official Selection, Toronto and Hamptons International Film Festivals), *Peace of Mind* (1999; [Hamptons and Canyonlands awards](https://www.imdb.com/title/tt0263849/awards/)), [*The Glorious Mustache Challenge*](https://www.imdb.com/title/tt0805538/fullcredits/) (2006; music composition and production), and ten other documentary and short films, 1999 – 2007.
-- **The Jettsonz (Jettsonz Inc.), Newark, NJ (2004 – 2005):** music production, recording, and mix assistant on Nina Sky's "Move Ya Body" (feat. Jabba; Universal Records, 2004): [Billboard Hot 100 #4](https://www.billboard.com/artist/nina-sky/chart-history/hsi/), Hot Dance Airplay #1; [certified Gold in the US (RIAA)](https://www.riaa.com/gold-platinum/?tab_active=default-award&se=nina+sky) and UK (BPI), Platinum in New Zealand. Coordinated a recording-studio build, advising on $80,000 of equipment and construction purchases, and trained the production team to use it; remixes of Ray Charles and Carlos Santana.
-- **WarpWhistle Music LLC, co-founder and managing partner (Mar 2005 – May 2006):** directed musicians, composers, audio engineers, producers, and sales representatives producing music for national radio and television advertising; negotiated intellectual property contracts; managed agency and post-production relationships.
+- **The Jettsonz (Jettsonz Inc.), Newark, NJ (2004 – 2005):** music production, recording, and mix assistant on Nina Sky's "Move Ya Body" (feat. Jabba; Universal Records, 2004): [Billboard Hot 100 #4](https://www.billboard.com/artist/nina-sky/chart-history/hsi/), year-end #22, Hot Dance Airplay #1; [certified Gold in the US (RIAA)](https://www.riaa.com/gold-platinum/?tab_active=default-award&se=nina+sky) and UK (BPI), Platinum in New Zealand. Coordinated a recording-studio build and trained the production team to use it; remixes of Ray Charles and Carlos Santana.
+- **WarpWhistle Music LLC, co-founder and managing partner (Mar 2005 – May 2006):** directed musicians, composers, audio engineers, producers, and sales representatives producing music for national radio and television advertising; negotiated and authored intellectual property and licensing contracts; managed agency and post-production relationships.
 - **RedRover, founder, manager, composer, and touring musician (1995 – 2004):** founded the band in high school; touring from 1999, booked and managed media campaigns and two national tours; negotiated recording contracts and music licensing; performed original material in more than 450 appearances as indie/punk/emo vocalist and guitarist; produced recordings.
 
 ### Grey Worldwide (WPP Group) · Lead Audio Engineer · Mar 2000 – Jun 2006
@@ -191,7 +191,7 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 ### General Assembly · Web Development Immersive, 12 weeks · 2014
 
 ### Brooklyn Law School · J.D., cum laude · 2012
-- Top 10% of class; Certificate in Intellectual Property, Media & Information Law; CALI Excellence for the Future Awards (highest grade in class): Internet Law; Intellectual Property Colloquium; Carswell Scholarship, Centennial Grant, Dean's Merit Scholarship; Webmaster, then Technology Secretary, Brooklyn Law School ACLU.
+- Top 10% of class; Certificate in Intellectual Property, Media & Information Law; CALI Excellence for the Future Awards (highest grade in class): Internet Law; Intellectual Property Colloquium; Carswell Scholarship, Centennial Grant, Dean's Merit Scholarship; Webmaster, then Technology Secretary, Brooklyn Law School ACLU; Brooklyn Law School Student Bar Association: Technology Committee Honorary Member (Fall 2011 – Spring 2012).
 - Bar admission: New York and New Jersey (inactive).
 
 ### New York University · B.S. in Digital Communications & Media, magna cum laude · 2009
@@ -226,7 +226,6 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 
 - [NYC Legal Hack-A-Thon](https://legalhackers.org/our-story/), Brooklyn Law School (April 15, 2012): primary organizer, technical director, and moderator; presented CREATE (copyright education), the PriView Project, and LegalMobNYC (crowdsourcing legal resources for nonprofits).
 - [Open Video Conference](https://cyber.harvard.edu/events/2009/06/openvideo) (inaugural), Open Video Alliance, NYU School of Law (June 19 – 20, 2009): technical stage director, producing the stage program.
-- Organized the *Steal This Film!* screening and discussion with co-director Alan Toner, and co-organized Lawrence Lessig's *Remix* talk (Computers & Society speaker series), New York University (2008).
 
 ---
 
@@ -237,4 +236,4 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 
 ---
 
-*Full CV at [johnrandall.com](https://johnrandall.com/)*
+*Full curriculum vitae at [johnrandall.com](https://johnrandall.com/)*

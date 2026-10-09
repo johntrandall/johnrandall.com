@@ -4,10 +4,10 @@ title: "Curriculum Vitae (Full)"
 description: "Curriculum vitae of John Randall."
 url: "/cv/full/"
 pdf: "/cv/john-randall-cv-full.pdf"
-pdf_pages: 7
-words: 4373
+pdf_pages: 8
+words: 4676
 json: "/cv/john-randall-cv-full.json"
-lastmod: "2026-10-08"
+lastmod: "2026-10-09"
 draft: false
 hidemeta: true
 ShowReadingTime: false
@@ -20,8 +20,8 @@ comments: false
 ---
 
 <p class="cv-downloads">
-<span class="cv-revised">Revised 2026-10-08</span>
-<a href="/cv/john-randall-cv-full.pdf" title="PDF, 7 pages"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> PDF <small>(7 pages)</small></a>
+<span class="cv-revised">Revised 2026-10-09</span>
+<a href="/cv/john-randall-cv-full.pdf" title="PDF, 8 pages"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> PDF <small>(8 pages)</small></a>
 <a href="/cv/john-randall-cv-full.json" title="JSON Resume"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> JSON Resume</a>
 </p>
 See also: [Abridged CV](/cv/)
@@ -29,15 +29,19 @@ See also: [Abridged CV](/cv/)
 Montclair, NJ · john@johnrandall.com · johnrandall.com
 [linkedin.com/in/johntrandall](https://linkedin.com/in/johntrandall) · [github.com/johntrandall](https://github.com/johntrandall)
 
-Senior full-stack, product-focused software engineer with proven experience providing technical and process leadership in highly collaborative environments. Eight years on small Ruby on Rails teams (BackerKit, OpsLevel), leading team process and planning, and training other engineers. Agentic engineer: builds AI-driven systems with coding agents under human-owned specs, review, and tests, with a human operator approving anything consequential. Mission-focused polymath with a background in software engineering, law and technology policy, and audio and media production.
+Senior full-stack, product-focused software engineer with proven experience providing technical and process leadership in highly collaborative environments. Eight years on small Ruby on Rails teams (BackerKit, OpsLevel), contributing to the platform's growth from 1,000 to 10,000 projects, leading team process and planning, and training other engineers. Agentic engineer: builds AI-driven systems with coding agents under human-owned specs, review, and tests, with a human operator approving anything consequential. Mission-focused polymath; earlier careers in technology law and policy (J.D., cum laude) and audio and media production.
 
 ## Engineering skills
 
 **AI and agentic engineering:** AI coding agents, multi-agent orchestration, agent safety guardrails, MCP server development, LLM integration, human-in-the-loop workflows, scheduled autonomous agents
 
-**Software engineering:** Ruby, Ruby on Rails, JavaScript, TypeScript, Python, PostgreSQL, MySQL, Redis, Elasticsearch, GraphQL, REST APIs, RSpec, pytest, background job processing, Heroku, AWS, Docker, GitLab CI, third-party API integration, private and undocumented APIs, web scraping
+**Software engineering:** Ruby, Ruby on Rails, JavaScript, TypeScript, Python, PostgreSQL, MySQL, Redis, Elasticsearch, GraphQL, REST APIs, RSpec, pytest, background job processing, Heroku, AWS, Docker, GitLab CI, third-party API integration, private and undocumented APIs, web scraping, Sinatra, HTML, CSS, test-driven development; earlier work: jQuery, AJAX, Backbone.js, ActionScript
 
-**People and process:** tech leadership, mentoring and training engineers, pair programming, code review, agile development, retrospectives, requirements writing, ticket sequencing and dependency planning, ticket and MR sizing, spike and proof-of-concept work, cross-team collaboration, architecture decision records
+**People and process:** tech leadership, mentoring and training engineers, pair programming, code review, agile development, retrospectives, requirements writing, ticket sequencing and dependency planning, ticket and MR sizing, spike and proof-of-concept work, cross-team collaboration, architecture decision records, user experience design, information architecture, early-stage startups
+
+**Law and policy:** intellectual property, copyright law, trademarks, cyberlaw, privacy law, First Amendment and speech issues, fair use, copyleft licenses, DMCA, CFAA, telecommunications law and policy, public policy, legal research, legal writing, music licensing
+
+**Audio and media production:** audio post production, sound design, music composition, recording and mixing, voice acting
 
 ---
 
@@ -106,7 +110,7 @@ Joined three months after the $15M Series A; during the tenure the company shipp
   - **BackerKit Pledge Manager**: invented the post-crowdfunding-platform pledge-management industry; served 10,400 projects raising $340 million from 16.5 million backers, growing from 1,000 projects (Aug 2015) to 10,000 (Jul 2021).
   - **BackerKit Launch**, a direct-marketing tool that supported over 150 creators in driving $3 million in conversions via 21,000 pledges.
   - **BackerKit Marketing**, grown from a manual process to a full SaaS platform promoting projects from 1,100 creators and driving $32 million in conversions.
-- Anchored the engineering team through growth from two to eight developers and six to 50 employees, as the second developer alongside the co-founding engineer: onboarded, mentored, and trained the new junior and mid-level engineers; refined the team's workflows as headcount grew while keeping its scrappy, iterative approach; contributed to quarterly goal-setting, feature shaping, sprint planning, and acceptance; and wrote the technical and dev-culture blog posts used in developer recruiting.
+- As the second developer alongside the co-founding engineer, contributed to the platform's exponential growth, from two to eight developers and six to 50 employees: onboarded, mentored, and trained the new junior and mid-level engineers; refined the team's workflows as headcount grew while keeping its scrappy, iterative approach and preserving its passionate, empathetic startup culture; contributed to quarterly goal-setting, feature shaping, sprint planning, and acceptance; and wrote the technical and dev-culture blog posts used in developer recruiting.
 - Extended and hardened the Kickstarter and Indiegogo sync that imported projects, rewards, and backers into the Pledge Manager. Neither platform offered creators a public API, so the sync relied on web scraping, Kickstarter's mobile-app API (with creator-authorized OAuth and two-factor login), and internal GraphQL endpoints, with retries and error monitoring for when the platforms changed; campaign-discovery spiders fed Salesforce.
 - As BackerKit's developer on Kickstarter's partner GraphQL API (beta), shipped its first production phase (public project import, Mar 2019), mapped the backer data model for the authenticated phase, and gave Kickstarter's API team design feedback.
 - Built and maintained API integrations with PayPal, Stripe, inventory and fulfillment systems, postage services, email delivery systems, Salesforce, and Facebook.
@@ -132,7 +136,7 @@ Developed methods for using early voice-recognition software to help special-edu
 ### Roosevelt Institute · Program Manager, Telecommunications Equality Project · Feb 2013 – Jan 2014
 *New York, NY*
 
-- Managed a policy agenda on network neutrality and equal access to high-speed internet infrastructure.
+- Leveraged a deep understanding of telecommunications technology and policy issues to manage a policy agenda on network neutrality and equal access to high-speed internet infrastructure.
 - United loose coalitions of advocacy groups against state telecommunications deregulation and anti-municipal-network bills driven by the American Legislative Exchange Council (ALEC).
 - Coordinated a distributed team of telecommunications industry analysts, legal researchers, and advocates in public messaging and appeals to NY and NJ state utility commissions, resulting in the investigations sought into Verizon NY's illegal cross-subsidizations.
 - Prepared Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy) for television, radio, and podcast appearances with same-day research memos, as her trusted deputy.
@@ -147,7 +151,7 @@ Developed methods for using early voice-recognition software to help special-edu
 - Co-drafted amicus brief to the U.S. Supreme Court (*Schwarzenegger v. EMA*, a First Amendment challenge to video game regulation).
 - Enlisted the United Nations media department as a client and led a team advising it on the risks and benefits of releasing its media archive under Creative Commons licenses.
 - Drafted early Terms of Service, End User License Agreement, and Privacy Policy for Diaspora, a federated social networking service, and the same documents, plus trademark applications and trademark and domain-name conflict demand letters, for startups and crowdfunding projects.
-- Founded the PriView Project, a scalable, crowd-sourced architecture for rating website privacy policies to lower the cost of understanding them. Founded and led CREATE (Creative Rights Empowerment Achieved Through Education), an interactive copyright curriculum for arts-focused high schools; won grant funding.
+- Founded the PriView Project, a scalable, crowd-sourced architecture for rating website privacy policies to lower the cost of understanding them, aiming at a database of privacy-policy evaluations accessed through a web-browser plugin. Founded and led CREATE (Creative Rights Empowerment Achieved Through Education), an interactive copyright curriculum for arts-focused high schools; arranged outreach and beta testing in classrooms; won grant funding.
 
 ### Legal Hackers · Co-Founder; Co-Organizer, NYC Legal Hackers meetup · 2012 – 2015
 *New York, NY*
@@ -194,12 +198,12 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 ### Freelance · Web & New Media Producer, Audio Producer, Music Producer, Sound Designer · 1999 – 2009
 *Brooklyn, NY*
 
-- Directed web development and media, audio, and music production for award-winning web, game, film, television, radio, podcast, and commercial music projects, mostly in education and civil- and human-rights advocacy. Clients included the ACLU, American Friends Service Committee (AFSC), Amnesty International, The Ella Baker Center for Human Rights, Columbia Law School's Human Rights Institute, Witness, and Human Rights Watch. Pro bono projects included TearItDown (Amnesty International), *I Can End Deportation*, and the pro bono films below.
+- Directed web development and media, audio, and music production for award-winning web, game, film, television, radio, podcast, and commercial music projects, mostly in education and civil- and human-rights advocacy. Clients included the ACLU, American Friends Service Committee (AFSC), Amnesty International, The Ella Baker Center for Human Rights, Columbia Law School's Human Rights Institute, Witness, and Human Rights Watch. Pro bono projects included TearItDown (Amnesty International), *I Can End Deportation*, and the pro bono films below. TearItDown was an artistic and advocacy website co-produced by Amnesty International, and *I Can End Deportation* (ICED) was a video game highlighting civil liberties abuses in the US immigration system.
 - Recorded live shows by Freestyle Love Supreme, the improvisational hip-hop troupe co-founded by Lin-Manuel Miranda that later ran on Broadway (2019), and built them into the interactive and linear sound design of its promotional website (2006).
 - Earlier: interactive multimedia for Saint Mary's Hospital, Hoboken ("Brain Storming", a Flash movie psychiatric nurses used to teach children about medication effects) and an online catalog of more than 2,000 products for Hartger's Jewelers, Wyckoff (1999 – 2000).
 - **Film credits:**
-  - Documentary features: *Peace of Mind* (1999, dir. Mark Landsman): mix; [Audience Award – Honorable Mention, Most Popular Documentary, Hamptons International Film Festival (1999), and Most Inspirational, Canyonlands Film Festival (2000)](https://www.imdb.com/title/tt0263849/awards/); *Independent Spirits: The Faith and John Hubley Story* (2002, PBS): mix assistant; *Seeds* (2004, dir. Joseph Boyle and Marjan Safinia): audio mix; *The World's Best Prom* (2006): mix; [*The Glorious Mustache Challenge*](https://www.imdb.com/title/tt0805538/fullcredits/) (2006, dir. Jay Della Valle): music composition and production, mix, and music supervision.
-  - Documentary short films: *Books Not Bars* (2001, pro bono): sound cleanup and mix; *September 12th: Life After Tragedy* (2002): recording engineer, mix, and music production; *When Bones Talk* (2004, pro bono): sound cleanup and mix; *Rights on the Line: Vigilantes at the Border* (2005, pro bono, for the ACLU, AFSC, Witness, and Human Rights Watch): mix.
+  - Documentary features: *Peace of Mind* (1999, dir. Mark Landsman): mix; [Audience Award – Honorable Mention, Most Popular Documentary, Hamptons International Film Festival (1999), and Most Inspirational, Canyonlands Film Festival (2000)](https://www.imdb.com/title/tt0263849/awards/); *Independent Spirits: The Faith and John Hubley Story* (2002, PBS): mix assistant; *Seeds* (2004, dir. Joseph Boyle and Marjan Safinia): audio mix; an award-winning film documenting the effects of a joint summer camp experience on Palestinian and Israeli children; *The World's Best Prom* (2006): mix; [*The Glorious Mustache Challenge*](https://www.imdb.com/title/tt0805538/fullcredits/) (2006, dir. Jay Della Valle): music composition and production, mix, and music supervision.
+  - Documentary short films: *Books Not Bars* (2001, pro bono): sound cleanup and mix; a film advocating youth opportunities over youth incarceration; *September 12th: Life After Tragedy* (2002): recording engineer, mix, and music production; *When Bones Talk* (2004, pro bono): sound cleanup and mix; a film documenting the exposure of human rights abuses by forensic anthropologists; *Rights on the Line: Vigilantes at the Border* (2005, pro bono, for the ACLU, AFSC, Witness, and Human Rights Watch): mix; a film illustrating the actions of the Minute Men in border towns.
   - Feature: [*Brooklyn Lobster*](https://www.imdb.com/title/tt0401591/fullcredits/) (2005, presented by Martin Scorsese; dir. Kevin Jordan): mix and sound design; Official Selection at the Toronto and [Hamptons International Film Festivals](https://hamptonsfilmfest.org/views-from-long-island/), and [Long Island Audience Award at the Hamptons](https://www.liherald.com/stories/brooklyn-lobster-comes-ashore-director-is-hopeful-film-will-help-keep-family-business-alive,9248) (2005).
   - Short films: *747* (2005): mix; *Straight Down Flatbush* (2007): sound design and mix; *Learning to See* (2007): soundtrack composition and production, and mix.
 
@@ -214,12 +218,12 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 ### WarpWhistle Music LLC · Co-Founder and Managing Partner · Mar 2005 – May 2006
 *New York, NY*
 
-Directed musicians, composers, audio engineers, producers, and sales representatives producing music for national radio and television advertising. Negotiated intellectual property contracts. Established and managed relationships with advertising agencies and post-production facilities. Built custom intranets to manage digital assets, including a client extranet and per-project composer access.
+Directed musicians, composers, audio engineers, producers, and sales representatives producing music for national radio and television advertising. Negotiated and authored intellectual property and licensing contracts. Established and managed relationships with advertising agencies and post-production facilities. Built custom intranets to manage digital assets, including a client extranet and per-project composer access.
 
 ### The Jettsonz (Jettsonz Inc.) · Freelance Audio Engineer and Consultant · 2004 – 2005
 *Newark, NJ*
 
-- Music production, recording, and mix assistant on Nina Sky's "Move Ya Body" (feat. Jabba; Universal Records, 2004): [Billboard Hot 100 #4](https://www.billboard.com/artist/nina-sky/chart-history/hsi/), Hot Dance Airplay #1; [certified Gold in the US (RIAA)](https://www.riaa.com/gold-platinum/?tab_active=default-award&se=nina+sky) and UK (BPI), Platinum in New Zealand.
+- Music production, recording, and mix assistant on Nina Sky's "Move Ya Body" (feat. Jabba; Universal Records, 2004): [Billboard Hot 100 #4](https://www.billboard.com/artist/nina-sky/chart-history/hsi/), year-end #22, Hot Dance Airplay #1 (chart dates Aug 7 – 21, Sep 4 and Oct 16, 2004); [certified Gold in the US (RIAA)](https://www.riaa.com/gold-platinum/?tab_active=default-award&se=nina+sky) and UK (BPI), Platinum in New Zealand.
 - Coordinated a recording-studio build, advising on $80,000 of equipment and construction purchases, and trained the production team to use it.
 - Remixes of Ray Charles and Carlos Santana.
 
@@ -244,13 +248,13 @@ Composed, programmed, performed, recorded, and mixed music and sound design for 
 - Certificate in Intellectual Property, Media & Information Law.
 - CALI Excellence for the Future Awards (highest grade in class): Internet Law; Intellectual Property Colloquium.
 - Carswell Scholarship, Centennial Grant, Dean's Merit Scholarship.
-- Webmaster, then Technology Secretary, Brooklyn Law School ACLU.
+- Webmaster, then Technology Secretary, Brooklyn Law School ACLU. Brooklyn Law School Student Bar Association: Technology Committee Honorary Member (Fall 2011 – Spring 2012).
 - Bar admission: New York and New Jersey (inactive).
 
 ### New York University · B.S. in Digital Communications & Media, magna cum laude · 2009
 - Concentrations in Web Production and Video Game Design.
-- Alpha Sigma Lambda Dean's Award for Excellence; University Honors Scholar; Dean's List.
-- Student representative, School of Continuing and Professional Studies Strategic Planning Committee.
+- Alpha Sigma Lambda Dean's Award for Excellence, given to one student from the graduating class; University Honors Scholar; Dean's List.
+- Invited student representative, NYU School of Continuing and Professional Studies Dean's Strategic Planning Committee (Fall 2008): advised the Dean on web presence, public image, student retention, and class growth.
 - President, Students for Free Culture at NYU; helped draft the Open University plan to persuade academic institutions to adopt free culture principles.
 
 ### Earlier coursework
@@ -280,6 +284,7 @@ Baruch College, CUNY (music technology, 2002); Drexel University (digital media,
   - Jane Yakowitz, "The New Intrusion", [*Notre Dame Law Review*](https://scholarship.law.nd.edu/ndlr/vol88/iss1/5/), Vol. 88 (2012).
   - Gabriella Coleman, *Coding Freedom: The Ethics and Aesthetics of Hacking*, [Princeton University Press](https://press.princeton.edu/books/paperback/9780691144610/coding-freedom) (2013) (editing assistant, early drafts, 2009).
   - John Palfrey, Urs Gasser, Miriam Simun & Rosalie Fay Barnes, "Youth, Creativity, and Copyright in the Digital Age", [*International Journal of Learning and Media*](https://dash.harvard.edu/handle/1/3128762), Vol. 1, No. 2, MIT Press (2009).
+- Contributed to the Wired Magazine *Listening Post* blog through an invitation-only forum of music-industry technologists (2006 – 2008).
 
 ## Lectures, talks, and panels
 
@@ -313,7 +318,13 @@ Baruch College, CUNY (music technology, 2002); Drexel University (digital media,
 - Advised on the school's network overhaul onto the district network; set up backups before the cutover.
 - Advised on purchasing and deploying classroom, administrative, and teacher-collaboration technology. Helped select a student information system.
 
-### Volunteer and advocacy
+### Volunteer and Advocacy
 
-- Learning About Multimedia Project (LAMP): Associate Board member (2013 – 2015).
-- Founder and executive producer of a local-access news show serving Wayne, NJ (1996 – 1998).
+- Learning About Multimedia Project (LAMP): Associate Board member (2013 – 2015); contributed to direction and fundraising for an organization cultivating media criticism and participation through hands-on learning.
+- Founder and executive producer of a local-access news show serving Wayne, NJ (1996 – 1998). Volunteer pollster, Transportation Alternatives, and activist, Critical Mass.
+
+---
+
+## Honors and awards
+
+- Semi-finalist, Nintendo World Championships, Boston (1990, 11-and-under category).
