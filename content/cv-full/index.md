@@ -5,9 +5,9 @@ description: "Curriculum vitae of John Randall."
 url: "/cv/full/"
 pdf: "/cv/john-randall-cv-full.pdf"
 pdf_pages: 8
-words: 4676
+words: 4697
 json: "/cv/john-randall-cv-full.json"
-lastmod: "2026-10-09"
+lastmod: "2026-10-13"
 draft: false
 hidemeta: true
 ShowReadingTime: false
@@ -20,16 +20,16 @@ comments: false
 ---
 
 <p class="cv-downloads">
-<span class="cv-revised">Revised 2026-10-09</span>
+<span class="cv-revised">Revised 2026-10-13</span>
 <a href="/cv/john-randall-cv-full.pdf" title="PDF, 8 pages"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> PDF <small>(8 pages)</small></a>
 <a href="/cv/john-randall-cv-full.json" title="JSON Resume"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> JSON Resume</a>
 </p>
-See also: [Abridged CV](/cv/)
+See also: [Abridged curriculum vitae](/cv/)
 
 Montclair, NJ · john@johnrandall.com · johnrandall.com
 [linkedin.com/in/johntrandall](https://linkedin.com/in/johntrandall) · [github.com/johntrandall](https://github.com/johntrandall)
 
-Senior full-stack, product-focused software engineer with proven experience providing technical and process leadership in highly collaborative environments. Eight years on small Ruby on Rails teams (BackerKit, OpsLevel), contributing to the platform's growth from 1,000 to 10,000 projects, leading team process and planning, and training other engineers. Agentic engineer: builds AI-driven systems with coding agents under human-owned specs, review, and tests, with a human operator approving anything consequential. Mission-focused polymath; earlier careers in technology law and policy (J.D., cum laude) and audio and media production.
+Senior full-stack, product-focused software engineer with proven experience providing technical and process leadership in highly collaborative environments. Eight years on small Ruby on Rails teams (BackerKit, OpsLevel), contributing to the platform's exponential growth, leading team process and planning, and training other engineers. Agentic engineer: builds AI-driven systems with coding agents under human-owned specs, review, and tests, with a human operator approving anything consequential. Mission-focused polymath; earlier careers in technology law and policy (J.D., cum laude) and audio and media production.
 
 ## Engineering skills
 
@@ -55,7 +55,7 @@ Senior full-stack, product-focused software engineer with proven experience prov
   - **Intake and document sorting:** captures email, texts, scanned mail, and meeting notes; every item is triaged and filed by domain, with scans going through OCR and LLM classification into a reviewed document store (Info Sorter) scored against a labeled real-document corpus; agents do the follow-up, with a human operator approving anything consequential.
   - **Scheduled agents:** 34 run hourly to weekly across infrastructure monitoring and bookkeeping, behind run locks, entry gates, and smoke tests.
   - **Unified task tracking:** a design consolidating more than two dozen ad hoc trackers into one dynamic task tracker, modeling each domain as a state machine (bookkeeping, order fulfillment, 3D-printing workflows, and more), with a human-in-the-loop interface, an acceptance queue in which no agent can accept its own work, and kanban, Gantt, and dependency-chart views.
-  - **Knowledge base and memory:** a personal knowledge-management system the agents read before they act: PARA-organized storage (10 domain drives and 2 intake drives), a DEVONthink document store with a hierarchical taxonomy and review queue, and Obsidian vaults; a layered knowledge model (research → decisions → procedures → agents) of 137 architecture decision records, 78 procedures, and 30 inventories under claim-confidence rules (Verified / Observed / Inferred); 324 reusable agent skills carrying the procedural knowledge; and a self-hosted memory server read at the start of every session.
+  - **Knowledge base and memory:** a personal knowledge-management system the agents read before they act: PARA-organized storage (10 domain drives and 2 intake drives), a DEVONthink document store with a hierarchical taxonomy and review queue, and Obsidian vaults; a layered knowledge model (research → decisions → procedures → agents) of 137 architecture decision records, 78 procedures, and 30 inventories under claim-confidence rules (Verified / Observed / Inferred); reusable agent skills carrying the procedural knowledge; and a self-hosted memory server read at the start of every session.
 
 **Business automation products**
 - **Portal Gopher** signs into 19 vendors' secure websites and email accounts to collect bills and statements; security-focused, it draws credentials from programmatically provisioned password-manager environments and handles password and SMS two-factor logins.
@@ -63,7 +63,7 @@ Senior full-stack, product-focused software engineer with proven experience prov
 - Both built as products: generic engine separate from per-tenant configuration, JSON Schema contracts, tiered pytest suite run from git hooks, operational kill switches, and 16 architecture decision records.
 
 **Self-hosted infrastructure**
-- **Infrastructure as code:** 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer, linked over a Tailscale private network, and serving 69 MCP servers to the agents; governed by 137 architecture decision records.
+- **Infrastructure as code:** 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer, linked over a Tailscale private network, and serving 69 MCP servers to the agents.
 - **macOS VM test lab:** ephemeral macOS virtual machines (Tart) for testing Mac software and agents, with a five-layer image architecture on a Mac host and a wrapper that lets agents clone, boot, test, and tear down VMs safely (per-clone macOS identities, destroy-protected VMs, lineage tracking for every clone). Hosted the OmniPlan and OmniGraffle reverse-engineering round-trips.
 
 **Reverse engineering and agent tools**
@@ -139,8 +139,7 @@ Developed methods for using early voice-recognition software to help special-edu
 - Leveraged a deep understanding of telecommunications technology and policy issues to manage a policy agenda on network neutrality and equal access to high-speed internet infrastructure.
 - United loose coalitions of advocacy groups against state telecommunications deregulation and anti-municipal-network bills driven by the American Legislative Exchange Council (ALEC).
 - Coordinated a distributed team of telecommunications industry analysts, legal researchers, and advocates in public messaging and appeals to NY and NJ state utility commissions, resulting in the investigations sought into Verizon NY's illegal cross-subsidizations.
-- Prepared Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy) for television, radio, and podcast appearances with same-day research memos, as her trusted deputy.
-- Delivered same-day research for her major conference keynotes, law review articles, and bi-weekly columns for Wired, Bloomberg View, and the New York Times.
+- Prepared Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy) for television, radio, and podcast appearances, major conference keynotes, law review articles, and bi-weekly columns for Wired, Bloomberg View, and the New York Times with same-day research memos, as her trusted deputy.
 - Fielded press requests for political comment and technical consultation. Ghostwrote articles and opinion columns for major national publications.
 - Wrote ["Comcast Profits from the Poor with Internet Essentials Deal"](https://www.salon.com/2013/07/10/comcasts_new_partner/), an opinion column that pressured Comcast to double internet access speeds for low-income families.
 
@@ -151,7 +150,7 @@ Developed methods for using early voice-recognition software to help special-edu
 - Co-drafted amicus brief to the U.S. Supreme Court (*Schwarzenegger v. EMA*, a First Amendment challenge to video game regulation).
 - Enlisted the United Nations media department as a client and led a team advising it on the risks and benefits of releasing its media archive under Creative Commons licenses.
 - Drafted early Terms of Service, End User License Agreement, and Privacy Policy for Diaspora, a federated social networking service, and the same documents, plus trademark applications and trademark and domain-name conflict demand letters, for startups and crowdfunding projects.
-- Founded the PriView Project, a scalable, crowd-sourced architecture for rating website privacy policies to lower the cost of understanding them, aiming at a database of privacy-policy evaluations accessed through a web-browser plugin. Founded and led CREATE (Creative Rights Empowerment Achieved Through Education), an interactive copyright curriculum for arts-focused high schools; arranged outreach and beta testing in classrooms; won grant funding.
+- Founded the PriView Project, a scalable, crowd-sourced architecture for rating website privacy policies to lower the cost of understanding them, aiming at a database of privacy-policy evaluations accessed through a web-browser plugin. Founded and led CREATE (Creative Rights Empowerment Achieved Through Education), a balanced, creativity-enabling, interactive copyright curriculum for arts-focused high schools; arranged outreach and beta testing in classrooms; won grant funding.
 
 ### Legal Hackers · Co-Founder; Co-Organizer, NYC Legal Hackers meetup · 2012 – 2015
 *New York, NY*
@@ -193,17 +192,17 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 - Programmed interactive sound designs in ActionScript.
 - Directed technical workflows for the New York and international production offices; designed content-management infrastructure.
 - Designed sound to meet multiple accessibility needs for English-language learners, hearing-impaired students, and emergent readers. Contributed to educational content on civics, government, and legal issues.
-- Honors: Webby Awards Official Honoree (Education, 2006); Adobe Showcase Site of the Day (2007); Flash Forward Film Festival Winner and Animation Award (2007); Interactive Media Awards Best in Class (2007); Technology & Learning Magazine Award of Excellence (2007).
+- Honors: Webby Awards Official Honoree (Education, 2006); Adobe Showcase Site of the Day (2007); Flash Forward Film Festival Winner and Animation Award (2007); Interactive Media Awards Best in Class, Education (x2) and Family (2007); Technology & Learning Magazine Award of Excellence (2007).
 
 ### Freelance · Web & New Media Producer, Audio Producer, Music Producer, Sound Designer · 1999 – 2009
 *Brooklyn, NY*
 
-- Directed web development and media, audio, and music production for award-winning web, game, film, television, radio, podcast, and commercial music projects, mostly in education and civil- and human-rights advocacy. Clients included the ACLU, American Friends Service Committee (AFSC), Amnesty International, The Ella Baker Center for Human Rights, Columbia Law School's Human Rights Institute, Witness, and Human Rights Watch. Pro bono projects included TearItDown (Amnesty International), *I Can End Deportation*, and the pro bono films below. TearItDown was an artistic and advocacy website co-produced by Amnesty International, and *I Can End Deportation* (ICED) was a video game highlighting civil liberties abuses in the US immigration system.
+- Directed web development and media, audio, and music production for award-winning web, game, film, television, radio, podcast, and commercial music projects, mostly in education and civil- and human-rights advocacy. Clients included the ACLU, American Friends Service Committee (AFSC), Amnesty International, The Ella Baker Center for Human Rights, Columbia Law School's Human Rights Institute, Witness, and Human Rights Watch. Pro bono projects included TearItDown (an artistic and advocacy website co-produced by Amnesty International), *I Can End Deportation* (ICED, a video game highlighting civil liberties abuses in the US immigration system), and the pro bono films below.
 - Recorded live shows by Freestyle Love Supreme, the improvisational hip-hop troupe co-founded by Lin-Manuel Miranda that later ran on Broadway (2019), and built them into the interactive and linear sound design of its promotional website (2006).
 - Earlier: interactive multimedia for Saint Mary's Hospital, Hoboken ("Brain Storming", a Flash movie psychiatric nurses used to teach children about medication effects) and an online catalog of more than 2,000 products for Hartger's Jewelers, Wyckoff (1999 – 2000).
 - **Film credits:**
   - Documentary features: *Peace of Mind* (1999, dir. Mark Landsman): mix; [Audience Award – Honorable Mention, Most Popular Documentary, Hamptons International Film Festival (1999), and Most Inspirational, Canyonlands Film Festival (2000)](https://www.imdb.com/title/tt0263849/awards/); *Independent Spirits: The Faith and John Hubley Story* (2002, PBS): mix assistant; *Seeds* (2004, dir. Joseph Boyle and Marjan Safinia): audio mix; an award-winning film documenting the effects of a joint summer camp experience on Palestinian and Israeli children; *The World's Best Prom* (2006): mix; [*The Glorious Mustache Challenge*](https://www.imdb.com/title/tt0805538/fullcredits/) (2006, dir. Jay Della Valle): music composition and production, mix, and music supervision.
-  - Documentary short films: *Books Not Bars* (2001, pro bono): sound cleanup and mix; a film advocating youth opportunities over youth incarceration; *September 12th: Life After Tragedy* (2002): recording engineer, mix, and music production; *When Bones Talk* (2004, pro bono): sound cleanup and mix; a film documenting the exposure of human rights abuses by forensic anthropologists; *Rights on the Line: Vigilantes at the Border* (2005, pro bono, for the ACLU, AFSC, Witness, and Human Rights Watch): mix; a film illustrating the actions of the Minute Men in border towns.
+  - Documentary short films: *Books Not Bars* (2001, pro bono): sound cleanup and mix; a film advocating youth opportunities over youth incarceration (co-produced by the Ella Baker Center for Human Rights, Columbia Law School's Human Rights Institute, Witness, and Human Rights Watch); *September 12th: Life After Tragedy* (2002): recording engineer, mix, and music production; *When Bones Talk* (2004, pro bono): sound cleanup and mix; a film documenting the exposure of human rights abuses by forensic anthropologists (co-produced by Witness and Human Rights Watch); *Rights on the Line: Vigilantes at the Border* (2005, pro bono, for the ACLU, AFSC, Witness, and Human Rights Watch): mix; a film illustrating the actions of the Minute Men in border towns.
   - Feature: [*Brooklyn Lobster*](https://www.imdb.com/title/tt0401591/fullcredits/) (2005, presented by Martin Scorsese; dir. Kevin Jordan): mix and sound design; Official Selection at the Toronto and [Hamptons International Film Festivals](https://hamptonsfilmfest.org/views-from-long-island/), and [Long Island Audience Award at the Hamptons](https://www.liherald.com/stories/brooklyn-lobster-comes-ashore-director-is-hopeful-film-will-help-keep-family-business-alive,9248) (2005).
   - Short films: *747* (2005): mix; *Straight Down Flatbush* (2007): sound design and mix; *Learning to See* (2007): soundtrack composition and production, and mix.
 
@@ -255,7 +254,7 @@ Composed, programmed, performed, recorded, and mixed music and sound design for 
 - Concentrations in Web Production and Video Game Design.
 - Alpha Sigma Lambda Dean's Award for Excellence, given to one student from the graduating class; University Honors Scholar; Dean's List.
 - Invited student representative, NYU School of Continuing and Professional Studies Dean's Strategic Planning Committee (Fall 2008): advised the Dean on web presence, public image, student retention, and class growth.
-- President, Students for Free Culture at NYU; helped draft the Open University plan to persuade academic institutions to adopt free culture principles.
+- President, Students for Free Culture at NYU: promoted a progressive agenda on intellectual property, civil liberties, and information and communications policy; organized and moderated events; helped draft the Open University plan to persuade academic institutions to adopt free culture principles.
 
 ### Earlier coursework
 Baruch College, CUNY (music technology, 2002); Drexel University (digital media, 1998 – 2000).
@@ -292,12 +291,11 @@ Baruch College, CUNY (music technology, 2002); Drexel University (digital media,
   - "What Digital Media Students Need to Know About Copyright Law and the CopyLeft Movement" (February 16, 2012).
   - "DRM and Copyright: The Erosion of Creative Rights" (December 13, 2007).
 - "Is SOPA Constitutional?", panelist and debater, Brooklyn Law School (April 10, 2012).
-- Presenter: CREATE copyright education program, the PriView Project, and LegalMobNYC (crowdsourcing legal resources for nonprofit missions), at the NYC Legal Hack-A-Thon, Brooklyn Law School (April 15, 2012).
 
 ## Conferences and events organized
 
-- [NYC Legal Hack-A-Thon](https://legalhackers.org/our-story/), Brooklyn Law School (April 15, 2012): primary organizer, technical director, presenter, moderator.
-- [Open Video Conference](https://cyber.harvard.edu/events/2009/06/openvideo) (inaugural), Open Video Alliance, NYU School of Law (June 19 – 20, 2009): technical stage director, producing the stage program.
+- [NYC Legal Hack-A-Thon](https://legalhackers.org/our-story/), Brooklyn Law School (April 15, 2012): primary organizer, technical director, presenter (CREATE copyright education program, the PriView Project, and LegalMobNYC, crowdsourcing legal resources for nonprofit missions), moderator.
+- [Open Video Conference](https://cyber.harvard.edu/events/2009/06/openvideo) (inaugural), Open Video Alliance, NYU School of Law (June 19 – 20, 2009): technical stage director, producing the two-day stage program on open standards, online video, and HTML5.
 - *Steal This Film!* screening and discussion with co-director Alan Toner, New York University (November 16, 2008): primary organizer and moderator.
 - Lawrence Lessig, *Remix: Making Art and Commerce Thrive in the Hybrid Economy*, Computers & Society speaker series, New York University (November 9, 2008): co-organizer.
 

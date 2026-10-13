@@ -5,9 +5,9 @@ description: "Curriculum vitae of John Randall."
 url: "/cv/"
 pdf: "/cv/john-randall-cv.pdf"
 pdf_pages: 5
-words: 3267
+words: 3245
 json: "/cv/john-randall-cv.json"
-lastmod: "2026-10-09"
+lastmod: "2026-10-13"
 draft: false
 hidemeta: true
 ShowReadingTime: false
@@ -20,11 +20,11 @@ comments: false
 ---
 
 <p class="cv-downloads">
-<span class="cv-revised">Revised 2026-10-09</span>
+<span class="cv-revised">Revised 2026-10-13</span>
 <a href="/cv/john-randall-cv.pdf" title="PDF, 5 pages"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> PDF <small>(5 pages)</small></a>
 <a href="/cv/john-randall-cv.json" title="JSON Resume"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> JSON Resume</a>
 </p>
-See also: [Full CV](/cv/full/)
+See also: [Full curriculum vitae](/cv/full/)
 
 Montclair, NJ · john@johnrandall.com · johnrandall.com
 [linkedin.com/in/johntrandall](https://linkedin.com/in/johntrandall) · [github.com/johntrandall](https://github.com/johntrandall)
@@ -56,10 +56,10 @@ Senior full-stack, product-focused software engineer with proven experience prov
 
 **Business automation products**
 - **Portal Gopher** signs into 19 vendors' secure websites and email accounts to collect bills and statements, drawing credentials from programmatically provisioned password-manager environments and handling password and SMS two-factor logins.
-- **Cratchit** does the bookkeeping: extracts data with LLMs under cost-control and routing rules, proposes QuickBooks entries for a human operator to approve, reconciles automatically, and escalates the rest to the human operator.
+- **Cratchit** does the bookkeeping: extracts data with LLMs under cost-control and routing rules, proposes QuickBooks entries for a human operator to approve, reconciles automatically, and escalates the rest.
 
 **Self-hosted infrastructure**
-- **Infrastructure as code:** 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer over a Tailscale network, serving 69 MCP servers to the agents; governed by 137 architecture decision records.
+- **Infrastructure as code:** 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer over a Tailscale network, serving 69 MCP servers to the agents.
 - **macOS VM test lab:** ephemeral macOS virtual machines (Tart) for testing Mac software and agents.
 
 **Reverse engineering and agent tools**
@@ -75,7 +75,7 @@ Family worldschooling: backpacked nine countries and five continents, multi-day 
 ### JKRE · Co-Owner & Operator · 2016 – Present
 *Real estate rental business · Montclair, NJ*
 
-- Acquired four properties and built a rental business of long-term residences and a short-term vacation rental: the first two in 2010 and 2016, then formalized and expanded the business from 2023 to 2025, forming its LLCs and acquiring two more, including the short-term vacation rental.
+- Acquired four properties and built a rental business of long-term residences and a short-term vacation rental: the first two in 2010 and 2016, then formalized and expanded the business from 2023 to 2025, forming its LLCs and acquiring two more.
 - Self-managed general contractor on renovations: hired and coordinated trades, and self-performed much of the work.
 - From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows, working from the business's playbook, procedures, and property and vendor knowledge, that route issues to the on-call property manager and vendors through agent-drafted, owner-approved emails, with automated tenant updates as issues resolve. Hands-off ownership on a monthly playbook: two hours a week.
 
@@ -170,7 +170,7 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 ### Freelance · Web & New Media Producer, Audio Producer, Music Producer, Sound Designer, Musician · 1995 – 2009
 *Brooklyn, NY, and Northern New Jersey*
 
-- Directed web development and media, audio, and music production for award-winning web, game, film, television, radio, podcast, and commercial music projects, mostly in education and civil- and human-rights advocacy. Clients included the ACLU, American Friends Service Committee (AFSC), Amnesty International, The Ella Baker Center for Human Rights, Columbia Law School's Human Rights Institute, Witness, and Human Rights Watch. Pro bono projects included TearItDown (Amnesty International), *I Can End Deportation*, and the pro bono films below.
+- Directed web development and media, audio, and music production for award-winning web, game, film, television, radio, podcast, and commercial music projects, mostly in education and civil- and human-rights advocacy. Clients included the ACLU, American Friends Service Committee (AFSC), Amnesty International, The Ella Baker Center for Human Rights, Columbia Law School's Human Rights Institute, Witness, and Human Rights Watch. Pro bono projects included TearItDown, *I Can End Deportation*, and the pro bono films below.
 - Recorded live shows by Freestyle Love Supreme, the improvisational hip-hop troupe co-founded by Lin-Manuel Miranda that later ran on Broadway (2019), and built them into the interactive and linear sound design of its promotional website (2006).
 - **Film credits** (mix, sound design, music): [*Brooklyn Lobster*](https://www.imdb.com/title/tt0401591/fullcredits/) (2005, presented by Martin Scorsese; Official Selection, Toronto and Hamptons International Film Festivals), *Peace of Mind* (1999; [Hamptons and Canyonlands awards](https://www.imdb.com/title/tt0263849/awards/)), [*The Glorious Mustache Challenge*](https://www.imdb.com/title/tt0805538/fullcredits/) (2006; music composition and production), and ten other documentary and short films, 1999 – 2007.
 - **The Jettsonz (Jettsonz Inc.), Newark, NJ (2004 – 2005):** music production, recording, and mix assistant on Nina Sky's "Move Ya Body" (feat. Jabba; Universal Records, 2004): [Billboard Hot 100 #4](https://www.billboard.com/artist/nina-sky/chart-history/hsi/), year-end #22, Hot Dance Airplay #1; [certified Gold in the US (RIAA)](https://www.riaa.com/gold-platinum/?tab_active=default-award&se=nina+sky) and UK (BPI), Platinum in New Zealand. Coordinated a recording-studio build and trained the production team to use it; remixes of Ray Charles and Carlos Santana.
@@ -224,7 +224,7 @@ Created a middle-school curriculum on copyright, fair use, and new-media literac
 
 ## Conferences and events organized
 
-- [NYC Legal Hack-A-Thon](https://legalhackers.org/our-story/), Brooklyn Law School (April 15, 2012): primary organizer, technical director, and moderator; presented CREATE (copyright education), the PriView Project, and LegalMobNYC (crowdsourcing legal resources for nonprofits).
+- [NYC Legal Hack-A-Thon](https://legalhackers.org/our-story/), Brooklyn Law School (April 15, 2012): moderator; presented CREATE (copyright education), the PriView Project, and LegalMobNYC (crowdsourcing legal resources for nonprofits).
 - [Open Video Conference](https://cyber.harvard.edu/events/2009/06/openvideo) (inaugural), Open Video Alliance, NYU School of Law (June 19 – 20, 2009): technical stage director, producing the stage program.
 
 ---

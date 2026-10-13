@@ -36,9 +36,9 @@
         "JRVIS, AI-assisted information-flow system running administration across family finance and health, rental bookkeeping and property operations, household logistics, home automation, nonprofit IT, and self-hosted infrastructure. Underneath: a guarded multi-agent harness (324 skills, 35 roles, 47 pre-action policy hooks), with secrets released only through a credential manifest the human operator approves once. Intake and document sorting: captures email, texts, scanned mail, and meeting notes; every item is triaged and filed by domain, scans going through OCR and LLM classification into a reviewed document store (Info Sorter) scored against a labeled corpus; agents do the follow-up, a human operator approving anything consequential. Scheduled agents: 34 run hourly to weekly across infrastructure monitoring and bookkeeping, behind run locks, entry gates, and smoke tests. Knowledge base and memory: a personal knowledge-management system the agents read before they act: PARA-organized storage, a DEVONthink document store, and Obsidian vaults; a layered knowledge model (research → decisions → procedures → agents) of 137 architecture decision records, 78 procedures, and 30 inventories; and a self-hosted memory server read at the start of every session.",
         "Business automation products",
         "Portal Gopher signs into 19 vendors' secure websites and email accounts to collect bills and statements, drawing credentials from programmatically provisioned password-manager environments and handling password and SMS two-factor logins.",
-        "Cratchit does the bookkeeping: extracts data with LLMs under cost-control and routing rules, proposes QuickBooks entries for a human operator to approve, reconciles automatically, and escalates the rest to the human operator.",
+        "Cratchit does the bookkeeping: extracts data with LLMs under cost-control and routing rules, proposes QuickBooks entries for a human operator to approve, reconciles automatically, and escalates the rest.",
         "Self-hosted infrastructure",
-        "Infrastructure as code: 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer over a Tailscale network, serving 69 MCP servers to the agents; governed by 137 architecture decision records.",
+        "Infrastructure as code: 96 Docker stacks on a Synology NAS, deployed by GitOps through Portainer over a Tailscale network, serving 69 MCP servers to the agents.",
         "macOS VM test lab: ephemeral macOS virtual machines (Tart) for testing Mac software and agents.",
         "Reverse engineering and agent tools",
         "OmniPlan and OmniGraffle file formats: enabled agents to work with GUI applications by reverse-engineering closed-source application file formats; published the OmniPlan format spec, Python tooling, and MCP server.",
@@ -63,7 +63,7 @@
       "startDate": "2016",
       "x-dates": "2016 – Present",
       "highlights": [
-        "Acquired four properties and built a rental business of long-term residences and a short-term vacation rental: the first two in 2010 and 2016, then formalized and expanded the business from 2023 to 2025, forming its LLCs and acquiring two more, including the short-term vacation rental.",
+        "Acquired four properties and built a rental business of long-term residences and a short-term vacation rental: the first two in 2010 and 2016, then formalized and expanded the business from 2023 to 2025, forming its LLCs and acquiring two more.",
         "Self-managed general contractor on renovations: hired and coordinated trades, and self-performed much of the work.",
         "From 2025, automated operations with AI agents and a human operator: Portal Gopher and Cratchit (above) for bills and bookkeeping, plus agent workflows, working from the business's playbook, procedures, and property and vendor knowledge, that route issues to the on-call property manager and vendors through agent-drafted, owner-approved emails, with automated tenant updates as issues resolve. Hands-off ownership on a monthly playbook: two hours a week."
       ]
@@ -231,7 +231,7 @@
       "endDate": "2009",
       "x-dates": "1995 – 2009",
       "highlights": [
-        "Directed web development and media, audio, and music production for award-winning web, game, film, television, radio, podcast, and commercial music projects, mostly in education and civil- and human-rights advocacy. Clients included the ACLU, American Friends Service Committee (AFSC), Amnesty International, The Ella Baker Center for Human Rights, Columbia Law School's Human Rights Institute, Witness, and Human Rights Watch. Pro bono projects included TearItDown (Amnesty International), I Can End Deportation, and the pro bono films below.",
+        "Directed web development and media, audio, and music production for award-winning web, game, film, television, radio, podcast, and commercial music projects, mostly in education and civil- and human-rights advocacy. Clients included the ACLU, American Friends Service Committee (AFSC), Amnesty International, The Ella Baker Center for Human Rights, Columbia Law School's Human Rights Institute, Witness, and Human Rights Watch. Pro bono projects included TearItDown, I Can End Deportation, and the pro bono films below.",
         "Recorded live shows by Freestyle Love Supreme, the improvisational hip-hop troupe co-founded by Lin-Manuel Miranda that later ran on Broadway (2019), and built them into the interactive and linear sound design of its promotional website (2006).",
         "Film credits (mix, sound design, music): Brooklyn Lobster (2005, presented by Martin Scorsese; Official Selection, Toronto and Hamptons International Film Festivals), Peace of Mind (1999; Hamptons and Canyonlands awards), The Glorious Mustache Challenge (2006; music composition and production), and ten other documentary and short films, 1999 – 2007.",
         "The Jettsonz (Jettsonz Inc.), Newark, NJ (2004 – 2005): music production, recording, and mix assistant on Nina Sky's \"Move Ya Body\" (feat. Jabba; Universal Records, 2004): Billboard Hot 100 #4, year-end #22, Hot Dance Airplay #1; certified Gold in the US (RIAA) and UK (BPI), Platinum in New Zealand. Coordinated a recording-studio build and trained the production team to use it; remixes of Ray Charles and Carlos Santana.",
@@ -550,7 +550,7 @@
     },
     {
       "type": "conferences and events organized",
-      "description": "NYC Legal Hack-A-Thon, Brooklyn Law School (April 15, 2012): primary organizer, technical director, and moderator; presented CREATE (copyright education), the PriView Project, and LegalMobNYC (crowdsourcing legal resources for nonprofits).",
+      "description": "NYC Legal Hack-A-Thon, Brooklyn Law School (April 15, 2012): moderator; presented CREATE (copyright education), the PriView Project, and LegalMobNYC (crowdsourcing legal resources for nonprofits).",
       "url": "https://legalhackers.org/our-story/",
       "x-links": [
         {
