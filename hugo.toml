@@ -31,10 +31,10 @@ theme = 'PaperMod'
     name = "Résumé"
   [[params.documents]]
     url = "/cv/"
-    name = "CV"
+    name = "Abridged curriculum vitae"
   [[params.documents]]
     url = "/cv/full/"
-    name = "Full CV"
+    name = "Full curriculum vitae"
 
 # Every document page uses layouts/_default/cv.html. These are content paths
 # (content/cv-full/index.md is /cv-full), not URLs.
