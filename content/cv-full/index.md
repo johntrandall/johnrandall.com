@@ -5,7 +5,7 @@ description: "Curriculum vitae of John Randall."
 url: "/cv/full/"
 pdf: "/cv/john-randall-cv-full.pdf"
 pdf_pages: 8
-words: 4697
+words: 4707
 json: "/cv/john-randall-cv-full.json"
 lastmod: "2026-10-13"
 draft: false
@@ -139,7 +139,7 @@ Developed methods for using early voice-recognition software to help special-edu
 - Leveraged a deep understanding of telecommunications technology and policy issues to manage a policy agenda on network neutrality and equal access to high-speed internet infrastructure.
 - United loose coalitions of advocacy groups against state telecommunications deregulation and anti-municipal-network bills driven by the American Legislative Exchange Council (ALEC).
 - Coordinated a distributed team of telecommunications industry analysts, legal researchers, and advocates in public messaging and appeals to NY and NJ state utility commissions, resulting in the investigations sought into Verizon NY's illegal cross-subsidizations.
-- Prepared Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy) for television, radio, and podcast appearances, major conference keynotes, law review articles, and bi-weekly columns for Wired, Bloomberg View, and the New York Times with same-day research memos, as her trusted deputy.
+- Prepared Susan Crawford (Roosevelt Institute Fellow and Cardozo Law School professor; former co-lead of the Obama–Biden FCC transition team and Special Assistant to the President for Science, Technology, and Innovation Policy) for television, radio, and podcast appearances and delivered same-day research memos for her major conference keynotes, law review articles, and bi-weekly columns for Wired, Bloomberg View, and the New York Times, as her trusted deputy.
 - Fielded press requests for political comment and technical consultation. Ghostwrote articles and opinion columns for major national publications.
 - Wrote ["Comcast Profits from the Poor with Internet Essentials Deal"](https://www.salon.com/2013/07/10/comcasts_new_partner/), an opinion column that pressured Comcast to double internet access speeds for low-income families.
 
@@ -312,7 +312,7 @@ Baruch College, CUNY (music technology, 2002); Drexel University (digital media,
 ### Montclair Community Pre-K · Vice Chair, Technology Committee (volunteer) · 2014 – 2017
 *Nonprofit preschool · Montclair, NJ*
 
-- Rolled out Google Apps for Education, trained staff on it, and migrated the school's file server to Google Drive.
+- Rolled out Google Apps for Education, trained staff on it by leading workshops and providing individual support, and migrated the school's file server to Google Drive.
 - Advised on the school's network overhaul onto the district network; set up backups before the cutover.
 - Advised on purchasing and deploying classroom, administrative, and teacher-collaboration technology. Helped select a student information system.
 
