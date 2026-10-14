@@ -1,0 +1,11 @@
+{
+  "name": "johnrandall-analytics",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/",
+    "deploy:test": "wrangler deploy --env test",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": { "wrangler": "^4" }
+}

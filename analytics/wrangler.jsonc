@@ -1,0 +1,28 @@
+// johnrandall.com analytics Worker. Design: dev-docs/analytics/README.md.
+// database_id is filled in after `wrangler d1 create johnrandall-analytics`.
+{
+  "name": "johnrandall-analytics",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-13",
+  "account_id": "67cc1358f5869075d2abbcf4cc18df1a",
+  "workers_dev": false,
+  "preview_urls": false,
+  "observability": { "enabled": true },
+  "routes": [{ "pattern": "johnrandall.com/*", "zone_id": "52205de820583d2d93c3f427a6948712" }],
+  "d1_databases": [{ "binding": "DB", "database_name": "johnrandall-analytics", "database_id": "FILL-AFTER-CREATE" }],
+  "triggers": { "crons": ["17 4 * * *"] },
+
+  // `wrangler deploy --env test`: the same code on johnrandall.com/__analytics-test/*,
+  // with the prefix stripped before it reaches the origin. No cron.
+  "env": {
+    "test": {
+      "name": "johnrandall-analytics-test",
+      "workers_dev": false,
+      "preview_urls": false,
+      "routes": [{ "pattern": "johnrandall.com/__analytics-test/*", "zone_id": "52205de820583d2d93c3f427a6948712" }],
+      "vars": { "PATH_PREFIX": "/__analytics-test" },
+      "d1_databases": [{ "binding": "DB", "database_name": "johnrandall-analytics", "database_id": "FILL-AFTER-CREATE" }],
+      "observability": { "enabled": true }
+    }
+  }
+}
