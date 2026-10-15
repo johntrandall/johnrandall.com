@@ -91,3 +91,20 @@ test('test prefix is stripped upstream but the logged path keeps it', async () =
   assert.deepEqual(seen, ['https://johnrandall.com/cv/']);
   assert.equal(calls[0][3], '/__analytics-test/cv/');
 });
+
+import { buildDigest, isBot } from '../src/digest.js';
+
+test('digest folds bots, groups by ip, flags downloads', () => {
+  const rows = [
+    { ip: '1.1.1.1', user_agent: 'Mozilla/5.0', kind: 'page', path: '/cv/', tag: 'acme', city: 'Newark', region: 'NJ', country: 'US', as_org: 'Acme Corp' },
+    { ip: '1.1.1.1', user_agent: 'Mozilla/5.0', kind: 'download', path: '/cv/a.pdf', tag: null, city: 'Newark', region: 'NJ', country: 'US', as_org: 'Acme Corp' },
+    { ip: '2.2.2.2', user_agent: 'Googlebot/2.1', kind: 'page', path: '/', tag: null },
+    { ip: '3.3.3.3', user_agent: 'Mozilla/5.0', kind: 'page', path: '/__analytics-test/cv/', tag: 'selftest' },
+  ];
+  const d = buildDigest(rows, new Date('2026-10-16T12:00:00Z'));
+  assert.match(d.message, /1 visitor, 2 hits, 2 bot\/test hits folded/);
+  assert.match(d.message, /Acme Corp .* tag acme · 1 page · downloaded a\.pdf/);
+  assert.equal(d.quiet, false);
+  assert.equal(buildDigest([]).quiet, true);
+  assert.equal(isBot(null), true);
+});

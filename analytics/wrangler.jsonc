@@ -10,7 +10,7 @@
   "observability": { "enabled": true },
   "routes": [{ "pattern": "johnrandall.com/*", "zone_id": "52205de820583d2d93c3f427a6948712" }],
   "d1_databases": [{ "binding": "DB", "database_name": "johnrandall-analytics", "database_id": "90dc45b5-5bad-499f-976c-ab8523f205ef" }],
-  "triggers": { "crons": ["17 4 * * *"] },
+  "triggers": { "crons": ["17 4 * * *", "0 12 * * *"] },
 
   // `wrangler deploy --env test`: the same code on johnrandall.com/__analytics-test/*,
   // with the prefix stripped before it reaches the origin. No cron.
