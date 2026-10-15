@@ -20,3 +20,4 @@ return ISPs, mobile carriers or Zscaler. Hand each recipient their own tagged li
 |---|---|---|---|
 | `selftest` | Analytics builder test traffic (2026-10-15) | test route | 2026-10-15 |
 | `livecheck` | Analytics builder smoke test (2026-10-15) | live | 2026-10-15 |
+| `li` | Anyone who clicks through from John's LinkedIn About (closing line: `johnrandall.com/?t=li`) | live | 2026-10-15 |
