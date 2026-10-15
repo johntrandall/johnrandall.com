@@ -33,6 +33,12 @@ records the licence of every font, icon and logo it serves.
 - **Theme:** PaperMod is still installed (`themes/PaperMod`), but the pages above
   no longer use its templates.
 
+## Analytics
+
+A Cloudflare Worker in `analytics/` logs page views and CV downloads (IP, location, network, tag)
+for John's own use; the site loads no script and sets no cookie. How it works, how to query it and
+how to turn it off: `dev-docs/analytics/README.md`.
+
 ## Licences
 
 ### Font
