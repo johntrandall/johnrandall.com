@@ -21,3 +21,10 @@ return ISPs, mobile carriers or Zscaler. Hand each recipient their own tagged li
 | `selftest` | Analytics builder test traffic (2026-10-15) | test route | 2026-10-15 |
 | `livecheck` | Analytics builder smoke test (2026-10-15) | live | 2026-10-15 |
 | `li` | Anyone who clicks through from John's LinkedIn About (closing line: `johnrandall.com/?t=li`) | live | 2026-10-15 |
+| `bsky` | Bluesky bio (outreach-steward, reserved 2026-10-15; live once John approves the profile texts) | live | reserved |
+| `gh` | GitHub profile (outreach-steward, reserved 2026-10-15; live once John approves the profile texts) | live | reserved |
+| `masto` | Mastodon profile (outreach-steward, reserved 2026-10-15; live once John approves the profile texts) | live | reserved |
+| `hn` | Hacker News about (outreach-steward, reserved 2026-10-15; live once John approves the profile texts) | live | reserved |
+| `reddit` | Reddit bio (outreach-steward, reserved 2026-10-15; live once John approves the profile texts) | live | reserved |
+| `lobsters` | Lobste.rs profile and IRC introduction (outreach-steward, reserved 2026-10-15; live once John approves the profile texts) | live | reserved |
+| `obsidian` | Obsidian forum profile (outreach-steward, reserved 2026-10-15; live once John approves the profile texts) | live | reserved |

@@ -34,6 +34,16 @@ Deploys use the account-wide 1Password item "Cloudflare - API Token (infra-agent
 (`--env test` for the test route). Recorded in admin-technical: `inventories/Services-Inventory.md`,
 section "Cloudflare Workers (public edge)".
 
+## Dashboard (Grafana, no custom software)
+**<https://umbridge.flicker-duckbill.ts.net:3000/d/johnrandall-analytics/>** (tailnet; anonymous viewer, no login).
+Visitors by network and place with what they downloaded, downloads list, activity per day, tagged links,
+countries, pages, and a bots table. Controls at the top: time range, "Ignore my own IP" (John's home IP
+by default), "Bots and scanners" hide/show. Built from the house Grafana on umbridge plus the standard
+Infinity datasource plugin reading D1 through Cloudflare's REST API, so nothing new runs anywhere.
+Datasource `cf-d1-johnrandall-analytics` holds the infra-agent token (encrypted in Grafana; rotate it there
+when the token is rolled). Dashboard definition and generator: admin-technical
+`setup/synology/grafana-dashboards/johnrandall-analytics.{py,json}` (private repo; the JSON names John's IP).
+
 ## Query it
 ```
 cd analytics && set -a && source <manifest env file> && set +a
