@@ -9,7 +9,7 @@
   "preview_urls": false,
   "observability": { "enabled": true },
   "routes": [{ "pattern": "johnrandall.com/*", "zone_id": "52205de820583d2d93c3f427a6948712" }],
-  "d1_databases": [{ "binding": "DB", "database_name": "johnrandall-analytics", "database_id": "FILL-AFTER-CREATE" }],
+  "d1_databases": [{ "binding": "DB", "database_name": "johnrandall-analytics", "database_id": "90dc45b5-5bad-499f-976c-ab8523f205ef" }],
   "triggers": { "crons": ["17 4 * * *"] },
 
   // `wrangler deploy --env test`: the same code on johnrandall.com/__analytics-test/*,
@@ -21,7 +21,8 @@
       "preview_urls": false,
       "routes": [{ "pattern": "johnrandall.com/__analytics-test/*", "zone_id": "52205de820583d2d93c3f427a6948712" }],
       "vars": { "PATH_PREFIX": "/__analytics-test" },
-      "d1_databases": [{ "binding": "DB", "database_name": "johnrandall-analytics", "database_id": "FILL-AFTER-CREATE" }],
+      "triggers": { "crons": [] },
+      "d1_databases": [{ "binding": "DB", "database_name": "johnrandall-analytics", "database_id": "90dc45b5-5bad-499f-976c-ab8523f205ef" }],
       "observability": { "enabled": true }
     }
   }
