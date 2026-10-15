@@ -51,6 +51,11 @@ with the Worker; the site is served directly again. D1 rows stay until the datab
 Pass-through on the test route: PDF body byte-identical (1,159,300 bytes), headers equal apart from
 per-request ones; HTML differs only by Cloudflare's per-request email-obfuscation token. Live
 smoke test 2026-10-15: all site pages 200, unknown paths 404 as before. Rows land with IP, geo and ASN.
+Independent black-box check by a fresh verifier (2026-10-15, no credentials): status, bytes and headers
+equal live vs test prefix for pages, both PDFs, JSON, CSS and a 404; redirects, HEAD, Range (206) and query
+strings unchanged; about 100 requests each way without a Worker-caused error. Its 189 tagged requests
+(`verifier-1792080124*`) all appear in D1 with IP, country and ASN. 404 HTML pages are also logged as
+`page` rows with status 404 (scanner noise); filter on `status = 200` when counting real visits.
 
 ## Privacy
 IP addresses are personal data (GDPR/UK GDPR). Retention is 90 days full, then truncated. The
