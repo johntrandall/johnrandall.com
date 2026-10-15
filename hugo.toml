@@ -6,6 +6,9 @@ title = 'John Randall'
 # layouts/_default/cv.html) and stylesheet (assets/css/site.css).
 theme = 'PaperMod'
 
+[permalinks]
+  posts = '/posts/:slug/'   # no date in the path; see CLAUDE.md (John 2026-10-15)
+
 [params]
   tagline = "Software engineer in Montclair, NJ."
   description = "John Randall, software engineer in Montclair, NJ."
