@@ -4,6 +4,8 @@
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Scratch.Get "docName" | default .Title }} · {{ site.Title }}{{ end }}</title>
 <meta name="description" content="{{ if .IsHome }}{{ site.Params.description }}{{ else }}{{ .Description | default site.Params.description }}{{ end }}">
 <link rel="canonical" href="{{ .Permalink }}">
+{{/* Mastodon profile verification (John, 2026-10-15: "Yes, both"). Must name the profile URL exactly; the Mastodon Website field links back untagged. */}}
+<link rel="me" href="https://hachyderm.io/@johntrandall">
 <link rel="preload" href="{{ "fonts/carlito-regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 {{ $css := resources.Get "css/site.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
