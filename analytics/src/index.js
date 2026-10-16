@@ -56,13 +56,15 @@ export default {
     return response;
   },
 
-  // Retention: keep full IPs for 90 days, then truncate (IPv4 to /24, IPv6 to /48).
+  // Retention (John, 2026-10-15): full IPs for 3 years, then truncated (IPv4 to /24,
+  // IPv6 to /48); rows deleted after 10 years. Runs daily in small batches.
   async scheduled(event, env) {
     if (event.cron === DIGEST_CRON) return sendDigest(env);
-    const cutoff = new Date(Date.now() - 90 * 86400e3).toISOString();
+    const days = (n) => new Date(Date.now() - n * 86400e3).toISOString();
+    await env.DB.prepare('DELETE FROM hits WHERE ts < ?').bind(days(10 * 365)).run();
     const { results } = await env.DB.prepare(
       'SELECT id, ip FROM hits WHERE ts < ? AND ip_truncated = 0 AND ip IS NOT NULL LIMIT 500',
-    ).bind(cutoff).all();
+    ).bind(days(3 * 365)).all();
     if (!results.length) return;
     const update = env.DB.prepare('UPDATE hits SET ip = ?, ip_truncated = 1 WHERE id = ?');
     await env.DB.batch(results.map((r) => update.bind(truncateIp(r.ip), r.id)));

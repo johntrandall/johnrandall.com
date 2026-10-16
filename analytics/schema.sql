@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS hits (
   path TEXT NOT NULL,
   tag TEXT,                    -- ?t= value, see dev-docs/analytics/tags.md
   ip TEXT,
-  ip_truncated INTEGER NOT NULL DEFAULT 0,  -- 1 once the 90-day retention job has truncated ip
+  ip_truncated INTEGER NOT NULL DEFAULT 0,  -- 1 once the retention job has truncated ip (3 years)
   city TEXT, region TEXT, country TEXT,
   asn INTEGER, as_org TEXT, colo TEXT,
   referrer TEXT, user_agent TEXT,

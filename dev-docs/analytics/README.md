@@ -19,7 +19,7 @@ analytics, and for agents that publish documents or change links on this site.
   live path to check pass-through. Its rows keep the prefix in `path`.
 - **Crons (UTC)**: `0 12 * * *` sends the daily digest by Pushover (skipped when empty; secrets
   `PUSHOVER_TOKEN` / `PUSHOVER_USER` come from the 1Password item "Pushover - JRVIS Health
-  Check"); `17 4 * * *` truncates IPs older than 90 days (IPv4 to /24, IPv6 to /48).
+  Check"); `17 4 * * *` runs retention: full IPs for 3 years, then truncated (IPv4 to /24, IPv6 to /48); rows deleted after 10 years (John, 2026-10-15).
 - **Local digest file**: `node analytics/bin/site-digest.mjs [hours]` writes
   `dev-docs/analytics/digests/YYYY-MM-DD.md` (gitignored: it describes visitors).
 - **Tagged links**: `?t=<tag>`; convention and the table of tags in [tags.md](tags.md).
@@ -68,7 +68,7 @@ strings unchanged; about 100 requests each way without a Worker-caused error. It
 `page` rows with status 404 (scanner noise); filter on `status = 200` when counting real visits.
 
 ## Privacy
-IP addresses are personal data (GDPR/UK GDPR). Retention is 90 days full, then truncated. The
+IP addresses are personal data (GDPR/UK GDPR). Retention: full IPs 3 years, then truncated; rows deleted after 10 years (John's decision, 2026-10-15). The
 site shows no notice today. A proposed notice is in [privacy-notice-proposal.md](privacy-notice-proposal.md);
 John decides whether it publishes (it is a site change: the page would be `content/privacy/index.md`
 and a footer link, coordinated with the site designer who owns `layouts/`).
