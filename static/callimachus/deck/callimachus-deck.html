@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>callimachus deck</title>
+<meta name="description" content="callimachus, the pitch: what it is and how it works, in 20 slides.">
+<style>/* callimachus brand tokens. The site, the deck and the video inline this file; edit here, then rebuild.
+   Fonts are system faces only (macOS and iOS ship all of them), so every page opens offline. */
+:root {
+  --papyrus: #F5EEDF;       /* page */
+  --papyrus-deep: #EBDFC6;  /* bands, cards, the scroll end */
+  --vellum: #FBF7EE;        /* raised cards */
+  --ink: #1C2533;           /* text, lines */
+  --ink-soft: #4E5868;      /* secondary text */
+  --rule: #D6C7A8;          /* hairlines */
+  --lapis: #2D4A8A;         /* primary: links, the system itself */
+  --terracotta: #9A421E;    /* accent text: people, the tag's label */
+  --terracotta-fill: #B9532C; /* the tag itself, accent fills */
+  --nile: #266358;          /* healthy */
+  --ochre: #7E5B0E;         /* degraded (text-safe ochre) */
+  --ochre-fill: #E3B652;    /* degraded fills */
+  --carmine: #A3332B;       /* stopped, the fuse */
+  --mark-edge: #1C2533;     /* the logo's outline: ink on light, deep papyrus on dark */
+  --code-bg: #1C2533;
+  --code-ink: #EDE4D1;
+  --shadow: 0 1px 0 rgba(28,37,51,.06), 0 8px 24px -12px rgba(28,37,51,.25);
+
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --display: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, 'JetBrains Mono', Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --papyrus: #10151D; --papyrus-deep: #18202B; --vellum: #1D2633; --ink: #EDE4D1; --ink-soft: #B3AA98;
+    --rule: #2E3846; --lapis: #8FA9E8; --terracotta: #E5865C; --terracotta-fill: #D8693D; --nile: #62B8A9; --ochre: #E3B652; --ochre-fill: #C99A2E;
+    --carmine: #E8766B; --mark-edge: #C9B48A; --code-bg: #0B0F15; --code-ink: #EDE4D1; --shadow: 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"] {
+  --papyrus: #10151D; --papyrus-deep: #18202B; --vellum: #1D2633; --ink: #EDE4D1; --ink-soft: #B3AA98;
+  --rule: #2E3846; --lapis: #8FA9E8; --terracotta: #E5865C; --terracotta-fill: #D8693D; --nile: #62B8A9; --ochre: #E3B652; --ochre-fill: #C99A2E;
+  --carmine: #E8766B; --mark-edge: #C9B48A; --code-bg: #0B0F15; --code-ink: #EDE4D1; --shadow: 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0B0F15}
+body{font-family:var(--serif);color:var(--ink);overflow:hidden}
+.deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+.slide{position:absolute;width:1920px;height:1080px;background:var(--papyrus);color:var(--ink);padding:96px 120px 90px;display:none;transform-origin:center center;overflow:hidden}
+.slide.on{display:block}
+.slide.dark{--papyrus:#10151D;--papyrus-deep:#18202B;--vellum:#1D2633;--ink:#EDE4D1;--ink-soft:#B3AA98;--rule:#2E3846;--lapis:#8FA9E8;--terracotta:#E5865C;--terracotta-fill:#D8693D;--nile:#62B8A9;--ochre:#E3B652;--ochre-fill:#C99A2E;--carmine:#E8766B;--mark-edge:#C9B48A}
+.foot{position:absolute;left:120px;right:120px;bottom:44px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:18px;letter-spacing:2px;color:var(--ink-soft);text-transform:uppercase}
+.foot .m{display:flex;align-items:center;gap:12px}
+.foot svg{width:34px;height:30px}
+.eyebrow{font-family:var(--mono);font-size:22px;letter-spacing:4px;text-transform:uppercase;color:var(--terracotta);margin:0 0 22px}
+h1,h2{font-family:var(--display);font-weight:600;margin:0;line-height:1.06;letter-spacing:-.5px}
+h1{font-size:118px}
+h2{font-size:76px;max-width:1500px}
+h2 em,h1 em{color:var(--terracotta)}
+p{font-size:34px;line-height:1.45;margin:0 0 20px;max-width:1450px}
+.lede{color:var(--ink-soft);font-size:38px;margin-top:30px}
+.cols{display:grid;gap:36px;margin-top:56px}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}.c6{grid-template-columns:repeat(6,1fr);gap:20px}.c7{grid-template-columns:repeat(7,1fr);gap:16px}.c7 .stage{padding:26px 18px}.c7 .stage b{font-size:31px}.c8{grid-template-columns:repeat(8,1fr);gap:14px}.c8 .stage{padding:24px 16px}.c8 .stage b{font-size:28px}.c8 .stage span{font-size:21px}
+.stage.coming{border-style:dashed;border-color:var(--ochre-fill)}.soon{display:inline-block;font-family:var(--mono);font-size:16px;letter-spacing:2px;text-transform:uppercase;color:var(--ochre);border:1.5px solid var(--ochre-fill);border-radius:999px;padding:2px 12px;vertical-align:4px;margin-left:10px}
+.tree{font-family:var(--mono);font-size:25px;line-height:1.62;background:var(--vellum);border:1.5px solid var(--rule);border-radius:22px;padding:30px 36px;margin:0;white-space:pre}.tree .a{color:var(--terracotta);font-weight:600}.tree .b{color:var(--lapis);font-weight:600}.tree .v{color:var(--ink-soft)}
+.flowrow{display:grid;grid-template-columns:1fr 70px 1fr 70px 1.5fr;align-items:center;margin-top:60px}.flowrow .arr{font-family:var(--sans);font-size:48px;color:var(--lapis);text-align:center}.flowrow .box{text-align:center}.flowrow .box.sys{background:var(--lapis);border-color:var(--lapis)}.flowrow .box.sys h3,.flowrow .box.sys p{color:var(--papyrus)}
+.phones{display:flex;gap:16px;justify-content:center;margin-top:22px}.phone{width:78px;height:132px;border:3px solid var(--ink-soft);border-radius:16px;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:17px;color:var(--ink-soft);text-align:center;line-height:1.2}.phone.live{border-color:var(--nile);color:var(--nile);font-weight:700}
+.box.pass{border-left:9px solid var(--nile)}.box.flag{border-left:9px solid var(--ochre-fill)}.box.block{border-left:9px solid var(--carmine)}
+.box{background:var(--vellum);border:1.5px solid var(--rule);border-radius:22px;padding:34px 34px 30px}
+.box .k{font-family:var(--mono);font-size:18px;letter-spacing:2.5px;text-transform:uppercase;color:var(--terracotta);display:block;margin-bottom:12px}
+.box h3{font-family:var(--display);font-size:40px;margin:0 0 12px;line-height:1.1}
+.box p{font-size:27px;color:var(--ink-soft);margin:0;line-height:1.42}
+.stage{background:var(--vellum);border:1.5px solid var(--rule);border-radius:20px;padding:30px 24px;position:relative}
+.stage .n{font-family:var(--mono);font-size:20px;color:var(--terracotta)}
+.stage b{display:block;font-family:var(--display);font-size:38px;margin:8px 0 12px}
+.stage span{font-size:24px;line-height:1.4;color:var(--ink-soft);display:block}
+.stage:not(:last-child)::after{content:"";position:absolute;right:-20px;top:58px;width:20px;height:3px;background:var(--lapis)}
+.dg-wrap{margin-top:34px;height:760px;display:flex;align-items:center;justify-content:center}
+.dg-wrap svg{max-width:100%;max-height:100%;width:auto;height:100%}
+.dg-wrap.side{height:820px;margin-top:0}
+.code{background:#1C2533;color:#EDE4D1;border-radius:22px;padding:36px 40px;font-family:var(--mono);font-size:27px;line-height:1.62;margin:0}
+.code .k{color:#9DB6F0}.code .n{color:#E3B652}.code .c{color:#8C93A0;font-style:italic}.code .b{color:#E5865C}
+.rung{display:grid;grid-template-columns:80px 340px 1fr;align-items:center;background:var(--vellum);border:1.5px solid var(--rule);border-radius:16px;padding:14px 26px;margin-bottom:12px;font-size:27px}
+.rung .no{font-family:var(--display);font-size:46px;font-weight:600;color:var(--lapis)}
+.rung b{font-family:var(--sans);font-size:28px}
+.rung span{color:var(--ink-soft)}
+.rung.free{border-left:9px solid var(--nile)}.rung.paid{border-left:9px solid var(--ochre-fill)}.rung.person{border-left:9px solid var(--terracotta-fill)}.rung.off{opacity:.55}
+.state h3::before{content:"";display:inline-block;width:26px;height:26px;border-radius:50%;background:currentColor;margin-right:16px;vertical-align:2px}
+.state.ok h3{color:var(--nile)}.state.deg h3{color:var(--ochre)}.state.stop h3{color:var(--carmine)}
+.chips{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px}
+.chip{font-family:var(--sans);font-size:26px;background:var(--vellum);border:2px solid var(--rule);border-radius:999px;padding:12px 24px}
+.chip.kid{border-color:var(--nile)}.chip.score{border-color:var(--lapis)}.chip.stream{border-color:var(--ochre-fill)}.chip.ops{border-color:var(--terracotta-fill)}
+ul.t{list-style:none;padding:0;margin:0}
+ul.t li{font-size:30px;line-height:1.4;margin-bottom:18px;padding-left:44px;position:relative}
+ul.t li::before{content:"";position:absolute;left:4px;top:15px;width:18px;height:10px;border-left:3px solid var(--nile);border-bottom:3px solid var(--nile);transform:rotate(-45deg)}
+ul.t.out li::before{border:none;width:18px;height:3px;background:var(--ochre-fill);transform:none;top:22px}
+.title-slide{display:none;flex-direction:column;justify-content:center}
+.title-slide.on{display:flex}
+.bigmark{width:300px;height:260px;margin-bottom:40px}
+.greek{font-family:var(--display);font-size:130px;color:var(--lapis);line-height:1}
+.num{font-family:var(--display);font-size:120px;font-weight:600;line-height:1;display:block}
+.hint{position:fixed;right:18px;bottom:14px;font:13px var(--sans);color:#8C93A0}
+/* #all: every slide, stacked, for screenshots and printing */
+body.all{overflow:auto;height:auto}
+body.all .deck{position:static;display:block}
+body.all .slide{position:relative;display:block!important;transform:none!important;margin:0}
+body.all .title-slide{display:flex!important}
+body.all .hint{display:none}
+@page{size:1920px 1080px;margin:0}
+@media print{body{overflow:visible;height:auto;background:none}.deck{position:static;display:block}.slide{position:relative;display:block!important;transform:none!important;break-after:page}.title-slide{display:flex!important}.hint{display:none}}
+</style></head>
+<body><div class="deck"><section class="slide title-slide dark">
+      <svg class="bigmark" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>
+      <h1>callimachus</h1>
+      <p class="eyebrow" style="margin-top:26px">Pinakes for everything you save</p>
+      <p class="lede" style="max-width:1300px">Everything the family saved, finally catalogued: every film, show, book, article and work of art, found wherever it was saved and filed as one sourced note per title, with where to watch it.</p></section><section class="slide ">
+      <p class="eyebrow">The problem</p>
+      <h2>We save things everywhere, and then they vanish.</h2>
+      <div class="cols c4">
+        <div class="box"><span class="k">Saved on</span><h3>Instagram</h3><p>Posts, reels, and named collections.</p></div>
+        <div class="box"><span class="k">Saved on</span><h3>The NYT</h3><p>The family's shared Saved list.</p></div>
+        <div class="box"><span class="k">Saved in</span><h3>Chrome</h3><p>Folders called Watch, Read, Listen.</p></div>
+        <div class="box"><span class="k">Sent to</span><h3>Yourself</h3><p>A texted link, a tab left open for a week.</p></div>
+      </div>
+      <p class="lede" style="margin-top:56px">None of them can answer: "what's a good film for an eight-year-old that we can stream tonight?"</p><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>The problem</span><span>02 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">What it is</p>
+      <h2>Find every save. Name it. Look it up. <em>File one note.</em></h2>
+      <div class="cols c3">
+        <div class="box"><span class="k">Finds</span><h3>Wherever it was saved</h3><p>Sent from a browser or a phone's Share menu, or read from Instagram, Chrome bookmark folders, exports and the inbox.</p></div>
+        <div class="box"><span class="k">Knows</span><h3>From public sources</h3><p>What it is, from TMDb, OMDb, Wikidata, Common Sense Media and Open Library; and where to watch, read or hear it.</p></div>
+        <div class="box"><span class="k">Files</span><h3>In your own vault, on every phone</h3><p>One note per title in the family's callimachus vault, filed straight away and synced to every phone; you correct it, and it re-files.</p></div>
+      </div>
+      <p class="lede" style="margin-top:50px">Films, short films, series, online video, articles, books, podcasts, and now visual art; a list post files every entry, and a trilogy files every film.</p><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>What it is</span><span>03 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">Send it in</p>
+      <h2>One tap from wherever you are.</h2>
+      <div class="cols c3" style="margin-top:44px">
+        <div class="box"><span class="k">In Chrome</span><h3>Send to callimachus</h3><p>A toolbar button, and a right-click on any page or link. It queues and retries; it never waits.</p></div>
+        <div class="box"><span class="k">In any browser</span><h3>A bookmarklet</h3><p>Safari on the Mac and the iPhone too. It carries no password.</p></div>
+        <div class="box"><span class="k">On the phone</span><h3>Save to callimachus</h3><p>In every app's Share menu, through a shared Reminders list: instant, even with no signal.</p></div>
+      </div>
+      <p class="lede" style="margin-top:50px">Each one ends at a small private intake on your own network, and the save is filed straight away. The places you already save (Chrome folders, Instagram, the inbox) are still read every morning.</p><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>Send it in</span><span>04 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">What happens to a save</p>
+      <h2>Filed when it arrives, or at 06:30.</h2>
+      <div class="cols c8" style="margin-top:70px">
+        <div class="stage"><span class="n">01</span><b>Capture</b><span>Read each source, newest first, to its checkpoint.</span></div>
+        <div class="stage"><span class="n">02</span><b>Ledger</b><span>Skip what was judged before. Never twice.</span></div>
+        <div class="stage"><span class="n">03</span><b>Classify</b><span>Media? Which title? Code first, then the local model.</span></div>
+        <div class="stage"><span class="n">04</span><b>Resolve</b><span>One canonical id: TMDb or Open Library.</span></div>
+        <div class="stage"><span class="n">05</span><b>Where to watch</b><span>A streaming service, the open web, or archive.org.</span></div>
+        <div class="stage"><span class="n">06</span><b>Enrich</b><span>Facts, registry links and the poster, from free sources.</span></div>
+        <div class="stage coming"><span class="n">07</span><b>Check images</b><span>A nudity filter at home. Library done; new saves soon.</span></div>
+        <div class="stage"><span class="n">08</span><b>File</b><span>At once, even a best guess.</span></div>
+      </div>
+      <p class="lede" style="margin-top:60px">A healthy run is plain code plus a free model on the home network: no paid AI, no agent, nothing to approve.</p><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>What happens</span><span>05 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">Where to watch it</p>
+      <h2>One step from the note to the thing itself.</h2>
+      <div class="cols c4" style="margin-top:44px">
+        <div class="box"><span class="k">Films and series</span><h3>Streaming, in order</h3><p>Our services first, then other subscriptions, free, free with ads, rent or buy. (TMDb; data from JustWatch.)</p></div>
+        <div class="box"><span class="k">Online video</span><h3>The page, or the archive</h3><p>The page's own player, else a copy on archive.org.</p></div>
+        <div class="box"><span class="k">Articles</span><h3>The page, kept</h3><p>And the Wayback Machine's copy, for when it moves.</p></div>
+        <div class="box"><span class="k">Visual art</span><h3>See it or buy it</h3><p>The post, the artist's shop or gallery, the profile.</p></div>
+      </div>
+      <p class="lede" style="margin-top:50px">Code checks every match: title, length, maker or year. A copy it is not sure of is shown as <i>possible copy, not checked</i>, and never made the link.</p><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>Where to watch it</span><span>06 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">Filed at once, corrected by you</p>
+      <h2>Two questions on every card.</h2>
+      <div class="cols c2" style="gap:70px;margin-top:40px">
+        <div class="box"><span class="k">One</span><h3>Is the record right?</h3><p>The kind, the title, the catalogue entry. Approve it, pick candidate 1, 2 or 3, or say what it should be.</p></div>
+        <div class="box"><span class="k">Two</span><h3>Can you watch, read or hear it in one step?</h3><p>&ldquo;Consumable by human quickly and easily&rdquo;: a link that plays, or the list of where it streams.</p></div>
+      </div>
+      <p class="lede" style="margin-top:50px">A judge reads every card first and passes on only the unsure ones. A best guess is filed at once and marked a guess; your pick re-files the same note, never a second one.</p><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>Two questions</span><span>07 / 20</span></div></section><section class="slide ">
+      <div class="cols c2" style="margin-top:0;gap:70px;align-items:start">
+        <div>
+          <p class="eyebrow">What you see</p>
+          <h2 style="font-size:66px">A library to browse, not a list to scroll.</h2>
+          <p class="lede">The family opens the <b>callimachus vault</b>; the work happens in a second one, <b>callimachus-engine</b>, that nobody needs to open. Obsidian's own Bases, no plugins: 9 Bases, 137 views, each named for exactly what it shows.</p>
+          <p class="lede">Everyone ticks <i>seen it</i>, <i>I wanna see it</i>, <i>wait for me</i>. <i>Very highly rated</i> always means IMDb 8+ or Rotten Tomatoes 90%+.</p>
+        </div>
+<pre class="tree"><span class="v">callimachus vault</span>
+├── <span class="a">Family</span> · <span class="b">Watch tonight</span>
+│   ├── Service · On our services
+│   └── Length · Under 90 minutes
+├── <span class="a">Family</span> · <span class="b">Who's watching</span>
+│   ├── Who · Family of five
+│   └── Who · Watch together
+├── <span class="a">Collection</span> · <span class="b">Browse</span>
+│   └── Rating · Very highly rated
+├── <span class="a">Collection</span> · <span class="b">Lists</span>
+│   └── List · Sight and Sound 2022
+├── <span class="a">Person</span> · <span class="b">&lsaquo;name&rsaquo;</span> × 5
+│   ├── My checklist
+│   └── Wait for me
+└── Library/   <span class="v">one note per title</span></pre>
+      </div><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>What you see</span><span>08 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">On every phone</p>
+      <h2>Filed on the Mac, open on every phone.</h2>
+      <div class="flowrow">
+        <div class="box sys"><h3>callimachus-engine</h3><p>the family Mac files each note</p></div>
+        <div class="arr">&rarr;</div>
+        <div class="box"><h3>callimachus vault</h3><p>notes and Bases, on the Mac</p></div>
+        <div class="arr">&harr;</div>
+        <div class="box"><h3>Self-hosted sync</h3><p>on the home NAS, private network only, one login each</p>
+          <div class="phones"><div class="phone live">iPhone<br>live</div><div class="phone">next</div><div class="phone">next</div><div class="phone">next</div><div class="phone">next</div></div></div>
+      </div>
+      <p class="lede" style="margin-top:56px">Obsidian LiveSync to a server on the family's own NAS: no cloud copy. Two-way, in seconds: a tick on a phone comes back to everyone. Karina's iPhone went live on 27 October with all 790 files; every other phone, iPad and Mac is next.</p><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>On every phone</span><span>09 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">Posters, checked first</p>
+      <h2>A cover on every card, and nothing explicit.</h2>
+      <div class="cols c4" style="margin-top:50px">
+        <div class="box"><span class="k">1 &middot; Fetch</span><h3>One poster</h3><p>From TMDb, small enough for a phone, kept in the raw archive.</p></div>
+        <div class="box pass"><span class="k">2 &middot; Every poster</span><h3>NudeNet</h3><p>An open-source nudity detector, on the CPU at home. A label at 0.5 or above flags it.</p></div>
+        <div class="box flag"><span class="k">3 &middot; Flagged only</span><h3>A second look</h3><p>One yes-or-no question to a vision model (qwen3-vl) on the home network.</p></div>
+        <div class="box block"><span class="k">4 &middot; Or never</span><h3>Published</h3><p>Only a clear <i>not explicit</i> reaches the vault. The rest stays in the archive.</p></div>
+      </div>
+      <p class="lede" style="margin-top:50px">All of it at home, no paid AI. The library's first run: 729 posters published, 2 flagged and both cleared, none blocked. New saves get theirs soon.</p><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>Posters, checked first</span><span>10 / 20</span></div></section><section class="slide ">
+      <div class="cols c2" style="margin-top:0;align-items:center;gap:70px">
+        <div>
+          <p class="eyebrow">The first rule</p>
+          <h2 style="font-style:italic;font-size:70px">&ldquo;Leave blanks blank. Do not ever make up data.&rdquo;</h2>
+          <p class="lede">Every field holds what a source gave, under that source's name, or what a person typed. Every value records where it was read from. Nothing is ever deleted.</p>
+        </div>
+<pre class="code"><span class="c"># Pi (1998).md, as filed (excerpt)</span>
+<span class="k">title</span>: Pi
+<span class="k">year</span>: <span class="n">1998</span>
+<span class="k">csm_age</span>: <span class="n">16</span>
+<span class="k">tmdb_certification_us</span>: R
+<span class="k">omdb_imdb_rating</span>: <span class="n">7.3</span>
+<span class="k">omdb_rotten_tomatoes</span>: <span class="n">88</span>
+<span class="k">id_imdb</span>: tt0138704
+<span class="k">provenance</span>:
+  <span class="k">csm_age</span>:
+    <span class="k">fetch_record</span>: <span class="b">&lsaquo;Common Sense page&rsaquo;</span>
+    <span class="k">pointer</span>: jsonld:audience/
+             suggestedMinAge</pre>
+      </div><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>The first rule</span><span>11 / 20</span></div></section><section class="slide ">
+      <div class="cols c2" style="margin-top:0;gap:70px;align-items:start">
+        <div>
+          <p class="eyebrow">AI only where it is needed</p>
+          <h2>Climb one rung at a time.</h2>
+          <p class="lede">An item climbs only when the rung below could not finish it with confidence. Naming a title tops out at Sonnet; repairing the system at Opus. Never further.</p>
+          <p class="lede">Caps are counts, never dollars. Money is capped once, by a spend limit on a key used for nothing else.</p>
+        </div>
+        <div>
+          <div class="rung person"><span class="no">6</span><b>A person</b><span>the Exceptions view</span></div>
+          <div class="rung paid"><span class="no">5</span><b>Opus</b><span>repair only</span></div>
+          <div class="rung paid"><span class="no">4</span><b>Sonnet</b><span>top rung for titles</span></div>
+          <div class="rung paid"><span class="no">3</span><b>Haiku</b><span>only if the local model is unsure</span></div>
+          <div class="rung free off"><span class="no">2</span><b>Smarter local</b><span>kept for later</span></div>
+          <div class="rung free"><span class="no">1</span><b>qwen3:30b, local</b><span>always asked first</span></div>
+          <div class="rung free"><span class="no">0</span><b>Code</b><span>rules, patterns, retries</span></div>
+        </div>
+      </div><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>AI only where needed</span><span>12 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">Healthy, degraded, stopped</p>
+      <h2>Always one of three states, and a fuse.</h2>
+      <div class="cols c3">
+        <div class="box state ok"><h3>Healthy</h3><p>Every item finished by code or the free local model. The usual day.</p></div>
+        <div class="box state deg"><h3>Degraded</h3><p>Correct notes, but something ran above plain code. An open signal drives a fix; 14 days at most.</p></div>
+        <div class="box state stop"><h3>Stopped</h3><p>A capability is held. Capture keeps safely storing saves; the rest waits for a person.</p></div>
+      </div>
+      <p class="lede" style="margin-top:50px"><b style="color:var(--carmine)">The fuse</b> blows on runaway numbers (more than 10 new fingerprints a day, 30 paid calls an hour, 5 agent sessions a day, any broken invariant or security trip) and stops every model call and agent launch until John resets it.</p><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>States and the fuse</span><span>13 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">The architecture, C4 level 1</p>
+      <h2 style="font-size:60px">The system in its world.</h2>
+      <div class="dg-wrap"><svg class="dg" id="c4ctx" viewBox="0 0 1240 730" role="img" aria-labelledby="c4ctx-t c4ctx-d" xmlns="http://www.w3.org/2000/svg">
+<title id="c4ctx-t">Level 1, system context: callimachus and everything around it</title><desc id="c4ctx-d">The family saves things in many places; callimachus reads the saves, looks each title up in public sources, asks a local model when code cannot name a title, and files notes into the family&#x27;s vault.</desc>
+<style>
+.dg text{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',system-ui,sans-serif;fill:var(--ink)}
+.dg .t{font-weight:650;font-size:15px}
+.dg .t.big{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:26px;font-weight:600}
+.dg .d{font-size:12px;fill:var(--ink-soft)}
+.dg .tech{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;fill:var(--ink-soft);letter-spacing:.2px}
+.dg .sys rect,.dg rect.sys{fill:var(--lapis)}
+.dg .sys text{fill:var(--papyrus)}
+.dg .sys .tech{fill:var(--papyrus);opacity:.85}
+.dg .per rect{fill:var(--terracotta-fill)}
+.dg .per text{fill:var(--papyrus)}
+.dg .ext rect{fill:var(--vellum);stroke:var(--ink-soft);stroke-width:1.2}
+.dg .agent rect{fill:var(--vellum);stroke:var(--ochre-fill);stroke-width:2.2}
+.dg .agent .spark{fill:var(--ochre);font-size:15px}
+.dg .store path{fill:var(--papyrus-deep);stroke:var(--lapis);stroke-width:1.6}
+.dg .grp{fill:none;stroke:var(--rule);stroke-width:1.4;stroke-dasharray:6 5}
+.dg .grp-l{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;letter-spacing:1.6px;fill:var(--ink-soft);text-transform:uppercase}
+.dg .sand{fill:none;stroke:var(--carmine);stroke-width:1.6;stroke-dasharray:7 4}
+.dg .sand-l{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;letter-spacing:1.4px;fill:var(--carmine);text-transform:uppercase}
+.dg .node{fill:var(--papyrus-deep);fill-opacity:.55;stroke:var(--ink-soft);stroke-width:1.2}
+.dg .node-l{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:17px;font-weight:600;fill:var(--ink)}
+.dg .node-s{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;fill:var(--ink-soft)}
+.dg .e{fill:none;stroke:var(--ink-soft);stroke-width:1.5}
+.dg .e.hot{stroke:var(--lapis);stroke-width:2}
+.dg .e.warn{stroke:var(--ochre-fill);stroke-width:2}
+.dg .e.stop{stroke:var(--carmine);stroke-width:1.8;stroke-dasharray:5 4}
+.dg .ah{fill:var(--ink-soft)}
+.dg .ah.hot{fill:var(--lapis)}
+.dg .ah.warn{fill:var(--ochre-fill)}
+.dg .ah.stop{fill:var(--carmine)}
+.dg .el{font-size:11.5px;fill:var(--ink);paint-order:stroke;stroke:var(--papyrus);stroke-width:5px;stroke-linejoin:round}
+.dg .note{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-style:italic;font-size:13px;fill:var(--ink-soft)}
+</style><defs><marker id="c4ctx-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah "/></marker><marker id="c4ctx-ah-hot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah hot"/></marker><marker id="c4ctx-ah-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah warn"/></marker><marker id="c4ctx-ah-stop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah stop"/></marker></defs>
+<rect x="320" y="6" width="560" height="112" rx="14" class="grp"/>
+<text x="334" y="25" class="grp-l">the family</text>
+<rect x="20" y="150" width="270" height="402" rx="14" class="grp"/>
+<text x="34" y="169" class="grp-l">where saves are made</text>
+<rect x="950" y="150" width="270" height="402" rx="14" class="grp"/>
+<text x="964" y="169" class="grp-l">public sources it looks up</text>
+<rect x="420" y="510" width="400" height="196" rx="14" class="grp"/>
+<text x="434" y="529" class="grp-l">models</text>
+<rect x="20" y="580" width="370" height="130" rx="14" class="grp"/>
+<text x="34" y="599" class="grp-l">platform</text>
+<rect x="950" y="580" width="270" height="130" rx="14" class="grp"/>
+<text x="964" y="599" class="grp-l">alerts</text>
+<path d="M320,62 L155,62 L155,150" class="e " marker-end="url(#c4ctx-ah)"/>
+<path d="M880,64 L930,64" class="e " marker-end="url(#c4ctx-ah)"/>
+<path d="M290,350 L420,350" class="e hot" marker-end="url(#c4ctx-ah-hot)"/>
+<path d="M820,350 L950,350" class="e hot" marker-end="url(#c4ctx-ah-hot)"/>
+<path d="M790,250 L790,134 L1075,134 L1075,106" class="e hot" marker-end="url(#c4ctx-ah-hot)"/>
+<path d="M620,450 L620,510" class="e " marker-end="url(#c4ctx-ah)"/>
+<path d="M370,580 L370,420 L420,420" class="e " marker-end="url(#c4ctx-ah)"/>
+<path d="M820,420 L885,420 L885,645 L950,645" class="e stop" marker-end="url(#c4ctx-ah-stop)"/>
+<g class="per">
+<rect x="338" y="40" width="165" height="64" rx="10"/>
+<text x="420.5" y="66.5" class="t" text-anchor="middle">John</text>
+<text x="420.5" y="88.5" class="d" text-anchor="middle">saves, names titles, decides</text>
+</g>
+<g class="per">
+<rect x="518" y="40" width="165" height="64" rx="10"/>
+<text x="600.5" y="66.5" class="t" text-anchor="middle">Karina</text>
+<text x="600.5" y="88.5" class="d" text-anchor="middle">saves, into collections too</text>
+</g>
+<g class="per">
+<rect x="698" y="40" width="165" height="64" rx="10"/>
+<text x="780.5" y="66.5" class="t" text-anchor="middle">Family member</text>
+<text x="780.5" y="88.5" class="d" text-anchor="middle">browses on a phone, ticks</text>
+</g>
+<g class="ext">
+<rect x="930" y="22" width="290" height="84" rx="10"/>
+<text x="1075.0" y="51.0" class="t" text-anchor="middle">callimachus vault</text>
+<text x="1075.0" y="73.0" class="d" text-anchor="middle">one note per title, Bases to browse;</text>
+<text x="1075.0" y="88.0" class="d" text-anchor="middle">on every phone by self-hosted sync</text>
+</g>
+<g class="ext">
+<rect x="38" y="180" width="234" height="50" rx="10"/>
+<text x="155.0" y="199.5" class="t" text-anchor="middle">Instagram</text>
+<text x="155.0" y="221.5" class="d" text-anchor="middle">saved posts and reels</text>
+</g>
+<g class="ext">
+<rect x="38" y="240" width="234" height="50" rx="10"/>
+<text x="155.0" y="259.5" class="t" text-anchor="middle">The New York Times</text>
+<text x="155.0" y="281.5" class="d" text-anchor="middle">the shared Saved list</text>
+</g>
+<g class="ext">
+<rect x="38" y="300" width="234" height="50" rx="10"/>
+<text x="155.0" y="319.5" class="t" text-anchor="middle">Chrome bookmarks</text>
+<text x="155.0" y="341.5" class="d" text-anchor="middle">intent folders, read only</text>
+</g>
+<g class="ext">
+<rect x="38" y="360" width="234" height="50" rx="10"/>
+<text x="155.0" y="379.5" class="t" text-anchor="middle">Browser button, bookmarklet</text>
+<text x="155.0" y="401.5" class="d" text-anchor="middle">sent now, from any browser</text>
+</g>
+<g class="ext">
+<rect x="38" y="420" width="234" height="50" rx="10"/>
+<text x="155.0" y="439.5" class="t" text-anchor="middle">Phone Share menu</text>
+<text x="155.0" y="461.5" class="d" text-anchor="middle">via a shared Reminders list</text>
+</g>
+<g class="ext">
+<rect x="38" y="480" width="234" height="50" rx="10"/>
+<text x="155.0" y="499.5" class="t" text-anchor="middle">Instagram exports</text>
+<text x="155.0" y="521.5" class="d" text-anchor="middle">Karina&#x27;s own download</text>
+</g>
+<g class="ext">
+<rect x="968" y="180" width="234" height="50" rx="10"/>
+<text x="1085.0" y="199.5" class="t" text-anchor="middle">TMDb</text>
+<text x="1085.0" y="221.5" class="d" text-anchor="middle">films and TV, where it streams</text>
+</g>
+<g class="ext">
+<rect x="968" y="240" width="234" height="50" rx="10"/>
+<text x="1085.0" y="259.5" class="t" text-anchor="middle">OMDb</text>
+<text x="1085.0" y="281.5" class="d" text-anchor="middle">IMDb, Rotten Tomatoes, Metacritic</text>
+</g>
+<g class="ext">
+<rect x="968" y="300" width="234" height="50" rx="10"/>
+<text x="1085.0" y="319.5" class="t" text-anchor="middle">Wikidata</text>
+<text x="1085.0" y="341.5" class="d" text-anchor="middle">the ids that link every site</text>
+</g>
+<g class="ext">
+<rect x="968" y="360" width="234" height="50" rx="10"/>
+<text x="1085.0" y="379.5" class="t" text-anchor="middle">Common Sense Media</text>
+<text x="1085.0" y="401.5" class="d" text-anchor="middle">age and content, one page a title</text>
+</g>
+<g class="ext">
+<rect x="968" y="420" width="234" height="50" rx="10"/>
+<text x="1085.0" y="439.5" class="t" text-anchor="middle">Open Library</text>
+<text x="1085.0" y="461.5" class="d" text-anchor="middle">books, by ISBN or title</text>
+</g>
+<g class="ext">
+<rect x="968" y="480" width="234" height="50" rx="10"/>
+<text x="1085.0" y="499.5" class="t" text-anchor="middle">Pages and archives</text>
+<text x="1085.0" y="521.5" class="d" text-anchor="middle">articles, archive.org, Wayback</text>
+</g>
+<g class="sys">
+<rect x="420" y="250" width="400" height="200" rx="16"/>
+<text x="620.0" y="319.0" class="t big" text-anchor="middle">callimachus</text>
+<text x="620.0" y="353.0" class="d" text-anchor="middle">Finds every film, show, book, article and</text>
+<text x="620.0" y="368.0" class="d" text-anchor="middle">work of art the family saves, works out</text>
+<text x="620.0" y="383.0" class="d" text-anchor="middle">what it is, finds where to watch it, and</text>
+<text x="620.0" y="398.0" class="d" text-anchor="middle">files one sourced note per title.</text>
+<text x="620.0" y="417.0" class="tech" text-anchor="middle">deterministic software · AI only where needed</text>
+</g>
+<g class="ext">
+<rect x="440" y="540" width="360" height="66" rx="10"/>
+<text x="620.0" y="560.0" class="t" text-anchor="middle">Model box on the home network</text>
+<text x="620.0" y="582.0" class="d" text-anchor="middle">qwen3:30b names titles; qwen3-vl checks posters;</text>
+<text x="620.0" y="597.0" class="d" text-anchor="middle">whisper.cpp transcribes. Free, local, asked first.</text>
+</g>
+<g class="ext">
+<rect x="440" y="620" width="360" height="70" rx="10"/>
+<text x="620.0" y="642.0" class="t" text-anchor="middle">Anthropic API</text>
+<text x="620.0" y="664.0" class="d" text-anchor="middle">Haiku, then Sonnet, only when the local model</text>
+<text x="620.0" y="679.0" class="d" text-anchor="middle">is unsure, under hard caps and a fuse.</text>
+</g>
+<g class="ext">
+<rect x="34" y="612" width="108" height="82" rx="10"/>
+<text x="88.0" y="640.0" class="t" text-anchor="middle">launchd</text>
+<text x="88.0" y="662.0" class="d" text-anchor="middle">starts the pass</text>
+<text x="88.0" y="677.0" class="d" text-anchor="middle">at 06:30</text>
+</g>
+<g class="ext">
+<rect x="150" y="612" width="108" height="82" rx="10"/>
+<text x="204.0" y="640.0" class="t" text-anchor="middle">1Password</text>
+<text x="204.0" y="662.0" class="d" text-anchor="middle">holds keys</text>
+<text x="204.0" y="677.0" class="d" text-anchor="middle">and sessions</text>
+</g>
+<g class="ext">
+<rect x="266" y="612" width="108" height="82" rx="10"/>
+<text x="320.0" y="640.0" class="t" text-anchor="middle">GitHub</text>
+<text x="320.0" y="662.0" class="d" text-anchor="middle">private repo:</text>
+<text x="320.0" y="677.0" class="d" text-anchor="middle">fixes as PRs</text>
+</g>
+<g class="ext">
+<rect x="964" y="612" width="118" height="82" rx="10"/>
+<text x="1023.0" y="640.0" class="t" text-anchor="middle">Desk tablet</text>
+<text x="1023.0" y="662.0" class="d" text-anchor="middle">four kinds of</text>
+<text x="1023.0" y="677.0" class="d" text-anchor="middle">alert, no more</text>
+</g>
+<g class="ext">
+<rect x="1090" y="612" width="118" height="82" rx="10"/>
+<text x="1149.0" y="640.0" class="t" text-anchor="middle">Phone push</text>
+<text x="1149.0" y="662.0" class="d" text-anchor="middle">if the tablet</text>
+<text x="1149.0" y="677.0" class="d" text-anchor="middle">did not deliver</text>
+</g>
+<text x="238" y="40" class="el" text-anchor="middle">save posts,</text>
+<text x="238" y="54" class="el" text-anchor="middle">bookmarks, shares</text>
+<text x="355" y="340" class="el" text-anchor="middle">reads new saves</text>
+<text x="885" y="340" class="el" text-anchor="middle">looks up</text>
+<text x="935" y="127" class="el" text-anchor="middle">files one note per title</text>
+<text x="632" y="486" class="el" text-anchor="start">when code can&#x27;t name a title</text>
+<text x="370" y="505" class="el" text-anchor="middle">starts it</text>
+<text x="885" y="540" class="el" text-anchor="middle">alerts</text>
+</svg>
+</div><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>Architecture, level 1</span><span>14 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">C4 level 2: containers on a healthy day</p>
+      <h2 style="font-size:60px">Only a plain script ever touches a sign-in.</h2>
+      <div class="dg-wrap"><svg class="dg" id="c4con" viewBox="0 0 1400 760" role="img" aria-labelledby="c4con-t c4con-d" xmlns="http://www.w3.org/2000/svg">
+<title id="c4con-t">Level 2, containers on a healthy day</title><desc id="c4con-d">Inside callimachus: the pipeline, the intake (a push listener and the Reminders reader), the carve-out runner and its sandboxed fetchers, and the five stores they write.</desc>
+<style>
+.dg text{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',system-ui,sans-serif;fill:var(--ink)}
+.dg .t{font-weight:650;font-size:15px}
+.dg .t.big{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:26px;font-weight:600}
+.dg .d{font-size:12px;fill:var(--ink-soft)}
+.dg .tech{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;fill:var(--ink-soft);letter-spacing:.2px}
+.dg .sys rect,.dg rect.sys{fill:var(--lapis)}
+.dg .sys text{fill:var(--papyrus)}
+.dg .sys .tech{fill:var(--papyrus);opacity:.85}
+.dg .per rect{fill:var(--terracotta-fill)}
+.dg .per text{fill:var(--papyrus)}
+.dg .ext rect{fill:var(--vellum);stroke:var(--ink-soft);stroke-width:1.2}
+.dg .agent rect{fill:var(--vellum);stroke:var(--ochre-fill);stroke-width:2.2}
+.dg .agent .spark{fill:var(--ochre);font-size:15px}
+.dg .store path{fill:var(--papyrus-deep);stroke:var(--lapis);stroke-width:1.6}
+.dg .grp{fill:none;stroke:var(--rule);stroke-width:1.4;stroke-dasharray:6 5}
+.dg .grp-l{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;letter-spacing:1.6px;fill:var(--ink-soft);text-transform:uppercase}
+.dg .sand{fill:none;stroke:var(--carmine);stroke-width:1.6;stroke-dasharray:7 4}
+.dg .sand-l{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;letter-spacing:1.4px;fill:var(--carmine);text-transform:uppercase}
+.dg .node{fill:var(--papyrus-deep);fill-opacity:.55;stroke:var(--ink-soft);stroke-width:1.2}
+.dg .node-l{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:17px;font-weight:600;fill:var(--ink)}
+.dg .node-s{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;fill:var(--ink-soft)}
+.dg .e{fill:none;stroke:var(--ink-soft);stroke-width:1.5}
+.dg .e.hot{stroke:var(--lapis);stroke-width:2}
+.dg .e.warn{stroke:var(--ochre-fill);stroke-width:2}
+.dg .e.stop{stroke:var(--carmine);stroke-width:1.8;stroke-dasharray:5 4}
+.dg .ah{fill:var(--ink-soft)}
+.dg .ah.hot{fill:var(--lapis)}
+.dg .ah.warn{fill:var(--ochre-fill)}
+.dg .ah.stop{fill:var(--carmine)}
+.dg .el{font-size:11.5px;fill:var(--ink);paint-order:stroke;stroke:var(--papyrus);stroke-width:5px;stroke-linejoin:round}
+.dg .note{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-style:italic;font-size:13px;fill:var(--ink-soft)}
+</style><defs><marker id="c4con-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah "/></marker><marker id="c4con-ah-hot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah hot"/></marker><marker id="c4con-ah-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah warn"/></marker><marker id="c4con-ah-stop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah stop"/></marker></defs>
+<rect x="220" y="90" width="960" height="640" rx="14" class="grp"/>
+<text x="234" y="109" class="grp-l">callimachus · on the family Mac</text>
+<rect x="925" y="108" width="238" height="224" rx="14" class="sand"/>
+<text x="939" y="127" class="sand-l">sandbox · allowlist proxy</text>
+<path d="M570,62 L570,130" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M190,155 L245,155" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M415,160 L450,160" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M190,265 L450,265" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M415,376 L470,376 L470,300" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M540,300 L540,452 L190,452" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M690,215 L730,215" class="e hot" marker-end="url(#c4con-ah-hot)"/>
+<path d="M900,180 L942,180" class="e hot" marker-end="url(#c4con-ah-hot)"/>
+<path d="M900,262 L942,262" class="e hot" marker-end="url(#c4con-ah-hot)"/>
+<path d="M1146,179 L1210,179" class="e hot" marker-end="url(#c4con-ah-hot)"/>
+<path d="M1146,277 L1210,277" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M815,280 L815,400 L1210,400" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M690,275 L710,275 L710,510 L1210,510" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M600,300 L600,572" class="e "/>
+<path d="M335,572 L1075,572" class="e "/>
+<path d="M335,572 L335,606" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M520,572 L520,606" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M705,572 L705,606" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M890,572 L890,606" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M1075,572 L1075,606" class="e " marker-end="url(#c4con-ah)"/>
+<g class="ext">
+<rect x="10" y="118" width="180" height="74" rx="10"/>
+<text x="100.0" y="142.0" class="t" text-anchor="middle">Browser and phone</text>
+<text x="100.0" y="164.0" class="d" text-anchor="middle">button, bookmarklet, the</text>
+<text x="100.0" y="179.0" class="d" text-anchor="middle">Share menu via Reminders</text>
+</g>
+<g class="ext">
+<rect x="10" y="228" width="180" height="74" rx="10"/>
+<text x="100.0" y="259.5" class="t" text-anchor="middle">Chrome bookmarks</text>
+<text x="100.0" y="281.5" class="d" text-anchor="middle">the Bookmarks file</text>
+</g>
+<g class="ext">
+<rect x="10" y="410" width="180" height="84" rx="10"/>
+<text x="100.0" y="431.5" class="t" text-anchor="middle">Model box</text>
+<text x="100.0" y="453.5" class="d" text-anchor="middle">qwen3:30b, qwen3-vl,</text>
+<text x="100.0" y="468.5" class="d" text-anchor="middle">whisper.cpp, on the</text>
+<text x="100.0" y="483.5" class="d" text-anchor="middle">home network</text>
+</g>
+<g class="ext">
+<rect x="470" y="8" width="200" height="54" rx="10"/>
+<text x="570.0" y="29.5" class="t" text-anchor="middle">launchd</text>
+<text x="570.0" y="51.5" class="d" text-anchor="middle">the Mac&#x27;s own scheduler</text>
+</g>
+<g class="sys">
+<rect x="245" y="118" width="170" height="84" rx="10"/>
+<text x="330.0" y="139.5" class="t" text-anchor="middle">Intake</text>
+<text x="330.0" y="161.5" class="d" text-anchor="middle">push listener and</text>
+<text x="330.0" y="176.5" class="d" text-anchor="middle">Reminders reader:</text>
+<text x="330.0" y="191.5" class="d" text-anchor="middle">filed at once</text>
+</g>
+<g class="store">
+<path d="M245,339 C245,327.0 415,327.0 415,339 L415,413 C415,425.0 245,425.0 245,413 Z M245,339 C245,349.8 415,349.8 415,339"/>
+<text x="330.0" y="367.0" class="t" text-anchor="middle">Product inbox</text>
+<text x="330.0" y="389.0" class="d" text-anchor="middle">notes, shares and</text>
+<text x="330.0" y="404.0" class="d" text-anchor="middle">Karina&#x27;s exports</text>
+</g>
+<g class="sys">
+<rect x="450" y="130" width="240" height="170" rx="14"/>
+<text x="570.0" y="178.0" class="t" text-anchor="middle">Pipeline</text>
+<text x="570.0" y="200.0" class="d" text-anchor="middle">The pass: capture, ledger,</text>
+<text x="570.0" y="215.0" class="d" text-anchor="middle">classify, resolve, where</text>
+<text x="570.0" y="230.0" class="d" text-anchor="middle">to watch, enrich, check</text>
+<text x="570.0" y="245.0" class="d" text-anchor="middle">images, file.</text>
+<text x="570.0" y="264.0" class="tech" text-anchor="middle">tools/callimachus · Python</text>
+</g>
+<g class="sys">
+<rect x="730" y="150" width="170" height="130" rx="10"/>
+<text x="815.0" y="187.0" class="t" text-anchor="middle">Carve-out runner</text>
+<text x="815.0" y="209.0" class="d" text-anchor="middle">checks approvals,</text>
+<text x="815.0" y="224.0" class="d" text-anchor="middle">builds the sandbox,</text>
+<text x="815.0" y="239.0" class="d" text-anchor="middle">injects one session,</text>
+<text x="815.0" y="254.0" class="d" text-anchor="middle">kills at the timeout</text>
+</g>
+<g class="sys">
+<rect x="942" y="138" width="204" height="82" rx="10"/>
+<text x="1044.0" y="166.0" class="t" text-anchor="middle">Carve-out fetchers</text>
+<text x="1044.0" y="188.0" class="d" text-anchor="middle">plain scripts, no model;</text>
+<text x="1044.0" y="203.0" class="d" text-anchor="middle">GET only, declared hosts</text>
+</g>
+<g class="sys">
+<rect x="942" y="236" width="204" height="82" rx="10"/>
+<text x="1044.0" y="264.0" class="t" text-anchor="middle">Credential-less fetcher</text>
+<text x="1044.0" y="286.0" class="d" text-anchor="middle">pages, media files,</text>
+<text x="1044.0" y="301.0" class="d" text-anchor="middle">Common Sense; no secrets</text>
+</g>
+<g class="ext">
+<rect x="1210" y="138" width="180" height="82" rx="10"/>
+<text x="1300.0" y="166.0" class="t" text-anchor="middle">Instagram · NYT</text>
+<text x="1300.0" y="188.0" class="d" text-anchor="middle">the saved lists, read</text>
+<text x="1300.0" y="203.0" class="d" text-anchor="middle">with an enrolled session</text>
+</g>
+<g class="ext">
+<rect x="1210" y="236" width="180" height="82" rx="10"/>
+<text x="1300.0" y="264.0" class="t" text-anchor="middle">Pages and media</text>
+<text x="1300.0" y="286.0" class="d" text-anchor="middle">Common Sense, articles,</text>
+<text x="1300.0" y="301.0" class="d" text-anchor="middle">Instagram media files</text>
+</g>
+<g class="ext">
+<rect x="1210" y="360" width="180" height="80" rx="10"/>
+<text x="1300.0" y="387.0" class="t" text-anchor="middle">1Password</text>
+<text x="1300.0" y="409.0" class="d" text-anchor="middle">one Environment</text>
+<text x="1300.0" y="424.0" class="d" text-anchor="middle">per carve-out</text>
+</g>
+<g class="ext">
+<rect x="1210" y="470" width="180" height="80" rx="10"/>
+<text x="1300.0" y="497.0" class="t" text-anchor="middle">Metadata APIs</text>
+<text x="1300.0" y="519.0" class="d" text-anchor="middle">TMDb, OMDb, Wikidata,</text>
+<text x="1300.0" y="534.0" class="d" text-anchor="middle">Open Library, archive.org</text>
+</g>
+<g class="store">
+<path d="M250,619 C250,607.0 420,607.0 420,619 L420,697 C420,709.0 250,709.0 250,697 Z M250,619 C250,629.8 420,629.8 420,619"/>
+<text x="335.0" y="649.0" class="t" text-anchor="middle">Ledger</text>
+<text x="335.0" y="671.0" class="d" text-anchor="middle">every save judged once:</text>
+<text x="335.0" y="686.0" class="d" text-anchor="middle">never twice</text>
+</g>
+<g class="store">
+<path d="M435,619 C435,607.0 605,607.0 605,619 L605,697 C605,709.0 435,709.0 435,697 Z M435,619 C435,629.8 605,629.8 605,619"/>
+<text x="520.0" y="649.0" class="t" text-anchor="middle">Fetch archive</text>
+<text x="520.0" y="671.0" class="d" text-anchor="middle">every raw response,</text>
+<text x="520.0" y="686.0" class="d" text-anchor="middle">never deleted</text>
+</g>
+<g class="store">
+<path d="M620,619 C620,607.0 790,607.0 790,619 L790,697 C790,709.0 620,709.0 620,697 Z M620,619 C620,629.8 790,629.8 790,619"/>
+<text x="705.0" y="649.0" class="t" text-anchor="middle">Records and views</text>
+<text x="705.0" y="671.0" class="d" text-anchor="middle">one note per title,</text>
+<text x="705.0" y="686.0" class="d" text-anchor="middle">in the callimachus vault</text>
+</g>
+<g class="store">
+<path d="M805,619 C805,607.0 975,607.0 975,619 L975,697 C975,709.0 805,709.0 805,697 Z M805,619 C805,629.8 975,629.8 975,619"/>
+<text x="890.0" y="649.0" class="t" text-anchor="middle">Run history</text>
+<text x="890.0" y="671.0" class="d" text-anchor="middle">manifests and</text>
+<text x="890.0" y="686.0" class="d" text-anchor="middle">run records</text>
+</g>
+<g class="store">
+<path d="M990,619 C990,607.0 1160,607.0 1160,619 L1160,697 C1160,709.0 990,709.0 990,697 Z M990,619 C990,629.8 1160,629.8 1160,619"/>
+<text x="1075.0" y="649.0" class="t" text-anchor="middle">Guardrail state</text>
+<text x="1075.0" y="671.0" class="d" text-anchor="middle">the fuse, breakers,</text>
+<text x="1075.0" y="686.0" class="d" text-anchor="middle">caps, containments</text>
+</g>
+<text x="570" y="100" class="el" text-anchor="middle">06:30</text>
+<text x="330" y="259" class="el" text-anchor="middle">read, never written</text>
+<text x="365" y="446" class="el" text-anchor="middle">names a title</text>
+<text x="1010" y="394" class="el" text-anchor="middle">the session, for one run only</text>
+<text x="960" y="504" class="el" text-anchor="middle">titles, with free keys</text>
+<text x="612" y="560" class="el" text-anchor="start">writes</text>
+</svg>
+</div><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>Architecture, level 2</span><span>15 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">The agents, run by watchbill</p>
+      <h2 style="font-size:60px">Agents only when something breaks.</h2>
+      <div class="dg-wrap"><svg class="dg" id="c4agt" viewBox="0 0 1280 720" role="img" aria-labelledby="c4agt-t c4agt-d" xmlns="http://www.w3.org/2000/svg">
+<title id="c4agt-t">Level 2, the agents: who may start, and what they may write</title><desc id="c4agt-d">Agents start only through the agent gate, which checks the fuse first. Repair fixes what broke, observe suggests what could be better, and every change reaches John as a card.</desc>
+<style>
+.dg text{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',system-ui,sans-serif;fill:var(--ink)}
+.dg .t{font-weight:650;font-size:15px}
+.dg .t.big{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:26px;font-weight:600}
+.dg .d{font-size:12px;fill:var(--ink-soft)}
+.dg .tech{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;fill:var(--ink-soft);letter-spacing:.2px}
+.dg .sys rect,.dg rect.sys{fill:var(--lapis)}
+.dg .sys text{fill:var(--papyrus)}
+.dg .sys .tech{fill:var(--papyrus);opacity:.85}
+.dg .per rect{fill:var(--terracotta-fill)}
+.dg .per text{fill:var(--papyrus)}
+.dg .ext rect{fill:var(--vellum);stroke:var(--ink-soft);stroke-width:1.2}
+.dg .agent rect{fill:var(--vellum);stroke:var(--ochre-fill);stroke-width:2.2}
+.dg .agent .spark{fill:var(--ochre);font-size:15px}
+.dg .store path{fill:var(--papyrus-deep);stroke:var(--lapis);stroke-width:1.6}
+.dg .grp{fill:none;stroke:var(--rule);stroke-width:1.4;stroke-dasharray:6 5}
+.dg .grp-l{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;letter-spacing:1.6px;fill:var(--ink-soft);text-transform:uppercase}
+.dg .sand{fill:none;stroke:var(--carmine);stroke-width:1.6;stroke-dasharray:7 4}
+.dg .sand-l{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;letter-spacing:1.4px;fill:var(--carmine);text-transform:uppercase}
+.dg .node{fill:var(--papyrus-deep);fill-opacity:.55;stroke:var(--ink-soft);stroke-width:1.2}
+.dg .node-l{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:17px;font-weight:600;fill:var(--ink)}
+.dg .node-s{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;fill:var(--ink-soft)}
+.dg .e{fill:none;stroke:var(--ink-soft);stroke-width:1.5}
+.dg .e.hot{stroke:var(--lapis);stroke-width:2}
+.dg .e.warn{stroke:var(--ochre-fill);stroke-width:2}
+.dg .e.stop{stroke:var(--carmine);stroke-width:1.8;stroke-dasharray:5 4}
+.dg .ah{fill:var(--ink-soft)}
+.dg .ah.hot{fill:var(--lapis)}
+.dg .ah.warn{fill:var(--ochre-fill)}
+.dg .ah.stop{fill:var(--carmine)}
+.dg .el{font-size:11.5px;fill:var(--ink);paint-order:stroke;stroke:var(--papyrus);stroke-width:5px;stroke-linejoin:round}
+.dg .note{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-style:italic;font-size:13px;fill:var(--ink-soft)}
+</style><defs><marker id="c4agt-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah "/></marker><marker id="c4agt-ah-hot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah hot"/></marker><marker id="c4agt-ah-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah warn"/></marker><marker id="c4agt-ah-stop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah stop"/></marker></defs>
+
+<path d="M280,60 L330,60" class="e " marker-end="url(#c4agt-ah)"/>
+<path d="M160,100 L160,220 L330,220" class="e hot" marker-end="url(#c4agt-ah-hot)"/>
+<path d="M450,100 L450,170" class="e " marker-end="url(#c4agt-ah)"/>
+<path d="M570,220 L620,220" class="e stop" marker-end="url(#c4agt-ah-stop)"/>
+<path d="M380,270 L380,312 L170,312 L170,350" class="e hot" marker-end="url(#c4agt-ah-hot)"/>
+<path d="M460,270 L460,350" class="e hot" marker-end="url(#c4agt-ah-hot)"/>
+<path d="M540,270 L540,312 L750,312 L750,350" class="e hot" marker-end="url(#c4agt-ah-hot)"/>
+<path d="M150,460 L150,560" class="e " marker-end="url(#c4agt-ah)"/>
+<path d="M270,460 L270,512 L400,512 L400,556" class="e " marker-end="url(#c4agt-ah)"/>
+<path d="M460,460 L460,556" class="e " marker-end="url(#c4agt-ah)"/>
+<path d="M560,460 L560,512 L730,512 L730,556" class="e " marker-end="url(#c4agt-ah)"/>
+<path d="M1105,640 L1105,690 L460,690 L460,656" class="e " marker-end="url(#c4agt-ah)"/>
+<path d="M1105,560 L1105,270" class="e " marker-end="url(#c4agt-ah)"/>
+<path d="M1105,170 L1105,140 L600,140 L600,60 L570,60" class="e " marker-end="url(#c4agt-ah)"/>
+<g class="ext">
+<rect x="40" y="20" width="240" height="80" rx="10"/>
+<text x="160.0" y="47.0" class="t" text-anchor="middle">herdr-shepherd</text>
+<text x="160.0" y="69.0" class="d" text-anchor="middle">repair at 07:30 if a signal is open;</text>
+<text x="160.0" y="84.0" class="d" text-anchor="middle">observe at 08:00, daily until settled</text>
+</g>
+<g class="sys">
+<rect x="330" y="20" width="240" height="80" rx="10"/>
+<text x="450.0" y="54.5" class="t" text-anchor="middle">Pipeline</text>
+<text x="450.0" y="76.5" class="d" text-anchor="middle">raises signals after each run</text>
+</g>
+<g class="sys">
+<rect x="330" y="170" width="240" height="100" rx="10"/>
+<text x="450.0" y="199.5" class="t" text-anchor="middle">Agent gate</text>
+<text x="450.0" y="221.5" class="d" text-anchor="middle">the only way an agent starts:</text>
+<text x="450.0" y="236.5" class="d" text-anchor="middle">fuse, caps, one paid session</text>
+<text x="450.0" y="251.5" class="d" text-anchor="middle">at a time; a gate record</text>
+</g>
+<g class="store">
+<path d="M620,181 C620,169.0 860,169.0 860,181 L860,259 C860,271.0 620,271.0 620,259 Z M620,181 C620,191.8 860,191.8 860,181"/>
+<text x="740.0" y="211.0" class="t" text-anchor="middle">Guardrail state</text>
+<text x="740.0" y="233.0" class="d" text-anchor="middle">the fuse: blown means</text>
+<text x="740.0" y="248.0" class="d" text-anchor="middle">no model, no agent</text>
+</g>
+<g class="agent">
+<rect x="960" y="170" width="290" height="100" rx="10"/>
+<text x="1105.0" y="199.5" class="t" text-anchor="middle">Designer (build time)</text>
+<text x="1105.0" y="221.5" class="d" text-anchor="middle">changes code and rules, with</text>
+<text x="1105.0" y="236.5" class="d" text-anchor="middle">John, during build cycles only;</text>
+<text x="1105.0" y="251.5" class="d" text-anchor="middle">Opus or Fable</text>
+<text x="1234" y="190" class="spark" text-anchor="middle">✦</text>
+</g>
+<g class="agent">
+<rect x="40" y="350" width="260" height="110" rx="10"/>
+<text x="170.0" y="377.0" class="t" text-anchor="middle">maintainer: repair</text>
+<text x="170.0" y="399.0" class="d" text-anchor="middle">one fresh session per signal;</text>
+<text x="170.0" y="414.0" class="d" text-anchor="middle">reproduces offline, fixes on a</text>
+<text x="170.0" y="429.0" class="d" text-anchor="middle">branch, replays every save.</text>
+<text x="170.0" y="444.0" class="d" text-anchor="middle">Sonnet, then Opus. Never Fable.</text>
+<text x="284" y="370" class="spark" text-anchor="middle">✦</text>
+</g>
+<g class="agent">
+<rect x="330" y="350" width="260" height="110" rx="10"/>
+<text x="460.0" y="377.0" class="t" text-anchor="middle">maintainer: observe</text>
+<text x="460.0" y="399.0" class="d" text-anchor="middle">a daily watch until settled:</text>
+<text x="460.0" y="414.0" class="d" text-anchor="middle">checks the numbers, samples</text>
+<text x="460.0" y="429.0" class="d" text-anchor="middle">records against their sources.</text>
+<text x="460.0" y="444.0" class="d" text-anchor="middle">Haiku; Sonnet only if needed.</text>
+<text x="574" y="370" class="spark" text-anchor="middle">✦</text>
+</g>
+<g class="agent">
+<rect x="620" y="350" width="260" height="110" rx="10"/>
+<text x="750.0" y="377.0" class="t" text-anchor="middle">Degraded-capture browser</text>
+<text x="750.0" y="399.0" class="d" text-anchor="middle">NYT only, faults on our side</text>
+<text x="750.0" y="414.0" class="d" text-anchor="middle">only, read only, 14 days at</text>
+<text x="750.0" y="429.0" class="d" text-anchor="middle">most; never holds a credential.</text>
+<text x="750.0" y="444.0" class="d" text-anchor="middle">Local model, then Haiku, Sonnet.</text>
+<text x="864" y="370" class="spark" text-anchor="middle">✦</text>
+</g>
+<g class="ext">
+<rect x="40" y="560" width="240" height="84" rx="10"/>
+<text x="160.0" y="589.0" class="t" text-anchor="middle">The forge</text>
+<text x="160.0" y="611.0" class="d" text-anchor="middle">a pull request per fix,</text>
+<text x="160.0" y="626.0" class="d" text-anchor="middle">with its replay</text>
+</g>
+<g class="store">
+<path d="M330,565 C330,553.0 590,553.0 590,565 L590,643 C590,655.0 330,655.0 330,643 Z M330,565 C330,575.8 590,575.8 590,565"/>
+<text x="460.0" y="595.0" class="t" text-anchor="middle">Decisions board</text>
+<text x="460.0" y="617.0" class="d" text-anchor="middle">one card per proposal,</text>
+<text x="460.0" y="632.0" class="d" text-anchor="middle">no cap, never bundled</text>
+</g>
+<g class="store">
+<path d="M620,565 C620,553.0 840,553.0 840,565 L840,643 C840,655.0 620,655.0 620,643 Z M620,565 C620,575.8 840,575.8 840,565"/>
+<text x="730.0" y="595.0" class="t" text-anchor="middle">Watch log</text>
+<text x="730.0" y="617.0" class="d" text-anchor="middle">one page a day: what</text>
+<text x="730.0" y="632.0" class="d" text-anchor="middle">observe checked</text>
+</g>
+<g class="per">
+<rect x="960" y="560" width="290" height="80" rx="10"/>
+<text x="1105.0" y="594.5" class="t" text-anchor="middle">John</text>
+<text x="1105.0" y="616.5" class="d" text-anchor="middle">the only one who says yes</text>
+</g>
+<text x="245" y="214" class="el" text-anchor="middle">launches</text>
+<text x="450" y="139" class="el" text-anchor="middle">asks for the browser</text>
+<text x="150" y="515" class="el" text-anchor="middle">a PR</text>
+<text x="335" y="506" class="el" text-anchor="middle">one card</text>
+<text x="460" y="500" class="el" text-anchor="middle">a card</text>
+<text x="460" y="514" class="el" text-anchor="middle">per idea</text>
+<text x="780" y="684" class="el" text-anchor="middle">says yes or no, card by card</text>
+<text x="1105" y="420" class="el" text-anchor="middle">rulings and approvals</text>
+<text x="850" y="134" class="el" text-anchor="middle">lands changes, with John&#x27;s yes</text>
+</svg>
+</div><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>The agents</span><span>16 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">Repair and observe</p>
+      <h2>Two loops, and John says yes.</h2>
+      <div class="cols c2">
+        <div class="box"><span class="k">maintainer: repair &middot; on a signal</span><h3>What broke, and how do we stop it?</h3>
+          <p>A fresh session per signal: work around it today, reproduce it offline from the saved responses, fix it on a branch, replay every stored save, open one pull request and one card. Sonnet, then Opus. Never Fable.</p></div>
+        <div class="box"><span class="k">maintainer: observe &middot; daily, until settled</span><h3>It works; how could it be better?</h3>
+          <p>Recount the run, sample five notes against their sources, look for improvements under six headings, and propose each one as its own card. Haiku; Sonnet only if needed.</p></div>
+      </div>
+      <p class="lede" style="margin-top:44px">watchbill gives every agent a seat, a brief, a pinned model and a log. Every decision reaches John as its own card, with no cap.</p><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>Two loops</span><span>17 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">What stays private</p>
+      <h2>Your saves are yours. They stay at home.</h2>
+      <div class="cols c2" style="gap:70px">
+        <ul class="t">
+          <li>Saves are read from the family's own accounts by small, declared scripts in a sandbox.</li>
+          <li>Everything filed stays in the family's own vault, on their own Mac and phones, synced by a server on their own NAS.</li>
+          <li>Nothing is sold or shared.</li>
+          <li>Karina's account is never read by a script: her saves come from her own export, or she sends them.</li>
+          <li>Sends arrive at one small door on the family's private network; it can only add a note to the inbox.</li>
+        </ul>
+        <ul class="t out">
+          <li>Public sources get a title or an id, never an account.</li>
+          <li>Paid AI sees a title question (the post's text, as data), never an account or session.</li>
+          <li>The code that holds a sign-in has no AI in it: injection there is impossible by construction.</li>
+          <li>GitHub holds the code and fixes, never the notes.</li>
+          <li>Posters are checked for nudity at home before any reaches a phone.</li>
+        </ul>
+      </div><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>Privacy</span><span>18 / 20</span></div></section><section class="slide ">
+      <p class="eyebrow">Where it stands</p>
+      <h2>Proof of concept, judged card by card. Next: the MVP.</h2>
+      <div class="cols c3">
+        <div class="box"><span class="k">Now &middot; proof of concept</span><h3>Real saves, real notes</h3><p>Run by hand on real saves; Chrome button, bookmarklet and Share menu; where to watch, visual art, lists and sets; the callimachus vault and its Bases, with posters, registry links and Common Sense scores, live on Karina's iPhone.</p></div>
+        <div class="box"><span class="k">Next &middot; MVP</span><h3>Every morning, unattended</h3><p>The image check for new saves, every family device, the Chrome Web Store (unlisted), then the 06:30 schedule and the repair and observe loops.</p></div>
+        <div class="box"><span class="k">Later</span><h3>More kinds of media</h3><p>Reddit saves, audiobooks, games; photos of a sign snapped on the street; a weekly digest.</p></div>
+      </div>
+      <p class="lede" style="margin-top:46px">Instagram comes on in careful steps: exports first, then a week on a throwaway test account, then one read a day.</p><div class="foot"><span class="m"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>callimachus</span><span>Where it stands</span><span>19 / 20</span></div></section><section class="slide title-slide dark">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center">
+        <div><div class="greek">Πίνακες</div>
+          <p class="lede" style="font-style:italic">Callimachus of Cyrene catalogued the Library of Alexandria in the third century BC. His <i>Pinakes</i> was the first library catalogue. Each scroll carried a <i>sillybos</i>, a tag with its title. Every note callimachus files is one.</p></div>
+        <div style="text-align:center"><svg class="bigmark" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg>
+          <h2 style="font-size:64px;font-style:italic;margin:0 auto;max-width:760px">Made for Karina, who always wanted this to exist.</h2>
+          <p class="lede" style="margin:30px auto 0;text-align:center">Happy birthday.</p></div>
+      </div></section></div>
+<div class="hint">&larr; &rarr; to move &middot; #all shows every slide</div>
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide')), i=0;
+  if(location.hash==='#all'){document.body.classList.add('all');return;}
+  function fit(){var s=Math.min(innerWidth/1920,innerHeight/1080);slides.forEach(function(el){el.style.transform='scale('+s+')'})}
+  function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach(function(el,k){el.classList.toggle('on',k===i)});
+    try{history.replaceState(null,'','#'+(i+1))}catch(e){}}
+  addEventListener('resize',fit);
+  addEventListener('keydown',function(e){
+    if(['ArrowRight','PageDown',' ','Enter'].indexOf(e.key)>=0){show(i+1);e.preventDefault()}
+    else if(['ArrowLeft','PageUp','Backspace'].indexOf(e.key)>=0){show(i-1);e.preventDefault()}
+    else if(e.key==='Home'){show(0)} else if(e.key==='End'){show(slides.length-1)}});
+  document.addEventListener('click',function(e){ if(e.clientX>innerWidth/3){show(i+1)} else {show(i-1)} });
+  var h=parseInt((location.hash||'#1').slice(1),10); fit(); show(isNaN(h)?0:h-1);
+})();
+</script></body></html>

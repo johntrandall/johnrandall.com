@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>How callimachus works</title>
+<meta name="description" content="The pipeline, the escalation ladder, the fuse and the architecture of callimachus, drawn as simplified C4 diagrams.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2076%2066%22%20width%3D%22152%22%20height%3D%22132%22%20role%3D%22img%22%20aria-label%3D%22callimachus%20mark%3A%20a%20scroll%20lying%20at%20a%20slant%2C%20with%20its%20title%20tag%22%3E%20%20%20%3Ctitle%3Ecallimachus%20mark%3C/title%3E%20%20%20%3Cg%20class%3D%22scroll%22%20transform%3D%22rotate%28-10%2036%2026%29%22%3E%3Crect%20x%3D%2261.00%22%20y%3D%2223.40%22%20width%3D%226%22%20height%3D%225.2%22%20rx%3D%222.4%22%20fill%3D%22%237A5A3A%22%20stroke%3D%22%231C2533%22%20stroke-width%3D%221.2%22/%3E%3Cpath%20d%3D%22M16%2C14.00%20L56%2C14.00%20A6.5%2C12%200%200%201%2056%2C38.00%20L16%2C38.00%20Z%22%20fill%3D%22%23EBDFC6%22%20stroke%3D%22%231C2533%22%20stroke-width%3D%222.4%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M20%2C18.20%20L54%2C18.20%22%20stroke%3D%22%23F5EEDF%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.7%22/%3E%3Cellipse%20cx%3D%2216%22%20cy%3D%2226%22%20rx%3D%226.5%22%20ry%3D%2212%22%20fill%3D%22%23EBDFC6%22%20stroke%3D%22%231C2533%22%20stroke-width%3D%222.4%22/%3E%3Cpath%20class%3D%22spiral%22%20d%3D%22M16.00%2C23.36%20L16.15%2C23.31%20L16.31%2C23.30%20L16.47%2C23.31%20L16.64%2C23.36%20L16.80%2C23.45%20L16.96%2C23.56%20L17.11%2C23.72%20L17.26%2C23.90%20L17.40%2C24.12%20L17.53%2C24.37%20L17.64%2C24.65%20L17.74%2C24.95%20L17.83%2C25.28%20L17.89%2C25.63%20L17.93%2C26.00%20L17.96%2C26.38%20L17.96%2C26.77%20L17.93%2C27.16%20L17.89%2C27.55%20L17.82%2C27.94%20L17.73%2C28.32%20L17.61%2C28.68%20L17.47%2C29.02%20L17.31%2C29.34%20L17.13%2C29.63%20L16.94%2C29.88%20L16.72%2C30.10%20L16.49%2C30.28%20L16.25%2C30.41%20L16.00%2C30.50%20L15.74%2C30.54%20L15.48%2C30.52%20L15.22%2C30.46%20L14.95%2C30.34%20L14.70%2C30.17%20L14.45%2C29.94%20L14.21%2C29.67%20L13.99%2C29.34%20L13.78%2C28.97%20L13.60%2C28.56%20L13.44%2C28.11%20L13.30%2C27.62%20L13.19%2C27.10%20L13.11%2C26.56%20L13.06%2C26.00%20L13.04%2C25.43%20L13.06%2C24.85%20L13.11%2C24.26%20L13.19%2C23.69%20L13.31%2C23.13%20L13.46%2C22.59%20L13.64%2C22.08%20L13.85%2C21.60%20L14.09%2C21.16%20L14.36%2C20.76%20L14.65%2C20.42%20L14.97%2C20.13%20L15.30%2C19.90%20L15.64%2C19.74%20L16.00%2C19.64%20L16.36%2C19.61%20L16.73%2C19.66%20L17.10%2C19.77%20L17.46%2C19.96%20L17.81%2C20.22%20L18.14%2C20.55%20L18.46%2C20.95%20L18.76%2C21.41%20L19.03%2C21.93%20L19.27%2C22.51%20L19.48%2C23.14%20L19.66%2C23.80%20L19.80%2C24.51%20L19.89%2C25.24%20L19.95%2C26.00%20L19.96%2C26.77%20L19.93%2C27.54%20L19.85%2C28.31%20L19.73%2C29.07%20L19.57%2C29.80%20L19.36%2C30.50%20L19.11%2C31.17%20L18.82%2C31.79%20L18.50%2C32.35%20L18.14%2C32.85%20L17.76%2C33.28%20L17.34%2C33.64%20L16.91%2C33.92%20L16.46%2C34.11%20L16.00%2C34.22%20L15.53%2C34.24%20L15.06%2C34.16%20L14.59%2C33.99%20L14.13%2C33.74%20L13.69%2C33.39%20L13.26%2C32.95%20L12.86%2C32.43%20L12.49%2C31.83%20L12.15%2C31.16%20L11.85%2C30.42%20L11.59%2C29.62%20L11.38%2C28.77%20L11.22%2C27.88%20L11.10%2C26.95%20L11.04%2C26.00%20L11.04%2C25.04%20L11.09%2C24.07%20L11.19%2C23.12%20L11.35%2C22.18%20L11.56%2C21.27%20L11.83%2C20.40%20L12.14%2C19.59%20L12.50%2C18.83%20L12.91%2C18.15%20L13.35%2C17.54%20L13.83%2C17.02%20L14.34%2C16.59%20L14.88%2C16.26%20L15.43%2C16.04%20L16.00%2C15.92%22%20fill%3D%22none%22%20stroke%3D%22%231C2533%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22/%3E%3Crect%20x%3D%225.00%22%20y%3D%2223.40%22%20width%3D%226%22%20height%3D%225.2%22%20rx%3D%222.4%22%20fill%3D%22%237A5A3A%22%20stroke%3D%22%231C2533%22%20stroke-width%3D%221.2%22/%3E%3C/g%3E%3Cpath%20class%3D%22string%22%20d%3D%22M8.88%2C33.42%20Q10.23%2C56.75%2011.57%2C53.25%22%20fill%3D%22none%22%20stroke%3D%22%231C2533%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22/%3E%3Cg%20class%3D%22tag%22%20data-rot%3D%224%22%20data-pivot%3D%228%2053.0%22%20transform%3D%22rotate%284%208%2053.0%29%22%3E%3Crect%20x%3D%228%22%20y%3D%2246%22%20width%3D%2221%22%20height%3D%2214%22%20rx%3D%222.2%22%20fill%3D%22%23B9532C%22/%3E%3Ccircle%20cx%3D%2211.6%22%20cy%3D%2253.0%22%20r%3D%221.45%22%20fill%3D%22%23F5EEDF%22/%3E%3Crect%20x%3D%2215.4%22%20y%3D%2249.4%22%20width%3D%2210.6%22%20height%3D%222%22%20rx%3D%221%22%20fill%3D%22%23F5EEDF%22/%3E%3Crect%20x%3D%2215.4%22%20y%3D%2254.1%22%20width%3D%227.00%22%20height%3D%222%22%20rx%3D%221%22%20fill%3D%22%23F5EEDF%22%20opacity%3D%22.8%22/%3E%3C/g%3E%20%3C/svg%3E%20">
+<style>
+/* callimachus brand tokens. The site, the deck and the video inline this file; edit here, then rebuild.
+   Fonts are system faces only (macOS and iOS ship all of them), so every page opens offline. */
+:root {
+  --papyrus: #F5EEDF;       /* page */
+  --papyrus-deep: #EBDFC6;  /* bands, cards, the scroll end */
+  --vellum: #FBF7EE;        /* raised cards */
+  --ink: #1C2533;           /* text, lines */
+  --ink-soft: #4E5868;      /* secondary text */
+  --rule: #D6C7A8;          /* hairlines */
+  --lapis: #2D4A8A;         /* primary: links, the system itself */
+  --terracotta: #9A421E;    /* accent text: people, the tag's label */
+  --terracotta-fill: #B9532C; /* the tag itself, accent fills */
+  --nile: #266358;          /* healthy */
+  --ochre: #7E5B0E;         /* degraded (text-safe ochre) */
+  --ochre-fill: #E3B652;    /* degraded fills */
+  --carmine: #A3332B;       /* stopped, the fuse */
+  --mark-edge: #1C2533;     /* the logo's outline: ink on light, deep papyrus on dark */
+  --code-bg: #1C2533;
+  --code-ink: #EDE4D1;
+  --shadow: 0 1px 0 rgba(28,37,51,.06), 0 8px 24px -12px rgba(28,37,51,.25);
+
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --display: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, 'JetBrains Mono', Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --papyrus: #10151D; --papyrus-deep: #18202B; --vellum: #1D2633; --ink: #EDE4D1; --ink-soft: #B3AA98;
+    --rule: #2E3846; --lapis: #8FA9E8; --terracotta: #E5865C; --terracotta-fill: #D8693D; --nile: #62B8A9; --ochre: #E3B652; --ochre-fill: #C99A2E;
+    --carmine: #E8766B; --mark-edge: #C9B48A; --code-bg: #0B0F15; --code-ink: #EDE4D1; --shadow: 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"] {
+  --papyrus: #10151D; --papyrus-deep: #18202B; --vellum: #1D2633; --ink: #EDE4D1; --ink-soft: #B3AA98;
+  --rule: #2E3846; --lapis: #8FA9E8; --terracotta: #E5865C; --terracotta-fill: #D8693D; --nile: #62B8A9; --ochre: #E3B652; --ochre-fill: #C99A2E;
+  --carmine: #E8766B; --mark-edge: #C9B48A; --code-bg: #0B0F15; --code-ink: #EDE4D1; --shadow: 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+/* callimachus site layout. Tokens come from promotion/brand/brand.css, inlined before this file. */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--papyrus);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.62;text-rendering:optimizeLegibility}
+a{color:var(--lapis);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+img,svg{max-width:100%}
+code,kbd,.mono{font-family:var(--mono);font-size:.84em}
+code{background:var(--papyrus-deep);padding:.08em .35em;border-radius:5px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.narrow{max-width:760px}
+
+/* header */
+.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--papyrus) 88%,transparent);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;gap:22px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand svg{width:44px;height:38px}
+.brand b{font-family:var(--display);font-weight:600;font-size:25px;letter-spacing:.2px}
+.nav{display:flex;gap:4px;margin-left:auto;font-family:var(--sans);font-size:15px}
+.nav a{color:var(--ink-soft);text-decoration:none;padding:7px 12px;border-radius:8px}
+.nav a:hover{background:var(--papyrus-deep);color:var(--ink)}
+.nav a[aria-current="page"]{color:var(--ink);background:var(--papyrus-deep);font-weight:600}
+.theme{font-family:var(--sans);font-size:13px;border:1px solid var(--rule);background:transparent;color:var(--ink-soft);border-radius:999px;padding:6px 12px;cursor:pointer}
+.theme:hover{color:var(--ink);border-color:var(--ink-soft)}
+
+/* type */
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.12;letter-spacing:-.2px;margin:0}
+h1{font-size:clamp(40px,6vw,68px)}
+h2{font-size:clamp(30px,3.6vw,42px);margin-bottom:14px}
+h3{font-size:23px;margin-bottom:6px}
+p{margin:0 0 14px}
+.lede{font-size:21px;color:var(--ink-soft);max-width:640px}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:2.4px;text-transform:uppercase;color:var(--terracotta);margin:0 0 12px;display:block}
+.muted{color:var(--ink-soft)}
+.small{font-size:15.5px}
+.sans{font-family:var(--sans)}
+
+/* sections */
+section{padding:84px 0}
+section.band{background:var(--papyrus-deep);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.sec-head{max-width:760px;margin-bottom:36px}
+.grid{display:grid;gap:22px}
+.grid>*{min-width:0}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--vellum);border:1px solid var(--rule);border-radius:16px;padding:24px 24px 20px;box-shadow:var(--shadow)}
+.card h3{font-size:21px}
+.card p{font-size:16.5px;color:var(--ink-soft)}
+.card .k{font-family:var(--mono);font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--terracotta);display:block;margin-bottom:6px}
+
+/* buttons */
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{font-family:var(--sans);font-size:16px;font-weight:600;text-decoration:none;padding:12px 20px;border-radius:12px;border:1.5px solid var(--lapis)}
+.btn.primary{background:var(--lapis);color:var(--papyrus)}
+.btn.ghost{color:var(--lapis)}
+
+/* hero */
+.hero{padding:70px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1 em{font-style:italic;color:var(--terracotta)}
+.hero .greek{font-family:var(--display);font-style:italic;color:var(--ink-soft);font-size:17px;margin-top:22px}
+
+/* catalogue cards: a library index card per title, its tag hanging below like a sillybos */
+.fan{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 22px;padding:6px 10px 18px}
+.icard{position:relative;background:var(--vellum);border:1px solid var(--rule);border-radius:10px;box-shadow:var(--shadow);padding:12px 16px 12px;
+  background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 23px,color-mix(in srgb,var(--lapis) 12%,transparent) 23px,color-mix(in srgb,var(--lapis) 12%,transparent) 24px);background-position:0 80px}
+.icard::before{content:"";position:absolute;left:0;right:0;top:78px;border-top:1.5px solid color-mix(in srgb,var(--carmine) 55%,transparent)}
+.icard .hd{display:flex;flex-direction:column;justify-content:flex-end;height:62px}
+.icard .ti{font-family:var(--display);font-weight:600;font-size:18.5px;line-height:1.08}
+.icard .yr{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.icard dl{margin:10px 0 0;display:grid;grid-template-columns:auto 1fr;column-gap:10px;font-family:var(--mono);font-size:11.4px;line-height:24px}
+.icard dt{color:var(--lapis)}
+.icard dd{margin:0;color:var(--ink);text-align:right;white-space:nowrap}
+.icard dd.blank{color:var(--ink-soft);font-style:italic}
+.icard .tag{position:absolute;right:18px;bottom:-13px;transform:rotate(-6deg);background:var(--terracotta-fill);color:var(--papyrus);font-family:var(--mono);font-size:10px;letter-spacing:1.2px;padding:3px 8px 3px 15px;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.icard .tag::before{content:"";position:absolute;left:5px;top:50%;width:4px;height:4px;margin-top:-2px;border-radius:50%;background:var(--papyrus)}
+.fan-note{grid-column:1/-1;font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin:4px 0 0;text-align:center}
+.fan .c1{transform:rotate(-1.6deg)}.fan .c2{transform:rotate(1.2deg) translateY(10px)}.fan .c3{transform:rotate(.8deg)}.fan .c4{transform:rotate(-1.2deg) translateY(10px)}
+
+/* flow strip */
+.flow{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px;counter-reset:st}
+.stage{position:relative;background:var(--vellum);border:1px solid var(--rule);border-radius:14px;padding:16px 14px 14px;box-shadow:var(--shadow)}
+.stage:not(:last-child)::after{content:"";position:absolute;right:-12px;top:34px;width:12px;height:2px;background:var(--lapis)}
+.stage b{display:block;font-family:var(--display);font-size:19px}
+.stage .n{font-family:var(--mono);font-size:11.5px;color:var(--terracotta);letter-spacing:1.5px}
+.stage p{font-size:14.5px;line-height:1.45;color:var(--ink-soft);margin:6px 0 0}
+.stage code{font-size:11.5px}
+
+/* ladder */
+.ladder{display:grid;gap:8px}
+.rung{display:grid;grid-template-columns:56px 1fr 1.1fr;gap:16px;align-items:center;background:var(--vellum);border:1px solid var(--rule);border-radius:12px;padding:12px 16px}
+.rung .no{font-family:var(--display);font-size:30px;font-weight:600;color:var(--lapis);text-align:center}
+.rung b{font-family:var(--sans);font-size:16px}
+.rung span{font-size:15.5px;color:var(--ink-soft)}
+.rung.free{border-left:5px solid var(--nile)}
+.rung.paid{border-left:5px solid var(--ochre-fill)}
+.rung.person{border-left:5px solid var(--terracotta-fill)}
+.rung.off{opacity:.6}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);margin-top:14px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* states */
+.state{border-radius:16px;padding:22px;border:1px solid var(--rule);background:var(--vellum)}
+.state h3{display:flex;align-items:center;gap:10px}
+.state h3::before{content:"";width:14px;height:14px;border-radius:50%;background:currentColor}
+.state.ok h3{color:var(--nile)}
+.state.deg h3{color:var(--ochre)}
+.state.stop h3{color:var(--carmine)}
+.state p{font-size:16.5px;color:var(--ink-soft)}
+
+/* code panel */
+.code{background:var(--code-bg);color:var(--code-ink);border-radius:16px;padding:22px 24px;font-family:var(--mono);font-size:13.5px;line-height:1.7;overflow-x:auto;box-shadow:var(--shadow);margin:0}
+.code .k{color:#9DB6F0}.code .s{color:#EDE4D1}.code .n{color:#E3B652}.code .c{color:#8C93A0;font-style:italic}.code .b{color:#E5865C}
+.code-cap{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:10px}
+
+/* figures */
+figure{margin:0}
+.dgfig{background:var(--papyrus);border:1px solid var(--rule);border-radius:18px;padding:18px;overflow-x:auto}
+.dgfig svg{display:block;width:100%;height:auto;min-width:880px}
+figcaption{font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);margin-top:12px;max-width:820px}
+.c4level{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:1.6px;border:1px solid var(--lapis);color:var(--lapis);border-radius:999px;padding:2px 10px;margin-right:8px;text-transform:uppercase}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.stat{border-top:2px solid var(--ink);padding-top:14px}
+.stat b{display:block;font-family:var(--display);font-size:46px;font-weight:600;line-height:1}
+.stat span{display:block;margin-top:8px;font-family:var(--sans);font-size:15px;line-height:1.45;color:var(--ink-soft)}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font-family:var(--sans);font-size:15px;background:var(--vellum);border:1px solid var(--rule);border-radius:999px;padding:8px 15px}
+.chip.kid{border-color:var(--nile)}.chip.score{border-color:var(--lapis)}.chip.stream{border-color:var(--ochre-fill)}.chip.ops{border-color:var(--terracotta-fill)}
+
+/* quote */
+.pull{font-family:var(--display);font-size:clamp(26px,3vw,36px);line-height:1.25;font-style:italic;margin:0;max-width:900px}
+.pull cite{display:block;font-style:normal;font-family:var(--sans);font-size:15px;color:var(--ink-soft);margin-top:14px}
+
+/* lists */
+.ticks{list-style:none;padding:0;margin:0}
+.ticks li{position:relative;padding-left:28px;margin-bottom:10px;font-size:17px}
+.ticks li::before{content:"";position:absolute;left:2px;top:.55em;width:12px;height:7px;border-left:2px solid var(--nile);border-bottom:2px solid var(--nile);transform:rotate(-45deg)}
+.ticks.no li::before{border:none;width:12px;height:2px;background:var(--carmine);transform:none;top:.72em}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.steps li{counter-increment:s;position:relative;padding:14px 16px 14px 60px;background:var(--vellum);border:1px solid var(--rule);border-radius:12px;font-size:16.5px}
+.steps li::before{content:counter(s);position:absolute;left:16px;top:12px;width:30px;height:30px;border-radius:50%;background:var(--lapis);color:var(--papyrus);font-family:var(--sans);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
+.steps li b{font-family:var(--sans)}
+
+/* tables */
+table.t{width:100%;border-collapse:collapse;font-size:16px}
+table.t th{font-family:var(--sans);font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft);text-align:left;border-bottom:2px solid var(--ink);padding:8px 10px}
+table.t td{border-bottom:1px solid var(--rule);padding:10px;vertical-align:top}
+.tablewrap{overflow-x:auto}
+
+/* name section */
+.pinax{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center}
+.pinax .bigmark{width:150px;height:130px;display:block;margin-bottom:18px}
+.pinax .greekbig{font-family:var(--display);font-size:clamp(40px,5vw,62px);line-height:1;color:var(--lapis)}
+
+/* dedication */
+.dedication{text-align:center;padding:70px 0}
+.dedication p{font-family:var(--display);font-style:italic;font-size:26px;margin:14px auto 0;max-width:680px}
+.dedication svg{width:86px;height:75px}
+
+/* footer */
+footer{border-top:1px solid var(--rule);padding:34px 0 44px;font-family:var(--sans);font-size:14px;color:var(--ink-soft)}
+footer .wrap{display:flex;gap:24px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+footer nav{display:flex;gap:16px}
+footer a{color:var(--ink-soft)}
+
+.next{display:flex;justify-content:flex-end;margin-top:40px}
+
+/* coming: designed and accepted, not yet run */
+.stage.soon{border-style:dashed;border-color:var(--ochre-fill)}
+.soon-tag,.card .soon,.k .soon,.eyebrow .soon{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ochre);border:1px solid var(--ochre-fill);border-radius:999px;padding:1px 8px;margin-top:8px}
+.k .soon,.eyebrow .soon{margin:0 0 0 6px;vertical-align:1px}
+.eyebrow .soon{font-size:10.5px}
+
+/* the vault: Base tree */
+.tree{font-family:var(--mono);font-size:13.5px;line-height:1.75;background:var(--vellum);border:1px solid var(--rule);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow);margin:0;overflow-x:auto;white-space:pre}
+.tree .a{color:var(--terracotta);font-weight:600}
+.tree .b{color:var(--lapis);font-weight:600}
+.tree .v,.tree .r{color:var(--ink-soft)}
+
+/* phones */
+.sync{display:grid;grid-template-columns:1fr auto 1fr auto 1.4fr;gap:14px;align-items:center}
+.sync .node{background:var(--vellum);border:1px solid var(--rule);border-radius:16px;padding:18px;text-align:center;box-shadow:var(--shadow)}
+.sync .node b{display:block;font-family:var(--display);font-size:19px}
+.sync .node span{display:block;font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.sync .node.sys{background:var(--lapis);border-color:var(--lapis)}
+.sync .node.sys b,.sync .node.sys span{color:var(--papyrus)}
+.sync .arr{font-family:var(--sans);font-size:22px;color:var(--lapis);text-align:center}
+.phones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.phone{width:58px;height:96px;padding-top:6px;border:2px solid var(--ink-soft);border-radius:12px;position:relative;background:var(--papyrus);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:11px;color:var(--ink-soft);text-align:center;line-height:1.2}
+.phone.live{border-color:var(--nile);color:var(--nile);font-weight:600}
+.phone::before{content:"";position:absolute;top:6px;left:50%;width:16px;height:3px;margin-left:-8px;border-radius:2px;background:currentColor;opacity:.5}
+
+/* the image check */
+.check{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.check .st{background:var(--vellum);border:1px solid var(--rule);border-radius:14px;padding:16px;position:relative}
+.check .st b{display:block;font-family:var(--sans);font-size:15.5px}
+.check .st p{font-size:14.5px;color:var(--ink-soft);margin:6px 0 0;line-height:1.45}
+.check .st.pass{border-left:5px solid var(--nile)}
+.check .st.flag{border-left:5px solid var(--ochre-fill)}
+.check .st.block{border-left:5px solid var(--carmine)}
+
+@media (max-width:980px){
+  .hero .wrap,.pinax{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .stage:nth-child(4)::after{display:none}
+  .g3,.g4,.stats,.check{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sync{grid-template-columns:1fr}
+  .sync .arr{transform:rotate(90deg)}
+  .fan{max-width:620px}
+}
+@media (max-width:640px){
+  body{font-size:17.5px}
+  .wrap{padding:0 16px}
+  .top .wrap{height:auto;flex-wrap:wrap;padding-top:10px;padding-bottom:8px;gap:8px}
+  .nav{margin-left:0;width:100%;flex-wrap:wrap;row-gap:2px;order:3}
+  .nav a{padding:6px 9px;font-size:14px;white-space:nowrap}
+  .theme{margin-left:auto}
+  section{padding:56px 0}
+  .g2,.g3,.g4,.stats,.flow,.check{grid-template-columns:1fr}
+  .tree{font-size:12px}
+  .tree .v{display:none}
+  .phone{width:44px;height:78px;font-size:10px}
+  .phones{gap:7px}
+  .stage::after{display:none}
+  .rung{grid-template-columns:40px 1fr;}
+  .rung span{grid-column:2}
+  .fan{grid-template-columns:1fr;gap:28px;padding:0}
+  .fan .icard{transform:none}
+}
+/* the user half (index, tour), 2026-10-28 */
+.nav-sep{width:1px;align-self:stretch;margin:6px 6px;background:var(--rule)}
+.art{display:block;width:100%;height:auto}
+.art .sc{font-family:var(--sans)}
+.opening{background:#10151D;color:#EDE4D1;padding:76px 0;--mark-edge:#C9B48A;--papyrus:#F5EEDF}
+.opening .wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.opening .greek{font-family:var(--display);font-size:clamp(46px,6vw,76px);line-height:1;color:#8FA9E8;margin-bottom:22px}
+.opening .op-left p{font-family:var(--serif);font-style:italic;font-size:19px;color:#B3AA98;max-width:470px}
+.opening .op-right{text-align:center}
+.opening .bigmark{width:150px;height:130px;display:block;margin:0 auto 18px}
+.opening h2{font-style:italic;font-size:clamp(32px,4vw,50px);line-height:1.15;color:#EDE4D1;max-width:560px;margin:0 auto}
+.opening .hb{font-family:var(--display);font-size:22px;color:#E5865C;margin-top:18px}
+.home-hero .wrap{grid-template-columns:1fr 1fr}
+.hero-art{margin:0;max-width:520px;justify-self:center;width:100%}
+.flow2{display:grid;grid-template-columns:1.15fr 34px 1fr 34px 1fr 34px 1.15fr 34px 1.45fr;align-items:center;gap:0 6px}
+.flow2 figure{margin:0}
+.flow2 figcaption{font-family:var(--sans);font-size:14.5px;line-height:1.4;color:var(--ink-soft);margin-top:10px;text-align:center}
+.flow2 figcaption b{display:block;color:var(--ink);font-size:15.5px;margin-bottom:2px}
+.f-pair{display:grid;gap:22px;justify-items:center}
+.f-pair figure{width:100%}
+.f-pair .f-phone svg{width:56%;margin:0 auto}
+.wrap.wide{max-width:1420px}
+.f-arr{color:var(--lapis);display:flex;justify-content:center}
+.f-arr .arrow{width:34px;height:22px}
+.taps{display:grid;grid-template-columns:.62fr 1.38fr;gap:46px;align-items:end}
+.tapfig{margin:0}
+.tapfig:not(.wide) svg{max-width:300px;margin:0 auto}
+.tapfig figcaption{font-family:var(--sans);font-size:16.5px;line-height:1.45;color:var(--ink-soft);margin-top:18px;max-width:560px}
+.tapfig figcaption b{display:block;font-family:var(--display);font-size:22px;color:var(--ink);margin-bottom:4px}
+.devices{display:grid;grid-template-columns:1fr 26%;gap:34px;align-items:end;max-width:900px;margin:0 auto}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:34px;font-family:var(--sans);font-size:15px;color:var(--ink-soft)}
+.chips span{background:var(--vellum);border:1px solid var(--rule);border-radius:999px;padding:7px 15px}
+.chips b{color:var(--ink);margin-right:5px}
+.benefits{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px}
+.benefits div{border-top:3px solid var(--terracotta-fill);padding-top:14px}
+.benefits b{display:block;font-family:var(--display);font-size:20px;line-height:1.2;margin-bottom:6px}
+.benefits span{font-family:var(--sans);font-size:15px;color:var(--ink-soft);line-height:1.45;display:block}
+.halves{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.half{display:block;text-decoration:none;color:inherit;background:var(--vellum);border:1px solid var(--rule);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+.half .k{font-family:var(--mono);font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--terracotta);display:block;margin-bottom:6px}
+.half h3{color:var(--lapis)}
+.half p{font-size:16.5px;color:var(--ink-soft);margin:0}
+.flowmini{display:flex;align-items:stretch;gap:14px;flex-wrap:wrap}
+.flowmini .node{flex:1 1 200px;background:var(--vellum);border:1px solid var(--rule);border-radius:14px;padding:18px 20px;font-family:var(--sans)}
+.flowmini .node.sys{border-color:var(--lapis)}
+.flowmini b{display:block;font-size:17px}
+.flowmini span{color:var(--ink-soft);font-size:15px}
+.flowmini .arr{align-self:center;color:var(--lapis);font-size:26px}
+@media (max-width:980px){
+  .opening .wrap,.home-hero .wrap{grid-template-columns:1fr;gap:40px}
+  .flow2{grid-template-columns:1fr;gap:6px;max-width:460px;margin:0 auto}
+  .f-arr{transform:rotate(90deg);height:40px;align-items:center}
+  .f-pair{grid-template-columns:.7fr 1.3fr;align-items:end}
+  .f-pair .f-phone svg{width:100%}
+  .flow2 .f-col:not(.f-pair) figure{max-width:230px;margin:0 auto}
+  .flow2 .f-wide figure{max-width:380px}
+  .tapfig:not(.wide) svg{max-width:240px}
+  .taps{grid-template-columns:1fr}
+  .benefits{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .opening{padding:54px 0}
+  .devices{grid-template-columns:1fr 34%;gap:16px}
+  .benefits{grid-template-columns:1fr}
+  .nav-sep{display:none}
+  .flowmini .arr{transform:rotate(90deg);width:100%;text-align:center}
+}
+
+@media print{.top{position:static}.theme{display:none}}
+
+/* the film and the deck (watch.html) */
+.film{border-radius:16px;overflow:hidden;border:1px solid var(--rule);box-shadow:var(--shadow);background:#0E141D;aspect-ratio:16/9}
+.film video{display:block;width:100%;height:100%}
+.scenes{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-wrap:wrap;gap:8px 10px;font-family:var(--sans);font-size:14.5px;color:var(--ink-soft)}
+.scenes li{background:var(--vellum);border:1px solid var(--rule);border-radius:999px;padding:4px 12px}
+.scenes b{font-family:var(--mono);font-weight:500;font-size:12.5px;color:var(--terracotta);margin-right:6px}
+.slides{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.sl{display:block;text-decoration:none;color:var(--ink)}
+.sl img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--rule);box-shadow:var(--shadow);transition:transform .15s}
+.sl:hover img{transform:translateY(-2px)}
+.sl .n{display:block;font-family:var(--mono);font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--terracotta);margin:10px 0 2px}
+.sl b{display:block;font-family:var(--sans);font-weight:600;font-size:15px;line-height:1.35}
+@media (max-width:980px){.slides{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.slides{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.sl b{font-size:13.5px}}
+
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="index.html" aria-label="callimachus home"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg><b>callimachus</b></a>
+<nav class="nav" aria-label="Pages"><a href="index.html">Home</a><a href="tour.html">A tour</a><span class="nav-sep" aria-hidden="true"></span><a href="how-it-works.html" aria-current="page">How it works</a><a href="agents.html">The agents</a><span class="nav-sep" aria-hidden="true"></span><a href="privacy.html">Privacy</a><a href="watch.html">Film &amp; deck</a></nav>
+<button class="theme" type="button" aria-label="Switch light or dark theme">Theme: auto</button>
+</div></header>
+<main>
+<section class="hero" style="padding-bottom:40px">
+  <div class="wrap" style="display:block">
+    <span class="eyebrow">Under the hood &middot; How it works</span>
+    <h1 style="max-width:900px">Deterministic software, with AI <em>only where it is needed.</em></h1>
+    <p class="lede" style="margin-top:22px;max-width:760px">Most "AI apps" put a model in charge and hope. callimachus does the opposite: plain code does every step it can, a free model on the home network handles the fuzzy part (naming a title from a caption), and anything more expensive has to climb a ladder, under counts, with a fuse that stops everything the moment the numbers look wrong.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">01 &middot; The pipeline</span>
+      <h2>Eight stages, from a saved post to a note you can press play on.</h2>
+      <p class="lede">One command, <code>tools/callimachus daily</code>, run by macOS's own scheduler at 06:30 for the places you save; the same stages run the moment a link is sent in. Every stage writes down what it did, so any run can be replayed later from what it saved.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card"><span class="k">1 &middot; Capture</span><h3>Every way in</h3><p>Sent now: the Chrome button and right-click, the bookmarklet, and the phone's Share menu, all into a small private intake on the home network, filed at once. Read each morning: Chrome's bookmark folders (never written), Instagram's saved list (once a day, at a random hour), Instagram exports, the NYT's shared Saved list, the inbox notes. Each source reads newest first, down to its checkpoint.</p></div>
+      <div class="card"><span class="k">2 &middot; Ledger</span><h3>Never analyse anything twice</h3><p>One line per saved item: its identity (a post's shortcode, a bookmark's id), when it was first seen, and the verdict: <code>media</code>, <code>not_media</code>, <code>unidentified</code>, <code>pending</code>. A verdict is never redone by accident; unsaving a post changes nothing.</p></div>
+      <div class="card"><span class="k">3 &middot; Classify</span><h3>Is it media, what kind, and what is it called?</h3><p>Cheapest first: a URL on IMDb or Letterboxd is a film; then the caption, comments and link text; then text on screen, read on-device with Apple's Vision; then speech, transcribed by whisper.cpp. The kind: film, short, series, online video, article, book, podcast, list, or visual art. A title needs confidence 0.8 to file itself; below that it is <i>proposed</i>, with up to three candidates.</p></div>
+      <div class="card"><span class="k">4 &middot; Resolve</span><h3>One title, one canonical id</h3><p>Title, year and type become an id by deterministic matching: TMDb for film and TV, Open Library for books, the canonical URL for an article, the post itself for a work of art. Up to 20 titles come from one list post, each remembering its place; a named trilogy or series files every film in it, up to 12.</p></div>
+      <div class="card"><span class="k">5 &middot; Where to watch</span><h3>One step to the thing itself</h3><p>Films and series: TMDb's watch providers (data from JustWatch), on our services first, then other subscriptions, free, free with ads, rent or buy. Online video: the page's own player, else an archive.org copy. Articles: the page and its Wayback copy. Code checks every match (title, length, maker or year); an unsure copy is never made the link.</p></div>
+      <div class="card"><span class="k">6 &middot; Enrich</span><h3>Facts from free sources</h3><p>TMDb (credits, certifications, streaming via JustWatch, and the poster), OMDb (IMDb, Rotten Tomatoes, Metacritic, awards), Wikidata (the ids that link every site: Wikipedia, Letterboxd, Rotten Tomatoes, Metacritic, Common Sense), Common Sense Media (age, and its sex and violence scores, one page per title, never its search), Open Library (books). Paid tiers are never used.</p></div>
+      <div class="card"><span class="k">7 &middot; Check images <span class="soon">new saves: soon</span></span><h3>Nothing explicit reaches a phone</h3><p>Every poster goes through NudeNet, an open-source nudity detector, on the CPU at home; an exposed-nudity label at 0.5 or above flags it. A flagged poster gets one yes-or-no question to a vision model on the model box (qwen3-vl). Only a clear no publishes it; anything else stays in the archive. Run once over the whole library: 729 posters, 2 flagged and both cleared, none blocked. No paid AI, and no image leaves the house.</p></div>
+      <div class="card"><span class="k">8 &middot; File</span><h3>One note per title, at once</h3><p>Into the callimachus vault, the one the family browses: frontmatter in a fixed order, a readable body, and a raw page per source. A best guess that passes the catalogue check is filed straight away, marked a guess; a later pick re-files the same note. A field no source gave stays blank; a field the schema does not list cannot be written.</p></div>
+      <div class="card"><span class="k">And then &middot; Review</span><h3>Two questions per card</h3><p>Is the record right, and can you watch, read or hear it in one step from the card? A judge reads every card first and sends a person only the ones it is unsure of. Each verdict is logged, and carries forward to an identical record.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap grid g2" style="gap:48px;align-items:start">
+    <div>
+      <span class="eyebrow">02 &middot; The escalation ladder</span>
+      <h2>Climb one rung at a time.</h2>
+      <p>"Escalate" does not mean "ask a person". It means hand the item one rung up: to an agent, then a smarter agent, then a paid one, then a smarter paid one, and only then to a person. An item climbs only when the rung below could not finish it with enough confidence, and every attempt is recorded: handler, model, tokens, result.</p>
+      <p>The same ladder serves two jobs: <b>finishing an item</b> (naming this title now) and <b>fixing the system</b> (stopping it from failing again). Naming a title tops out at Sonnet. Repairing the system may climb to Opus. Never further.</p>
+      <div class="legend"><span><i style="background:var(--nile)"></i>free</span><span><i style="background:var(--ochre-fill)"></i>paid, under counts</span><span><i style="background:var(--terracotta-fill)"></i>a person</span></div>
+    </div>
+    <div class="ladder">
+      <div class="rung person"><span class="no">6</span><b>A person</b><span>the Exceptions view, or a "needs you" card</span></div>
+      <div class="rung paid"><span class="no">5</span><b>Opus</b><span>repair only, after Sonnet's attempt failed</span></div>
+      <div class="rung paid"><span class="no">4</span><b>Sonnet</b><span>the top rung for naming a title; the first for repair</span></div>
+      <div class="rung paid"><span class="no">3</span><b>Haiku</b><span>only for an item the local model could not finish</span></div>
+      <div class="rung free off"><span class="no">2</span><b>A smarter local model</b><span>kept free for when one is added</span></div>
+      <div class="rung free"><span class="no">1</span><b>qwen3:30b, locally</b><span>on the home network's model box; always asked first</span></div>
+      <div class="rung free"><span class="no">0</span><b>Code</b><span>URL rules, <code>Title (Year)</code> patterns, retries</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">03 &middot; Healthy, degraded, stopped</span>
+      <h2>Always one of three states, computed by code.</h2>
+      <p class="lede">The status note opens with the state of the last run. "Degraded" is not "broken": it is still producing correct notes, while working its way back to plain code.</p>
+    </div>
+    <div class="grid g3">
+      <div class="state ok"><h3>Healthy</h3><p>Every item finished by code or the free local model. The usual day. No paid call, no agent, nothing for anyone to do.</p></div>
+      <div class="state deg"><h3>Degraded</h3><p>Correct notes, but something ran above the deterministic path: Haiku named a title, or a source is on a fallback. An open signal drives a fix, and the condition is time-boxed at 14 days.</p></div>
+      <div class="state stop"><h3>Stopped</h3><p>A capability is held by the fuse, a containment or a time box. Capture keeps safely storing saves; whatever needs a model waits for a person.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap grid g2" style="gap:48px;align-items:start">
+    <div>
+      <span class="eyebrow">04 &middot; Breakers, caps and the fuse</span>
+      <h2>A hard "something is wrong" switch.</h2>
+      <p>Every failure gets a <b>fingerprint</b>: the kind of fault, the source, the stage, and the error with its numbers and ids stripped. Items with the same fingerprint are one problem, so one broken parser cannot launch fifty agents. A <b>circuit breaker</b> per fingerprint lets at most one repair start; the rest wait, parked, on the status note.</p>
+      <p><b>Caps</b> are counts, never dollars: one attempt per rung per item, so many calls an hour per rung, one paid agent session per system at a time. Money is limited once, outside the code, by a spend limit on a key used for nothing else.</p>
+      <p>Above all of that sits the <b>fuse</b>. A breaker resets itself; a fuse blows and stays blown until a person replaces it, like the andon cord on a factory line. It is checked at the one choke point every model call and agent launch passes through.</p>
+    </div>
+    <div class="card">
+      <span class="k">The fuse blows on</span>
+      <table class="t">
+        <tr><th>Trip</th><th>Catches</th></tr>
+        <tr><td>more than 10 new fingerprints in a day</td><td>one problem showing up as many</td></tr>
+        <tr><td>paid calls above 30 an hour or 100 a day</td><td>a cost runaway, measured as frequency</td></tr>
+        <tr><td>more than 5 agent sessions in a day</td><td>a session runaway</td></tr>
+        <tr><td>title calls above 5 times the run's items</td><td>a loop inside the pipeline</td></tr>
+        <tr><td>an invariant broken, once</td><td>a write outside the tool, an item climbing twice</td></tr>
+        <tr><td>a security trip</td><td>an agent reaching for a tool it was not given</td></tr>
+      </table>
+      <p class="small" style="margin-top:14px">Blown, it stops every model call and agent launch, local and paid. The deterministic parts keep running and keep storing saves. It tells John once, and only John can reset it, from his own terminal.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">05 &middot; The architecture</span>
+      <h2>Drawn in C4, simplified.</h2>
+      <p class="lede">C4 is Simon Brown's way of drawing software as maps at four zoom levels: the system in its world (level 1), the containers inside it, meaning the separately running programs and stores (level 2), their components (3) and code (4). These are redrawn from callimachus's own C4 model, with machine names replaced by roles and the smallest parts folded together.</p>
+    </div>
+    <figure>
+      <div class="dgfig"><svg class="dg" id="c4ctx" viewBox="0 0 1240 730" role="img" aria-labelledby="c4ctx-t c4ctx-d" xmlns="http://www.w3.org/2000/svg">
+<title id="c4ctx-t">Level 1, system context: callimachus and everything around it</title><desc id="c4ctx-d">The family saves things in many places; callimachus reads the saves, looks each title up in public sources, asks a local model when code cannot name a title, and files notes into the family&#x27;s vault.</desc>
+<style>
+.dg text{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',system-ui,sans-serif;fill:var(--ink)}
+.dg .t{font-weight:650;font-size:15px}
+.dg .t.big{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:26px;font-weight:600}
+.dg .d{font-size:12px;fill:var(--ink-soft)}
+.dg .tech{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;fill:var(--ink-soft);letter-spacing:.2px}
+.dg .sys rect,.dg rect.sys{fill:var(--lapis)}
+.dg .sys text{fill:var(--papyrus)}
+.dg .sys .tech{fill:var(--papyrus);opacity:.85}
+.dg .per rect{fill:var(--terracotta-fill)}
+.dg .per text{fill:var(--papyrus)}
+.dg .ext rect{fill:var(--vellum);stroke:var(--ink-soft);stroke-width:1.2}
+.dg .agent rect{fill:var(--vellum);stroke:var(--ochre-fill);stroke-width:2.2}
+.dg .agent .spark{fill:var(--ochre);font-size:15px}
+.dg .store path{fill:var(--papyrus-deep);stroke:var(--lapis);stroke-width:1.6}
+.dg .grp{fill:none;stroke:var(--rule);stroke-width:1.4;stroke-dasharray:6 5}
+.dg .grp-l{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;letter-spacing:1.6px;fill:var(--ink-soft);text-transform:uppercase}
+.dg .sand{fill:none;stroke:var(--carmine);stroke-width:1.6;stroke-dasharray:7 4}
+.dg .sand-l{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;letter-spacing:1.4px;fill:var(--carmine);text-transform:uppercase}
+.dg .node{fill:var(--papyrus-deep);fill-opacity:.55;stroke:var(--ink-soft);stroke-width:1.2}
+.dg .node-l{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:17px;font-weight:600;fill:var(--ink)}
+.dg .node-s{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;fill:var(--ink-soft)}
+.dg .e{fill:none;stroke:var(--ink-soft);stroke-width:1.5}
+.dg .e.hot{stroke:var(--lapis);stroke-width:2}
+.dg .e.warn{stroke:var(--ochre-fill);stroke-width:2}
+.dg .e.stop{stroke:var(--carmine);stroke-width:1.8;stroke-dasharray:5 4}
+.dg .ah{fill:var(--ink-soft)}
+.dg .ah.hot{fill:var(--lapis)}
+.dg .ah.warn{fill:var(--ochre-fill)}
+.dg .ah.stop{fill:var(--carmine)}
+.dg .el{font-size:11.5px;fill:var(--ink);paint-order:stroke;stroke:var(--papyrus);stroke-width:5px;stroke-linejoin:round}
+.dg .note{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-style:italic;font-size:13px;fill:var(--ink-soft)}
+</style><defs><marker id="c4ctx-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah "/></marker><marker id="c4ctx-ah-hot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah hot"/></marker><marker id="c4ctx-ah-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah warn"/></marker><marker id="c4ctx-ah-stop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah stop"/></marker></defs>
+<rect x="320" y="6" width="560" height="112" rx="14" class="grp"/>
+<text x="334" y="25" class="grp-l">the family</text>
+<rect x="20" y="150" width="270" height="402" rx="14" class="grp"/>
+<text x="34" y="169" class="grp-l">where saves are made</text>
+<rect x="950" y="150" width="270" height="402" rx="14" class="grp"/>
+<text x="964" y="169" class="grp-l">public sources it looks up</text>
+<rect x="420" y="510" width="400" height="196" rx="14" class="grp"/>
+<text x="434" y="529" class="grp-l">models</text>
+<rect x="20" y="580" width="370" height="130" rx="14" class="grp"/>
+<text x="34" y="599" class="grp-l">platform</text>
+<rect x="950" y="580" width="270" height="130" rx="14" class="grp"/>
+<text x="964" y="599" class="grp-l">alerts</text>
+<path d="M320,62 L155,62 L155,150" class="e " marker-end="url(#c4ctx-ah)"/>
+<path d="M880,64 L930,64" class="e " marker-end="url(#c4ctx-ah)"/>
+<path d="M290,350 L420,350" class="e hot" marker-end="url(#c4ctx-ah-hot)"/>
+<path d="M820,350 L950,350" class="e hot" marker-end="url(#c4ctx-ah-hot)"/>
+<path d="M790,250 L790,134 L1075,134 L1075,106" class="e hot" marker-end="url(#c4ctx-ah-hot)"/>
+<path d="M620,450 L620,510" class="e " marker-end="url(#c4ctx-ah)"/>
+<path d="M370,580 L370,420 L420,420" class="e " marker-end="url(#c4ctx-ah)"/>
+<path d="M820,420 L885,420 L885,645 L950,645" class="e stop" marker-end="url(#c4ctx-ah-stop)"/>
+<g class="per">
+<rect x="338" y="40" width="165" height="64" rx="10"/>
+<text x="420.5" y="66.5" class="t" text-anchor="middle">John</text>
+<text x="420.5" y="88.5" class="d" text-anchor="middle">saves, names titles, decides</text>
+</g>
+<g class="per">
+<rect x="518" y="40" width="165" height="64" rx="10"/>
+<text x="600.5" y="66.5" class="t" text-anchor="middle">Karina</text>
+<text x="600.5" y="88.5" class="d" text-anchor="middle">saves, into collections too</text>
+</g>
+<g class="per">
+<rect x="698" y="40" width="165" height="64" rx="10"/>
+<text x="780.5" y="66.5" class="t" text-anchor="middle">Family member</text>
+<text x="780.5" y="88.5" class="d" text-anchor="middle">browses on a phone, ticks</text>
+</g>
+<g class="ext">
+<rect x="930" y="22" width="290" height="84" rx="10"/>
+<text x="1075.0" y="51.0" class="t" text-anchor="middle">callimachus vault</text>
+<text x="1075.0" y="73.0" class="d" text-anchor="middle">one note per title, Bases to browse;</text>
+<text x="1075.0" y="88.0" class="d" text-anchor="middle">on every phone by self-hosted sync</text>
+</g>
+<g class="ext">
+<rect x="38" y="180" width="234" height="50" rx="10"/>
+<text x="155.0" y="199.5" class="t" text-anchor="middle">Instagram</text>
+<text x="155.0" y="221.5" class="d" text-anchor="middle">saved posts and reels</text>
+</g>
+<g class="ext">
+<rect x="38" y="240" width="234" height="50" rx="10"/>
+<text x="155.0" y="259.5" class="t" text-anchor="middle">The New York Times</text>
+<text x="155.0" y="281.5" class="d" text-anchor="middle">the shared Saved list</text>
+</g>
+<g class="ext">
+<rect x="38" y="300" width="234" height="50" rx="10"/>
+<text x="155.0" y="319.5" class="t" text-anchor="middle">Chrome bookmarks</text>
+<text x="155.0" y="341.5" class="d" text-anchor="middle">intent folders, read only</text>
+</g>
+<g class="ext">
+<rect x="38" y="360" width="234" height="50" rx="10"/>
+<text x="155.0" y="379.5" class="t" text-anchor="middle">Browser button, bookmarklet</text>
+<text x="155.0" y="401.5" class="d" text-anchor="middle">sent now, from any browser</text>
+</g>
+<g class="ext">
+<rect x="38" y="420" width="234" height="50" rx="10"/>
+<text x="155.0" y="439.5" class="t" text-anchor="middle">Phone Share menu</text>
+<text x="155.0" y="461.5" class="d" text-anchor="middle">via a shared Reminders list</text>
+</g>
+<g class="ext">
+<rect x="38" y="480" width="234" height="50" rx="10"/>
+<text x="155.0" y="499.5" class="t" text-anchor="middle">Instagram exports</text>
+<text x="155.0" y="521.5" class="d" text-anchor="middle">Karina&#x27;s own download</text>
+</g>
+<g class="ext">
+<rect x="968" y="180" width="234" height="50" rx="10"/>
+<text x="1085.0" y="199.5" class="t" text-anchor="middle">TMDb</text>
+<text x="1085.0" y="221.5" class="d" text-anchor="middle">films and TV, where it streams</text>
+</g>
+<g class="ext">
+<rect x="968" y="240" width="234" height="50" rx="10"/>
+<text x="1085.0" y="259.5" class="t" text-anchor="middle">OMDb</text>
+<text x="1085.0" y="281.5" class="d" text-anchor="middle">IMDb, Rotten Tomatoes, Metacritic</text>
+</g>
+<g class="ext">
+<rect x="968" y="300" width="234" height="50" rx="10"/>
+<text x="1085.0" y="319.5" class="t" text-anchor="middle">Wikidata</text>
+<text x="1085.0" y="341.5" class="d" text-anchor="middle">the ids that link every site</text>
+</g>
+<g class="ext">
+<rect x="968" y="360" width="234" height="50" rx="10"/>
+<text x="1085.0" y="379.5" class="t" text-anchor="middle">Common Sense Media</text>
+<text x="1085.0" y="401.5" class="d" text-anchor="middle">age and content, one page a title</text>
+</g>
+<g class="ext">
+<rect x="968" y="420" width="234" height="50" rx="10"/>
+<text x="1085.0" y="439.5" class="t" text-anchor="middle">Open Library</text>
+<text x="1085.0" y="461.5" class="d" text-anchor="middle">books, by ISBN or title</text>
+</g>
+<g class="ext">
+<rect x="968" y="480" width="234" height="50" rx="10"/>
+<text x="1085.0" y="499.5" class="t" text-anchor="middle">Pages and archives</text>
+<text x="1085.0" y="521.5" class="d" text-anchor="middle">articles, archive.org, Wayback</text>
+</g>
+<g class="sys">
+<rect x="420" y="250" width="400" height="200" rx="16"/>
+<text x="620.0" y="319.0" class="t big" text-anchor="middle">callimachus</text>
+<text x="620.0" y="353.0" class="d" text-anchor="middle">Finds every film, show, book, article and</text>
+<text x="620.0" y="368.0" class="d" text-anchor="middle">work of art the family saves, works out</text>
+<text x="620.0" y="383.0" class="d" text-anchor="middle">what it is, finds where to watch it, and</text>
+<text x="620.0" y="398.0" class="d" text-anchor="middle">files one sourced note per title.</text>
+<text x="620.0" y="417.0" class="tech" text-anchor="middle">deterministic software · AI only where needed</text>
+</g>
+<g class="ext">
+<rect x="440" y="540" width="360" height="66" rx="10"/>
+<text x="620.0" y="560.0" class="t" text-anchor="middle">Model box on the home network</text>
+<text x="620.0" y="582.0" class="d" text-anchor="middle">qwen3:30b names titles; qwen3-vl checks posters;</text>
+<text x="620.0" y="597.0" class="d" text-anchor="middle">whisper.cpp transcribes. Free, local, asked first.</text>
+</g>
+<g class="ext">
+<rect x="440" y="620" width="360" height="70" rx="10"/>
+<text x="620.0" y="642.0" class="t" text-anchor="middle">Anthropic API</text>
+<text x="620.0" y="664.0" class="d" text-anchor="middle">Haiku, then Sonnet, only when the local model</text>
+<text x="620.0" y="679.0" class="d" text-anchor="middle">is unsure, under hard caps and a fuse.</text>
+</g>
+<g class="ext">
+<rect x="34" y="612" width="108" height="82" rx="10"/>
+<text x="88.0" y="640.0" class="t" text-anchor="middle">launchd</text>
+<text x="88.0" y="662.0" class="d" text-anchor="middle">starts the pass</text>
+<text x="88.0" y="677.0" class="d" text-anchor="middle">at 06:30</text>
+</g>
+<g class="ext">
+<rect x="150" y="612" width="108" height="82" rx="10"/>
+<text x="204.0" y="640.0" class="t" text-anchor="middle">1Password</text>
+<text x="204.0" y="662.0" class="d" text-anchor="middle">holds keys</text>
+<text x="204.0" y="677.0" class="d" text-anchor="middle">and sessions</text>
+</g>
+<g class="ext">
+<rect x="266" y="612" width="108" height="82" rx="10"/>
+<text x="320.0" y="640.0" class="t" text-anchor="middle">GitHub</text>
+<text x="320.0" y="662.0" class="d" text-anchor="middle">private repo:</text>
+<text x="320.0" y="677.0" class="d" text-anchor="middle">fixes as PRs</text>
+</g>
+<g class="ext">
+<rect x="964" y="612" width="118" height="82" rx="10"/>
+<text x="1023.0" y="640.0" class="t" text-anchor="middle">Desk tablet</text>
+<text x="1023.0" y="662.0" class="d" text-anchor="middle">four kinds of</text>
+<text x="1023.0" y="677.0" class="d" text-anchor="middle">alert, no more</text>
+</g>
+<g class="ext">
+<rect x="1090" y="612" width="118" height="82" rx="10"/>
+<text x="1149.0" y="640.0" class="t" text-anchor="middle">Phone push</text>
+<text x="1149.0" y="662.0" class="d" text-anchor="middle">if the tablet</text>
+<text x="1149.0" y="677.0" class="d" text-anchor="middle">did not deliver</text>
+</g>
+<text x="238" y="40" class="el" text-anchor="middle">save posts,</text>
+<text x="238" y="54" class="el" text-anchor="middle">bookmarks, shares</text>
+<text x="355" y="340" class="el" text-anchor="middle">reads new saves</text>
+<text x="885" y="340" class="el" text-anchor="middle">looks up</text>
+<text x="935" y="127" class="el" text-anchor="middle">files one note per title</text>
+<text x="632" y="486" class="el" text-anchor="start">when code can&#x27;t name a title</text>
+<text x="370" y="505" class="el" text-anchor="middle">starts it</text>
+<text x="885" y="540" class="el" text-anchor="middle">alerts</text>
+</svg>
+</div>
+      <figcaption><span class="c4level">Level 1</span><b>System context.</b> Who uses callimachus, where saves are made, the public sources it reads, the models it may ask, and the platform it runs on. The red dashed line is the only path that ends in a person being interrupted: four kinds of alert, no more.</figcaption>
+    </figure>
+    <figure style="margin-top:48px">
+      <div class="dgfig"><svg class="dg" id="c4con" viewBox="0 0 1400 760" role="img" aria-labelledby="c4con-t c4con-d" xmlns="http://www.w3.org/2000/svg">
+<title id="c4con-t">Level 2, containers on a healthy day</title><desc id="c4con-d">Inside callimachus: the pipeline, the intake (a push listener and the Reminders reader), the carve-out runner and its sandboxed fetchers, and the five stores they write.</desc>
+<style>
+.dg text{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',system-ui,sans-serif;fill:var(--ink)}
+.dg .t{font-weight:650;font-size:15px}
+.dg .t.big{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:26px;font-weight:600}
+.dg .d{font-size:12px;fill:var(--ink-soft)}
+.dg .tech{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;fill:var(--ink-soft);letter-spacing:.2px}
+.dg .sys rect,.dg rect.sys{fill:var(--lapis)}
+.dg .sys text{fill:var(--papyrus)}
+.dg .sys .tech{fill:var(--papyrus);opacity:.85}
+.dg .per rect{fill:var(--terracotta-fill)}
+.dg .per text{fill:var(--papyrus)}
+.dg .ext rect{fill:var(--vellum);stroke:var(--ink-soft);stroke-width:1.2}
+.dg .agent rect{fill:var(--vellum);stroke:var(--ochre-fill);stroke-width:2.2}
+.dg .agent .spark{fill:var(--ochre);font-size:15px}
+.dg .store path{fill:var(--papyrus-deep);stroke:var(--lapis);stroke-width:1.6}
+.dg .grp{fill:none;stroke:var(--rule);stroke-width:1.4;stroke-dasharray:6 5}
+.dg .grp-l{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;letter-spacing:1.6px;fill:var(--ink-soft);text-transform:uppercase}
+.dg .sand{fill:none;stroke:var(--carmine);stroke-width:1.6;stroke-dasharray:7 4}
+.dg .sand-l{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;letter-spacing:1.4px;fill:var(--carmine);text-transform:uppercase}
+.dg .node{fill:var(--papyrus-deep);fill-opacity:.55;stroke:var(--ink-soft);stroke-width:1.2}
+.dg .node-l{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:17px;font-weight:600;fill:var(--ink)}
+.dg .node-s{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;fill:var(--ink-soft)}
+.dg .e{fill:none;stroke:var(--ink-soft);stroke-width:1.5}
+.dg .e.hot{stroke:var(--lapis);stroke-width:2}
+.dg .e.warn{stroke:var(--ochre-fill);stroke-width:2}
+.dg .e.stop{stroke:var(--carmine);stroke-width:1.8;stroke-dasharray:5 4}
+.dg .ah{fill:var(--ink-soft)}
+.dg .ah.hot{fill:var(--lapis)}
+.dg .ah.warn{fill:var(--ochre-fill)}
+.dg .ah.stop{fill:var(--carmine)}
+.dg .el{font-size:11.5px;fill:var(--ink);paint-order:stroke;stroke:var(--papyrus);stroke-width:5px;stroke-linejoin:round}
+.dg .note{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-style:italic;font-size:13px;fill:var(--ink-soft)}
+</style><defs><marker id="c4con-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah "/></marker><marker id="c4con-ah-hot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah hot"/></marker><marker id="c4con-ah-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah warn"/></marker><marker id="c4con-ah-stop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah stop"/></marker></defs>
+<rect x="220" y="90" width="960" height="640" rx="14" class="grp"/>
+<text x="234" y="109" class="grp-l">callimachus · on the family Mac</text>
+<rect x="925" y="108" width="238" height="224" rx="14" class="sand"/>
+<text x="939" y="127" class="sand-l">sandbox · allowlist proxy</text>
+<path d="M570,62 L570,130" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M190,155 L245,155" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M415,160 L450,160" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M190,265 L450,265" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M415,376 L470,376 L470,300" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M540,300 L540,452 L190,452" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M690,215 L730,215" class="e hot" marker-end="url(#c4con-ah-hot)"/>
+<path d="M900,180 L942,180" class="e hot" marker-end="url(#c4con-ah-hot)"/>
+<path d="M900,262 L942,262" class="e hot" marker-end="url(#c4con-ah-hot)"/>
+<path d="M1146,179 L1210,179" class="e hot" marker-end="url(#c4con-ah-hot)"/>
+<path d="M1146,277 L1210,277" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M815,280 L815,400 L1210,400" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M690,275 L710,275 L710,510 L1210,510" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M600,300 L600,572" class="e "/>
+<path d="M335,572 L1075,572" class="e "/>
+<path d="M335,572 L335,606" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M520,572 L520,606" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M705,572 L705,606" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M890,572 L890,606" class="e " marker-end="url(#c4con-ah)"/>
+<path d="M1075,572 L1075,606" class="e " marker-end="url(#c4con-ah)"/>
+<g class="ext">
+<rect x="10" y="118" width="180" height="74" rx="10"/>
+<text x="100.0" y="142.0" class="t" text-anchor="middle">Browser and phone</text>
+<text x="100.0" y="164.0" class="d" text-anchor="middle">button, bookmarklet, the</text>
+<text x="100.0" y="179.0" class="d" text-anchor="middle">Share menu via Reminders</text>
+</g>
+<g class="ext">
+<rect x="10" y="228" width="180" height="74" rx="10"/>
+<text x="100.0" y="259.5" class="t" text-anchor="middle">Chrome bookmarks</text>
+<text x="100.0" y="281.5" class="d" text-anchor="middle">the Bookmarks file</text>
+</g>
+<g class="ext">
+<rect x="10" y="410" width="180" height="84" rx="10"/>
+<text x="100.0" y="431.5" class="t" text-anchor="middle">Model box</text>
+<text x="100.0" y="453.5" class="d" text-anchor="middle">qwen3:30b, qwen3-vl,</text>
+<text x="100.0" y="468.5" class="d" text-anchor="middle">whisper.cpp, on the</text>
+<text x="100.0" y="483.5" class="d" text-anchor="middle">home network</text>
+</g>
+<g class="ext">
+<rect x="470" y="8" width="200" height="54" rx="10"/>
+<text x="570.0" y="29.5" class="t" text-anchor="middle">launchd</text>
+<text x="570.0" y="51.5" class="d" text-anchor="middle">the Mac&#x27;s own scheduler</text>
+</g>
+<g class="sys">
+<rect x="245" y="118" width="170" height="84" rx="10"/>
+<text x="330.0" y="139.5" class="t" text-anchor="middle">Intake</text>
+<text x="330.0" y="161.5" class="d" text-anchor="middle">push listener and</text>
+<text x="330.0" y="176.5" class="d" text-anchor="middle">Reminders reader:</text>
+<text x="330.0" y="191.5" class="d" text-anchor="middle">filed at once</text>
+</g>
+<g class="store">
+<path d="M245,339 C245,327.0 415,327.0 415,339 L415,413 C415,425.0 245,425.0 245,413 Z M245,339 C245,349.8 415,349.8 415,339"/>
+<text x="330.0" y="367.0" class="t" text-anchor="middle">Product inbox</text>
+<text x="330.0" y="389.0" class="d" text-anchor="middle">notes, shares and</text>
+<text x="330.0" y="404.0" class="d" text-anchor="middle">Karina&#x27;s exports</text>
+</g>
+<g class="sys">
+<rect x="450" y="130" width="240" height="170" rx="14"/>
+<text x="570.0" y="178.0" class="t" text-anchor="middle">Pipeline</text>
+<text x="570.0" y="200.0" class="d" text-anchor="middle">The pass: capture, ledger,</text>
+<text x="570.0" y="215.0" class="d" text-anchor="middle">classify, resolve, where</text>
+<text x="570.0" y="230.0" class="d" text-anchor="middle">to watch, enrich, check</text>
+<text x="570.0" y="245.0" class="d" text-anchor="middle">images, file.</text>
+<text x="570.0" y="264.0" class="tech" text-anchor="middle">tools/callimachus · Python</text>
+</g>
+<g class="sys">
+<rect x="730" y="150" width="170" height="130" rx="10"/>
+<text x="815.0" y="187.0" class="t" text-anchor="middle">Carve-out runner</text>
+<text x="815.0" y="209.0" class="d" text-anchor="middle">checks approvals,</text>
+<text x="815.0" y="224.0" class="d" text-anchor="middle">builds the sandbox,</text>
+<text x="815.0" y="239.0" class="d" text-anchor="middle">injects one session,</text>
+<text x="815.0" y="254.0" class="d" text-anchor="middle">kills at the timeout</text>
+</g>
+<g class="sys">
+<rect x="942" y="138" width="204" height="82" rx="10"/>
+<text x="1044.0" y="166.0" class="t" text-anchor="middle">Carve-out fetchers</text>
+<text x="1044.0" y="188.0" class="d" text-anchor="middle">plain scripts, no model;</text>
+<text x="1044.0" y="203.0" class="d" text-anchor="middle">GET only, declared hosts</text>
+</g>
+<g class="sys">
+<rect x="942" y="236" width="204" height="82" rx="10"/>
+<text x="1044.0" y="264.0" class="t" text-anchor="middle">Credential-less fetcher</text>
+<text x="1044.0" y="286.0" class="d" text-anchor="middle">pages, media files,</text>
+<text x="1044.0" y="301.0" class="d" text-anchor="middle">Common Sense; no secrets</text>
+</g>
+<g class="ext">
+<rect x="1210" y="138" width="180" height="82" rx="10"/>
+<text x="1300.0" y="166.0" class="t" text-anchor="middle">Instagram · NYT</text>
+<text x="1300.0" y="188.0" class="d" text-anchor="middle">the saved lists, read</text>
+<text x="1300.0" y="203.0" class="d" text-anchor="middle">with an enrolled session</text>
+</g>
+<g class="ext">
+<rect x="1210" y="236" width="180" height="82" rx="10"/>
+<text x="1300.0" y="264.0" class="t" text-anchor="middle">Pages and media</text>
+<text x="1300.0" y="286.0" class="d" text-anchor="middle">Common Sense, articles,</text>
+<text x="1300.0" y="301.0" class="d" text-anchor="middle">Instagram media files</text>
+</g>
+<g class="ext">
+<rect x="1210" y="360" width="180" height="80" rx="10"/>
+<text x="1300.0" y="387.0" class="t" text-anchor="middle">1Password</text>
+<text x="1300.0" y="409.0" class="d" text-anchor="middle">one Environment</text>
+<text x="1300.0" y="424.0" class="d" text-anchor="middle">per carve-out</text>
+</g>
+<g class="ext">
+<rect x="1210" y="470" width="180" height="80" rx="10"/>
+<text x="1300.0" y="497.0" class="t" text-anchor="middle">Metadata APIs</text>
+<text x="1300.0" y="519.0" class="d" text-anchor="middle">TMDb, OMDb, Wikidata,</text>
+<text x="1300.0" y="534.0" class="d" text-anchor="middle">Open Library, archive.org</text>
+</g>
+<g class="store">
+<path d="M250,619 C250,607.0 420,607.0 420,619 L420,697 C420,709.0 250,709.0 250,697 Z M250,619 C250,629.8 420,629.8 420,619"/>
+<text x="335.0" y="649.0" class="t" text-anchor="middle">Ledger</text>
+<text x="335.0" y="671.0" class="d" text-anchor="middle">every save judged once:</text>
+<text x="335.0" y="686.0" class="d" text-anchor="middle">never twice</text>
+</g>
+<g class="store">
+<path d="M435,619 C435,607.0 605,607.0 605,619 L605,697 C605,709.0 435,709.0 435,697 Z M435,619 C435,629.8 605,629.8 605,619"/>
+<text x="520.0" y="649.0" class="t" text-anchor="middle">Fetch archive</text>
+<text x="520.0" y="671.0" class="d" text-anchor="middle">every raw response,</text>
+<text x="520.0" y="686.0" class="d" text-anchor="middle">never deleted</text>
+</g>
+<g class="store">
+<path d="M620,619 C620,607.0 790,607.0 790,619 L790,697 C790,709.0 620,709.0 620,697 Z M620,619 C620,629.8 790,629.8 790,619"/>
+<text x="705.0" y="649.0" class="t" text-anchor="middle">Records and views</text>
+<text x="705.0" y="671.0" class="d" text-anchor="middle">one note per title,</text>
+<text x="705.0" y="686.0" class="d" text-anchor="middle">in the callimachus vault</text>
+</g>
+<g class="store">
+<path d="M805,619 C805,607.0 975,607.0 975,619 L975,697 C975,709.0 805,709.0 805,697 Z M805,619 C805,629.8 975,629.8 975,619"/>
+<text x="890.0" y="649.0" class="t" text-anchor="middle">Run history</text>
+<text x="890.0" y="671.0" class="d" text-anchor="middle">manifests and</text>
+<text x="890.0" y="686.0" class="d" text-anchor="middle">run records</text>
+</g>
+<g class="store">
+<path d="M990,619 C990,607.0 1160,607.0 1160,619 L1160,697 C1160,709.0 990,709.0 990,697 Z M990,619 C990,629.8 1160,629.8 1160,619"/>
+<text x="1075.0" y="649.0" class="t" text-anchor="middle">Guardrail state</text>
+<text x="1075.0" y="671.0" class="d" text-anchor="middle">the fuse, breakers,</text>
+<text x="1075.0" y="686.0" class="d" text-anchor="middle">caps, containments</text>
+</g>
+<text x="570" y="100" class="el" text-anchor="middle">06:30</text>
+<text x="330" y="259" class="el" text-anchor="middle">read, never written</text>
+<text x="365" y="446" class="el" text-anchor="middle">names a title</text>
+<text x="1010" y="394" class="el" text-anchor="middle">the session, for one run only</text>
+<text x="960" y="504" class="el" text-anchor="middle">titles, with free keys</text>
+<text x="612" y="560" class="el" text-anchor="start">writes</text>
+</svg>
+</div>
+      <figcaption><span class="c4level">Level 2</span><b>Containers, on a healthy day.</b> The pipeline does the work; the carve-out runner is the only process that ever touches an account's session, and it hands that session to a plain script inside a sandbox with an allowlist proxy. Everything writes into five stores, and the fetch archive deletes nothing, ever.</figcaption>
+    </figure>
+    <figure style="margin-top:48px">
+      <div class="dgfig"><svg class="dg" id="c4dep" viewBox="0 0 1240 700" role="img" aria-labelledby="c4dep-t c4dep-d" xmlns="http://www.w3.org/2000/svg">
+<title id="c4dep-t">Deployment: where each part runs</title><desc id="c4dep-d">Everything runs on the family Mac; the model box on the home network does the local AI; 1Password and GitHub each do one job; the home NAS keeps the charts and the sync server that carries the vault to every family device.</desc>
+<style>
+.dg text{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',system-ui,sans-serif;fill:var(--ink)}
+.dg .t{font-weight:650;font-size:15px}
+.dg .t.big{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:26px;font-weight:600}
+.dg .d{font-size:12px;fill:var(--ink-soft)}
+.dg .tech{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;fill:var(--ink-soft);letter-spacing:.2px}
+.dg .sys rect,.dg rect.sys{fill:var(--lapis)}
+.dg .sys text{fill:var(--papyrus)}
+.dg .sys .tech{fill:var(--papyrus);opacity:.85}
+.dg .per rect{fill:var(--terracotta-fill)}
+.dg .per text{fill:var(--papyrus)}
+.dg .ext rect{fill:var(--vellum);stroke:var(--ink-soft);stroke-width:1.2}
+.dg .agent rect{fill:var(--vellum);stroke:var(--ochre-fill);stroke-width:2.2}
+.dg .agent .spark{fill:var(--ochre);font-size:15px}
+.dg .store path{fill:var(--papyrus-deep);stroke:var(--lapis);stroke-width:1.6}
+.dg .grp{fill:none;stroke:var(--rule);stroke-width:1.4;stroke-dasharray:6 5}
+.dg .grp-l{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;letter-spacing:1.6px;fill:var(--ink-soft);text-transform:uppercase}
+.dg .sand{fill:none;stroke:var(--carmine);stroke-width:1.6;stroke-dasharray:7 4}
+.dg .sand-l{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;letter-spacing:1.4px;fill:var(--carmine);text-transform:uppercase}
+.dg .node{fill:var(--papyrus-deep);fill-opacity:.55;stroke:var(--ink-soft);stroke-width:1.2}
+.dg .node-l{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:17px;font-weight:600;fill:var(--ink)}
+.dg .node-s{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;fill:var(--ink-soft)}
+.dg .e{fill:none;stroke:var(--ink-soft);stroke-width:1.5}
+.dg .e.hot{stroke:var(--lapis);stroke-width:2}
+.dg .e.warn{stroke:var(--ochre-fill);stroke-width:2}
+.dg .e.stop{stroke:var(--carmine);stroke-width:1.8;stroke-dasharray:5 4}
+.dg .ah{fill:var(--ink-soft)}
+.dg .ah.hot{fill:var(--lapis)}
+.dg .ah.warn{fill:var(--ochre-fill)}
+.dg .ah.stop{fill:var(--carmine)}
+.dg .el{font-size:11.5px;fill:var(--ink);paint-order:stroke;stroke:var(--papyrus);stroke-width:5px;stroke-linejoin:round}
+.dg .note{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-style:italic;font-size:13px;fill:var(--ink-soft)}
+</style><defs><marker id="c4dep-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah "/></marker><marker id="c4dep-ah-hot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah hot"/></marker><marker id="c4dep-ah-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah warn"/></marker><marker id="c4dep-ah-stop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah stop"/></marker></defs>
+<rect x="20" y="16" width="770" height="668" rx="16" class="node"/>
+<text x="36" y="42" class="node-l">The family Mac</text>
+<text x="36" y="59" class="node-s">macOS · the MVP host · missed days are fine: the next run catches up</text>
+<rect x="40" y="70" width="350" height="270" rx="16" class="node"/>
+<text x="56" y="96" class="node-l">launchd</text>
+<text x="56" y="113" class="node-s">LaunchAgents</text>
+<rect x="40" y="356" width="350" height="176" rx="14" class="sand"/>
+<text x="54" y="375" class="sand-l">srt sandbox</text>
+<rect x="410" y="70" width="360" height="270" rx="16" class="node"/>
+<text x="426" y="96" class="node-l">herdr</text>
+<text x="426" y="113" class="node-s">agent sessions, only when called</text>
+<rect x="410" y="356" width="360" height="176" rx="16" class="node"/>
+<text x="426" y="382" class="node-l">Project folder</text>
+<text x="426" y="399" class="node-s">the code, and stores outside git</text>
+<rect x="40" y="548" width="730" height="120" rx="16" class="node"/>
+<text x="56" y="574" class="node-l">The callimachus vault</text>
+<text x="56" y="591" class="node-s">Obsidian; its own git data repository, apart from the engine</text>
+<path d="M790,76 L900,76" class="e hot" marker-end="url(#c4dep-ah-hot)"/>
+<path d="M790,212 L900,212" class="e " marker-end="url(#c4dep-ah)"/>
+<path d="M790,348 L900,348" class="e " marker-end="url(#c4dep-ah)"/>
+<path d="M790,484 L900,484" class="e " marker-end="url(#c4dep-ah)"/>
+<path d="M790,620 L900,620" class="e hot" marker-end="url(#c4dep-ah-hot)"/>
+<g class="sys">
+<rect x="60" y="120" width="310" height="60" rx="10"/>
+<text x="215.0" y="144.5" class="t" text-anchor="middle">Pipeline</text>
+<text x="215.0" y="166.5" class="d" text-anchor="middle">the daily pass, 06:30</text>
+</g>
+<g class="sys">
+<rect x="60" y="190" width="310" height="60" rx="10"/>
+<text x="215.0" y="214.5" class="t" text-anchor="middle">Intake</text>
+<text x="215.0" y="236.5" class="d" text-anchor="middle">push listener and Reminders reader</text>
+</g>
+<g class="sys">
+<rect x="60" y="260" width="310" height="60" rx="10"/>
+<text x="215.0" y="284.5" class="t" text-anchor="middle">Carve-out runner</text>
+<text x="215.0" y="306.5" class="d" text-anchor="middle">the only reader of a session</text>
+</g>
+<g class="sys">
+<rect x="60" y="386" width="150" height="64" rx="10"/>
+<text x="135.0" y="412.5" class="t" text-anchor="middle">Fetchers</text>
+<text x="135.0" y="434.5" class="d" text-anchor="middle">scripts, no model</text>
+</g>
+<g class="ext">
+<rect x="220" y="386" width="150" height="64" rx="10"/>
+<text x="295.0" y="412.5" class="t" text-anchor="middle">Allowlist proxy</text>
+<text x="295.0" y="434.5" class="d" text-anchor="middle">hosts, GET, caps</text>
+</g>
+<g class="agent">
+<rect x="60" y="458" width="310" height="60" rx="10"/>
+<text x="215.0" y="482.5" class="t" text-anchor="middle">Degraded-capture browser</text>
+<text x="215.0" y="504.5" class="d" text-anchor="middle">NYT only, if ever needed</text>
+<text x="354" y="478" class="spark" text-anchor="middle">✦</text>
+</g>
+<g class="ext">
+<rect x="430" y="120" width="155" height="60" rx="10"/>
+<text x="507.5" y="144.5" class="t" text-anchor="middle">herdr-shepherd</text>
+<text x="507.5" y="166.5" class="d" text-anchor="middle">the schedule</text>
+</g>
+<g class="sys">
+<rect x="595" y="120" width="155" height="60" rx="10"/>
+<text x="672.5" y="144.5" class="t" text-anchor="middle">Agent gate</text>
+<text x="672.5" y="166.5" class="d" text-anchor="middle">checks the fuse</text>
+</g>
+<g class="agent">
+<rect x="430" y="190" width="155" height="60" rx="10"/>
+<text x="507.5" y="214.5" class="t" text-anchor="middle">repair</text>
+<text x="507.5" y="236.5" class="d" text-anchor="middle">on a signal</text>
+<text x="569" y="210" class="spark" text-anchor="middle">✦</text>
+</g>
+<g class="agent">
+<rect x="595" y="190" width="155" height="60" rx="10"/>
+<text x="672.5" y="214.5" class="t" text-anchor="middle">observe</text>
+<text x="672.5" y="236.5" class="d" text-anchor="middle">daily, until settled</text>
+<text x="734" y="210" class="spark" text-anchor="middle">✦</text>
+</g>
+<g class="agent">
+<rect x="430" y="260" width="320" height="60" rx="10"/>
+<text x="590.0" y="284.5" class="t" text-anchor="middle">Designer</text>
+<text x="590.0" y="306.5" class="d" text-anchor="middle">build cycles, with John</text>
+<text x="734" y="280" class="spark" text-anchor="middle">✦</text>
+</g>
+<g class="store">
+<path d="M428,413 C428,401.0 532,401.0 532,413 L532,479 C532,491.0 428,491.0 428,479 Z M428,413 C428,423.8 532,423.8 532,413"/>
+<text x="480.0" y="445.0" class="t" text-anchor="middle">Fetch</text>
+<text x="480.0" y="463.0" class="t" text-anchor="middle">archive</text>
+</g>
+<g class="store">
+<path d="M542,413 C542,401.0 646,401.0 646,413 L646,479 C646,491.0 542,491.0 542,479 Z M542,413 C542,423.8 646,423.8 646,413"/>
+<text x="594.0" y="445.0" class="t" text-anchor="middle">Run</text>
+<text x="594.0" y="463.0" class="t" text-anchor="middle">history</text>
+</g>
+<g class="store">
+<path d="M656,413 C656,401.0 760,401.0 760,413 L760,479 C760,491.0 656,491.0 656,479 Z M656,413 C656,423.8 760,423.8 760,413"/>
+<text x="708.0" y="445.0" class="t" text-anchor="middle">Guardrail</text>
+<text x="708.0" y="463.0" class="t" text-anchor="middle">state</text>
+</g>
+<g class="store">
+<path d="M70,615 C70,603.0 390,603.0 390,615 L390,649 C390,661.0 70,661.0 70,649 Z M70,615 C70,625.8 390,625.8 390,615"/>
+<text x="230.0" y="640.0" class="t" text-anchor="middle">Records, views, raw pages</text>
+</g>
+<g class="store">
+<path d="M420,615 C420,603.0 740,603.0 740,615 L740,649 C740,661.0 420,661.0 420,649 Z M420,615 C420,625.8 740,625.8 740,615"/>
+<text x="580.0" y="640.0" class="t" text-anchor="middle">Ledger</text>
+</g>
+<g class="ext">
+<rect x="900" y="20" width="320" height="112" rx="10"/>
+<text x="1060.0" y="70.5" class="t" text-anchor="middle">Model box, home network</text>
+<text x="1060.0" y="92.5" class="d" text-anchor="middle">Ollama: qwen3:30b, qwen3-vl · whisper.cpp</text>
+</g>
+<text x="845" y="68" class="el" text-anchor="middle">model calls</text>
+<g class="ext">
+<rect x="900" y="156" width="320" height="112" rx="10"/>
+<text x="1060.0" y="206.5" class="t" text-anchor="middle">1Password</text>
+<text x="1060.0" y="228.5" class="d" text-anchor="middle">Environments: keys, one per carve-out</text>
+</g>
+<text x="845" y="204" class="el" text-anchor="middle">session, one run</text>
+<g class="ext">
+<rect x="900" y="292" width="320" height="112" rx="10"/>
+<text x="1060.0" y="342.5" class="t" text-anchor="middle">GitHub</text>
+<text x="1060.0" y="364.5" class="d" text-anchor="middle">private repo · protected main</text>
+</g>
+<text x="845" y="340" class="el" text-anchor="middle">pull requests</text>
+<g class="ext">
+<rect x="900" y="428" width="320" height="112" rx="10"/>
+<text x="1060.0" y="471.0" class="t" text-anchor="middle">Home NAS</text>
+<text x="1060.0" y="493.0" class="d" text-anchor="middle">LiveSync server (CouchDB): the vault</text>
+<text x="1060.0" y="508.0" class="d" text-anchor="middle">InfluxDB and Grafana: run charts</text>
+</g>
+<text x="845" y="476" class="el" text-anchor="middle">vault sync, spans</text>
+<g class="ext">
+<rect x="900" y="564" width="320" height="116" rx="10"/>
+<text x="1060.0" y="609.0" class="t" text-anchor="middle">Family phones, iPads, Macs</text>
+<text x="1060.0" y="631.0" class="d" text-anchor="middle">the Obsidian app; the vault arrives</text>
+<text x="1060.0" y="646.0" class="d" text-anchor="middle">from the NAS, one login per person</text>
+</g>
+<text x="845" y="612" class="el" text-anchor="middle">the vault</text>
+</svg>
+</div>
+      <figcaption><span class="c4level">Deployment</span><b>Where each part runs.</b> One Mac does the work; if it is away for a day, nothing is missed, because the ledger keys on the saved item, not the date. The local AI runs on a model box on the home network, with no fallback: if it is down, items simply wait for tomorrow.</figcaption>
+    </figure>
+    <div class="next"><a href="agents.html" class="sans small">And the agents, drawn the same way &rarr;</a></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">06 &middot; The stores</span>
+      <h2>Five places data lives, each with one job.</h2>
+    </div>
+    <div class="tablewrap"><table class="t">
+      <tr><th>Store</th><th>Holds</th><th>Rule</th></tr>
+      <tr><td><b>Records and views</b></td><td>one Markdown note per title, its checked poster, the raw page per source, the Bases views</td><td>the callimachus vault: its own git repository, apart from the engine, so reverting code never rewrites data; synced to every family device</td></tr>
+      <tr><td><b>Ledger</b></td><td>one line per saved item and its verdict</td><td>the "never twice" guarantee; a change to its format is high-risk by rule</td></tr>
+      <tr><td><b>Fetch archive</b></td><td>every HTTP response and every model call, whole, gzipped, indexed in SQLite</td><td>nothing is ever deleted, so every failure can be replayed offline</td></tr>
+      <tr><td><b>Run history</b></td><td>each run's manifest: items, faults, responses, outcomes, timings</td><td>what the observe loop reads instead of transcripts</td></tr>
+      <tr><td><b>Guardrail state</b></td><td>the fuse, breakers, caps and containments</td><td>read before every model call, agent launch and landing</td></tr>
+    </table></div>
+    <p class="small muted" style="margin-top:18px">Status, October 2026: this is the proof of concept, run by hand over real saves and judged card by card; the daily unattended service is the next step, after the family accepts it. Built and running in it: Chrome bookmark folders, the Chrome button, the bookmarklet, the phone's Share menu, Instagram exports and shared posts, where-to-watch, visual art, lists and named sets. Instagram's daily read comes on in careful steps (exports first, then a throwaway test account, then one read a day); the NYT and Karina's exports come with the full service.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">07 &middot; From the vault to the phones</span>
+      <h2>Two vaults, one sync server, nothing in the cloud.</h2>
+      <p class="lede">The engine (<code>callimachus-engine</code>: the code, the intake, the design and the review boards) and the library (<code>callimachus</code>: the notes the family reads) are separate Obsidian vaults and separate git repositories. Only the engine's tools write a record; the family adds their own ticks, and a correction to a note is picked up by the next run.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card"><span class="k">The views</span><h3>Bases, not plugins</h3><p>Nine <code>.base</code> files in three areas (<b>Family</b>, <b>Collection</b>, <b>Person</b>), 137 views, each named for its filter. Each person's three answers are checkboxes (<code>seen_by_</code>, <code>want_to_see_</code>, <code>wait_for_</code>); a missing field is <i>not answered</i>, so three states show natively. Formulas apply the family's rules, such as <i>very highly rated</i>: IMDb 8+ or Rotten Tomatoes 90%+.</p></div>
+      <div class="card"><span class="k">The sync</span><h3>Obsidian LiveSync, self-hosted</h3><p>A CouchDB server on the home NAS, one database per vault, reachable only inside the family's private network over HTTPS. One login per person, each able to open only that database. Two-way: a change reached another vault in about two seconds when measured. Clashing edits to the same line are kept, never resolved by a machine.</p></div>
+      <div class="card"><span class="k">The images</span><h3>One poster, checked, then synced</h3><p>One TMDb poster per title at width 342, kept as a fetch record. Only a passed image is copied to the vault's <code>Posters/</code> folder and linked from <code>poster</code>; every note records <code>poster_check</code> (<code>passed</code>, <code>blocked</code>, <code>unchecked</code>), <code>poster_checked_with</code> and <code>poster_checked_at</code>. The card views show it as the cover.</p></div>
+    </div>
+    <p class="small muted" style="margin-top:20px">Status, 27 October 2026: the views are built over the family's film and series notes, and Karina's iPhone is the first device live on the sync; every other family phone, iPad and Mac is next. The library has its posters (729, each checked), registry links (730 notes) and Common Sense scores (535 notes); new saves get links and scores now, and posters soon, when the engine's own check-images step is built.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">08 &middot; The way in</span>
+      <h2>One tap from wherever you are.</h2>
+      <p class="lede">Keep saving the way you already do, and callimachus reads those places each morning. Or send a thing the moment you find it: from the browser, from any phone's Share button, from Safari on the iPhone. Every way in ends at a small private intake on your own network, and the save is filed straight away.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card"><span class="k">In Chrome</span><h3>Send to callimachus</h3><p>A toolbar button sends the page you are on; a right-click sends a page or any link on it. A send never waits on the network: it queues in the browser and retries until the intake has it. Coming to the Chrome Web Store as an unlisted listing, so the family installs it in one click.</p></div>
+      <div class="card"><span class="k">In any browser</span><h3>A bookmarklet</h3><p>One bookmark that sends the page you are on, in Safari on the Mac and the iPhone, or anywhere else. It carries no password: a small Add page asks once, and keeps it in that browser.</p></div>
+      <div class="card"><span class="k">On the phone</span><h3>Save to callimachus</h3><p>In the Share menu of any app. It adds the link to a shared Reminders list, so the share closes at once, even with no signal; the family Mac files it as soon as it syncs, writes back what it filed, and ticks it off.</p></div>
+      <div class="card"><span class="k">Already saved</span><h3>Chrome bookmark folders</h3><p>Intent folders such as <i>Watch Me Someday</i> and <i>Read It Later</i>, read every morning and never written to.</p></div>
+      <div class="card"><span class="k">Already saved</span><h3>Instagram</h3><p>Posts and reels, from your saved list, read once a day at a quiet, random hour; and from an Instagram export, which is the only way anyone else's saves come in.</p></div>
+      <div class="card"><span class="k">Already saved</span><h3>The inbox</h3><p>A folder of small notes: a link or a title to file, or a correction to a note already filed.</p></div>
+    </div>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">09 &middot; Where to watch, checked by code</span>
+      <h2>One step from the note to the thing itself.</h2>
+      <p class="lede">A note is only useful if you can press play from it. So for every save callimachus looks for the quickest honest way to it, and checks the match with code, not a model: the title, the length and the maker or year must agree. A copy it is not sure of is shown as <i>possible copy, not checked</i>, and is never made the link.</p>
+    </div>
+    <div class="grid g4">
+      <div class="card"><span class="k">Films and series</span><h3>Streaming, in order</h3><p>On the services we pay for first, then other subscriptions, free, free with ads, and rent or buy. US listings from TMDb, streaming data from JustWatch; a weekly refresh, so a list does not go stale, is planned.</p></div>
+      <div class="card"><span class="k">Online video</span><h3>The page, or the archive</h3><p>The page's own player when it has one; otherwise a copy on archive.org, found by title and maker and checked for length.</p></div>
+      <div class="card"><span class="k">Articles</span><h3>The page, kept</h3><p>The article itself, and the Wayback Machine's copy for the day the page moves or goes behind a wall.</p></div>
+      <div class="card"><span class="k">Visual art</span><h3>Where to see or buy it</h3><p>The post it came from, the artist's shop or gallery page, or the artist's profile.</p></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap grid g2" style="gap:48px;align-items:start">
+    <div>
+      <span class="eyebrow">10 &middot; Filed at once, corrected by you</span>
+      <h2>Two questions on every card.</h2>
+      <p>Each save gets a review card, and the card asks only two things. <b>Is the record right?</b> The kind, the title, the catalogue entry. <b>Can you watch, read or hear it in one step from here?</b> In the family's own words: the record is correct, and the media link, or the list of where it streams, &ldquo;is consumable by human quickly and easily.&rdquo;</p>
+      <p>A judge reads every card first and passes on only the ones it is unsure of. And nothing waits on you: when callimachus has a best guess that passes its catalogue check, it files it at once and marks it a guess. If you pick another candidate later, the same note is re-filed under your pick. Never a second note, and the run counts how many guesses were wrong.</p>
+    </div>
+    <div class="card">
+      <span class="k">A review card asks</span>
+      <table class="t">
+        <tr><th>Question</th><th>You answer</th></tr>
+        <tr><td>Both questions at once</td><td>approved: right, and one step away</td></tr>
+        <tr><td>Is the record right?</td><td>pick 1, 2 or 3 &middot; wrong, and what it should be &middot; not media</td></tr>
+        <tr><td>Can you get to it in one step?</td><td>dead: no way to get to it</td></tr>
+        <tr><td>Is the card itself wrong?</td><td>card is wrong: a fault in how it is shown, not in the record</td></tr>
+      </table>
+      <p class="small" style="margin-top:14px">Everything else on the card, from the sources it followed to the candidates it weighed, is there to help you judge those questions, never to be judged itself.</p>
+    </div>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">11 &middot; The library, in the weeds</span>
+      <h2>A library to browse, not a list to scroll.</h2>
+      <p class="lede">callimachus keeps two vaults. <b>callimachus-engine</b> does the work: the pipeline, the intake, the design and the review cards, and the family never needs to open it. What the family opens is the <b>callimachus vault</b>: one note per film or series, and Obsidian's own Bases over them, built in, with no plugin on any device. Every view is named for exactly what it shows.</p>
+    </div>
+    <div class="grid g2" style="gap:28px;align-items:start">
+<pre class="tree" aria-label="The Bases in the callimachus vault, abridged"><span class="r">callimachus vault</span>
+├── What we subscribe to
+├── <span class="a">Family</span> · <span class="b">Watch tonight</span>    <span class="v">start it now, on what we pay for</span>
+│   ├── Service · On our services
+│   ├── Service · Free (with or without ads)
+│   ├── Length · Under 90 minutes
+│   └── Together · Someone said wait for me
+├── <span class="a">Family</span> · <span class="b">Who's watching</span>   <span class="v">suits who is in the room</span>
+│   ├── Who · Family of five
+│   ├── Who · Watch together
+│   └── Age · Unrated documentaries
+├── <span class="a">Collection</span> · <span class="b">Browse</span>       <span class="v">what do we have?</span>
+│   ├── Genre · Horror, grouped by subgenre
+│   ├── Decade · Grouped by decade
+│   └── Rating · Very highly rated
+├── <span class="a">Collection</span> · <span class="b">Lists</span>        <span class="v">which list is it on?</span>
+│   └── List · Sight and Sound 2022 …
+├── <span class="a">Person</span> · <span class="b">&lsaquo;name&rsaquo;</span> × 5       <span class="v">my own list</span>
+│   ├── My checklist
+│   ├── I wanna see it, on our services
+│   └── Wait for me
+└── Library/   <span class="v">one note per title</span></pre>
+      <div class="grid" style="gap:16px">
+        <div class="card"><span class="k">Three levels</span><h3>Area, question, answer</h3><p>A Base's first word is the area you come with: <b>Family</b> (what to watch together), <b>Collection</b> (what we have), <b>Person</b> (my own list). The Base is the question; each view is one answer, named for how it slices it. Nine Bases and 137 views today, none more than one menu away.</p></div>
+        <div class="card"><span class="k">Three ticks each</span><h3>Seen it, I wanna see it, wait for me</h3><p>Everyone has their own Base and their own checklist, by films, series or everything. A box never ticked shows as a dash: <i>not answered yet</i>, never a silent no. A tick on a phone syncs back to everyone.</p></div>
+        <div class="card"><span class="k">Who's watching</span><h3>The family's own groups</h3><p>One rule for every group (it suits the youngest in the room, nobody in it said no, nobody outside it said wait for me), plus each group's own. <i>Very highly rated</i> always means IMDb 8+ or Rotten Tomatoes 90%+, and the view's name says so.</p></div>
+      </div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+        <div class="card"><span class="k">Watching together</span><h3>Content limits, from Common Sense</h3><p>Common Sense Media's own scores for sex and violence decide what suits the room, rather than the age rating alone: 535 notes have them so far, and until a film has its scores, the age rating stands in.</p></div>
+        <div class="card"><span class="k">One click out</span><h3>Every registry that lists it</h3><p>IMDb, TMDb, Wikidata, Wikipedia, Letterboxd, Rotten Tomatoes, Metacritic, Common Sense Media and where to watch, as links in each note: 730 notes have them so far, and every new save gets them. A link is built only from an id a source gave, never guessed from a title.</p></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">12 &middot; The poster check</span>
+      <h2>A cover on every card, and nothing explicit.</h2>
+      <p class="lede">The film cards now show their posters. Because the vault goes to every phone in the house, children's included, no image is published until a filter has looked at it, and the filter runs entirely at home: no paid AI, and no image sent anywhere to be judged. The whole library is done; new saves get theirs soon.</p>
+    </div>
+    <div class="check">
+      <div class="st"><b>1 &middot; Fetch</b><p>Enrich takes the title's one poster from TMDb, at the smallest size still sharp on a phone (about 60 KB), and keeps it in the raw archive.</p></div>
+      <div class="st pass"><b>2 &middot; NudeNet, every poster</b><p>An open-source nudity detector, run on the CPU at home. Any exposed-nudity label at confidence 0.5 or above flags the poster; the rest pass.</p></div>
+      <div class="st flag"><b>3 &middot; A second look, flagged only</b><p>A vision model on the home network's model box (qwen3-vl) is asked one fixed question: is this sexually explicit, or does it show nudity? Yes or no.</p></div>
+      <div class="st block"><b>4 &middot; Published, or never</b><p>Only a clear <i>no</i> publishes it. Anything else is blocked and stays in the archive, outside every vault. If the model box is down, flagged posters simply wait.</p></div>
+    </div>
+    <p class="small muted" style="margin-top:20px">The first run, over the whole library: 729 posters checked and published; NudeNet flagged 2, the vision model cleared both, none was blocked, and no paid AI was called. Every note records how its poster was judged: <code>poster_check</code> is <code>passed</code>, <code>blocked</code> or <code>unchecked</code>, and <code>poster_checked_with</code> names the tools and their versions. Nothing here was invented: NudeNet is the standard open detector, and the vision model was already on the model box.</p>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap grid g2" style="align-items:center;gap:44px">
+    <div>
+      <span class="eyebrow">13 &middot; The first rule</span>
+      <blockquote class="pull">&ldquo;Leave blanks blank. Do not ever make up data.&rdquo;<cite>The family's own specification, October 2026</cite></blockquote>
+      <p style="margin-top:22px">Every field in a note holds what a public source said or what a person typed, under a name that says which source it came from: <code>csm_age</code> is Common Sense Media's age, <code>omdb_rotten_tomatoes</code> is Rotten Tomatoes' score as OMDb reported it. When two sources disagree, both stay. When no source gave a value, the field stays empty.</p>
+      <p>And every value can prove where it came from: the note records which saved response it was read from, and where inside that response. Nothing is ever deleted, so any note can be rebuilt from the raw data, years later.</p>
+    </div>
+    <figure>
+<pre class="code"><span class="c"># Pi (1998).md, as filed (excerpt)</span>
+<span class="k">title</span>: <span class="s">Pi</span>
+<span class="k">year</span>: <span class="n">1998</span>
+<span class="k">media_type</span>: <span class="s">movie</span>
+<span class="k">csm_age</span>: <span class="n">16</span>
+<span class="k">tmdb_certification_us</span>: <span class="s">R</span>
+<span class="k">omdb_imdb_rating</span>: <span class="n">7.3</span>
+<span class="k">omdb_rotten_tomatoes</span>: <span class="n">88</span>
+<span class="k">tmdb_watch_providers_us_flatrate</span>:
+  - <span class="s">Amazon Prime Video</span>
+<span class="k">id_imdb</span>: <span class="s">tt0138704</span>
+<span class="k">id_wikidata</span>: <span class="s">Q937762</span>
+<span class="k">provenance</span>:
+  <span class="k">csm_age</span>:
+    <span class="k">fetch_record</span>: <span class="b">&lsaquo;Common Sense page, as saved&rsaquo;</span>
+    <span class="k">pointer</span>: <span class="s">jsonld:audience/suggestedMinAge</span>
+    <span class="k">transform</span>: [<span class="s">jsonld</span>, <span class="s">int</span>]</pre>
+      <figcaption>A real record from the proof of concept, trimmed. The <code>provenance</code> block says exactly where Common Sense Media's age of 16 was read from: the page's structured data, field <code>audience.suggestedMinAge</code>.</figcaption>
+    </figure>
+  </div>
+</section>
+<section>
+  <div class="wrap grid g2" style="gap:44px;align-items:center">
+    <div>
+      <span class="eyebrow">14 &middot; A filed note, as data</span>
+      <h2>Four real cards from the proof of concept.</h2>
+      <p>Every field is named for the source it came from: <code>csm_age</code> is Common Sense Media's age, <code>tmdb_certification_us</code> is TMDb's US rating, <code>omdb_imdb_rating</code> is IMDb's score as OMDb reported it. A <i>blank</i> means no source gave that value, so none was written.</p>
+    </div>
+    <div class="fan" aria-label="Four catalogue cards, as callimachus filed them">
+      <article class="icard c1">
+        <div class="hd"><span class="ti">Pi</span><span class="yr">1998 · Darren Aronofsky</span></div>
+        <dl>
+          <dt>csm_age</dt><dd>16</dd>
+          <dt>tmdb_certification_us</dt><dd>R</dd>
+          <dt>omdb_imdb_rating</dt><dd>7.3</dd>
+          <dt>omdb_rotten_tomatoes</dt><dd>88</dd>
+          <dt>tmdb_runtime</dt><dd>84</dd>
+        </dl>
+        <span class="tag">FILED</span>
+      </article>
+      <article class="icard c2">
+        <div class="hd"><span class="ti">Wildwood</span><span class="yr">2026 · Travis Knight</span></div>
+        <dl>
+          <dt>csm_age</dt><dd>11</dd>
+          <dt>tmdb_certification_us</dt><dd>PG-13</dd>
+          <dt>tmdb_vote_average</dt><dd>8.9</dd>
+          <dt>tmdb_genres</dt><dd>Animation</dd>
+          <dt>tmdb_runtime</dt><dd>132</dd>
+        </dl>
+        <span class="tag">FILED</span>
+      </article>
+      <article class="icard c3">
+        <div class="hd"><span class="ti">The World According to Monsanto</span><span class="yr">2008 · Marie-Monique Robin</span></div>
+        <dl>
+          <dt>tmdb_genres</dt><dd>Documentary</dd>
+          <dt>csm_age</dt><dd class="blank">blank</dd>
+          <dt>omdb_imdb_rating</dt><dd>8.0</dd>
+          <dt>tmdb_vote_average</dt><dd>7.3</dd>
+          <dt>tmdb_runtime</dt><dd>108</dd>
+        </dl>
+        <span class="tag">FILED</span>
+      </article>
+      <article class="icard c4">
+        <div class="hd"><span class="ti">Good Copy Bad Copy</span><span class="yr">2007 · Johnsen, Moltke et al.</span></div>
+        <dl>
+          <dt>tmdb_genres</dt><dd>Documentary</dd>
+          <dt>csm_age</dt><dd class="blank">blank</dd>
+          <dt>omdb_imdb_rating</dt><dd>7.0</dd>
+          <dt>tmdb_vote_average</dt><dd>7.4</dd>
+          <dt>tmdb_runtime</dt><dd>59</dd>
+        </dl>
+        <span class="tag">FILED</span>
+      </article>
+      <p class="fan-note">Four real cards from the proof of concept. A <i>blank</i> means no source gave that value, so none was written.</p>
+    </div>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>0</b><span>paid AI calls on a healthy run: code and a free local model do the work</span></div>
+      <div class="stat"><b>7</b><span>free public sources: TMDb, OMDb, Wikidata, Common Sense Media, Open Library, archive.org, the Wayback Machine</span></div>
+      <div class="stat"><b>1</b><span>note per title, merged across every place it was saved</span></div>
+      <div class="stat"><b>20</b><span>titles it can file from a single "best films of the decade" post</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer><div class="wrap">
+<span>callimachus &middot; a family catalogue for everything you save &middot; proof of concept, October 2026</span>
+<nav aria-label="Footer"><a href="index.html">Home</a><a href="tour.html">A tour</a><a href="how-it-works.html">How it works</a><a href="agents.html">The agents</a><a href="privacy.html">Privacy</a><a href="watch.html">Film &amp; deck</a></nav>
+</div></footer>
+<script>
+(function(){
+  var KEY='callimachus-theme', root=document.documentElement, btn=document.querySelector('.theme');
+  var order=['auto','light','dark'];
+  function get(){try{return localStorage.getItem(KEY)||'auto'}catch(e){return 'auto'}}
+  function set(v){try{localStorage.setItem(KEY,v)}catch(e){}}
+  function apply(v){ if(v==='auto'){root.removeAttribute('data-theme')} else {root.setAttribute('data-theme',v)}
+    if(btn){btn.textContent='Theme: '+v} }
+  var cur=get(); apply(cur);
+  if(btn){btn.addEventListener('click',function(){cur=order[(order.indexOf(cur)+1)%3]; set(cur); apply(cur);});}
+})();
+</script>
+</body>
+</html>
