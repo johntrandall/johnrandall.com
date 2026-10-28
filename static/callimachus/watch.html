@@ -295,7 +295,7 @@ footer a{color:var(--ink-soft)}
 .opening .hb{font-family:var(--display);font-size:22px;color:#E5865C;margin-top:18px}
 .home-hero .wrap{grid-template-columns:1fr 1fr}
 .hero-art{margin:0;max-width:520px;justify-self:center;width:100%}
-.flow2{display:grid;grid-template-columns:1.15fr 34px 1fr 34px 1fr 34px 1.15fr 34px 1.45fr;align-items:center;gap:0 6px}
+.flow2{display:grid;grid-template-columns:1.2fr 34px 1fr 34px 1.3fr 34px 1.5fr;align-items:center;gap:0 6px}
 .flow2 figure{margin:0}
 .flow2 figcaption{font-family:var(--sans);font-size:14.5px;line-height:1.4;color:var(--ink-soft);margin-top:10px;text-align:center}
 .flow2 figcaption b{display:block;color:var(--ink);font-size:15.5px;margin-bottom:2px}
@@ -349,6 +349,25 @@ footer a{color:var(--ink-soft)}
   .flowmini .arr{transform:rotate(90deg);width:100%;text-align:center}
 }
 
+.art .lk-zone{font-family:var(--mono);font-size:15px;letter-spacing:2.5px}
+.art .lk-name{font-family:var(--sans);font-weight:700;font-size:20px;fill:var(--ink)}
+.art .lk-what{font-family:var(--sans);font-size:16px;fill:var(--ink-soft)}
+.art .ww-h{font-family:var(--display);font-weight:600;font-size:34px;fill:var(--ink)}
+.art .ww-chip{font-family:var(--sans);font-weight:600;font-size:18px}
+.art .ww-note{font-family:var(--sans);font-size:17px;fill:var(--ink-soft)}
+.ww{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:center}
+.ww-art{margin:0}
+ul.groups{list-style:none;margin:0;padding:0}
+ul.groups li{border-left:4px solid var(--lapis);padding:4px 0 4px 16px;margin-bottom:14px;font-family:var(--sans);font-size:15.5px;color:var(--ink-soft);line-height:1.4}
+ul.groups b{display:block;font-family:var(--display);font-size:19px;color:var(--ink)}
+@media (max-width:980px){.ww{grid-template-columns:1fr}}
+.howto{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.how-art{margin:0}.how-art.how-phone svg{max-width:280px;margin:0 auto}
+ol.steps{list-style:none;counter-reset:st;margin:18px 0 14px;padding:0}
+ol.steps li{counter-increment:st;position:relative;padding:2px 0 14px 54px;font-size:17px;color:var(--ink-soft);line-height:1.5}
+ol.steps li::before{content:counter(st);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;background:var(--terracotta-fill);color:#FBF7EE;font-family:var(--sans);font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center}
+ol.steps b{display:block;font-family:var(--display);font-size:21px;color:var(--ink)}
+@media (max-width:980px){.howto{grid-template-columns:1fr;gap:28px}.how-art.how-phone svg{max-width:220px}}
 @media print{.top{position:static}.theme{display:none}}
 
 /* the film and the deck (watch.html) */
@@ -371,7 +390,7 @@ footer a{color:var(--ink-soft)}
 <body>
 <header class="top"><div class="wrap">
 <a class="brand" href="index.html" aria-label="callimachus home"><svg class="" viewBox="0 0 76 66" aria-hidden="true"><g class="scroll" transform="rotate(-10 36 26)"><rect x="61.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/><path d="M16,14.00 L56,14.00 A6.5,12 0 0 1 56,38.00 L16,38.00 Z" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20,18.20 L54,18.20" stroke="#F5EEDF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/><ellipse cx="16" cy="26" rx="6.5" ry="12" fill="#EBDFC6" stroke="var(--mark-edge, #1C2533)" stroke-width="2.4"/><path class="spiral" d="M16.00,23.36 L16.15,23.31 L16.31,23.30 L16.47,23.31 L16.64,23.36 L16.80,23.45 L16.96,23.56 L17.11,23.72 L17.26,23.90 L17.40,24.12 L17.53,24.37 L17.64,24.65 L17.74,24.95 L17.83,25.28 L17.89,25.63 L17.93,26.00 L17.96,26.38 L17.96,26.77 L17.93,27.16 L17.89,27.55 L17.82,27.94 L17.73,28.32 L17.61,28.68 L17.47,29.02 L17.31,29.34 L17.13,29.63 L16.94,29.88 L16.72,30.10 L16.49,30.28 L16.25,30.41 L16.00,30.50 L15.74,30.54 L15.48,30.52 L15.22,30.46 L14.95,30.34 L14.70,30.17 L14.45,29.94 L14.21,29.67 L13.99,29.34 L13.78,28.97 L13.60,28.56 L13.44,28.11 L13.30,27.62 L13.19,27.10 L13.11,26.56 L13.06,26.00 L13.04,25.43 L13.06,24.85 L13.11,24.26 L13.19,23.69 L13.31,23.13 L13.46,22.59 L13.64,22.08 L13.85,21.60 L14.09,21.16 L14.36,20.76 L14.65,20.42 L14.97,20.13 L15.30,19.90 L15.64,19.74 L16.00,19.64 L16.36,19.61 L16.73,19.66 L17.10,19.77 L17.46,19.96 L17.81,20.22 L18.14,20.55 L18.46,20.95 L18.76,21.41 L19.03,21.93 L19.27,22.51 L19.48,23.14 L19.66,23.80 L19.80,24.51 L19.89,25.24 L19.95,26.00 L19.96,26.77 L19.93,27.54 L19.85,28.31 L19.73,29.07 L19.57,29.80 L19.36,30.50 L19.11,31.17 L18.82,31.79 L18.50,32.35 L18.14,32.85 L17.76,33.28 L17.34,33.64 L16.91,33.92 L16.46,34.11 L16.00,34.22 L15.53,34.24 L15.06,34.16 L14.59,33.99 L14.13,33.74 L13.69,33.39 L13.26,32.95 L12.86,32.43 L12.49,31.83 L12.15,31.16 L11.85,30.42 L11.59,29.62 L11.38,28.77 L11.22,27.88 L11.10,26.95 L11.04,26.00 L11.04,25.04 L11.09,24.07 L11.19,23.12 L11.35,22.18 L11.56,21.27 L11.83,20.40 L12.14,19.59 L12.50,18.83 L12.91,18.15 L13.35,17.54 L13.83,17.02 L14.34,16.59 L14.88,16.26 L15.43,16.04 L16.00,15.92" fill="none" stroke="#1C2533" stroke-width="1.6" stroke-linecap="round"/><rect x="5.00" y="23.40" width="6" height="5.2" rx="2.4" fill="#7A5A3A" stroke="var(--mark-edge, #1C2533)" stroke-width="1.2"/></g><path class="string" d="M8.88,33.42 Q10.23,56.75 11.57,53.25" fill="none" stroke="var(--mark-edge, #1C2533)" stroke-width="1.5" stroke-linecap="round"/><g class="tag" data-rot="4" data-pivot="8 53.0" transform="rotate(4 8 53.0)"><rect x="8" y="46" width="21" height="14" rx="2.2" fill="var(--terracotta-fill, #B9532C)"/><circle cx="11.6" cy="53.0" r="1.45" fill="var(--papyrus, #F5EEDF)"/><rect x="15.4" y="49.4" width="10.6" height="2" rx="1" fill="#F5EEDF"/><rect x="15.4" y="54.1" width="7.00" height="2" rx="1" fill="#F5EEDF" opacity=".8"/></g></svg><b>callimachus</b></a>
-<nav class="nav" aria-label="Pages"><a href="index.html">Home</a><a href="tour.html">A tour</a><span class="nav-sep" aria-hidden="true"></span><a href="how-it-works.html">How it works</a><a href="agents.html">The agents</a><span class="nav-sep" aria-hidden="true"></span><a href="privacy.html">Privacy</a><a href="watch.html" aria-current="page">Film &amp; deck</a></nav>
+<nav class="nav" aria-label="Pages"><a href="index.html">Home</a><a href="tour.html">A tour</a><a href="karina.html">For Karina</a><span class="nav-sep" aria-hidden="true"></span><a href="how-it-works.html">How it works</a><a href="agents.html">The agents</a><span class="nav-sep" aria-hidden="true"></span><a href="privacy.html">Privacy</a><a href="watch.html" aria-current="page">Film &amp; deck</a></nav>
 <button class="theme" type="button" aria-label="Switch light or dark theme">Theme: auto</button>
 </div></header>
 <main>
@@ -411,9 +430,9 @@ footer a{color:var(--ink-soft)}
 
 <section id="engineering" class="band">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Under the hood &middot; 60 seconds &middot; silent</span><h2>What happens to every save.</h2></div>
+    <div class="sec-head"><span class="eyebrow">Under the hood &middot; 70 seconds &middot; silent</span><h2>What happens to every save.</h2></div>
     <div class="film">
-      <video controls playsinline preload="metadata" poster="media/film-poster.jpg" aria-label="The callimachus engineering film, 60 seconds, no sound">
+      <video controls playsinline preload="metadata" poster="media/film-poster.jpg" aria-label="The callimachus engineering film, 70 seconds, no sound">
         <source src="video/callimachus-engineering.mp4" type="video/mp4">
       </video>
     </div>
@@ -421,10 +440,11 @@ footer a{color:var(--ink-soft)}
       <li><b>0:00</b> The scroll and its tag</li>
       <li><b>0:06</b> We save things everywhere</li>
       <li><b>0:15</b> Eight steps for every save</li>
-      <li><b>0:27</b> One note, every field sourced</li>
-      <li><b>0:38</b> The ladder: code first, AI only if needed</li>
-      <li><b>0:47</b> What stays at home</li>
-      <li><b>0:55</b> For Karina</li>
+      <li><b>0:27</b> Looking it up: the engine asks, the sources answer</li>
+      <li><b>0:37</b> One note, every field sourced</li>
+      <li><b>0:48</b> The ladder: reduce costs, stay local</li>
+      <li><b>0:57</b> What is kept at home, and what goes out</li>
+      <li><b>1:05</b> For Karina</li>
     </ol>
     <p class="small muted" style="margin-top:14px">No sound. <a href="video/callimachus-engineering.mp4">Open the film file</a> (MP4, 1920 &times; 1080).</p>
   </div>
@@ -432,7 +452,7 @@ footer a{color:var(--ink-soft)}
 
 <section id="deck">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">The deck &middot; 29 slides in two parts</span><h2>For the family, then under the hood.</h2>
+    <div class="sec-head"><span class="eyebrow">The deck &middot; 31 slides in two parts</span><h2>For the family, then under the hood.</h2>
       <p class="muted">Open the slides and move with the arrow keys, or tap the right side of the screen to go on and the left to go back. Click any slide below to open the deck there.</p>
       <div class="btns">
         <a class="btn primary" href="deck/callimachus-deck.html">Open the slides</a>
@@ -447,41 +467,43 @@ footer a{color:var(--ink-soft)}
       <a class="sl" href="deck/callimachus-deck.html#3"><img src="media/slide-03.jpg" alt="Slide 3: No typing. No app to open." width="640" height="360"><span class="n">03 &middot; Saw it? Tap it.</span><b>No typing. No app to open.</b></a>
       <a class="sl" href="deck/callimachus-deck.html#4"><img src="media/slide-04.jpg" alt="Slide 4: Save it anywhere. Watch it together." width="640" height="360"><span class="n">04 &middot; From a tap to movie night</span><b>Save it anywhere. Watch it together.</b></a>
       <a class="sl" href="deck/callimachus-deck.html#5"><img src="media/slide-05.jpg" alt="Slide 5: A library to browse, not a list to scroll." width="640" height="360"><span class="n">05 &middot; What you see</span><b>A library to browse, not a list to scroll.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#6"><img src="media/slide-06.jpg" alt="Slide 6: One tap from the page to the film." width="640" height="360"><span class="n">06 &middot; Where to watch it</span><b>One tap from the page to the film.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#7"><img src="media/slide-07.jpg" alt="Slide 7: Save from all of them. Open it on all of them." width="640" height="360"><span class="n">07 &middot; Save from any phone or laptop</span><b>Save from all of them. Open it on all of them.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#8"><img src="media/slide-08.jpg" alt="Slide 8: The kids&#x27; phones get the kids&#x27; library." width="640" height="360"><span class="n">08 &middot; Right for whoever&#x27;s on the couch</span><b>The kids&#x27; phones get the kids&#x27; library.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#9"><img src="media/slide-09.jpg" alt="Slide 9: Nothing made up. Nothing leaves home." width="640" height="360"><span class="n">09 &middot; Two promises</span><b>Nothing made up. Nothing leaves home.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#10"><img src="media/slide-10.jpg" alt="Slide 10: Pick something everyone can watch. Press play." width="640" height="360"><span class="n">10 &middot; Movie night</span><b>Pick something everyone can watch. Press play.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#6"><img src="media/slide-06.jpg" alt="Slide 6: Pick who&#x27;s on the couch. The library does the rest." width="640" height="360"><span class="n">06 &middot; Who&#x27;s watching tonight?</span><b>Pick who&#x27;s on the couch. The library does the rest.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#7"><img src="media/slide-07.jpg" alt="Slide 7: One tap from the page to the film." width="640" height="360"><span class="n">07 &middot; Where to watch it</span><b>One tap from the page to the film.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#8"><img src="media/slide-08.jpg" alt="Slide 8: Save from all of them. Open it on all of them." width="640" height="360"><span class="n">08 &middot; Save from any phone or laptop</span><b>Save from all of them. Open it on all of them.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#9"><img src="media/slide-09.jpg" alt="Slide 9: The kids&#x27; phones get the kids&#x27; library." width="640" height="360"><span class="n">09 &middot; Right for whoever&#x27;s on the couch</span><b>The kids&#x27; phones get the kids&#x27; library.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#10"><img src="media/slide-10.jpg" alt="Slide 10: Nothing made up. Stored at home." width="640" height="360"><span class="n">10 &middot; Two promises, and one exception</span><b>Nothing made up. Stored at home.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#11"><img src="media/slide-11.jpg" alt="Slide 11: Pick something everyone can watch. Press play." width="640" height="360"><span class="n">11 &middot; Movie night</span><b>Pick something everyone can watch. Press play.</b></a>
     </div>
     <h3 style="margin:44px 0 18px">Part two &middot; under the hood</h3>
     <div class="slides">
-      <a class="sl" href="deck/callimachus-deck.html#11"><img src="media/slide-11.jpg" alt="Slide 11: Under the hood." width="640" height="360"><span class="n">11 &middot; Part two</span><b>Under the hood.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#12"><img src="media/slide-12.jpg" alt="Slide 12: Find every save. Name it. Look it up. File one note." width="640" height="360"><span class="n">12 &middot; What it is</span><b>Find every save. Name it. Look it up. File one note.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#13"><img src="media/slide-13.jpg" alt="Slide 13: One tap from wherever you are." width="640" height="360"><span class="n">13 &middot; Send it in</span><b>One tap from wherever you are.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#14"><img src="media/slide-14.jpg" alt="Slide 14: Filed when it arrives, or at 06:30." width="640" height="360"><span class="n">14 &middot; What happens to a save</span><b>Filed when it arrives, or at 06:30.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#15"><img src="media/slide-15.jpg" alt="Slide 15: One step from the note to the thing itself." width="640" height="360"><span class="n">15 &middot; Where to watch it</span><b>One step from the note to the thing itself.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#16"><img src="media/slide-16.jpg" alt="Slide 16: Two questions on every card." width="640" height="360"><span class="n">16 &middot; Filed at once, corrected by you</span><b>Two questions on every card.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#17"><img src="media/slide-17.jpg" alt="Slide 17: Two vaults, Bases, no plugins." width="640" height="360"><span class="n">17 &middot; The library, in the weeds</span><b>Two vaults, Bases, no plugins.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#18"><img src="media/slide-18.jpg" alt="Slide 18: Two vaults and a self-hosted sync." width="640" height="360"><span class="n">18 &middot; The sync</span><b>Two vaults and a self-hosted sync.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#19"><img src="media/slide-19.jpg" alt="Slide 19: A cover on every card, and nothing explicit." width="640" height="360"><span class="n">19 &middot; Posters, checked first</span><b>A cover on every card, and nothing explicit.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#20"><img src="media/slide-20.jpg" alt="Slide 20: “Leave blanks blank. Do not ever make up data.”" width="640" height="360"><span class="n">20 &middot; The first rule</span><b>“Leave blanks blank. Do not ever make up data.”</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#21"><img src="media/slide-21.jpg" alt="Slide 21: Climb one rung at a time." width="640" height="360"><span class="n">21 &middot; AI only where it is needed</span><b>Climb one rung at a time.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#22"><img src="media/slide-22.jpg" alt="Slide 22: Always one of three states, and a fuse." width="640" height="360"><span class="n">22 &middot; Healthy, degraded, stopped</span><b>Always one of three states, and a fuse.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#23"><img src="media/slide-23.jpg" alt="Slide 23: The system in its world." width="640" height="360"><span class="n">23 &middot; The architecture, C4 level 1</span><b>The system in its world.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#24"><img src="media/slide-24.jpg" alt="Slide 24: Only a plain script ever touches a sign-in." width="640" height="360"><span class="n">24 &middot; C4 level 2: containers on a healthy day</span><b>Only a plain script ever touches a sign-in.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#25"><img src="media/slide-25.jpg" alt="Slide 25: Agents only when something breaks." width="640" height="360"><span class="n">25 &middot; The agents, run by watchbill</span><b>Agents only when something breaks.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#26"><img src="media/slide-26.jpg" alt="Slide 26: Two loops, and John says yes." width="640" height="360"><span class="n">26 &middot; Repair and observe</span><b>Two loops, and John says yes.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#27"><img src="media/slide-27.jpg" alt="Slide 27: Your saves are yours. They stay at home." width="640" height="360"><span class="n">27 &middot; What stays private</span><b>Your saves are yours. They stay at home.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#28"><img src="media/slide-28.jpg" alt="Slide 28: Proof of concept, judged card by card. Next: the MVP." width="640" height="360"><span class="n">28 &middot; Where it stands</span><b>Proof of concept, judged card by card. Next: the MVP.</b></a>
-      <a class="sl" href="deck/callimachus-deck.html#29"><img src="media/slide-29.jpg" alt="Slide 29: Made for Karina, who always wanted this to exist." width="640" height="360"><span class="n">29</span><b>Made for Karina, who always wanted this to exist.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#12"><img src="media/slide-12.jpg" alt="Slide 12: Under the hood." width="640" height="360"><span class="n">12 &middot; Part two</span><b>Under the hood.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#13"><img src="media/slide-13.jpg" alt="Slide 13: Find every save. Name it. Look it up. File one note." width="640" height="360"><span class="n">13 &middot; What it is</span><b>Find every save. Name it. Look it up. File one note.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#14"><img src="media/slide-14.jpg" alt="Slide 14: One tap from wherever you are." width="640" height="360"><span class="n">14 &middot; Send it in</span><b>One tap from wherever you are.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#15"><img src="media/slide-15.jpg" alt="Slide 15: Filed the moment it arrives. (And a backup run at 6:30 a.m.)" width="640" height="360"><span class="n">15 &middot; What happens to a save</span><b>Filed the moment it arrives. (And a backup run at 6:30 a.m.)</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#16"><img src="media/slide-16.jpg" alt="Slide 16: The engine asks. The sources answer." width="640" height="360"><span class="n">16 &middot; Looking it up</span><b>The engine asks. The sources answer.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#17"><img src="media/slide-17.jpg" alt="Slide 17: One step from the note to the thing itself." width="640" height="360"><span class="n">17 &middot; Where to watch it</span><b>One step from the note to the thing itself.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#18"><img src="media/slide-18.jpg" alt="Slide 18: Two questions on every card." width="640" height="360"><span class="n">18 &middot; Filed at once, corrected by a human judge</span><b>Two questions on every card.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#19"><img src="media/slide-19.jpg" alt="Slide 19: Two vaults, Bases, no plugins." width="640" height="360"><span class="n">19 &middot; The library, in the weeds</span><b>Two vaults, Bases, no plugins.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#20"><img src="media/slide-20.jpg" alt="Slide 20: Two vaults and a self-hosted sync." width="640" height="360"><span class="n">20 &middot; The sync</span><b>Two vaults and a self-hosted sync.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#21"><img src="media/slide-21.jpg" alt="Slide 21: A cover on every card, and nothing explicit." width="640" height="360"><span class="n">21 &middot; Posters, checked first</span><b>A cover on every card, and nothing explicit.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#22"><img src="media/slide-22.jpg" alt="Slide 22: “Leave blanks blank. Do not ever make up data.”" width="640" height="360"><span class="n">22 &middot; The first rule</span><b>“Leave blanks blank. Do not ever make up data.”</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#23"><img src="media/slide-23.jpg" alt="Slide 23: Reduce costs, and stay local when possible." width="640" height="360"><span class="n">23 &middot; AI only where it is needed</span><b>Reduce costs, and stay local when possible.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#24"><img src="media/slide-24.jpg" alt="Slide 24: Always one of three states, and a fuse." width="640" height="360"><span class="n">24 &middot; Healthy, degraded, stopped</span><b>Always one of three states, and a fuse.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#25"><img src="media/slide-25.jpg" alt="Slide 25: The system in its world." width="640" height="360"><span class="n">25 &middot; The architecture, C4 level 1</span><b>The system in its world.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#26"><img src="media/slide-26.jpg" alt="Slide 26: Credentialed sign-ins are completely sandboxed." width="640" height="360"><span class="n">26 &middot; C4 level 2: containers on a healthy day</span><b>Credentialed sign-ins are completely sandboxed.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#27"><img src="media/slide-27.jpg" alt="Slide 27: Expensive architecture agents only when something breaks." width="640" height="360"><span class="n">27 &middot; The agents, run by watchbill</span><b>Expensive architecture agents only when something breaks.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#28"><img src="media/slide-28.jpg" alt="Slide 28: Two loops, and John says yes." width="640" height="360"><span class="n">28 &middot; Repair and observe</span><b>Two loops, and John says yes.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#29"><img src="media/slide-29.jpg" alt="Slide 29: Your saves are yours. They&#x27;re stored at home." width="640" height="360"><span class="n">29 &middot; What stays private</span><b>Your saves are yours. They&#x27;re stored at home.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#30"><img src="media/slide-30.jpg" alt="Slide 30: Released today, 28 October 2026." width="640" height="360"><span class="n">30 &middot; Where it stands</span><b>Released today, 28 October 2026.</b></a>
+      <a class="sl" href="deck/callimachus-deck.html#31"><img src="media/slide-31.jpg" alt="Slide 31: Made for Karina, who always wanted this to exist." width="640" height="360"><span class="n">31</span><b>Made for Karina, who always wanted this to exist.</b></a>
     </div>
   </div>
 </section>
 
 </main>
 <footer><div class="wrap">
-<span>callimachus &middot; a family catalogue for everything you save &middot; proof of concept, October 2026</span>
-<nav aria-label="Footer"><a href="index.html">Home</a><a href="tour.html">A tour</a><a href="how-it-works.html">How it works</a><a href="agents.html">The agents</a><a href="privacy.html">Privacy</a><a href="watch.html">Film &amp; deck</a></nav>
+<span>callimachus &middot; a family catalogue for everything you save &middot; released 28 October 2026</span>
+<nav aria-label="Footer"><a href="index.html">Home</a><a href="tour.html">A tour</a><a href="karina.html">For Karina</a><a href="how-it-works.html">How it works</a><a href="agents.html">The agents</a><a href="privacy.html">Privacy</a><a href="watch.html">Film &amp; deck</a></nav>
 </div></footer>
 <script>
 (function(){
